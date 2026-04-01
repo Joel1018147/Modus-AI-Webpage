@@ -2,48 +2,52 @@ import React, { useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "wouter";
-import { ArrowLeft, CheckCircle2, ChevronRight, Mail, MapPin, Phone, Send } from "lucide-react";
+import {
+  ArrowLeft, CheckCircle2, ChevronRight,
+  Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
 
 export default function Details() {
   const [location] = useLocation();
 
   useEffect(() => {
-    // Check if there's a hash in the URL and scroll to it
     const hash = window.location.hash;
     if (hash) {
       setTimeout(() => {
         const el = document.getElementById(hash.substring(1));
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
-        }
+        if (el) el.scrollIntoView({ behavior: "smooth" });
       }, 100);
     } else {
       window.scrollTo(0, 0);
     }
   }, [location]);
 
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-
   return (
     <div className="min-h-screen bg-background text-foreground pb-24">
       <Navbar />
 
-      {/* Floating Back Button */}
+      {/* Floating back button */}
       <div className="fixed bottom-8 right-8 z-50">
-        <Link href="/" className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-md border border-white/10 hover:border-primary hover:bg-primary/10 transition-all duration-300 shadow-lg text-sm font-medium">
+        <Link
+          href="/"
+          className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-md border border-white/10 hover:border-primary hover:bg-primary/10 transition-all duration-300 shadow-lg text-sm font-medium"
+          data-testid="back-to-home"
+        >
           <ArrowLeft className="w-4 h-4" /> Back to Home
         </Link>
       </div>
 
       <main className="container mx-auto px-4 md:px-8 pt-32 max-w-5xl flex flex-col gap-32">
-        
-        {/* Section 1: About Us */}
+
+        {/* ── About Us ── */}
         <motion.section
           id="about"
           variants={sectionVariants}
@@ -53,28 +57,61 @@ export default function Details() {
           className="scroll-mt-32"
         >
           <div className="flex items-center gap-4 mb-8">
-            <div className="h-1 w-12 bg-primary"></div>
-            <h2 className="text-4xl md:text-5xl font-display font-bold">About <span className="text-primary">Us</span></h2>
+            <div className="h-1 w-12 bg-primary" />
+            <h2 className="text-4xl md:text-5xl font-display font-bold">
+              About <span className="text-primary">Us</span>
+            </h2>
           </div>
-          
-          <div className="p-8 md:p-12 rounded-3xl bg-card border border-white/5 relative overflow-hidden group hover:border-primary/30 transition-colors duration-500">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] group-hover:bg-primary/10 transition-colors duration-500"></div>
-            
+
+          <div className="p-8 md:p-12 rounded-3xl bg-card border border-white/5 relative overflow-hidden group hover:border-primary/30 transition-colors duration-500 mb-8">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] group-hover:bg-primary/10 transition-colors duration-500" />
             <div className="relative z-10 text-lg md:text-xl text-muted-foreground leading-relaxed space-y-6">
               <p>
-                <strong className="text-white font-display">MODUS AI Associates</strong> is Malaysia's premier AI e-commerce training and transformation company. We don't teach theory — we implement.
+                <strong className="text-white font-display">MODUS AI Associates</strong> is Malaysia's gateway to China's world-class AI ecosystem — bridging ASEAN's rapidly growing AI talent gap through certified, practical training and real-world implementation.
               </p>
               <p>
-                Our team bridges the gap between Malaysian businesses and global AI execution standards. In a rapidly evolving digital landscape, falling behind on AI adoption means falling behind on business. 
+                We are officially partnered with <strong className="text-primary">China's No.1 AI Training Institution</strong>, providing Malaysian businesses with direct access to the same AI systems, tools, and methodologies powering the world's most advanced technology companies.
               </p>
               <p>
-                Our mission is to elevate Malaysian companies to compete on the world stage using applied, practical AI solutions that drive measurable growth and operational efficiency.
+                Our programmes are backed by the <strong className="text-secondary">Ministry of Industry and Information Technology (MIIT) of China</strong> — the gold standard in AI certification — ensuring your workforce meets global benchmarks, not just local ones.
+              </p>
+              <p>
+                We focus exclusively on <strong className="text-white">real-world AI application</strong>. No theoretical fluff. Every training module, every consulting engagement, and every automation system we build is designed to deliver measurable ROI from day one.
+              </p>
+              <p className="font-medium text-white/80">
+                Our mission: Elevate every Malaysian company to compete on the world stage using applied, certified AI execution — powered by China's proven ecosystem.
               </p>
             </div>
           </div>
+
+          {/* Credential badges */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { icon: Award, label: "MIIT Certified", sub: "Ministry of Industry & IT, China" },
+              { icon: Globe2, label: "China AI Ecosystem", sub: "No.1 Training Institution Partner" },
+              { icon: Users, label: "800,000+ Graduates", sub: "Across 2,600 partner universities" },
+            ].map((badge, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-primary/20 hover:border-primary/50 transition-colors"
+              >
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 shrink-0">
+                  <badge.icon className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <div className="font-display font-bold text-white">{badge.label}</div>
+                  <div className="text-xs text-muted-foreground">{badge.sub}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.section>
 
-        {/* Section 2: Why Choose Us */}
+        {/* ── Why Choose Us ── */}
         <motion.section
           id="why-choose-us"
           variants={sectionVariants}
@@ -84,36 +121,39 @@ export default function Details() {
           className="scroll-mt-32"
         >
           <div className="flex items-center gap-4 mb-8 justify-end">
-            <h2 className="text-4xl md:text-5xl font-display font-bold">Why <span className="text-secondary">Choose Us</span></h2>
-            <div className="h-1 w-12 bg-secondary"></div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold">
+              Why <span className="text-secondary">Choose Us</span>
+            </h2>
+            <div className="h-1 w-12 bg-secondary" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              "Practical AI implementation, not academic theory",
-              "Proven 5–10x productivity improvements",
-              "Business-oriented approach with real use cases",
-              "End-to-end automation systems we build WITH you",
-              "Outcomes-first: we measure ROI, not attendance"
+              { icon: Award, text: "Industry-certified AI training — AIGC Engineer Certification recognised globally", accent: "secondary" },
+              { icon: Globe2, text: "Direct access to China's AI Talent Pool — the world's largest and most advanced", accent: "primary" },
+              { icon: Users, text: "Proven ecosystem: 2,600 universities, 800,000+ certified students across Asia", accent: "secondary" },
+              { icon: BookOpen, text: "Real business application and automation systems — not academic theory", accent: "primary" },
+              { icon: Briefcase, text: "Strong government alignment — TVET integration and national AI policy compliance", accent: "secondary" },
+              { icon: Bot, text: "5–10x productivity improvements proven across manufacturing, retail, and logistics", accent: "primary" },
             ].map((point, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4 p-6 rounded-2xl bg-card border border-white/5 hover:border-secondary/50 hover:bg-secondary/5 transition-all duration-300 group"
+                transition={{ delay: i * 0.08 }}
+                className={`flex items-start gap-4 p-6 rounded-2xl bg-card border border-white/5 hover:border-${point.accent}/50 hover:bg-${point.accent}/5 transition-all duration-300 group`}
               >
-                <div className="mt-1 bg-secondary/20 p-2 rounded-full group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
-                  <CheckCircle2 className="w-5 h-5 text-secondary group-hover:text-white" />
+                <div className={`mt-1 bg-${point.accent}/20 p-2 rounded-full shrink-0 group-hover:bg-${point.accent}/40 transition-colors duration-300`}>
+                  <point.icon className={`w-5 h-5 text-${point.accent}`} />
                 </div>
-                <p className="text-lg font-medium text-white/90">{point}</p>
+                <p className="text-base font-medium text-white/90 leading-snug">{point.text}</p>
               </motion.div>
             ))}
           </div>
         </motion.section>
 
-        {/* Section 3: Our Services */}
+        {/* ── Our Services ── */}
         <motion.section
           id="services"
           variants={sectionVariants}
@@ -123,30 +163,80 @@ export default function Details() {
           className="scroll-mt-32"
         >
           <div className="flex items-center gap-4 mb-8">
-            <div className="h-1 w-12 bg-primary"></div>
-            <h2 className="text-4xl md:text-5xl font-display font-bold">Our <span className="text-primary">Services</span></h2>
+            <div className="h-1 w-12 bg-primary" />
+            <h2 className="text-4xl md:text-5xl font-display font-bold">
+              Our <span className="text-primary">Services</span>
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
-              { title: "AI E-Commerce Training", desc: "Master AI tools specific to scaling online retail and marketplace operations." },
-              { title: "Transformation Consulting", desc: "Strategic roadmaps to integrate AI across your entire organizational workflow." },
-              { title: "Workforce AI Upskilling", desc: "Turn your current employees into AI-augmented power users." },
-              { title: "Automation System Setup", desc: "Custom-built, integrated AI pipelines that run your operations 24/7." }
+              {
+                icon: BookOpen,
+                title: "AI E-Commerce Training",
+                desc: "Master AI tools purpose-built for scaling online retail and marketplace operations — from intelligent product listings to automated fulfilment.",
+                tag: "Training",
+              },
+              {
+                icon: Award,
+                title: "MIIT AIGC Certification",
+                desc: "Internationally recognised AI Generative Content Engineer Certification from China's Ministry of Industry and Information Technology.",
+                tag: "Certification",
+              },
+              {
+                icon: Briefcase,
+                title: "Corporate AI Transformation",
+                desc: "Strategic consulting to integrate AI across your entire organisation — from board-level roadmaps to ground-floor implementation.",
+                tag: "Consulting",
+              },
+              {
+                icon: Users,
+                title: "Workforce AI Upskilling",
+                desc: "Turn your current employees into AI-augmented power users. Structured, role-specific programmes aligned with national TVET frameworks.",
+                tag: "Upskilling",
+              },
+              {
+                icon: Bot,
+                title: "AI Automation System Setup",
+                desc: "Custom-built AI pipelines that run your operations 24/7 — inventory, customer service, logistics, reporting, and more.",
+                tag: "Automation",
+              },
+              {
+                icon: Globe2,
+                title: "China AI Ecosystem Access",
+                desc: "Direct connections to China's AI talent pool, tools, platforms, and research networks — giving Malaysian companies a global edge.",
+                tag: "Partnership",
+              },
             ].map((service, i) => (
-              <div key={i} className="group p-8 rounded-3xl bg-card border border-white/10 hover:border-primary shadow-lg hover:shadow-[0_0_30px_rgba(0,212,255,0.15)] transition-all duration-500 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-2 h-full bg-primary/20 group-hover:bg-primary transition-colors duration-300"></div>
-                <h3 className="text-2xl font-display font-bold mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
-                <p className="text-muted-foreground">{service.desc}</p>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group p-8 rounded-3xl bg-card border border-white/10 hover:border-primary hover:shadow-[0_0_30px_rgba(0,212,255,0.15)] transition-all duration-500 relative overflow-hidden"
+                data-testid={`service-card-${i}`}
+              >
+                <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors duration-300" />
+                <div className="absolute top-4 right-4 px-2 py-0.5 rounded-full text-xs font-medium border border-primary/20 text-primary/70 font-mono">
+                  {service.tag}
+                </div>
+                <div className="mb-4 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                  <service.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-display font-bold mb-3 group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
                 <div className="mt-6 flex items-center text-sm font-medium text-primary opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                   Learn more <ChevronRight className="w-4 h-4 ml-1" />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.section>
 
-        {/* Section 4: Get Started */}
+        {/* ── Get Started ── */}
         <motion.section
           id="get-started"
           variants={sectionVariants}
@@ -156,58 +246,75 @@ export default function Details() {
           className="scroll-mt-32"
         >
           <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-card to-background border border-primary/30 relative overflow-hidden shadow-[0_0_50px_rgba(0,212,255,0.1)]">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiMwMGQ0ZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')]"></div>
-            
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiMwMGQ0ZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')]" />
+
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Start Your <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Transformation</span></h2>
+                <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                  Start Your <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Transformation</span>
+                </h2>
                 <p className="text-lg text-muted-foreground mb-8">
-                  The future of Malaysian business is AI-driven. Don't let your competitors get there first. Contact us today to schedule a consultation.
+                  Malaysia's AI future is being written now. Don't let your competitors get there first. Reach out today and we'll design a programme built around your business goals.
                 </p>
-                
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4 text-white/80">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
-                      <Mail className="w-5 h-5 text-primary" />
+
+                <div className="space-y-5">
+                  {[
+                    { icon: Mail, text: "hello@modusai.com.my" },
+                    { icon: Phone, text: "+60 3 1234 5678" },
+                    { icon: MapPin, text: "Kuala Lumpur, Malaysia" },
+                  ].map(({ icon: Icon, text }, i) => (
+                    <div key={i} className="flex items-center gap-4 text-white/80">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 shrink-0">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <span>{text}</span>
                     </div>
-                    <span>hello@modusai.com.my</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-white/80">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
-                      <Phone className="w-5 h-5 text-primary" />
-                    </div>
-                    <span>+60 3 1234 5678</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-white/80">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
-                      <MapPin className="w-5 h-5 text-primary" />
-                    </div>
-                    <span>Kuala Lumpur, Malaysia</span>
-                  </div>
+                  ))}
                 </div>
               </div>
-              
+
               <div className="bg-background/50 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md">
                 <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-white/70">Name</label>
-                      <Input className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20" placeholder="John Doe" />
+                      <Input
+                        className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20"
+                        placeholder="John Doe"
+                        data-testid="form-name"
+                      />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-white/70">Company</label>
-                      <Input className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20" placeholder="Acme Corp" />
+                      <Input
+                        className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20"
+                        placeholder="Acme Corp"
+                        data-testid="form-company"
+                      />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-white/70">Email</label>
-                    <Input type="email" className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20" placeholder="john@example.com" />
+                    <Input
+                      type="email"
+                      className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20"
+                      placeholder="john@example.com"
+                      data-testid="form-email"
+                    />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-white/70">Message</label>
-                    <Textarea className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20 min-h-[120px]" placeholder="Tell us about your business goals..." />
+                    <Textarea
+                      className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20 min-h-[120px]"
+                      placeholder="Tell us about your business goals..."
+                      data-testid="form-message"
+                    />
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-bold h-12 mt-4 transition-all hover:shadow-[0_0_20px_rgba(0,212,255,0.4)]" data-testid="form-submit">
+                  <Button
+                    className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-bold h-12 mt-4 transition-all hover:shadow-[0_0_20px_rgba(0,212,255,0.4)]"
+                    data-testid="form-submit"
+                  >
                     <Send className="w-4 h-4 mr-2" /> Send Message
                   </Button>
                 </form>
@@ -215,6 +322,7 @@ export default function Details() {
             </div>
           </div>
         </motion.section>
+
       </main>
     </div>
   );

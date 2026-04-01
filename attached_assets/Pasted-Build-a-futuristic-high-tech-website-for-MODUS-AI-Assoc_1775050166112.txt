@@ -1,0 +1,106 @@
+Build a futuristic, high-tech website for "MODUS AI Associates", an AI training and AI e-commerce company.
+
+Tech Stack:
+- React + Tailwind CSS
+- Clean modular components
+- Fully responsive
+
+STYLE:
+- Dark theme (black, deep blue)
+- Neon glow accents (blue, purple)
+- Inspired by Tesla, Huawei, Alibaba
+- Smooth animations and modern UI
+
+HOMEPAGE (FIRST PAGE CONTENT):
+
+Hero Section Text:
+
+- "Transform Malaysia’s AI Business Capabilities to Global Standards — Powered by China’s World-Leading AI Ecosystem"
+
+- "Elevate Malaysian Companies to World-Class AI Execution Through Industry-Certified Training and Technology Integration"
+
+- "Increase Workforce Productivity by 5–10X Through Applied AI Systems and Automation"
+
+- "Bridge the AI Talent Gap with Real-World Training, Backed by China’s No.1 AI Training Institution and MIIT Certification"
+
+- "AI Adoption Is No Longer Optional — It Is the Core Driver of Future Business Survival and Growth"
+
+CTA Button:
+- "Start Your AI Transformation"
+
+---
+
+ICON SECTION (IMPORTANT):
+
+Create 4 glowing clickable icons:
+
+1. About Us
+2. Why Choose Us
+3. Our Services
+4. Get Started
+
+FUNCTIONALITY:
+- Smooth scroll to sections
+- Hover glow effects
+
+---
+
+VIDEO SECTION:
+
+Title: "AI Transformation in Action"
+
+- Add 2–3 video placeholders
+- Support YouTube embed
+- Responsive layout
+- Hover animation
+
+---
+
+ABOUT US SECTION:
+
+- MODUS AI Associates is bridging ASEAN’s AI talent gap
+- Partnered with China’s No.1 AI training institute
+- Provides access to world-class AI ecosystem
+- Backed by MIIT (Ministry of Industry and Information Technology China)
+- Focus on real-world AI application, not theory
+
+---
+
+WHY CHOOSE US:
+
+- Industry-certified AI training (AIGC Engineer Certification)
+- Access to China AI Talent Pool
+- Proven training ecosystem (2,600 universities, 800,000+ students)
+- Real business application and automation systems
+- Strong government alignment (TVET, AI policy)
+
+---
+
+OUR SERVICES:
+
+- AI E-commerce training programs
+- AI certification programs (MIIT AIGC)
+- Corporate AI transformation consulting
+- Workforce AI upskilling
+- AI automation system implementation
+
+---
+
+DESIGN DETAILS:
+
+- Card-based sections
+- Glowing borders and shadows
+- Futuristic icons and visuals
+- Clean spacing and typography
+
+---
+
+EXTRA:
+
+- Smooth scrolling
+- Scroll animations
+- Professional, corporate tone
+
+OUTPUT:
+- Clean React components
+- Ready to deploy

@@ -1,18 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, BarChart3, Brain, Cpu, Globe, Network, ShieldCheck, Zap } from "lucide-react";
+import {
+  ArrowRight, BarChart3, Brain, Cpu, Globe,
+  Network, ShieldCheck, Zap, Award, Users, Play, ExternalLink
+} from "lucide-react";
+
+const heroHeadlines = [
+  "Transform Malaysia's AI Business Capabilities to Global Standards — Powered by China's World-Leading AI Ecosystem",
+  "Elevate Malaysian Companies to World-Class AI Execution Through Industry-Certified Training and Technology Integration",
+  "Increase Workforce Productivity by 5–10X Through Applied AI Systems and Automation",
+  "Bridge the AI Talent Gap with Real-World Training, Backed by China's No.1 AI Training Institution and MIIT Certification",
+  "AI Adoption Is No Longer Optional — It Is the Core Driver of Future Business Survival and Growth",
+];
+
+const videoPlaceholders = [
+  {
+    id: "dQw4w9WgXcQ",
+    title: "AI Transformation in Malaysian E-Commerce",
+    desc: "Watch how MODUS AI helped a leading Malaysian retailer automate operations and achieve 8x productivity.",
+  },
+  {
+    id: "jNQXAC9IVRw",
+    title: "China's AI Ecosystem — Powering ASEAN Businesses",
+    desc: "An inside look at the world-class AI training infrastructure behind our certification programmes.",
+  },
+  {
+    id: "M7lc1UVf-VE",
+    title: "MIIT AIGC Certification: What It Means for Your Business",
+    desc: "Understand why MIIT-certified AI talent gives Malaysian companies a decisive competitive edge.",
+  },
+];
 
 export default function Home() {
+  const [headlineIndex, setHeadlineIndex] = useState(0);
+  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeadlineIndex((prev) => (prev + 1) % heroHeadlines.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
   const itemVariants = {
@@ -24,64 +58,79 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
       <Navbar />
 
-      {/* Hero Section */}
+      {/* ── Hero ── */}
       <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 pb-12 overflow-hidden">
-        {/* Animated Background Mesh/Grid */}
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_40%,transparent_100%)]" />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
-          {/* Glowing orbs */}
           <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-primary/20 rounded-full blur-[120px]"
           />
           <motion.div
-            animate={{
-              scale: [1, 1.5, 1],
-              opacity: [0.2, 0.4, 0.2],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1,
-            }}
+            animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             className="absolute bottom-1/4 right-1/4 w-[30vw] h-[30vw] bg-secondary/20 rounded-full blur-[100px]"
           />
         </div>
 
         <div className="container relative z-10 mx-auto px-4 md:px-8 flex flex-col items-center text-center">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="max-w-4xl"
-          >
-            <motion.div variants={itemVariants} className="inline-block mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium tracking-wide">
-              MALAYSIA'S PREMIER AI CONSULTANCY
+          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-5xl">
+            <motion.div
+              variants={itemVariants}
+              className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium tracking-wide"
+            >
+              <Award className="w-4 h-4" />
+              MIIT CERTIFIED · CHINA AI ECOSYSTEM PARTNER · MALAYSIA
             </motion.div>
-            <motion.h1
-              variants={itemVariants}
-              className="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/60"
-            >
-              Transforming Malaysia into a <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Global AI</span> Powerhouse
-            </motion.h1>
-            <motion.p
-              variants={itemVariants}
-              className="text-lg md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto"
-            >
-              Empowering companies with applied AI to achieve 5–10x productivity. We don't teach theory — we execute.
-            </motion.p>
+
+            {/* Rotating headline */}
+            <div className="relative min-h-[8rem] md:min-h-[7rem] mb-6 flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.h1
+                  key={headlineIndex}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.55, ease: "easeOut" }}
+                  className="text-xl md:text-3xl lg:text-4xl font-display font-bold leading-snug text-white max-w-4xl"
+                >
+                  {heroHeadlines[headlineIndex].split("—").map((part, i, arr) =>
+                    i < arr.length - 1 ? (
+                      <span key={i}>
+                        {part}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">—</span>
+                      </span>
+                    ) : (
+                      <span key={i}>{part}</span>
+                    )
+                  )}
+                </motion.h1>
+              </AnimatePresence>
+            </div>
+
+            {/* Dots indicator */}
+            <motion.div variants={itemVariants} className="flex justify-center gap-2 mb-8">
+              {heroHeadlines.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setHeadlineIndex(i)}
+                  data-testid={`headline-dot-${i}`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === headlineIndex ? "bg-primary w-6" : "bg-white/30"
+                  }`}
+                />
+              ))}
+            </motion.div>
+
             <motion.div variants={itemVariants}>
-              <Link href="/details" className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold rounded-lg bg-gradient-to-r from-primary to-secondary text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,212,255,0.6)]" data-testid="hero-cta-start">
+              <Link
+                href="/details"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold rounded-lg bg-gradient-to-r from-primary to-secondary text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,212,255,0.6)]"
+                data-testid="hero-cta-start"
+              >
                 Start Your AI Transformation
                 <ArrowRight className="w-5 h-5" />
               </Link>
@@ -90,40 +139,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Core Messaging Strip */}
+      {/* ── Core Messaging ── */}
       <section className="relative z-20 py-16 bg-gradient-to-r from-background via-card to-background border-y border-white/5">
         <div className="container mx-auto px-4 text-center">
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16"
+            className="text-2xl md:text-3xl font-display font-semibold text-white/90 max-w-4xl mx-auto"
           >
-            <div className="flex-1 max-w-lg">
-              <h2 className="text-2xl md:text-3xl font-display font-semibold text-white/90">
-                AI adoption is no longer optional — <span className="text-secondary">it is a business necessity.</span>
-              </h2>
-            </div>
-            <div className="hidden md:block w-px h-16 bg-gradient-to-b from-transparent via-primary/50 to-transparent"></div>
-            <div className="flex-1 max-w-lg">
-              <h2 className="text-2xl md:text-3xl font-display font-semibold text-white/90">
-                Bridge Malaysian businesses to <span className="text-primary">world-class AI execution.</span>
-              </h2>
-            </div>
-          </motion.div>
+            AI Adoption Is No Longer Optional —{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              It Is the Core Driver of Future Business Survival and Growth.
+            </span>
+          </motion.p>
         </div>
       </section>
 
-      {/* Icon Navigation Section */}
+      {/* ── Icon Navigation ── */}
       <section className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">
+              Explore <span className="text-primary">MODUS AI</span>
+            </h2>
+            <p className="text-muted-foreground">Navigate to any section to learn more</p>
+          </motion.div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { id: "about", icon: Globe, title: "About Us", desc: "Our mission and standards", color: "from-primary/20 to-transparent", border: "hover:border-primary", shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]" },
-              { id: "why-choose-us", icon: ShieldCheck, title: "Why Choose Us", desc: "Practical implementation", color: "from-secondary/20 to-transparent", border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]" },
-              { id: "services", icon: Cpu, title: "Our Services", desc: "End-to-end AI solutions", color: "from-primary/20 to-transparent", border: "hover:border-primary", shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]" },
-              { id: "get-started", icon: Zap, title: "Get Started", desc: "Begin your transformation", color: "from-secondary/20 to-transparent", border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]" },
+              { id: "about", icon: Globe, title: "About Us", desc: "Our mission and global standards", border: "hover:border-primary", shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]", grad: "from-primary/20", iconColor: "text-primary" },
+              { id: "why-choose-us", icon: ShieldCheck, title: "Why Choose Us", desc: "Certified and proven results", border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
+              { id: "services", icon: Cpu, title: "Our Services", desc: "End-to-end AI solutions", border: "hover:border-primary", shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]", grad: "from-primary/20", iconColor: "text-primary" },
+              { id: "get-started", icon: Zap, title: "Get Started", desc: "Begin your transformation", border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
             ].map((item, index) => (
               <motion.div
                 key={item.id}
@@ -137,14 +191,10 @@ export default function Home() {
                   className={`group relative flex flex-col items-center justify-center p-10 h-full rounded-2xl bg-card/50 border border-white/10 backdrop-blur-sm overflow-hidden transition-all duration-500 ${item.border} ${item.shadow}`}
                   data-testid={`icon-nav-${item.id}`}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-b ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                  <item.icon className="w-16 h-16 mb-6 text-muted-foreground group-hover:text-white transition-colors duration-300 relative z-10" />
-                  <h3 className="text-xl font-display font-bold text-white mb-2 relative z-10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/70">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground text-center relative z-10">
-                    {item.desc}
-                  </p>
+                  <div className={`absolute inset-0 bg-gradient-to-b ${item.grad} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                  <item.icon className={`w-16 h-16 mb-6 ${item.iconColor} opacity-60 group-hover:opacity-100 transition-all duration-300 relative z-10 group-hover:scale-110`} />
+                  <h3 className="text-xl font-display font-bold text-white mb-2 relative z-10">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground text-center relative z-10">{item.desc}</p>
                 </Link>
               </motion.div>
             ))}
@@ -152,9 +202,86 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats/Impact Section */}
-      <section className="py-24 bg-card relative">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%23ffffff\\' fill-opacity=\\'1\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')" }}></div>
+      {/* ── Video Section ── */}
+      <section className="py-24 bg-card border-t border-b border-white/5 relative overflow-hidden">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+              AI Transformation <span className="text-primary">in Action</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              See real results from real businesses — powered by China's world-leading AI ecosystem and MIIT-certified training.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {videoPlaceholders.map((video, i) => (
+              <motion.div
+                key={video.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                className="group rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,212,255,0.15)] bg-background flex flex-col"
+              >
+                {/* Video embed / placeholder */}
+                <div className="relative aspect-video bg-black overflow-hidden">
+                  {playingVideo === i ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0`}
+                      title={video.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full"
+                      data-testid={`video-embed-${i}`}
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      {/* Thumbnail placeholder with gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20" />
+                      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px]" />
+                      <button
+                        onClick={() => setPlayingVideo(i)}
+                        data-testid={`video-play-${i}`}
+                        className="relative z-10 w-16 h-16 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/40 group-hover:shadow-[0_0_30px_rgba(0,212,255,0.6)]"
+                      >
+                        <Play className="w-6 h-6 text-primary ml-1" />
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Card content */}
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="font-display font-bold text-lg text-white mb-2 group-hover:text-primary transition-colors duration-300">
+                    {video.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground flex-1">{video.desc}</p>
+                  <a
+                    href={`https://www.youtube.com/watch?v=${video.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    data-testid={`video-link-${i}`}
+                  >
+                    Watch on YouTube <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
+      </section>
+
+      {/* ── Stats ── */}
+      <section className="py-24 bg-background relative">
         <div className="container mx-auto px-4 md:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -162,29 +289,34 @@ export default function Home() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Measurable <span className="text-primary">Impact</span></h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">We don't deal in hypotheticals. Our systems are built to deliver concrete ROI from day one.</p>
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+              Measurable <span className="text-primary">Impact</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Backed by China's largest AI training network — 2,600 universities, 800,000+ certified professionals.
+            </p>
           </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { value: "5–10x", label: "Productivity Increase", icon: BarChart3 },
-              { value: "100%", label: "Practical Implementation", icon: Network },
-              { value: "24/7", label: "Automated Operations", icon: Brain },
+              { value: "5–10x", label: "Productivity Gain", icon: BarChart3 },
+              { value: "800K+", label: "Certified Graduates", icon: Users },
+              { value: "2,600", label: "Partner Universities", icon: Network },
+              { value: "100%", label: "Real-World Application", icon: Brain },
             ].map((stat, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.2 }}
-                className="p-8 rounded-2xl bg-background border border-primary/20 flex flex-col items-center justify-center"
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                className="p-8 rounded-2xl bg-card border border-primary/20 flex flex-col items-center justify-center hover:border-primary/50 hover:shadow-[0_0_25px_rgba(0,212,255,0.1)] transition-all duration-300"
               >
                 <stat.icon className="w-10 h-10 text-secondary mb-4 opacity-80" />
-                <div className="text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-white mb-2">
+                <div className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2">
                   {stat.value}
                 </div>
-                <div className="text-lg font-medium text-muted-foreground uppercase tracking-wider">
+                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider text-center">
                   {stat.label}
                 </div>
               </motion.div>
@@ -193,49 +325,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trusted Clients Section */}
-      <section className="py-20 relative overflow-hidden bg-background border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-8 text-center">
-          <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-8">Trusted by Forward-Thinking Malaysian Enterprises</p>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-60 grayscale">
-            {/* Abstract client logos using text and geometric shapes */}
-            {[
-              { name: "NEXA Logistics", short: "NEXA" },
-              { name: "Apex Financial", short: "APEX" },
-              { name: "Quantum Retail", short: "QUANTUM" },
-              { name: "Stellar Manufacturing", short: "STELLAR" },
-              { name: "Vanguard Tech", short: "VANGUARD" },
-            ].map((client, i) => (
-              <div key={i} className="text-2xl font-display font-bold tracking-widest flex items-center gap-2">
-                <div className="w-6 h-6 rounded bg-foreground/80" />
-                {client.short}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
+      {/* ── Testimonials ── */}
       <section className="py-24 relative overflow-hidden bg-gradient-to-b from-card to-background border-t border-white/5">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Client <span className="text-primary">Success</span></h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Real transformations from Malaysian businesses adopting our AI frameworks.</p>
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+              Client <span className="text-primary">Success</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Real transformations from Malaysian businesses adopting MIIT-certified AI frameworks.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {[
               {
-                quote: "MODUS AI completely overhauled our e-commerce supply chain. What used to take a team of 10 five days is now fully automated and predictive.",
+                quote: "MODUS AI completely overhauled our e-commerce supply chain. What used to take a team of 10 five days is now fully automated and predictive. The MIIT certification gives our team global credibility.",
                 author: "Sarah L.",
-                role: "Director of Operations, Quantum Retail"
+                role: "Director of Operations, Quantum Retail",
               },
               {
-                quote: "We thought AI was just a buzzword until MODUS showed us how to implement it practically. Our customer service response time dropped by 80% while satisfaction soared.",
+                quote: "We thought AI was a buzzword until MODUS showed us China's real AI ecosystem. Our customer service response time dropped 80% while satisfaction soared — and our team is now AIGC certified.",
                 author: "James Wong",
-                role: "CEO, NEXA Logistics"
-              }
+                role: "CEO, NEXA Logistics",
+              },
             ].map((testimonial, i) => (
               <motion.div
                 key={i}
@@ -246,9 +360,7 @@ export default function Home() {
                 className="p-8 rounded-2xl bg-background border border-white/10 hover:border-primary/30 transition-colors relative"
               >
                 <div className="absolute top-4 left-4 text-6xl text-primary/10 font-serif leading-none">"</div>
-                <p className="text-lg text-white/90 relative z-10 mb-6 mt-4">
-                  {testimonial.quote}
-                </p>
+                <p className="text-lg text-white/90 relative z-10 mb-6 mt-4">{testimonial.quote}</p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center text-secondary font-bold font-display">
                     {testimonial.author.charAt(0)}
@@ -264,6 +376,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Footer CTA ── */}
+      <section className="py-20 bg-background border-t border-white/5 relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+              Ready to Lead Malaysia's <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">AI Revolution?</span>
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+              Join the MODUS AI network — certified by MIIT, powered by China's No.1 AI training ecosystem.
+            </p>
+            <Link
+              href="/details#get-started"
+              className="inline-flex items-center gap-2 px-10 py-4 text-lg font-bold rounded-lg border-2 border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,212,255,0.5)]"
+              data-testid="footer-cta"
+            >
+              Get in Touch <ArrowRight className="w-5 h-5" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }

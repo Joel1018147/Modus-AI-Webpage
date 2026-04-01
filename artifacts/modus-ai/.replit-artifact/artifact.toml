@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "MODUS AI Associates"
+version = "1.0.0"
+id = "artifacts/modus-ai"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22187
+
+[services.development]
+run = "pnpm --filter @workspace/modus-ai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/modus-ai", "run", "build" ]
+publicDir = "artifacts/modus-ai/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22187"
+BASE_PATH = "/"

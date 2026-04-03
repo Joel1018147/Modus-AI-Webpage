@@ -78,7 +78,7 @@ export default function Details() {
                 Our programs are certified by <strong className="text-secondary">the Ministry of Industry and Information Technology of the People's Republic of China (MIIT)</strong> — the gold standard in AI certification — ensuring your workforce meets global benchmarks, not just local ones.
               </p>
               <p>
-                We focus exclusively on <strong className="text-white">real-world AI application</strong>. No theoretical fluff. Every training module, every consulting engagement, and every automation system we build is designed to deliver measurable ROI from day one.
+                We focus exclusively on <strong className="text-white">real-world AI application</strong>. No theoretical fluff. Every training module and every consulting engagement we build is designed to deliver measurable ROI from day one.
               </p>
               <p className="font-medium text-white/80">
                 Our mission: Elevate every Malaysian company to compete on the world stage using applied, certified AI execution — powered by China's proven ecosystem.
@@ -198,16 +198,16 @@ export default function Details() {
                 tag: "Upskilling",
               },
               {
-                icon: Bot,
-                title: "AI Automation System Setup",
-                desc: "Custom-built AI pipelines that run your operations 24/7 — inventory, customer service, logistics, reporting, and more.",
-                tag: "Automation",
-              },
-              {
                 icon: Globe2,
                 title: "China AI Ecosystem Access",
                 desc: "Direct connections to China's AI talent pool, tools, platforms, and research networks — giving Malaysian companies a global edge.",
                 tag: "Partnership",
+              },
+              {
+                icon: Award,
+                title: "Graduation Certification",
+                desc: "Ministry of Industry and Information Technology of the People's Republic of China (MIIT) graduates will be listed in the world leading AI talent pool — this is the true personal value endorsement.",
+                tag: "Certification",
               },
             ].map((service, i) => (
               <motion.div

@@ -300,7 +300,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { value: "5–10x", label: "Productivity Gain", icon: BarChart3 },
-              { value: "800K+", label: "Certified Graduates", icon: Users },
+              { value: "300K+", label: "Certified Graduates", icon: Users },
               { value: "2,600", label: "Partner Universities", icon: Network },
               { value: "100%", label: "Real-World Application", icon: Brain },
             ].map((stat, i) => (

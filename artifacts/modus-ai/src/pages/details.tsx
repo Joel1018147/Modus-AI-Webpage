@@ -133,7 +133,7 @@ export default function Details() {
             {[
               { icon: Award, text: "Industry-certified AI training — AIGC Engineer Certification recognised globally", accent: "secondary" },
               { icon: Globe2, text: "Direct access to China's AI Talent Pool — the world's largest and most advanced", accent: "primary" },
-              { icon: Users, text: "Proven ecosystem: 2,600 universities, 800,000+ certified students across Asia", accent: "secondary" },
+              { icon: Users, text: "Proven ecosystem: 2,600 universities, 300,000+ certified students across Asia", accent: "secondary" },
               { icon: BookOpen, text: "Real business application and automation systems — not academic theory", accent: "primary" },
               { icon: Briefcase, text: "Strong government alignment — TVET integration and national AI policy compliance", accent: "secondary" },
               { icon: Bot, text: "5–10x productivity improvements proven across manufacturing, retail, and logistics", accent: "primary" },

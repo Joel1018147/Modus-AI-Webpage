@@ -75,7 +75,7 @@ export default function Details() {
                 {" "}— powering Malaysian businesses with the world's leading advanced technology companies.
               </p>
               <p>
-                Our programs are certified by <strong className="text-secondary">(MIIT) the Ministry of Industry and Information Technology of Republic of China</strong> — the gold standard in AI certification — ensuring your workforce meets global benchmarks, not just local ones.
+                Our programs are certified by <strong className="text-secondary">the Ministry of Industry and Information Technology of the People's Republic of China (MIIT)</strong> — the gold standard in AI certification — ensuring your workforce meets global benchmarks, not just local ones.
               </p>
               <p>
                 We focus exclusively on <strong className="text-white">real-world AI application</strong>. No theoretical fluff. Every training module, every consulting engagement, and every automation system we build is designed to deliver measurable ROI from day one.
@@ -176,13 +176,13 @@ export default function Details() {
               {
                 icon: BookOpen,
                 title: "AI E-Commerce Training",
-                desc: "Master AI tools purpose-built for scaling online retail and marketplace operations — from intelligent product listings to automated fulfilment.",
+                desc: "Master AI tools purpose-built for scaling marketplace operations — from intelligent product listings to automated fulfilment.",
                 tag: "Training",
               },
               {
                 icon: Award,
                 title: "MIIT AIGC Certification",
-                desc: "Internationally recognised AI Generative Content Engineer Certification from China's Ministry of Industry and Information Technology.",
+                desc: "Internationally recognised AI Generative Content Engineer Certification from the Ministry of Industry and Information Technology of the People's Republic of China (MIIT).",
                 tag: "Certification",
               },
               {

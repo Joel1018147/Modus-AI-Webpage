@@ -198,15 +198,9 @@ export default function Details() {
                 tag: "Upskilling",
               },
               {
-                icon: Globe2,
-                title: "China AI Ecosystem Access",
-                desc: "Direct connections to China's AI talent pool, tools, platforms, and research networks — giving Malaysian companies a global edge.",
-                tag: "Partnership",
-              },
-              {
                 icon: Award,
                 title: "Graduation Certification",
-                desc: "Ministry of Industry and Information Technology of the People's Republic of China (MIIT) graduates will be listed in the world leading AI talent pool — this is the true personal value endorsement.",
+                desc: "Ministry of Industry and Information Technology of the People's Republic of China (MIIT) graduates will be listed in the world leading AI talent pool — this is the personal value endorsement.",
                 tag: "Certification",
               },
             ].map((service, i) => (

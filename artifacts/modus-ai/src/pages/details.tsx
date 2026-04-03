@@ -70,10 +70,12 @@ export default function Details() {
                 <strong className="text-white font-display">MODUS AI Associates</strong> is Malaysia's gateway to China's world-class AI ecosystem — bridging ASEAN's rapidly growing AI talent gap through certified, practical training and real-world implementation.
               </p>
               <p>
-                We are officially partnered with <strong className="text-primary">China's No.1 AI Training Institution</strong>, providing Malaysian businesses with direct access to the same AI systems, tools, and methodologies powering the world's most advanced technology companies.
+                We are officially partnered with <strong className="text-primary">China's No.1 AI Training Institution</strong>,{" "}
+                <a href="https://www.ITCast.cn" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors">www.ITCast.cn</a>
+                {" "}— powering Malaysian businesses with the world's leading advanced technology companies.
               </p>
               <p>
-                Our programmes are backed by the <strong className="text-secondary">Ministry of Industry and Information Technology (MIIT) of China</strong> — the gold standard in AI certification — ensuring your workforce meets global benchmarks, not just local ones.
+                Our programs are certified by <strong className="text-secondary">(MIIT) the Ministry of Industry and Information Technology of Republic of China</strong> — the gold standard in AI certification — ensuring your workforce meets global benchmarks, not just local ones.
               </p>
               <p>
                 We focus exclusively on <strong className="text-white">real-world AI application</strong>. No theoretical fluff. Every training module, every consulting engagement, and every automation system we build is designed to deliver measurable ROI from day one.

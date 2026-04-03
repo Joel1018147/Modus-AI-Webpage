@@ -194,7 +194,7 @@ export default function Details() {
               {
                 icon: Users,
                 title: "Workforce AI Upskilling",
-                desc: "Turn your current employees into AI-augmented power users. Structured, role-specific programmes aligned with national TVET frameworks.",
+                desc: "Turn your current employees into AI-augmented power users. Structured, role-specific programmes aligned with your company goals.",
                 tag: "Upskilling",
               },
               {
@@ -257,13 +257,14 @@ export default function Details() {
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Transformation</span>
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8">
-                  Malaysia's AI future is being written now. Don't let your competitors get there first. Reach out today and we'll design a programme built around your business goals.
+                  Malaysia's AI future is being written now. Don't let your competitors get there first. Reach out today and we'll provide programs built around your business goals.
                 </p>
 
                 <div className="space-y-5">
                   {[
                     { icon: Mail, text: "hello@modusai.com.my" },
-                    { icon: Phone, text: "+60 3 1234 5678" },
+                    { icon: Phone, text: "Elaine: 017-349001" },
+                    { icon: Phone, text: "Joel: 011-11469065" },
                     { icon: MapPin, text: "Kuala Lumpur, Malaysia" },
                   ].map(({ icon: Icon, text }, i) => (
                     <div key={i} className="flex items-center gap-4 text-white/80">

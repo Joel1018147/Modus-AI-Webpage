@@ -172,12 +172,13 @@ export default function Home() {
             <p className="text-muted-foreground">Navigate to any section to learn more</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
               { id: "about", icon: Globe, title: "About Us", desc: "Our mission and global standards", border: "hover:border-primary", shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]", grad: "from-primary/20", iconColor: "text-primary" },
               { id: "why-choose-us", icon: ShieldCheck, title: "Why Choose Us", desc: "Certified and proven results", border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
               { id: "services", icon: Cpu, title: "Our Services", desc: "End-to-end AI solutions", border: "hover:border-primary", shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]", grad: "from-primary/20", iconColor: "text-primary" },
-              { id: "get-started", icon: Zap, title: "Get Started", desc: "Begin your transformation", border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
+              { id: "activities", icon: Network, title: "Our Activities", desc: "Events and milestones", border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
+              { id: "get-started", icon: Zap, title: "Get Started", desc: "Begin your transformation", border: "hover:border-primary", shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]", grad: "from-primary/20", iconColor: "text-primary" },
             ].map((item, index) => (
               <motion.div
                 key={item.id}

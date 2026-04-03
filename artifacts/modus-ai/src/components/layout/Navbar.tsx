@@ -38,6 +38,7 @@ export function Navbar() {
     { label: "About Us", hash: "about" },
     { label: "Why Choose Us", hash: "why-choose-us" },
     { label: "Our Services", hash: "services" },
+    { label: "Our Activities", hash: "activities" },
   ];
 
   return (

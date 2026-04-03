@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { Link, useLocation } from "wouter";
 import {
   ArrowLeft, CheckCircle2, ChevronRight,
-  Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot
+  Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot, Camera
 } from "lucide-react";
+import ribbonImg from "@assets/WhatsApp_Image_2026-04-03_at_5.40.49_PM_1775209677927.jpeg";
+import signingImg from "@assets/WhatsApp_Image_2026-04-03_at_5.36.11_PM_1775209677928.jpeg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -226,6 +228,61 @@ export default function Details() {
                 <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
                 <div className="mt-6 flex items-center text-sm font-medium text-primary opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                   Learn more <ChevronRight className="w-4 h-4 ml-1" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* ── Our Activities ── */}
+        <motion.section
+          id="activities"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="scroll-mt-32"
+        >
+          <div className="flex items-center gap-4 mb-10">
+            <div className="h-1 w-12 bg-secondary" />
+            <h2 className="text-4xl md:text-5xl font-display font-bold">
+              Our <span className="text-secondary">Activities</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                img: ribbonImg,
+                caption: "Modus AI Associates Partner Ribbon Cutting Ceremony",
+              },
+              {
+                img: signingImg,
+                caption: "Modus AI Associates Partner Signing Witnessed by the 8th Penang Governor Tun Dato' Seri Utama Ahmad Fuzi",
+              },
+            ].map((activity, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="group rounded-2xl overflow-hidden border border-white/10 hover:border-secondary/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(124,58,237,0.2)] bg-card"
+                data-testid={`activity-card-${i}`}
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={activity.img}
+                    alt={activity.caption}
+                    className="w-full object-cover aspect-[16/10] transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+                <div className="p-5 flex items-start gap-3">
+                  <div className="mt-0.5 shrink-0 w-8 h-8 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center">
+                    <Camera className="w-4 h-4 text-secondary" />
+                  </div>
+                  <p className="text-sm font-medium text-white/80 leading-snug">{activity.caption}</p>
                 </div>
               </motion.div>
             ))}

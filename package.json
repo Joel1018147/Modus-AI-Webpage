@@ -1,8 +1,4 @@
 {
   "name": "modus-ai-associates",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "build": "pnpm --filter modus-ai build || true"
-  }
+  "private": true
 }

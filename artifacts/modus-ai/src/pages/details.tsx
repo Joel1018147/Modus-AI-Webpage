@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import ribbonImg from "@assets/WhatsApp_Image_2026-04-03_at_5.40.49_PM_1775209677927.jpeg";
 import signingImg from "@assets/WhatsApp_Image_2026-04-03_at_5.36.11_PM_1775209677928.jpeg";
+import coursesImg from "@assets/image_1775812077261.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -250,7 +251,7 @@ export default function Details() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 img: ribbonImg,
@@ -259,6 +260,10 @@ export default function Details() {
               {
                 img: signingImg,
                 caption: "Modus AI Associates Partner Signing Witnessed by the 8th Penang Governor Tun Dato' Seri Utama Ahmad Fuzi",
+              },
+              {
+                img: coursesImg,
+                caption: "Till June 2025, 5 AI courses were conducted and more to come.",
               },
             ].map((activity, i) => (
               <motion.div

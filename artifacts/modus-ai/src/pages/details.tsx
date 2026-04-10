@@ -6,6 +6,7 @@ import {
   ArrowLeft, CheckCircle2, ChevronRight,
   Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot, Camera
 } from "lucide-react";
+import launchImg from "@assets/image_1775812766946.png";
 import ribbonImg from "@assets/WhatsApp_Image_2026-04-03_at_5.40.49_PM_1775209677927.jpeg";
 import signingImg from "@assets/WhatsApp_Image_2026-04-03_at_5.36.11_PM_1775209677928.jpeg";
 import coursesImg from "@assets/image_1775812683826.png";
@@ -251,8 +252,12 @@ export default function Details() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
+              {
+                img: launchImg,
+                caption: "Modus AI Associates Official Launching on 8 August 2025.",
+              },
               {
                 img: ribbonImg,
                 caption: "Modus AI Associates Partner Ribbon Cutting Ceremony",

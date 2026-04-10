@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import ribbonImg from "@assets/WhatsApp_Image_2026-04-03_at_5.40.49_PM_1775209677927.jpeg";
 import signingImg from "@assets/WhatsApp_Image_2026-04-03_at_5.36.11_PM_1775209677928.jpeg";
-import coursesImg from "@assets/image_1775812077261.png";
+import coursesImg from "@assets/image_1775812683826.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";

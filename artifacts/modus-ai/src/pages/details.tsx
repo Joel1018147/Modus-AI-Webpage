@@ -10,6 +10,7 @@ import launchImg from "@assets/image_1775812766946.png";
 import ribbonImg from "@assets/WhatsApp_Image_2026-04-03_at_5.40.49_PM_1775209677927.jpeg";
 import signingImg from "@assets/WhatsApp_Image_2026-04-03_at_5.36.11_PM_1775209677928.jpeg";
 import coursesImg from "@assets/image_1775812683826.png";
+import uniImg from "@assets/image_1775813041771.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -269,6 +270,10 @@ export default function Details() {
               {
                 img: coursesImg,
                 caption: "Till June 2025, 5 AI courses were conducted and more to come.",
+              },
+              {
+                img: uniImg,
+                caption: "Modus AI Associates is rising with cooperations with outstanding Universities & International Schools in Malaysia.",
               },
             ].map((activity, i) => (
               <motion.div

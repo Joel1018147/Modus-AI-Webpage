@@ -328,7 +328,7 @@ export default function Details() {
 
                 <div className="space-y-5">
                   {[
-                    { icon: Mail, text: "hello@modusai.com.my" },
+                    { icon: Mail, text: "admin@modusaiassociates.com" },
                     { icon: Phone, text: "Elaine: 017-349001" },
                     { icon: Phone, text: "Joel: 011-11469065" },
                     { icon: MapPin, text: "Kuala Lumpur, Malaysia" },

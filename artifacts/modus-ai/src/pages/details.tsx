@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "wouter";
 import {
   ArrowLeft, CheckCircle2, ChevronRight,
-  Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot, Camera
+  Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot, Camera, Loader2
 } from "lucide-react";
 import launchImg from "@assets/image_1775812766946.png";
 import ribbonImg from "@assets/WhatsApp_Image_2026-04-03_at_5.40.49_PM_1775209677927.jpeg";
@@ -20,8 +20,64 @@ const sectionVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
+type FormState = {
+  name: string;
+  company: string;
+  email: string;
+  message: string;
+};
+
+type SubmitStatus = "idle" | "loading" | "success" | "error";
+
 export default function Details() {
   const [location] = useLocation();
+  const [form, setForm] = useState<FormState>({ name: "", company: "", email: "", message: "" });
+  const [errors, setErrors] = useState<Partial<FormState>>({});
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const validate = (): boolean => {
+    const newErrors: Partial<FormState> = {};
+    if (!form.name.trim()) newErrors.name = "Name is required";
+    if (!form.email.trim()) newErrors.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) newErrors.email = "Enter a valid email";
+    if (!form.message.trim()) newErrors.message = "Message is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (field: keyof FormState) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+    setSubmitStatus("loading");
+    setErrorMessage("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, honeypot: "" }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitStatus("success");
+        setForm({ name: "", company: "", email: "", message: "" });
+        setTimeout(() => setSubmitStatus("idle"), 6000);
+      } else {
+        setSubmitStatus("error");
+        setErrorMessage(data.error ?? "Failed to send. Please try again.");
+      }
+    } catch {
+      setSubmitStatus("error");
+      setErrorMessage("Network error. Please check your connection and try again.");
+    }
+  };
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -344,49 +400,101 @@ export default function Details() {
               </div>
 
               <div className="bg-background/50 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md">
-                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-white/70">Name</label>
-                      <Input
-                        className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20"
-                        placeholder="John Doe"
-                        data-testid="form-name"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-white/70">Company</label>
-                      <Input
-                        className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20"
-                        placeholder="Acme Corp"
-                        data-testid="form-company"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-white/70">Email</label>
-                    <Input
-                      type="email"
-                      className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20"
-                      placeholder="john@example.com"
-                      data-testid="form-email"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-white/70">Message</label>
-                    <Textarea
-                      className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20 min-h-[120px]"
-                      placeholder="Tell us about your business goals..."
-                      data-testid="form-message"
-                    />
-                  </div>
-                  <Button
-                    className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-bold h-12 mt-4 transition-all hover:shadow-[0_0_20px_rgba(0,212,255,0.4)]"
-                    data-testid="form-submit"
+                {submitStatus === "success" ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center justify-center text-center py-12 gap-4"
                   >
-                    <Send className="w-4 h-4 mr-2" /> Send Message
-                  </Button>
-                </form>
+                    <div className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center">
+                      <CheckCircle2 className="w-8 h-8 text-green-400" />
+                    </div>
+                    <h3 className="text-xl font-display font-bold text-white">Message Sent!</h3>
+                    <p className="text-muted-foreground text-sm max-w-xs">
+                      Thank you for reaching out. Our team will get back to you shortly.
+                    </p>
+                  </motion.div>
+                ) : (
+                  <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+                    {/* Honeypot — hidden from real users */}
+                    <input
+                      type="text"
+                      name="honeypot"
+                      style={{ display: "none" }}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                    />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <label className="text-sm font-medium text-white/70">Name <span className="text-primary">*</span></label>
+                        <Input
+                          className={`bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20 ${errors.name ? "border-red-500/60" : ""}`}
+                          placeholder="John Doe"
+                          value={form.name}
+                          onChange={handleChange("name")}
+                          disabled={submitStatus === "loading"}
+                          data-testid="form-name"
+                        />
+                        {errors.name && <p className="text-xs text-red-400">{errors.name}</p>}
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-sm font-medium text-white/70">Company</label>
+                        <Input
+                          className="bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20"
+                          placeholder="Acme Corp"
+                          value={form.company}
+                          onChange={handleChange("company")}
+                          disabled={submitStatus === "loading"}
+                          data-testid="form-company"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-sm font-medium text-white/70">Email <span className="text-primary">*</span></label>
+                      <Input
+                        type="email"
+                        className={`bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20 ${errors.email ? "border-red-500/60" : ""}`}
+                        placeholder="john@example.com"
+                        value={form.email}
+                        onChange={handleChange("email")}
+                        disabled={submitStatus === "loading"}
+                        data-testid="form-email"
+                      />
+                      {errors.email && <p className="text-xs text-red-400">{errors.email}</p>}
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-sm font-medium text-white/70">Message <span className="text-primary">*</span></label>
+                      <Textarea
+                        className={`bg-black/50 border-white/10 focus-visible:border-primary focus-visible:ring-primary/20 min-h-[120px] ${errors.message ? "border-red-500/60" : ""}`}
+                        placeholder="Tell us about your business goals..."
+                        value={form.message}
+                        onChange={handleChange("message")}
+                        disabled={submitStatus === "loading"}
+                        data-testid="form-message"
+                      />
+                      {errors.message && <p className="text-xs text-red-400">{errors.message}</p>}
+                    </div>
+                    {submitStatus === "error" && (
+                      <div className="flex items-start gap-2 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                        <span className="shrink-0 mt-0.5">⚠</span>
+                        <span>{errorMessage}</span>
+                      </div>
+                    )}
+                    <Button
+                      type="submit"
+                      disabled={submitStatus === "loading"}
+                      className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-bold h-12 mt-4 transition-all hover:shadow-[0_0_20px_rgba(0,212,255,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
+                      data-testid="form-submit"
+                    >
+                      {submitStatus === "loading" ? (
+                        <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Sending...</>
+                      ) : (
+                        <><Send className="w-4 h-4 mr-2" /> Send Message</>
+                      )}
+                    </Button>
+                  </form>
+                )}
               </div>
             </div>
           </div>

@@ -329,7 +329,7 @@ export default function Details() {
                 <div className="space-y-5">
                   {[
                     { icon: Mail, text: "admin@modusaiassociates.com" },
-                    { icon: Phone, text: "Elaine: 017-349001" },
+                    { icon: Phone, text: "Elaine: 017-3490001" },
                     { icon: Phone, text: "Joel: 011-11469065" },
                     { icon: MapPin, text: "Kuala Lumpur, Malaysia" },
                   ].map(({ icon: Icon, text }, i) => (

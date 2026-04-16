@@ -5,7 +5,7 @@ import { Link, useLocation } from "wouter";
 import {
   ArrowLeft, CheckCircle2, ChevronRight,
   Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot, Camera, Loader2,
-  ChevronDown
+  ChevronDown, Facebook, Linkedin, Twitter, Instagram
 } from "lucide-react";
 import launchImg from "@assets/image_1775812766946.png";
 import ribbonImg from "@assets/WhatsApp_Image_2026-04-03_at_5.40.49_PM_1775209677927.jpeg";
@@ -177,6 +177,46 @@ const detailsContent = {
         { img: signingImg, caption: "Modus AI Associates Partner Signing Witnessed by the 8th Penang Governor Tun Dato' Seri Utama Ahmad Fuzi" },
         { img: coursesImg, caption: "Till June 2025, 5 AI courses were conducted and more to come." },
         { img: uniImg, caption: "Modus AI Associates is rising with cooperations with outstanding Universities & International Schools in Malaysia." },
+      ],
+    },
+    socials: {
+      title: "Our",
+      titleHighlight: "Socials",
+      subtitle: "Connect with Modus AI Associates across all platforms.",
+      followLabel: "Follow us",
+      platforms: [
+        {
+          name: "Facebook",
+          handle: "@ModusAIAssociates",
+          desc: "Updates, events & announcements",
+          url: "https://facebook.com/modusaiassociates",
+          color: "#1877F2",
+          colorClass: "blue",
+        },
+        {
+          name: "LinkedIn",
+          handle: "Modus AI Associates",
+          desc: "Professional insights & career opportunities",
+          url: "https://linkedin.com/company/modusaiassociates",
+          color: "#0A66C2",
+          colorClass: "sky",
+        },
+        {
+          name: "X (Twitter)",
+          handle: "@ModusAI_MY",
+          desc: "AI news, tips & real-time updates",
+          url: "https://x.com/modusai_my",
+          color: "#ffffff",
+          colorClass: "white",
+        },
+        {
+          name: "Instagram",
+          handle: "@modusaiassociates",
+          desc: "Behind the scenes & visual stories",
+          url: "https://instagram.com/modusaiassociates",
+          color: "#E1306C",
+          colorClass: "pink",
+        },
       ],
     },
     contact: {
@@ -367,6 +407,46 @@ const detailsContent = {
         { img: signingImg, caption: "Majlis Penandatanganan Rakan Kongsi Modus AI Associates Disaksikan oleh Gabenor Pulau Pinang ke-8 Tun Dato' Seri Utama Ahmad Fuzi" },
         { img: coursesImg, caption: "Sehingga Jun 2025, 5 kursus AI telah dijalankan dan lebih banyak akan datang." },
         { img: uniImg, caption: "Modus AI Associates semakin berkembang dengan kerjasama bersama Universiti dan Sekolah Antarabangsa terkemuka di Malaysia." },
+      ],
+    },
+    socials: {
+      title: "Sosial",
+      titleHighlight: "Kami",
+      subtitle: "Berhubung dengan Modus AI Associates di semua platform.",
+      followLabel: "Ikuti kami",
+      platforms: [
+        {
+          name: "Facebook",
+          handle: "@ModusAIAssociates",
+          desc: "Kemas kini, acara & pengumuman",
+          url: "https://facebook.com/modusaiassociates",
+          color: "#1877F2",
+          colorClass: "blue",
+        },
+        {
+          name: "LinkedIn",
+          handle: "Modus AI Associates",
+          desc: "Pandangan profesional & peluang kerjaya",
+          url: "https://linkedin.com/company/modusaiassociates",
+          color: "#0A66C2",
+          colorClass: "sky",
+        },
+        {
+          name: "X (Twitter)",
+          handle: "@ModusAI_MY",
+          desc: "Berita AI, tips & kemas kini masa nyata",
+          url: "https://x.com/modusai_my",
+          color: "#ffffff",
+          colorClass: "white",
+        },
+        {
+          name: "Instagram",
+          handle: "@modusaiassociates",
+          desc: "Di sebalik tabir & kisah visual",
+          url: "https://instagram.com/modusaiassociates",
+          color: "#E1306C",
+          colorClass: "pink",
+        },
       ],
     },
     contact: {
@@ -885,6 +965,83 @@ export default function Details() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </motion.section>
+
+        {/* ── Our Socials ── */}
+        <motion.section
+          id="socials"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="scroll-mt-32"
+        >
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-1 w-12 bg-primary" />
+            <h2 className="text-4xl md:text-5xl font-display font-bold">
+              {t.socials.title} <span className="text-primary">{t.socials.titleHighlight}</span>
+            </h2>
+          </div>
+          <p className="text-lg text-muted-foreground mb-10 pl-16">{t.socials.subtitle}</p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {t.socials.platforms.map((platform, i) => {
+              const icons: Record<string, React.ElementType> = {
+                Facebook, LinkedIn: Linkedin, "X (Twitter)": Twitter, Instagram,
+              };
+              const Icon = icons[platform.name] ?? Globe2;
+              return (
+                <motion.a
+                  key={platform.name}
+                  href={platform.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  className="group relative flex flex-col gap-5 p-6 rounded-2xl bg-card border border-white/8 overflow-hidden cursor-pointer transition-all duration-300"
+                  style={{ ["--platform-color" as string]: platform.color }}
+                >
+                  {/* glow blob */}
+                  <div
+                    className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-[60px] opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+                    style={{ backgroundColor: platform.color }}
+                  />
+                  {/* top border highlight on hover */}
+                  <div
+                    className="absolute inset-x-0 top-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl"
+                    style={{ backgroundColor: platform.color }}
+                  />
+
+                  {/* icon */}
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110"
+                    style={{
+                      backgroundColor: `${platform.color}15`,
+                      borderColor: `${platform.color}40`,
+                    }}
+                  >
+                    <Icon className="w-6 h-6" style={{ color: platform.color }} />
+                  </div>
+
+                  {/* text */}
+                  <div className="flex flex-col gap-1 flex-1">
+                    <span className="font-display font-bold text-white text-lg leading-tight">{platform.name}</span>
+                    <span className="text-xs font-mono font-medium" style={{ color: platform.color }}>{platform.handle}</span>
+                    <p className="text-sm text-muted-foreground mt-1 leading-snug">{platform.desc}</p>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="flex items-center gap-1.5 text-xs font-semibold transition-all duration-300 group-hover:gap-2.5" style={{ color: platform.color }}>
+                    <span>{t.socials.followLabel}</span>
+                    <ChevronRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </div>
+                </motion.a>
+              );
+            })}
           </div>
         </motion.section>
 

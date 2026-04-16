@@ -42,6 +42,7 @@ export function Navbar() {
         { label: "Our Services", hash: "services" },
         { label: "Our Courses", hash: "courses" },
         { label: "Our Activities", hash: "activities" },
+        { label: "Our Socials", hash: "socials" },
       ]
     : [
         { label: "Tentang Kami", hash: "about" },
@@ -49,6 +50,7 @@ export function Navbar() {
         { label: "Perkhidmatan", hash: "services" },
         { label: "Kursus Kami", hash: "courses" },
         { label: "Aktiviti Kami", hash: "activities" },
+        { label: "Sosial Kami", hash: "socials" },
       ];
 
   const ctaLabel = lang === "en" ? "Get Started" : "Mulakan";

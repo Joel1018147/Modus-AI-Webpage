@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
   ArrowRight, BarChart3, Brain, Cpu, Globe,
-  Network, ShieldCheck, Zap, Award, Users, Play, ExternalLink, Package
+  Network, ShieldCheck, Zap, Award, Users, Play, ExternalLink, Package, GraduationCap
 } from "lucide-react";
 import { useLang } from "@/contexts/LanguageContext";
 
@@ -20,6 +20,7 @@ const content = {
       { id: "about", title: "About Us", desc: "Our mission and global standards" },
       { id: "why-choose-us", title: "Why Choose Us", desc: "Certified and proven results" },
       { id: "services", title: "Our Services", desc: "End-to-end AI solutions" },
+      { id: "courses", title: "Our Courses", desc: "12 AI certification programmes" },
       { id: "products", title: "Our Products", desc: "10 AI professional programmes" },
       { id: "activities", title: "Our Activities", desc: "Events and milestones" },
       { id: "get-started", title: "Get Started", desc: "Begin your transformation" },
@@ -91,6 +92,7 @@ const content = {
       { id: "about", title: "Tentang Kami", desc: "Misi dan standard global kami" },
       { id: "why-choose-us", title: "Mengapa Pilih Kami", desc: "Hasil bersertifikasi dan terbukti" },
       { id: "services", title: "Perkhidmatan Kami", desc: "Penyelesaian AI menyeluruh" },
+      { id: "courses", title: "Kursus Kami", desc: "12 program sijil AI" },
       { id: "products", title: "Produk Kami", desc: "10 program profesional AI" },
       { id: "activities", title: "Aktiviti Kami", desc: "Acara dan pencapaian" },
       { id: "get-started", title: "Mulakan", desc: "Mulakan transformasi anda" },
@@ -157,6 +159,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   about: Globe,
   "why-choose-us": ShieldCheck,
   services: Cpu,
+  courses: GraduationCap,
   products: Package,
   activities: Network,
   "get-started": Zap,
@@ -166,9 +169,10 @@ const colorMap: Record<string, { border: string; shadow: string; grad: string; i
   about:          { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
   "why-choose-us":{ border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
   services:       { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
-  products:       { border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
-  activities:     { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
-  "get-started":  { border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
+  courses:        { border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
+  products:       { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
+  activities:     { border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
+  "get-started":  { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
 };
 
 const statIcons = [BarChart3, Users, Network, Brain];
@@ -316,7 +320,7 @@ export default function Home() {
             <p className="text-muted-foreground">{t.exploreSubtitle}</p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
             {t.navItems.map((item, index) => {
               const Icon = iconMap[item.id];
               const colors = colorMap[item.id];

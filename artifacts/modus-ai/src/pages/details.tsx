@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
 import {
   ArrowLeft, CheckCircle2, ChevronRight,
-  Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot, Camera, Loader2
+  Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot, Camera, Loader2,
+  ChevronDown
 } from "lucide-react";
 import productsImg from "@assets/WhatsApp_Image_2026-04-15_at_1.09.29_PM_1776229834654.jpeg";
 import launchImg from "@assets/image_1775812766946.png";
@@ -21,6 +22,129 @@ const sectionVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
+const courses = [
+  {
+    no: "01",
+    title: "AI Human Resources Manager",
+    summary: "Composite HR management certification for professionals who apply AI technology to talent acquisition, training, performance management, and HR operations. Powered by DeepSeek and MIIT-certified.",
+    features: ["DeepSeek-powered HR workflows", "AI-assisted document & recruitment", "Talent management systems", "Performance coaching with AI", "Group company position management"],
+    benefits: ["5–10x HR productivity boost", "Global-standard MIIT credential", "AI-driven talent pipeline", "Automated compliance documentation", "Lead digital HR transformation"],
+    duration: "40 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+  {
+    no: "02",
+    title: "AI Application Specialist for the Workplace",
+    summary: "AI tool proficiency certification for professionals across core office scenarios including document creation, PPT design, data analysis, customer service, and live-stream operations.",
+    features: ["DeepSeek office automation", "AI-powered PPT & visual design", "Workplace data analysis", "Customer service AI integration", "Corporate content & marketing AI"],
+    benefits: ["Dramatically reduce repetitive tasks", "Produce professional outputs faster", "Cross-function AI fluency", "Career-accelerating credential", "Applicable across all industries"],
+    duration: "30 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+  {
+    no: "03",
+    title: "AI Financial Manager",
+    summary: "Interdisciplinary certification combining financial expertise with AI technology to drive financial digital transformation, including budgeting, risk control, tax compliance, and intelligent audit.",
+    features: ["AI-driven budgeting & forecasting", "Intelligent procurement systems", "Tax compliance automation", "AI audit & risk penetration", "Financial data cleaning with DeepSeek"],
+    benefits: ["Smarter financial decision-making", "Automated compliance workflows", "Reduced financial risk exposure", "End-to-end cost visibility", "Future-proof finance leadership"],
+    duration: "60 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+  {
+    no: "04",
+    title: "AI Psychological Counseling Consultant",
+    summary: "Professional certification combining AI technology with psychological theories to deliver digital mental health support services including AI-assisted therapy, ethics frameworks, and agent-based counseling tools.",
+    features: ["AI counseling tool integration", "Ethical AI use in therapy", "Expressive art therapy with AI", "Agent-based consultation systems", "AI knowledge base for counselors"],
+    benefits: ["Expand therapeutic reach digitally", "Modern evidence-based practice", "Ethical & compliant AI use", "Build your own counseling agent", "Recognised cross-border credential"],
+    duration: "30 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+  {
+    no: "05",
+    title: "Artificial Intelligence Trainer",
+    summary: "Certification of AI product application capabilities covering data management, algorithm configuration, large model principles, and prompting techniques — qualifying holders to train others in AI.",
+    features: ["DeepSeek prompting mastery", "Large model principles (50 mins)", "AIGC essential skills", "Algorithm & data configuration", "MIIT intermediate AI certification"],
+    benefits: ["Qualify as a certified AI trainer", "Train teams and organisations", "Deep understanding of AI models", "High-demand career positioning", "MIIT & IITC dual recognition"],
+    duration: "25 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+  {
+    no: "06",
+    title: "Agent Builder",
+    summary: "Professional certification in building and optimising AI agents using platforms including Coze, FastGPT, and Dify. Covers enterprise agent deployment, RAG design, and knowledge base construction.",
+    features: ["Coze & Dify agent development", "RAG design & knowledge bases", "AI agent training & optimisation", "Enterprise multi-platform deployment", "Localised agent construction"],
+    benefits: ["Build custom enterprise AI agents", "Automate complex workflows", "Competitive edge in AI engineering", "Deploy production-ready agents", "Emerging, high-value skill set"],
+    duration: "30 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+  {
+    no: "07",
+    title: "AI Product Manager",
+    summary: "Full lifecycle AI product management certification covering technology evaluation, user research, commercial value creation, and career development — designed for PMs leading AI-powered products.",
+    features: ["AI product lifecycle management", "User insight with DeepSeek", "AI outbound call platform design", "Resume & interview AI prep", "OpenClaw enterprise application"],
+    benefits: ["Lead AI product teams", "Market-ready PM credential", "Commercial AI value creation", "Career advancement tools", "Recognised by MIIT & IITC"],
+    duration: "35 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+  {
+    no: "08",
+    title: "AI Data Analyst",
+    summary: "Certification for professionals who use AI to deeply analyse enterprise data and provide actionable decision-making insights. Covers Python, MySQL, AI data modelling, and predictive analytics.",
+    features: ["Python & MySQL data foundations", "AI data modelling & mining", "Predictive analytics pipelines", "Business intelligence dashboards", "DeepSeek data analysis rules"],
+    benefits: ["Data-driven decision authority", "Automate complex reporting", "Predictive business insights", "Cross-industry applicability", "High-demand analytics credential"],
+    duration: "40 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+  {
+    no: "09",
+    title: "AI Marketer",
+    summary: "Professional certification in developing and optimising marketing strategies using AI — covering AIGC short video, AI+SEO, content creation, community management, and customer acquisition.",
+    features: ["AIGC short video marketing", "AI+SEO content strategy", "Community & social AI tools", "AI-powered ad & copy creation", "Seedance 2.0 video production"],
+    benefits: ["Precision customer acquisition", "Automated content at scale", "Measurable campaign ROI", "Modern digital marketing edge", "Career-defining AI credential"],
+    duration: "25 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+  {
+    no: "10",
+    title: "AIGC Application Engineer",
+    summary: "Authoritative credential demonstrating mastery of AIGC tool implementation, scenario-based solution design, and business integration — for professionals building with large AI models.",
+    features: ["Large model application development", "AIGC tool implementation", "Scenario-based solution design", "Business integration capabilities", "Novice-to-expert learning path"],
+    benefits: ["Authoritative professional credential", "Technical AI proficiency proof", "Build complex AI applications", "Business-ready AI engineering", "Valued across all sectors"],
+    duration: "30 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+  {
+    no: "11",
+    title: "OpenClaw Development Engineer",
+    summary: "Core skills certification for intelligent agent development, leading the technological revolution in AI application engineering using the OpenClaw platform.",
+    features: ["Intelligent agent core development", "AI application engineering", "OpenClaw platform mastery", "Enterprise agent integration", "Emerging AI tech stack"],
+    benefits: ["Lead the AI development revolution", "Cutting-edge engineering skills", "High-value niche credential", "Enterprise deployment capability", "Future-proof career path"],
+    duration: "20 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+  {
+    no: "12",
+    title: "OpenClaw Workplace Application Specialist",
+    summary: "Become the 'Workplace Intelligent Agent Commander' in the AI era. This certification equips professionals with high-efficiency AI office tools, intelligent workflows, and enterprise automation capabilities.",
+    features: ["High-efficiency AI office workflows", "Intelligent workplace automation", "OpenClaw specialist training", "Enterprise AI command skills", "AI-era productivity systems"],
+    benefits: ["Transform daily work with AI", "Become indispensable at work", "Lead AI adoption in your team", "Immediate productivity gains", "Workplace leadership credential"],
+    duration: "35 hours",
+    price: "RM 6,000",
+    recognition: "MIIT / IITC",
+  },
+];
+
 type FormState = {
   name: string;
   company: string;
@@ -32,6 +156,7 @@ type SubmitStatus = "idle" | "loading" | "success" | "error";
 
 export default function Details() {
   const [location] = useLocation();
+  const [expandedCourse, setExpandedCourse] = useState<string | null>(null);
   const [form, setForm] = useState<FormState>({ name: "", company: "", email: "", message: "" });
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
@@ -290,6 +415,178 @@ export default function Details() {
                   Learn more <ChevronRight className="w-4 h-4 ml-1" />
                 </div>
               </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* ── Our Courses ── */}
+        <motion.section
+          id="courses"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="scroll-mt-32"
+        >
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-1 w-12 bg-primary" />
+            <h2 className="text-4xl md:text-5xl font-display font-bold">
+              Our <span className="text-primary">Courses</span>
+            </h2>
+          </div>
+          <p className="text-muted-foreground mb-10 text-lg max-w-3xl">
+            12 MIIT-certified AI professional programmes. Click any course to see the full summary, features, and benefits.
+          </p>
+
+          {/* Desktop table */}
+          <div className="hidden md:block rounded-2xl overflow-hidden border border-white/10">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-primary/10 border-b border-white/10">
+                  <th className="text-left px-4 py-4 text-primary font-display font-bold w-6">#</th>
+                  <th className="text-left px-4 py-4 text-primary font-display font-bold">Course Title</th>
+                  <th className="text-left px-4 py-4 text-primary font-display font-bold">Key Features</th>
+                  <th className="text-left px-4 py-4 text-primary font-display font-bold">Core Benefits</th>
+                  <th className="text-left px-4 py-4 text-primary font-display font-bold whitespace-nowrap">Duration</th>
+                  <th className="text-left px-4 py-4 text-primary font-display font-bold whitespace-nowrap">Price</th>
+                  <th className="text-left px-4 py-4 text-primary font-display font-bold">Recognition</th>
+                </tr>
+              </thead>
+              <tbody>
+                {courses.map((course, i) => (
+                  <React.Fragment key={course.no}>
+                    <tr
+                      className={`border-b border-white/5 cursor-pointer transition-colors duration-200 ${
+                        expandedCourse === course.no
+                          ? "bg-primary/10"
+                          : i % 2 === 0 ? "bg-card/30 hover:bg-primary/5" : "bg-card/10 hover:bg-primary/5"
+                      }`}
+                      onClick={() => setExpandedCourse(expandedCourse === course.no ? null : course.no)}
+                    >
+                      <td className="px-4 py-3 text-secondary font-display font-bold">{course.no}</td>
+                      <td className="px-4 py-3 font-semibold text-white group">
+                        <div className="flex items-center gap-2">
+                          <span>{course.title}</span>
+                          <ChevronDown className={`w-3 h-3 text-primary transition-transform duration-200 shrink-0 ${expandedCourse === course.no ? "rotate-180" : ""}`} />
+                        </div>
+                      </td>
+                      <td className="px-4 py-3 text-white/60 text-xs">{course.features[0]}<span className="text-primary/60"> +{course.features.length - 1} more</span></td>
+                      <td className="px-4 py-3 text-white/60 text-xs">{course.benefits[0]}<span className="text-primary/60"> +{course.benefits.length - 1} more</span></td>
+                      <td className="px-4 py-3 text-white/70 whitespace-nowrap">{course.duration}</td>
+                      <td className="px-4 py-3 text-secondary font-bold whitespace-nowrap">{course.price}</td>
+                      <td className="px-4 py-3">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary/10 border border-secondary/30 text-secondary text-xs font-medium">{course.recognition}</span>
+                      </td>
+                    </tr>
+                    <AnimatePresence>
+                      {expandedCourse === course.no && (
+                        <tr>
+                          <td colSpan={7} className="bg-card/60 border-b border-primary/20 p-0">
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+                                <div className="lg:col-span-3">
+                                  <p className="text-white/80 text-sm leading-relaxed mb-4 border-l-2 border-primary pl-4">{course.summary}</p>
+                                </div>
+                                <div>
+                                  <h4 className="text-xs font-display font-bold text-primary uppercase tracking-widest mb-3">Features</h4>
+                                  <ul className="space-y-1.5">
+                                    {course.features.map((f, fi) => (
+                                      <li key={fi} className="flex items-start gap-2 text-xs text-white/70">
+                                        <CheckCircle2 className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
+                                        {f}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="text-xs font-display font-bold text-secondary uppercase tracking-widest mb-3">Benefits</h4>
+                                  <ul className="space-y-1.5">
+                                    {course.benefits.map((b, bi) => (
+                                      <li key={bi} className="flex items-start gap-2 text-xs text-white/70">
+                                        <CheckCircle2 className="w-3.5 h-3.5 text-secondary mt-0.5 shrink-0" />
+                                        {b}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                <div className="flex flex-col gap-3">
+                                  <div className="p-4 rounded-xl bg-background border border-white/10 flex flex-col gap-1">
+                                    <span className="text-xs text-white/40 uppercase tracking-wider">Exam Schedule</span>
+                                    <span className="text-sm text-white/80">Quarterly — 4th weekend of Mar, Jun, Sep & Dec</span>
+                                  </div>
+                                  <div className="p-4 rounded-xl bg-background border border-secondary/20 flex flex-col gap-1">
+                                    <span className="text-xs text-secondary/70 uppercase tracking-wider">Investment</span>
+                                    <span className="text-2xl font-display font-bold text-secondary">{course.price}</span>
+                                    <span className="text-xs text-white/40">per person · {course.duration}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </motion.div>
+                          </td>
+                        </tr>
+                      )}
+                    </AnimatePresence>
+                  </React.Fragment>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile cards */}
+          <div className="md:hidden space-y-3">
+            {courses.map((course) => (
+              <div key={course.no} className="rounded-xl border border-white/10 overflow-hidden">
+                <button
+                  className={`w-full flex items-center justify-between p-4 text-left transition-colors ${expandedCourse === course.no ? "bg-primary/10" : "bg-card/40 hover:bg-primary/5"}`}
+                  onClick={() => setExpandedCourse(expandedCourse === course.no ? null : course.no)}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-secondary font-display font-bold text-sm shrink-0">{course.no}</span>
+                    <span className="font-semibold text-white text-sm">{course.title}</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-primary shrink-0 transition-transform ${expandedCourse === course.no ? "rotate-180" : ""}`} />
+                </button>
+                <AnimatePresence>
+                  {expandedCourse === course.no && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-4 bg-card/20 border-t border-white/10 space-y-4">
+                        <p className="text-white/75 text-xs leading-relaxed border-l-2 border-primary pl-3">{course.summary}</p>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <h4 className="text-xs font-bold text-primary mb-2 uppercase tracking-wider">Features</h4>
+                            <ul className="space-y-1">
+                              {course.features.map((f, fi) => <li key={fi} className="text-xs text-white/60 flex gap-1.5 items-start"><span className="text-primary shrink-0">·</span>{f}</li>)}
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 className="text-xs font-bold text-secondary mb-2 uppercase tracking-wider">Benefits</h4>
+                            <ul className="space-y-1">
+                              {course.benefits.map((b, bi) => <li key={bi} className="text-xs text-white/60 flex gap-1.5 items-start"><span className="text-secondary shrink-0">·</span>{b}</li>)}
+                            </ul>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between pt-2 border-t border-white/10">
+                          <div className="text-xs text-white/50">{course.duration} · Quarterly exams</div>
+                          <div className="text-secondary font-display font-bold">{course.price}</div>
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-secondary/10 border border-secondary/30 text-secondary">{course.recognition}</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             ))}
           </div>
         </motion.section>

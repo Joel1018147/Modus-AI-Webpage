@@ -705,161 +705,71 @@ export default function Details() {
             {t.courses.subtitle}
           </p>
 
-          {/* Desktop table */}
-          <div className="hidden md:block rounded-2xl overflow-hidden border border-white/10">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-primary/10 border-b border-white/10">
-                  <th className="text-left px-4 py-4 text-primary font-display font-bold w-6">{t.courses.headers.no}</th>
-                  <th className="text-left px-4 py-4 text-primary font-display font-bold">{t.courses.headers.title}</th>
-                  <th className="text-left px-4 py-4 text-primary font-display font-bold">{t.courses.headers.features}</th>
-                  <th className="text-left px-4 py-4 text-primary font-display font-bold">{t.courses.headers.benefits}</th>
-                  <th className="text-left px-4 py-4 text-primary font-display font-bold whitespace-nowrap">{t.courses.headers.duration}</th>
-                  <th className="text-left px-4 py-4 text-primary font-display font-bold whitespace-nowrap">{t.courses.headers.price}</th>
-                  <th className="text-left px-4 py-4 text-primary font-display font-bold">{t.courses.headers.recognition}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {t.courses.items.map((course, i) => (
-                  <React.Fragment key={course.no}>
-                    <tr
-                      className={`border-b border-white/5 cursor-pointer transition-colors duration-200 ${
-                        expandedCourse === course.no
-                          ? "bg-primary/10"
-                          : i % 2 === 0 ? "bg-card/30 hover:bg-primary/5" : "bg-card/10 hover:bg-primary/5"
-                      }`}
-                      onClick={() => setExpandedCourse(expandedCourse === course.no ? null : course.no)}
-                    >
-                      <td className="px-4 py-3 text-secondary font-display font-bold">{course.no}</td>
-                      <td className="px-4 py-3 font-semibold text-white">
-                        <div className="flex items-center gap-2">
-                          <span>{course.title}</span>
-                          <ChevronDown className={`w-3 h-3 text-primary transition-transform duration-200 shrink-0 ${expandedCourse === course.no ? "rotate-180" : ""}`} />
-                        </div>
-                      </td>
-                      <td className="px-4 py-3 text-white/60 text-xs">
-                        {course.features[0]}<span className="text-primary/60"> +{course.features.length - 1} {t.courses.moreSuffix}</span>
-                      </td>
-                      <td className="px-4 py-3 text-white/60 text-xs">
-                        {course.benefits[0]}<span className="text-primary/60"> +{course.benefits.length - 1} {t.courses.moreSuffix}</span>
-                      </td>
-                      <td className="px-4 py-3 text-white/70 whitespace-nowrap">{course.duration}</td>
-                      <td className="px-4 py-3 text-secondary font-bold whitespace-nowrap">{course.price}</td>
-                      <td className="px-4 py-3">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary/10 border border-secondary/30 text-secondary text-xs font-medium">{course.recognition}</span>
-                      </td>
-                    </tr>
-                    <AnimatePresence>
-                      {expandedCourse === course.no && (
-                        <tr>
-                          <td colSpan={7} className="bg-background/60 border-b border-primary/20 p-0">
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.3 }}
-                              className="overflow-hidden"
-                            >
-                              <div className="px-6 pt-4 pb-2">
-                                <p className="text-white/65 text-xs leading-relaxed italic border-l-2 border-primary pl-3 mb-4">{course.summary}</p>
-                              </div>
-                              <div className="overflow-x-auto pb-4 px-4">
-                                <table className="w-full text-xs border-collapse">
-                                  <thead>
-                                    <tr className="border-b border-white/20">
-                                      <th className="text-left py-2 px-3 font-display font-bold text-white/50 uppercase tracking-wider w-[18%]">{t.courses.headers.title}</th>
-                                      <th className="text-left py-2 px-3 font-display font-bold text-white/50 uppercase tracking-wider w-[25%]">{t.courses.headers.features}</th>
-                                      <th className="text-left py-2 px-3 font-display font-bold text-white/50 uppercase tracking-wider w-[25%]">{t.courses.headers.benefits}</th>
-                                      <th className="text-left py-2 px-3 font-display font-bold text-white/50 uppercase tracking-wider w-[12%]">{t.courses.headers.duration}</th>
-                                      <th className="text-left py-2 px-3 font-display font-bold text-white/50 uppercase tracking-wider w-[10%]">{t.courses.headers.price}</th>
-                                      <th className="text-left py-2 px-3 font-display font-bold text-white/50 uppercase tracking-wider w-[10%]">{t.courses.headers.recognition}</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr className="align-top border-b border-white/5">
-                                      <td className="py-3 px-3 font-semibold text-white leading-snug">{course.title}</td>
-                                      <td className="py-3 px-3 text-white/70 leading-relaxed">
-                                        {course.features.map((f, fi) => (
-                                          <span key={fi} className="block">{fi > 0 && <span className="text-white/20 mr-1">·</span>}{f}</span>
-                                        ))}
-                                      </td>
-                                      <td className="py-3 px-3 text-white/70 leading-relaxed">
-                                        {course.benefits.map((b, bi) => (
-                                          <span key={bi} className="block">{bi > 0 && <span className="text-white/20 mr-1">·</span>}{b}</span>
-                                        ))}
-                                      </td>
-                                      <td className="py-3 px-3 text-white/80 whitespace-nowrap">{course.duration}</td>
-                                      <td className="py-3 px-3 text-secondary font-bold whitespace-nowrap">{course.price}</td>
-                                      <td className="py-3 px-3">
-                                        <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary/10 border border-secondary/30 text-secondary font-medium whitespace-nowrap">{course.recognition}</span>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                            </motion.div>
-                          </td>
-                        </tr>
-                      )}
-                    </AnimatePresence>
-                  </React.Fragment>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Mobile cards */}
-          <div className="md:hidden space-y-3">
-            {t.courses.items.map((course) => (
-              <div key={course.no} className="rounded-xl border border-white/10 overflow-hidden">
+          {/* Unified accordion — no table shown before expanding */}
+          <div className="rounded-2xl overflow-hidden border border-white/10">
+            {t.courses.items.map((course, i) => (
+              <div key={course.no} className="border-b border-white/8 last:border-b-0">
+                {/* Row header — only number + title visible before expand */}
                 <button
-                  className={`w-full flex items-center justify-between p-4 text-left transition-colors ${expandedCourse === course.no ? "bg-primary/10" : "bg-card/40 hover:bg-primary/5"}`}
+                  className={`w-full flex items-center gap-4 px-5 py-4 text-left transition-all duration-200 ${
+                    expandedCourse === course.no
+                      ? "bg-primary/10"
+                      : i % 2 === 0 ? "bg-card/40 hover:bg-primary/5" : "bg-card/20 hover:bg-primary/5"
+                  }`}
                   onClick={() => setExpandedCourse(expandedCourse === course.no ? null : course.no)}
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="text-secondary font-display font-bold text-sm shrink-0">{course.no}</span>
-                    <span className="font-semibold text-white text-sm">{course.title}</span>
-                  </div>
-                  <ChevronDown className={`w-4 h-4 text-primary shrink-0 transition-transform ${expandedCourse === course.no ? "rotate-180" : ""}`} />
+                  <span className="text-secondary font-display font-bold text-sm w-8 shrink-0">{course.no}</span>
+                  <span className="font-semibold text-white flex-1 text-left text-sm md:text-base leading-snug">{course.title}</span>
+                  <ChevronDown
+                    className={`w-4 h-4 text-primary shrink-0 transition-transform duration-300 ${
+                      expandedCourse === course.no ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
+
+                {/* Expanded detail table */}
                 <AnimatePresence>
                   {expandedCourse === course.no && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="bg-background/60 border-t border-white/10">
-                        <div className="px-4 pt-3 pb-1">
+                      <div className="bg-background/70 border-t border-primary/20">
+                        <div className="px-5 pt-4 pb-2">
                           <p className="text-white/65 text-xs leading-relaxed italic border-l-2 border-primary pl-3">{course.summary}</p>
                         </div>
-                        <div className="overflow-x-auto pb-3 px-2">
-                          <table className="w-full text-xs border-collapse min-w-[520px]">
+                        <div className="overflow-x-auto pb-4 px-4">
+                          <table className="w-full text-xs border-collapse min-w-[560px]">
                             <thead>
                               <tr className="border-b border-white/20">
-                                <th className="text-left py-2 px-2 font-bold text-white/45 uppercase tracking-wider">{t.courses.headers.title}</th>
-                                <th className="text-left py-2 px-2 font-bold text-white/45 uppercase tracking-wider">{t.courses.headers.features}</th>
-                                <th className="text-left py-2 px-2 font-bold text-white/45 uppercase tracking-wider">{t.courses.headers.benefits}</th>
-                                <th className="text-left py-2 px-2 font-bold text-white/45 uppercase tracking-wider whitespace-nowrap">{t.courses.headers.duration}</th>
-                                <th className="text-left py-2 px-2 font-bold text-white/45 uppercase tracking-wider whitespace-nowrap">{t.courses.headers.price}</th>
-                                <th className="text-left py-2 px-2 font-bold text-white/45 uppercase tracking-wider">{t.courses.headers.recognition}</th>
+                                <th className="text-left py-2 px-3 font-display font-bold text-primary/70 uppercase tracking-wider w-[18%]">{t.courses.headers.title}</th>
+                                <th className="text-left py-2 px-3 font-display font-bold text-primary/70 uppercase tracking-wider w-[24%]">{t.courses.headers.features}</th>
+                                <th className="text-left py-2 px-3 font-display font-bold text-primary/70 uppercase tracking-wider w-[24%]">{t.courses.headers.benefits}</th>
+                                <th className="text-left py-2 px-3 font-display font-bold text-primary/70 uppercase tracking-wider w-[12%]">{t.courses.headers.duration}</th>
+                                <th className="text-left py-2 px-3 font-display font-bold text-primary/70 uppercase tracking-wider w-[10%]">{t.courses.headers.price}</th>
+                                <th className="text-left py-2 px-3 font-display font-bold text-primary/70 uppercase tracking-wider">{t.courses.headers.recognition}</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr className="align-top">
-                                <td className="py-2 px-2 font-semibold text-white leading-snug">{course.title}</td>
-                                <td className="py-2 px-2 text-white/70 leading-relaxed">
-                                  {course.features.map((f, fi) => <span key={fi} className="block">{fi > 0 && <span className="text-white/20 mr-1">·</span>}{f}</span>)}
+                                <td className="py-3 px-3 font-semibold text-white leading-snug">{course.title}</td>
+                                <td className="py-3 px-3 text-white/70 leading-relaxed">
+                                  {course.features.map((f, fi) => (
+                                    <span key={fi} className="block">{fi > 0 && <span className="text-white/20 mr-1">·</span>}{f}</span>
+                                  ))}
                                 </td>
-                                <td className="py-2 px-2 text-white/70 leading-relaxed">
-                                  {course.benefits.map((b, bi) => <span key={bi} className="block">{bi > 0 && <span className="text-white/20 mr-1">·</span>}{b}</span>)}
+                                <td className="py-3 px-3 text-white/70 leading-relaxed">
+                                  {course.benefits.map((b, bi) => (
+                                    <span key={bi} className="block">{bi > 0 && <span className="text-white/20 mr-1">·</span>}{b}</span>
+                                  ))}
                                 </td>
-                                <td className="py-2 px-2 text-white/80 whitespace-nowrap">{course.duration}</td>
-                                <td className="py-2 px-2 text-secondary font-bold whitespace-nowrap">{course.price}</td>
-                                <td className="py-2 px-2">
-                                  <span className="inline-flex px-1.5 py-0.5 rounded-full bg-secondary/10 border border-secondary/30 text-secondary whitespace-nowrap">{course.recognition}</span>
+                                <td className="py-3 px-3 text-white/80 whitespace-nowrap">{course.duration}</td>
+                                <td className="py-3 px-3 text-secondary font-bold whitespace-nowrap">{course.price}</td>
+                                <td className="py-3 px-3">
+                                  <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary/10 border border-secondary/30 text-secondary font-medium whitespace-nowrap">{course.recognition}</span>
                                 </td>
                               </tr>
                             </tbody>

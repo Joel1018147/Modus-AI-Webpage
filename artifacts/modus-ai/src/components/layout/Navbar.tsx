@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { BrainCircuit, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
+import modusLogo from "@assets/image_(3)_1776329371189.png";
 
 export function Navbar() {
   const [location, setLocation] = useLocation();
@@ -60,18 +61,17 @@ export function Navbar() {
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b",
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-primary/20 py-3"
-          : "bg-transparent border-transparent py-5"
+          ? "bg-background/85 backdrop-blur-md border-primary/20 py-3"
+          : "bg-transparent border-transparent py-4"
       )}
     >
       <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative flex h-10 w-10 items-center justify-center rounded-lg bg-card border border-primary/30 group-hover:border-primary group-hover:shadow-[0_0_15px_rgba(0,212,255,0.5)] transition-all duration-300">
-            <BrainCircuit className="h-6 w-6 text-primary" />
-          </div>
-          <span className="font-display font-bold text-xl tracking-wider text-foreground">
-            MODUS <span className="text-primary">AI</span>
-          </span>
+        <Link href="/" className="flex items-center group">
+          <img
+            src={modusLogo}
+            alt="MODUS AI Associates"
+            className="h-10 w-auto object-contain transition-all duration-300 group-hover:opacity-85 group-hover:drop-shadow-[0_0_12px_rgba(232,135,13,0.6)]"
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -102,7 +102,7 @@ export function Navbar() {
           <a
             href="/details#get-started"
             onClick={(e) => handleNavClick(e, "get-started")}
-            className="relative px-6 py-2 rounded-md bg-primary/10 text-primary font-medium border border-primary/50 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,212,255,0.6)]"
+            className="relative px-6 py-2 rounded-md bg-primary/10 text-primary font-medium border border-primary/50 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,135,13,0.55)]"
             data-testid="nav-cta-get-started"
           >
             {ctaLabel}
@@ -153,7 +153,7 @@ export function Navbar() {
               <a
                 href="/details#get-started"
                 onClick={(e) => handleNavClick(e, "get-started")}
-                className="text-center mt-4 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold shadow-[0_0_15px_rgba(0,212,255,0.4)]"
+                className="text-center mt-4 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold shadow-[0_0_15px_rgba(232,135,13,0.4)]"
               >
                 {ctaLabel}
               </a>

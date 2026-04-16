@@ -76,49 +76,49 @@
   --elevate-1: rgba(255,255,255, .04);
   --elevate-2: rgba(255,255,255, .09);
 
-  /* Default to dark mode colors */
-  --background: 223 52% 4%;
-  --foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --card: 222 47% 11%;
-  --card-foreground: 210 40% 98%;
-  --card-border: 217.2 32.6% 17.5%;
-  
-  --sidebar: 222 47% 11%;
-  --sidebar-foreground: 210 40% 98%;
-  --sidebar-border: 217.2 32.6% 17.5%;
-  --sidebar-primary: 190 100% 50%;
-  --sidebar-primary-foreground: 222.2 47.4% 11.2%;
-  --sidebar-accent: 217.2 32.6% 17.5%;
-  --sidebar-accent-foreground: 210 40% 98%;
-  --sidebar-ring: 190 100% 50%;
+  /* Dark warm amber-copper tech theme */
+  --background: 20 18% 5%;
+  --foreground: 38 28% 92%;
+  --border: 22 22% 18%;
+  --card: 20 20% 10%;
+  --card-foreground: 38 28% 92%;
+  --card-border: 22 22% 18%;
 
-  --popover: 224 71% 4%;
-  --popover-foreground: 215 20.2% 65.1%;
-  --popover-border: 217.2 32.6% 17.5%;
+  --sidebar: 20 20% 10%;
+  --sidebar-foreground: 38 28% 92%;
+  --sidebar-border: 22 22% 18%;
+  --sidebar-primary: 33 92% 52%;
+  --sidebar-primary-foreground: 20 40% 8%;
+  --sidebar-accent: 22 22% 18%;
+  --sidebar-accent-foreground: 38 28% 92%;
+  --sidebar-ring: 33 92% 52%;
 
-  --primary: 190 100% 50%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-  
-  --secondary: 262 83% 58%;
-  --secondary-foreground: 210 40% 98%;
+  --popover: 20 18% 5%;
+  --popover-foreground: 30 18% 62%;
+  --popover-border: 22 22% 18%;
 
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
+  --primary: 33 92% 52%;
+  --primary-foreground: 20 40% 8%;
 
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
+  --secondary: 20 65% 42%;
+  --secondary-foreground: 38 28% 92%;
+
+  --muted: 22 20% 17%;
+  --muted-foreground: 30 18% 62%;
+
+  --accent: 22 20% 17%;
+  --accent-foreground: 38 28% 92%;
 
   --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 38 28% 92%;
 
-  --input: 217.2 32.6% 17.5%;
-  --ring: 190 100% 50%;
-  
-  --chart-1: 190 100% 50%;
-  --chart-2: 262 83% 58%;
-  --chart-3: 217.2 32.6% 17.5%;
-  --chart-4: 210 40% 98%;
+  --input: 22 20% 17%;
+  --ring: 33 92% 52%;
+
+  --chart-1: 33 92% 52%;
+  --chart-2: 20 65% 42%;
+  --chart-3: 22 22% 18%;
+  --chart-4: 38 28% 92%;
   --chart-5: 0 62.8% 30.6%;
 
   --app-font-sans: 'Inter', sans-serif;

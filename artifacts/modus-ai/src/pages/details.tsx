@@ -7,7 +7,6 @@ import {
   Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot, Camera, Loader2,
   ChevronDown
 } from "lucide-react";
-import productsImg from "@assets/WhatsApp_Image_2026-04-15_at_1.09.29_PM_1776229834654.jpeg";
 import launchImg from "@assets/image_1775812766946.png";
 import ribbonImg from "@assets/WhatsApp_Image_2026-04-03_at_5.40.49_PM_1775209677927.jpeg";
 import signingImg from "@assets/WhatsApp_Image_2026-04-03_at_5.36.11_PM_1775209677928.jpeg";
@@ -588,79 +587,6 @@ export default function Details() {
                 </AnimatePresence>
               </div>
             ))}
-          </div>
-        </motion.section>
-
-        {/* ── Our Products ── */}
-        <motion.section
-          id="products"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="scroll-mt-32"
-        >
-          <div className="flex items-center gap-4 mb-10">
-            <div className="h-1 w-12 bg-secondary" />
-            <h2 className="text-4xl md:text-5xl font-display font-bold">
-              Our <span className="text-secondary">Products</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-            {/* Left: programme cards */}
-            <div>
-              <p className="text-muted-foreground mb-6 text-lg">
-                10 AI+ Professional Talent Certification programmes — each backed by the{" "}
-                <strong className="text-white">Ministry of Industry and Information Technology of the People's Republic of China (MIIT)</strong>{" "}
-                and listed in the world-leading AI talent pool.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  { no: "01", name: "AI Human Resources Manager" },
-                  { no: "02", name: "AI Financial Management Specialist" },
-                  { no: "03", name: "AI Psychological Counseling Consultant" },
-                  { no: "04", name: "Workplace AI Application Specialist" },
-                  { no: "05", name: "AI Trainer" },
-                  { no: "06", name: "Agent Builder" },
-                  { no: "07", name: "AI Product Manager" },
-                  { no: "08", name: "AI Data Analyst" },
-                  { no: "09", name: "AI Marketing Specialist" },
-                  { no: "10", name: "AIGC Application Engineer" },
-                ].map((prog) => (
-                  <motion.div
-                    key={prog.no}
-                    initial={{ opacity: 0, x: -16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4 }}
-                    className="flex items-center gap-3 p-4 rounded-xl bg-card border border-white/10 hover:border-secondary/50 hover:shadow-[0_0_20px_rgba(124,58,237,0.15)] transition-all duration-300 group"
-                  >
-                    <span className="text-xs font-display font-bold text-secondary/70 group-hover:text-secondary transition-colors shrink-0 w-6">
-                      {prog.no}
-                    </span>
-                    <span className="text-sm font-medium text-white/85 group-hover:text-white transition-colors">
-                      {prog.name}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: certificate image */}
-            <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(124,58,237,0.1)]"
-            >
-              <img
-                src={productsImg}
-                alt="Top 10 AI+ Professional Talents Certificate for Job Competency Assessment"
-                className="w-full h-auto object-cover"
-              />
-            </motion.div>
           </div>
         </motion.section>
 

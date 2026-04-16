@@ -41,7 +41,6 @@ export function Navbar() {
         { label: "Why Choose Us", hash: "why-choose-us" },
         { label: "Our Services", hash: "services" },
         { label: "Our Courses", hash: "courses" },
-        { label: "Our Products", hash: "products" },
         { label: "Our Activities", hash: "activities" },
       ]
     : [
@@ -49,7 +48,6 @@ export function Navbar() {
         { label: "Mengapa Pilih Kami", hash: "why-choose-us" },
         { label: "Perkhidmatan", hash: "services" },
         { label: "Kursus Kami", hash: "courses" },
-        { label: "Produk Kami", hash: "products" },
         { label: "Aktiviti Kami", hash: "activities" },
       ];
 

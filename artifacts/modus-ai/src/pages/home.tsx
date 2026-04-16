@@ -163,12 +163,12 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 const colorMap: Record<string, { border: string; shadow: string; grad: string; iconColor: string }> = {
-  about:          { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(232,135,13,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
+  about:          { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(212,158,46,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
   "why-choose-us":{ border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
-  services:       { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(232,135,13,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
+  services:       { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(212,158,46,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
   courses:        { border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
-  activities:     { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(232,135,13,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
-  "get-started":  { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(232,135,13,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
+  activities:     { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(212,158,46,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
+  "get-started":  { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(212,158,46,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
 };
 
 const statIcons = [BarChart3, Users, Network, Brain];
@@ -272,7 +272,7 @@ export default function Home() {
             <motion.div variants={itemVariants}>
               <Link
                 href="/details"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold rounded-lg bg-gradient-to-r from-primary to-secondary text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(232,135,13,0.6)]"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold rounded-lg bg-gradient-to-r from-primary to-secondary text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(212,158,46,0.6)]"
                 data-testid="hero-cta-start"
               >
                 {t.cta}
@@ -369,7 +369,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="group rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(232,135,13,0.15)] bg-background flex flex-col"
+                className="group rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,158,46,0.15)] bg-background flex flex-col"
               >
                 <div className="relative aspect-video bg-black overflow-hidden">
                   {playingVideo === i ? (
@@ -388,7 +388,7 @@ export default function Home() {
                       <button
                         onClick={() => setPlayingVideo(i)}
                         data-testid={`video-play-${i}`}
-                        className="relative z-10 w-16 h-16 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/40 group-hover:shadow-[0_0_30px_rgba(232,135,13,0.6)]"
+                        className="relative z-10 w-16 h-16 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/40 group-hover:shadow-[0_0_30px_rgba(212,158,46,0.6)]"
                       >
                         <Play className="w-6 h-6 text-primary ml-1" />
                       </button>
@@ -443,7 +443,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
-                  className="p-8 rounded-2xl bg-card border border-primary/20 flex flex-col items-center justify-center hover:border-primary/50 hover:shadow-[0_0_25px_rgba(232,135,13,0.1)] transition-all duration-300"
+                  className="p-8 rounded-2xl bg-card border border-primary/20 flex flex-col items-center justify-center hover:border-primary/50 hover:shadow-[0_0_25px_rgba(212,158,46,0.1)] transition-all duration-300"
                 >
                   <Icon className="w-10 h-10 text-secondary mb-4 opacity-80" />
                   <div className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2">
@@ -515,7 +515,7 @@ export default function Home() {
             <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{t.footerSubtitle}</p>
             <Link
               href="/details#get-started"
-              className="inline-flex items-center gap-2 px-10 py-4 text-lg font-bold rounded-lg border-2 border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(232,135,13,0.5)]"
+              className="inline-flex items-center gap-2 px-10 py-4 text-lg font-bold rounded-lg border-2 border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,158,46,0.5)]"
               data-testid="footer-cta"
             >
               {t.footerCta} <ArrowRight className="w-5 h-5" />

@@ -70,7 +70,7 @@ export function Navbar() {
           <img
             src={modusLogo}
             alt="MODUS AI Associates"
-            className="h-10 w-auto object-contain transition-all duration-300 group-hover:opacity-85 group-hover:drop-shadow-[0_0_12px_rgba(232,135,13,0.6)]"
+            className="h-10 w-auto object-contain transition-all duration-300 group-hover:opacity-85 group-hover:drop-shadow-[0_0_12px_rgba(212,158,46,0.6)]"
           />
         </Link>
 
@@ -102,7 +102,7 @@ export function Navbar() {
           <a
             href="/details#get-started"
             onClick={(e) => handleNavClick(e, "get-started")}
-            className="relative px-6 py-2 rounded-md bg-primary/10 text-primary font-medium border border-primary/50 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,135,13,0.55)]"
+            className="relative px-6 py-2 rounded-md bg-primary/10 text-primary font-medium border border-primary/50 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,158,46,0.55)]"
             data-testid="nav-cta-get-started"
           >
             {ctaLabel}
@@ -153,7 +153,7 @@ export function Navbar() {
               <a
                 href="/details#get-started"
                 onClick={(e) => handleNavClick(e, "get-started")}
-                className="text-center mt-4 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold shadow-[0_0_15px_rgba(232,135,13,0.4)]"
+                className="text-center mt-4 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold shadow-[0_0_15px_rgba(212,158,46,0.4)]"
               >
                 {ctaLabel}
               </a>

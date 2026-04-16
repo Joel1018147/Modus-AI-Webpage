@@ -189,33 +189,9 @@ const detailsContent = {
           name: "Facebook",
           handle: "@ModusAIAssociates",
           desc: "Updates, events & announcements",
-          url: "https://facebook.com/modusaiassociates",
+          url: "https://www.facebook.com/profile.php?id=61572345552403",
           color: "#1877F2",
           colorClass: "blue",
-        },
-        {
-          name: "LinkedIn",
-          handle: "Modus AI Associates",
-          desc: "Professional insights & career opportunities",
-          url: "https://linkedin.com/company/modusaiassociates",
-          color: "#0A66C2",
-          colorClass: "sky",
-        },
-        {
-          name: "X (Twitter)",
-          handle: "@ModusAI_MY",
-          desc: "AI news, tips & real-time updates",
-          url: "https://x.com/modusai_my",
-          color: "#ffffff",
-          colorClass: "white",
-        },
-        {
-          name: "Instagram",
-          handle: "@modusaiassociates",
-          desc: "Behind the scenes & visual stories",
-          url: "https://instagram.com/modusaiassociates",
-          color: "#E1306C",
-          colorClass: "pink",
         },
       ],
     },
@@ -419,33 +395,9 @@ const detailsContent = {
           name: "Facebook",
           handle: "@ModusAIAssociates",
           desc: "Kemas kini, acara & pengumuman",
-          url: "https://facebook.com/modusaiassociates",
+          url: "https://www.facebook.com/profile.php?id=61572345552403",
           color: "#1877F2",
           colorClass: "blue",
-        },
-        {
-          name: "LinkedIn",
-          handle: "Modus AI Associates",
-          desc: "Pandangan profesional & peluang kerjaya",
-          url: "https://linkedin.com/company/modusaiassociates",
-          color: "#0A66C2",
-          colorClass: "sky",
-        },
-        {
-          name: "X (Twitter)",
-          handle: "@ModusAI_MY",
-          desc: "Berita AI, tips & kemas kini masa nyata",
-          url: "https://x.com/modusai_my",
-          color: "#ffffff",
-          colorClass: "white",
-        },
-        {
-          name: "Instagram",
-          handle: "@modusaiassociates",
-          desc: "Di sebalik tabir & kisah visual",
-          url: "https://instagram.com/modusaiassociates",
-          color: "#E1306C",
-          colorClass: "pink",
         },
       ],
     },
@@ -985,12 +937,17 @@ export default function Details() {
           </div>
           <p className="text-lg text-muted-foreground mb-10 pl-16">{t.socials.subtitle}</p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className={
+            t.socials.platforms.length === 1
+              ? "flex justify-center"
+              : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          }>
             {t.socials.platforms.map((platform, i) => {
               const icons: Record<string, React.ElementType> = {
                 Facebook, LinkedIn: Linkedin, "X (Twitter)": Twitter, Instagram,
               };
               const Icon = icons[platform.name] ?? Globe2;
+              const isSingle = t.socials.platforms.length === 1;
               return (
                 <motion.a
                   key={platform.name}
@@ -1001,43 +958,51 @@ export default function Details() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  className="group relative flex flex-col gap-5 p-6 rounded-2xl bg-card border border-white/8 overflow-hidden cursor-pointer transition-all duration-300"
-                  style={{ ["--platform-color" as string]: platform.color }}
+                  whileHover={{ y: -8, scale: 1.03 }}
+                  className={`group relative flex flex-col gap-6 overflow-hidden cursor-pointer transition-all duration-300 ${
+                    isSingle
+                      ? "w-full max-w-sm p-8 rounded-3xl bg-card border border-white/8"
+                      : "p-6 rounded-2xl bg-card border border-white/8"
+                  }`}
                 >
                   {/* glow blob */}
                   <div
-                    className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-[60px] opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+                    className="absolute -top-12 -right-12 w-48 h-48 rounded-full blur-[80px] opacity-0 group-hover:opacity-25 transition-opacity duration-500"
                     style={{ backgroundColor: platform.color }}
                   />
+                  {/* large faint bg icon */}
+                  <div className="absolute bottom-4 right-4 opacity-[0.04] group-hover:opacity-[0.07] transition-opacity duration-500">
+                    <Icon className="w-24 h-24" style={{ color: platform.color }} />
+                  </div>
                   {/* top border highlight on hover */}
                   <div
-                    className="absolute inset-x-0 top-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl"
+                    className="absolute inset-x-0 top-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl"
                     style={{ backgroundColor: platform.color }}
                   />
 
-                  {/* icon */}
+                  {/* icon badge */}
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110"
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110 relative z-10"
                     style={{
-                      backgroundColor: `${platform.color}15`,
-                      borderColor: `${platform.color}40`,
+                      backgroundColor: `${platform.color}18`,
+                      borderColor: `${platform.color}45`,
+                      boxShadow: `0 0 0 0 ${platform.color}00`,
                     }}
                   >
-                    <Icon className="w-6 h-6" style={{ color: platform.color }} />
+                    <Icon className="w-7 h-7" style={{ color: platform.color }} />
                   </div>
 
                   {/* text */}
-                  <div className="flex flex-col gap-1 flex-1">
-                    <span className="font-display font-bold text-white text-lg leading-tight">{platform.name}</span>
-                    <span className="text-xs font-mono font-medium" style={{ color: platform.color }}>{platform.handle}</span>
-                    <p className="text-sm text-muted-foreground mt-1 leading-snug">{platform.desc}</p>
+                  <div className="flex flex-col gap-1.5 flex-1 relative z-10">
+                    <span className="font-display font-bold text-white text-xl leading-tight">{platform.name}</span>
+                    <span className="text-xs font-mono font-medium tracking-wide" style={{ color: platform.color }}>{platform.handle}</span>
+                    <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{platform.desc}</p>
                   </div>
 
                   {/* CTA */}
-                  <div className="flex items-center gap-1.5 text-xs font-semibold transition-all duration-300 group-hover:gap-2.5" style={{ color: platform.color }}>
+                  <div className="flex items-center gap-2 text-sm font-semibold transition-all duration-300 group-hover:gap-3 relative z-10" style={{ color: platform.color }}>
                     <span>{t.socials.followLabel}</span>
-                    <ChevronRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </motion.a>
               );

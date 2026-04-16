@@ -4,45 +4,192 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
   ArrowRight, BarChart3, Brain, Cpu, Globe,
-  Network, ShieldCheck, Zap, Award, Users, Play, ExternalLink
+  Network, ShieldCheck, Zap, Award, Users, Play, ExternalLink, Package
 } from "lucide-react";
+import { useLang } from "@/contexts/LanguageContext";
 
-const heroHeadlines = [
-  "Transform Malaysia's AI Business Capabilities to Global Standards — Powered by China's World-Leading AI Ecosystem",
-  "Elevate Malaysian Companies to World-Class AI Execution Through Industry-Certified Training and Technology Integration",
-  "Increase Workforce Productivity by 5–10X Through Applied AI Systems and Automation",
-  "Bridge the AI Talent Gap with Real-World Training, Backed by China's No.1 AI Training Institution and MIIT Certification",
-  "AI Adoption Is No Longer Optional — It Is the Core Driver of Future Business Survival and Growth",
-];
+const content = {
+  en: {
+    badge: "MIIT CERTIFIED · CHINA AI ECOSYSTEM PARTNER · MALAYSIA",
+    cta: "Start Your AI Transformation",
+    coreMsgPrefix: "AI Adoption Is No Longer Optional —",
+    coreMsgSuffix: "It Is the Core Driver of Future Business Survival and Growth.",
+    exploreTitle: "Explore",
+    exploreSubtitle: "Navigate to any section to learn more",
+    navItems: [
+      { id: "about", title: "About Us", desc: "Our mission and global standards" },
+      { id: "why-choose-us", title: "Why Choose Us", desc: "Certified and proven results" },
+      { id: "services", title: "Our Services", desc: "End-to-end AI solutions" },
+      { id: "products", title: "Our Products", desc: "10 AI professional programmes" },
+      { id: "activities", title: "Our Activities", desc: "Events and milestones" },
+      { id: "get-started", title: "Get Started", desc: "Begin your transformation" },
+    ],
+    videoTitle: "AI Transformation",
+    videoTitleHighlight: "in Action",
+    videoSubtitle: "See real results from real businesses — powered by China's world-leading AI ecosystem and MIIT-certified training.",
+    videos: [
+      {
+        id: "dQw4w9WgXcQ",
+        title: "AI Transformation in Malaysian E-Commerce",
+        desc: "Watch how MODUS AI helped a leading Malaysian retailer automate operations and achieve 8x productivity.",
+      },
+      {
+        id: "jNQXAC9IVRw",
+        title: "China's AI Ecosystem — Powering ASEAN Businesses",
+        desc: "An inside look at the world-class AI training infrastructure behind our certification programmes.",
+      },
+      {
+        id: "M7lc1UVf-VE",
+        title: "MIIT AIGC Certification: What It Means for Your Business",
+        desc: "Understand why MIIT-certified AI talent gives Malaysian companies a decisive competitive edge.",
+      },
+    ],
+    statsTitle: "Measurable",
+    statsTitleHighlight: "Impact",
+    statsSubtitle: "Backed by China's largest AI training network — 2,600 universities, 300,000+ certified professionals.",
+    stats: [
+      { value: "5–10x", label: "Productivity Gain" },
+      { value: "300K+", label: "Certified Graduates" },
+      { value: "2,600", label: "Partner Universities" },
+      { value: "100%", label: "Real-World Application" },
+    ],
+    testimonialTitle: "Client",
+    testimonialTitleHighlight: "Success",
+    testimonialSubtitle: "Real transformations from Malaysian businesses adopting MIIT-certified AI frameworks.",
+    testimonials: [
+      {
+        quote: "MODUS AI completely overhauled our e-commerce supply chain. What used to take a team of 10 five days is now fully automated and predictive. The MIIT certification gives our team global credibility.",
+        author: "Sarah L.",
+        role: "Director of Operations, Quantum Retail",
+      },
+      {
+        quote: "We thought AI was a buzzword until MODUS showed us China's real AI ecosystem. Our customer service response time dropped 80% while satisfaction soared — and our team is now AIGC certified.",
+        author: "James Wong",
+        role: "CEO, NEXA Logistics",
+      },
+    ],
+    footerTitle: "Ready to Lead Malaysia's",
+    footerTitleHighlight: "AI Revolution?",
+    footerSubtitle: "Join the MODUS AI network — certified by MIIT, powered by China's No.1 AI training ecosystem.",
+    footerCta: "Get in Touch",
+    headlines: [
+      "Transform Malaysia's AI Business Capabilities to Global Standards — Powered by China's World-Leading AI Ecosystem",
+      "Elevate Malaysian Companies to World-Class AI Execution Through Industry-Certified Training and Technology Integration",
+      "Increase Workforce Productivity by 5–10X Through Applied AI Systems and Automation",
+      "Bridge the AI Talent Gap with Real-World Training, Backed by China's No.1 AI Training Institution and MIIT Certification",
+      "AI Adoption Is No Longer Optional — It Is the Core Driver of Future Business Survival and Growth",
+    ],
+  },
+  bm: {
+    badge: "BERTAULIAH MIIT · RAKAN EKOSISTEM AI CHINA · MALAYSIA",
+    cta: "Mulakan Transformasi AI Anda",
+    coreMsgPrefix: "Penggunaan AI Bukan Lagi Pilihan —",
+    coreMsgSuffix: "Ia Adalah Pemacu Utama Kelangsungan dan Pertumbuhan Perniagaan Masa Depan.",
+    exploreTitle: "Jelajahi",
+    exploreSubtitle: "Pergi ke mana-mana bahagian untuk mengetahui lebih lanjut",
+    navItems: [
+      { id: "about", title: "Tentang Kami", desc: "Misi dan standard global kami" },
+      { id: "why-choose-us", title: "Mengapa Pilih Kami", desc: "Hasil bersertifikasi dan terbukti" },
+      { id: "services", title: "Perkhidmatan Kami", desc: "Penyelesaian AI menyeluruh" },
+      { id: "products", title: "Produk Kami", desc: "10 program profesional AI" },
+      { id: "activities", title: "Aktiviti Kami", desc: "Acara dan pencapaian" },
+      { id: "get-started", title: "Mulakan", desc: "Mulakan transformasi anda" },
+    ],
+    videoTitle: "Transformasi AI",
+    videoTitleHighlight: "dalam Tindakan",
+    videoSubtitle: "Lihat keputusan sebenar daripada perniagaan sebenar — dikuasakan oleh ekosistem AI terkemuka dunia China dan latihan bertauliah MIIT.",
+    videos: [
+      {
+        id: "dQw4w9WgXcQ",
+        title: "Transformasi AI dalam E-Dagang Malaysia",
+        desc: "Lihat bagaimana MODUS AI membantu peruncit terkemuka Malaysia mengautomasikan operasi dan mencapai produktiviti 8x.",
+      },
+      {
+        id: "jNQXAC9IVRw",
+        title: "Ekosistem AI China — Memperkasa Perniagaan ASEAN",
+        desc: "Pandangan dalaman tentang infrastruktur latihan AI bertaraf dunia di sebalik program sijil kami.",
+      },
+      {
+        id: "M7lc1UVf-VE",
+        title: "Sijil AIGC MIIT: Maknanya untuk Perniagaan Anda",
+        desc: "Fahami mengapa bakat AI bertauliah MIIT memberikan kelebihan daya saing yang kukuh kepada syarikat Malaysia.",
+      },
+    ],
+    statsTitle: "Impak",
+    statsTitleHighlight: "Terukur",
+    statsSubtitle: "Disokong oleh rangkaian latihan AI terbesar China — 2,600 universiti, 300,000+ profesional bersijil.",
+    stats: [
+      { value: "5–10x", label: "Peningkatan Produktiviti" },
+      { value: "300K+", label: "Graduan Bersijil" },
+      { value: "2,600", label: "Universiti Rakan" },
+      { value: "100%", label: "Aplikasi Dunia Nyata" },
+    ],
+    testimonialTitle: "Kejayaan",
+    testimonialTitleHighlight: "Klien",
+    testimonialSubtitle: "Transformasi sebenar daripada perniagaan Malaysia yang menggunakan rangka kerja AI bertauliah MIIT.",
+    testimonials: [
+      {
+        quote: "MODUS AI telah mengubah sepenuhnya rantaian bekalan e-dagang kami. Apa yang memerlukan pasukan 10 orang selama lima hari kini diautomasikan sepenuhnya. Sijil MIIT memberikan pasukan kami kredibiliti global.",
+        author: "Sarah L.",
+        role: "Pengarah Operasi, Quantum Retail",
+      },
+      {
+        quote: "Kami fikir AI hanyalah kata-kata trendi sehingga MODUS menunjukkan kepada kami ekosistem AI sebenar China. Masa tindak balas perkhidmatan pelanggan kami menurun 80% manakala kepuasan meningkat — dan pasukan kami kini bersijil AIGC.",
+        author: "James Wong",
+        role: "Ketua Pegawai Eksekutif, NEXA Logistics",
+      },
+    ],
+    footerTitle: "Bersedia untuk Memimpin",
+    footerTitleHighlight: "Revolusi AI Malaysia?",
+    footerSubtitle: "Sertai rangkaian MODUS AI — disijilkan oleh MIIT, dikuasakan oleh ekosistem latihan AI No.1 China.",
+    footerCta: "Hubungi Kami",
+    headlines: [
+      "Transformasi Keupayaan Perniagaan AI Malaysia ke Standard Global — Dikuasakan oleh Ekosistem AI Terkemuka Dunia dari China",
+      "Tingkatkan Syarikat Malaysia ke Pelaksanaan AI Bertaraf Dunia Melalui Latihan Bersertifikasi dan Integrasi Teknologi",
+      "Tingkatkan Produktiviti Tenaga Kerja 5–10X Melalui Sistem AI Gunaan dan Automasi",
+      "Hapuskan Jurang Bakat AI dengan Latihan Dunia Nyata, Disokong oleh Institusi Latihan AI No.1 China dan Sijil MIIT",
+      "Penggunaan AI Bukan Lagi Pilihan — Ia Adalah Pemacu Utama Kelangsungan dan Pertumbuhan Perniagaan Masa Depan",
+    ],
+  },
+};
 
-const videoPlaceholders = [
-  {
-    id: "dQw4w9WgXcQ",
-    title: "AI Transformation in Malaysian E-Commerce",
-    desc: "Watch how MODUS AI helped a leading Malaysian retailer automate operations and achieve 8x productivity.",
-  },
-  {
-    id: "jNQXAC9IVRw",
-    title: "China's AI Ecosystem — Powering ASEAN Businesses",
-    desc: "An inside look at the world-class AI training infrastructure behind our certification programmes.",
-  },
-  {
-    id: "M7lc1UVf-VE",
-    title: "MIIT AIGC Certification: What It Means for Your Business",
-    desc: "Understand why MIIT-certified AI talent gives Malaysian companies a decisive competitive edge.",
-  },
-];
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  about: Globe,
+  "why-choose-us": ShieldCheck,
+  services: Cpu,
+  products: Package,
+  activities: Network,
+  "get-started": Zap,
+};
+
+const colorMap: Record<string, { border: string; shadow: string; grad: string; iconColor: string }> = {
+  about:          { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
+  "why-choose-us":{ border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
+  services:       { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
+  products:       { border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
+  activities:     { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
+  "get-started":  { border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
+};
+
+const statIcons = [BarChart3, Users, Network, Brain];
 
 export default function Home() {
+  const { lang } = useLang();
+  const t = content[lang];
+
   const [headlineIndex, setHeadlineIndex] = useState(0);
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
 
   useEffect(() => {
+    setHeadlineIndex(0);
+  }, [lang]);
+
+  useEffect(() => {
     const timer = setInterval(() => {
-      setHeadlineIndex((prev) => (prev + 1) % heroHeadlines.length);
+      setHeadlineIndex((prev) => (prev + 1) % t.headlines.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [t.headlines.length]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -60,7 +207,6 @@ export default function Home() {
 
       {/* ── Hero ── */}
       <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 pb-12 overflow-hidden">
-        {/* Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_40%,transparent_100%)]" />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
@@ -83,21 +229,20 @@ export default function Home() {
               className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium tracking-wide"
             >
               <Award className="w-4 h-4" />
-              MIIT CERTIFIED · CHINA AI ECOSYSTEM PARTNER · MALAYSIA
+              {t.badge}
             </motion.div>
 
-            {/* Rotating headline */}
             <div className="relative min-h-[8rem] md:min-h-[7rem] mb-6 flex items-center justify-center">
               <AnimatePresence mode="wait">
                 <motion.h1
-                  key={headlineIndex}
+                  key={`${lang}-${headlineIndex}`}
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.55, ease: "easeOut" }}
                   className="text-xl md:text-3xl lg:text-4xl font-display font-bold leading-snug text-white max-w-4xl"
                 >
-                  {heroHeadlines[headlineIndex].split("—").map((part, i, arr) =>
+                  {t.headlines[headlineIndex].split("—").map((part, i, arr) =>
                     i < arr.length - 1 ? (
                       <span key={i}>
                         {part}
@@ -111,9 +256,8 @@ export default function Home() {
               </AnimatePresence>
             </div>
 
-            {/* Dots indicator */}
             <motion.div variants={itemVariants} className="flex justify-center gap-2 mb-8">
-              {heroHeadlines.map((_, i) => (
+              {t.headlines.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setHeadlineIndex(i)}
@@ -131,7 +275,7 @@ export default function Home() {
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold rounded-lg bg-gradient-to-r from-primary to-secondary text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,212,255,0.6)]"
                 data-testid="hero-cta-start"
               >
-                Start Your AI Transformation
+                {t.cta}
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </motion.div>
@@ -149,9 +293,9 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-2xl md:text-3xl font-display font-semibold text-white/90 max-w-4xl mx-auto"
           >
-            AI Adoption Is No Longer Optional —{" "}
+            {t.coreMsgPrefix}{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              It Is the Core Driver of Future Business Survival and Growth.
+              {t.coreMsgSuffix}
             </span>
           </motion.p>
         </div>
@@ -167,38 +311,36 @@ export default function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">
-              Explore <span className="text-primary">MODUS AI</span>
+              {t.exploreTitle} <span className="text-primary">MODUS AI</span>
             </h2>
-            <p className="text-muted-foreground">Navigate to any section to learn more</p>
+            <p className="text-muted-foreground">{t.exploreSubtitle}</p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {[
-              { id: "about", icon: Globe, title: "About Us", desc: "Our mission and global standards", border: "hover:border-primary", shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]", grad: "from-primary/20", iconColor: "text-primary" },
-              { id: "why-choose-us", icon: ShieldCheck, title: "Why Choose Us", desc: "Certified and proven results", border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
-              { id: "services", icon: Cpu, title: "Our Services", desc: "End-to-end AI solutions", border: "hover:border-primary", shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]", grad: "from-primary/20", iconColor: "text-primary" },
-              { id: "activities", icon: Network, title: "Our Activities", desc: "Events and milestones", border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
-              { id: "get-started", icon: Zap, title: "Get Started", desc: "Begin your transformation", border: "hover:border-primary", shadow: "hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]", grad: "from-primary/20", iconColor: "text-primary" },
-            ].map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Link
-                  href={`/details#${item.id}`}
-                  className={`group relative flex flex-col items-center justify-center p-10 h-full rounded-2xl bg-card/50 border border-white/10 backdrop-blur-sm overflow-hidden transition-all duration-500 ${item.border} ${item.shadow}`}
-                  data-testid={`icon-nav-${item.id}`}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {t.navItems.map((item, index) => {
+              const Icon = iconMap[item.id];
+              const colors = colorMap[item.id];
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-b ${item.grad} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                  <item.icon className={`w-16 h-16 mb-6 ${item.iconColor} opacity-60 group-hover:opacity-100 transition-all duration-300 relative z-10 group-hover:scale-110`} />
-                  <h3 className="text-xl font-display font-bold text-white mb-2 relative z-10">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground text-center relative z-10">{item.desc}</p>
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    href={`/details#${item.id}`}
+                    className={`group relative flex flex-col items-center justify-center p-6 h-full rounded-2xl bg-card/50 border border-white/10 backdrop-blur-sm overflow-hidden transition-all duration-500 ${colors.border} ${colors.shadow}`}
+                    data-testid={`icon-nav-${item.id}`}
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-b ${colors.grad} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                    <Icon className={`w-10 h-10 mb-4 ${colors.iconColor} opacity-60 group-hover:opacity-100 transition-all duration-300 relative z-10 group-hover:scale-110`} />
+                    <h3 className="text-sm md:text-base font-display font-bold text-white mb-1 relative z-10 text-center">{item.title}</h3>
+                    <p className="text-xs text-muted-foreground text-center relative z-10 hidden md:block">{item.desc}</p>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -214,15 +356,13 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
-              AI Transformation <span className="text-primary">in Action</span>
+              {t.videoTitle} <span className="text-primary">{t.videoTitleHighlight}</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              See real results from real businesses — powered by China's world-leading AI ecosystem and MIIT-certified training.
-            </p>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t.videoSubtitle}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {videoPlaceholders.map((video, i) => (
+            {t.videos.map((video, i) => (
               <motion.div
                 key={video.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -231,7 +371,6 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: i * 0.15 }}
                 className="group rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,212,255,0.15)] bg-background flex flex-col"
               >
-                {/* Video embed / placeholder */}
                 <div className="relative aspect-video bg-black overflow-hidden">
                   {playingVideo === i ? (
                     <iframe
@@ -244,7 +383,6 @@ export default function Home() {
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      {/* Thumbnail placeholder with gradient */}
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20" />
                       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px]" />
                       <button
@@ -258,7 +396,6 @@ export default function Home() {
                   )}
                 </div>
 
-                {/* Card content */}
                 <div className="p-6 flex-1 flex flex-col">
                   <h3 className="font-display font-bold text-lg text-white mb-2 group-hover:text-primary transition-colors duration-300">
                     {video.title}
@@ -291,37 +428,33 @@ export default function Home() {
             className="mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
-              Measurable <span className="text-primary">Impact</span>
+              {t.statsTitle} <span className="text-primary">{t.statsTitleHighlight}</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Backed by China's largest AI training network — 2,600 universities, 800,000+ certified professionals.
-            </p>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t.statsSubtitle}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { value: "5–10x", label: "Productivity Gain", icon: BarChart3 },
-              { value: "300K+", label: "Certified Graduates", icon: Users },
-              { value: "2,600", label: "Partner Universities", icon: Network },
-              { value: "100%", label: "Real-World Application", icon: Brain },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="p-8 rounded-2xl bg-card border border-primary/20 flex flex-col items-center justify-center hover:border-primary/50 hover:shadow-[0_0_25px_rgba(0,212,255,0.1)] transition-all duration-300"
-              >
-                <stat.icon className="w-10 h-10 text-secondary mb-4 opacity-80" />
-                <div className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider text-center">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+            {t.stats.map((stat, i) => {
+              const Icon = statIcons[i];
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.15 }}
+                  className="p-8 rounded-2xl bg-card border border-primary/20 flex flex-col items-center justify-center hover:border-primary/50 hover:shadow-[0_0_25px_rgba(0,212,255,0.1)] transition-all duration-300"
+                >
+                  <Icon className="w-10 h-10 text-secondary mb-4 opacity-80" />
+                  <div className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider text-center">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -332,26 +465,13 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
-              Client <span className="text-primary">Success</span>
+              {t.testimonialTitle} <span className="text-primary">{t.testimonialTitleHighlight}</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Real transformations from Malaysian businesses adopting MIIT-certified AI frameworks.
-            </p>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t.testimonialSubtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {[
-              {
-                quote: "MODUS AI completely overhauled our e-commerce supply chain. What used to take a team of 10 five days is now fully automated and predictive. The MIIT certification gives our team global credibility.",
-                author: "Sarah L.",
-                role: "Director of Operations, Quantum Retail",
-              },
-              {
-                quote: "We thought AI was a buzzword until MODUS showed us China's real AI ecosystem. Our customer service response time dropped 80% while satisfaction soared — and our team is now AIGC certified.",
-                author: "James Wong",
-                role: "CEO, NEXA Logistics",
-              },
-            ].map((testimonial, i) => (
+            {t.testimonials.map((testimonial, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -387,17 +507,18 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
-              Ready to Lead Malaysia's <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">AI Revolution?</span>
+              {t.footerTitle}{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                {t.footerTitleHighlight}
+              </span>
             </h2>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              Join the MODUS AI network — certified by MIIT, powered by China's No.1 AI training ecosystem.
-            </p>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{t.footerSubtitle}</p>
             <Link
               href="/details#get-started"
               className="inline-flex items-center gap-2 px-10 py-4 text-lg font-bold rounded-lg border-2 border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,212,255,0.5)]"
               data-testid="footer-cta"
             >
-              Get in Touch <ArrowRight className="w-5 h-5" />
+              {t.footerCta} <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>
         </div>

@@ -3,11 +3,13 @@ import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { BrainCircuit, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLang } from "@/contexts/LanguageContext";
 
 export function Navbar() {
   const [location, setLocation] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { lang, setLang } = useLang();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +25,6 @@ export function Navbar() {
     
     if (location !== "/details") {
       setLocation("/details");
-      // Wait for page transition then scroll
       setTimeout(() => {
         const el = document.getElementById(hash);
         if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -34,12 +35,23 @@ export function Navbar() {
     }
   };
 
-  const navLinks = [
-    { label: "About Us", hash: "about" },
-    { label: "Why Choose Us", hash: "why-choose-us" },
-    { label: "Our Services", hash: "services" },
-    { label: "Our Activities", hash: "activities" },
-  ];
+  const navLinks = lang === "en"
+    ? [
+        { label: "About Us", hash: "about" },
+        { label: "Why Choose Us", hash: "why-choose-us" },
+        { label: "Our Services", hash: "services" },
+        { label: "Our Products", hash: "products" },
+        { label: "Our Activities", hash: "activities" },
+      ]
+    : [
+        { label: "Tentang Kami", hash: "about" },
+        { label: "Mengapa Pilih Kami", hash: "why-choose-us" },
+        { label: "Perkhidmatan", hash: "services" },
+        { label: "Produk Kami", hash: "products" },
+        { label: "Aktiviti Kami", hash: "activities" },
+      ];
+
+  const ctaLabel = lang === "en" ? "Get Started" : "Mulakan";
 
   return (
     <header
@@ -61,7 +73,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.hash}
@@ -73,24 +85,47 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+
+          {/* Language toggle */}
+          <button
+            onClick={() => setLang(lang === "en" ? "bm" : "en")}
+            className="flex items-center gap-1 px-3 py-1 rounded-full border border-white/20 text-xs font-bold tracking-widest text-white/70 hover:border-primary hover:text-primary transition-all duration-200"
+            data-testid="lang-toggle"
+          >
+            <span className={lang === "en" ? "text-primary" : "text-white/40"}>EN</span>
+            <span className="text-white/30 mx-0.5">|</span>
+            <span className={lang === "bm" ? "text-primary" : "text-white/40"}>BM</span>
+          </button>
+
           <a
             href="/details#get-started"
             onClick={(e) => handleNavClick(e, "get-started")}
             className="relative px-6 py-2 rounded-md bg-primary/10 text-primary font-medium border border-primary/50 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,212,255,0.6)]"
             data-testid="nav-cta-get-started"
           >
-            Get Started
+            {ctaLabel}
           </a>
         </nav>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-foreground p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          data-testid="button-mobile-menu"
-        >
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </button>
+        {/* Mobile: language toggle + hamburger */}
+        <div className="lg:hidden flex items-center gap-3">
+          <button
+            onClick={() => setLang(lang === "en" ? "bm" : "en")}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-full border border-white/20 text-xs font-bold text-white/70 hover:border-primary hover:text-primary transition-all"
+            data-testid="lang-toggle-mobile"
+          >
+            <span className={lang === "en" ? "text-primary" : "text-white/40"}>EN</span>
+            <span className="text-white/30 mx-0.5">|</span>
+            <span className={lang === "bm" ? "text-primary" : "text-white/40"}>BM</span>
+          </button>
+          <button
+            className="text-foreground p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            data-testid="button-mobile-menu"
+          >
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}
@@ -100,7 +135,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-b border-primary/20 overflow-hidden"
+            className="lg:hidden bg-background border-b border-primary/20 overflow-hidden"
           >
             <div className="flex flex-col p-4 gap-4">
               {navLinks.map((link) => (
@@ -118,7 +153,7 @@ export function Navbar() {
                 onClick={(e) => handleNavClick(e, "get-started")}
                 className="text-center mt-4 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold shadow-[0_0_15px_rgba(0,212,255,0.4)]"
               >
-                Get Started
+                {ctaLabel}
               </a>
             </div>
           </motion.div>

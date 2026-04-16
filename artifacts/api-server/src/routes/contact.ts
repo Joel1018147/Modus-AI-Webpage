@@ -40,7 +40,7 @@ router.post("/contact", async (req, res) => {
 
   try {
     const { error } = await resend.emails.send({
-      from: "MODUS AI Contact Form <onboarding@resend.dev>",
+      from: "MODUS AI Associates <admin@modusaiassociates.com>",
       to: [RECIPIENT],
       replyTo: cleanEmail,
       subject: `New Enquiry from ${cleanName}${cleanCompany ? ` — ${cleanCompany}` : ""}`,

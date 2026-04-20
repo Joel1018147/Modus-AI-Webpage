@@ -15,6 +15,7 @@ import uniImg from "@assets/image_1775813041771.png";
 import southOceanImg from "@assets/WhatsApp_Image_2026-04-20_at_7.10.47_PM_1776706993328.jpeg";
 import unitenImg from "@assets/WhatsApp_Image_2026-04-20_at_7.13.18_PM_1776707157909.jpeg";
 import uulianTotalImg from "@assets/WhatsApp_Image_2026-04-20_at_7.15.54_PM_1776707269685.jpeg";
+import uulianTotal2Img from "@assets/WhatsApp_Image_2026-04-20_at_7.23.19_PM_1776707338608.jpeg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -183,6 +184,7 @@ const detailsContent = {
         { img: southOceanImg, caption: "Modus AI Associates and South Ocean Technology Sdn Bhd partnership signing — CEO Dato' Dr. Tan BN with CEO Kelvin Lee, 4 June 2026." },
         { img: unitenImg, caption: "Modus AI Associates collaboration with UNITEN (Universiti Tenaga Nasional) — The Energy University." },
         { img: uulianTotalImg, caption: "Xiamen UULIAN GM visiting MODUS Partner Total International Associates." },
+        { img: uulianTotal2Img, caption: "Xiamen UULIAN GM visiting MODUS Partner Total International Associates." },
       ],
     },
     socials: {
@@ -392,6 +394,7 @@ const detailsContent = {
         { img: southOceanImg, caption: "Majlis Penandatanganan Perkongsian antara Modus AI Associates dan South Ocean Technology Sdn Bhd — CEO Dato' Dr. Tan BN bersama CEO Kelvin Lee, 4 Jun 2026." },
         { img: unitenImg, caption: "Kerjasama Modus AI Associates dengan UNITEN (Universiti Tenaga Nasional) — The Energy University." },
         { img: uulianTotalImg, caption: "GM Xiamen UULIAN melawat Rakan Kongsi MODUS, Total International Associates." },
+        { img: uulianTotal2Img, caption: "GM Xiamen UULIAN melawat Rakan Kongsi MODUS, Total International Associates." },
       ],
     },
     socials: {

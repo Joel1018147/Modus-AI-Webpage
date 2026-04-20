@@ -13,6 +13,7 @@ import signingImg from "@assets/WhatsApp_Image_2026-04-03_at_5.36.11_PM_17752096
 import coursesImg from "@assets/image_1775812683826.png";
 import uniImg from "@assets/image_1775813041771.png";
 import southOceanImg from "@assets/WhatsApp_Image_2026-04-20_at_7.10.47_PM_1776706993328.jpeg";
+import unitenImg from "@assets/WhatsApp_Image_2026-04-20_at_7.13.18_PM_1776707157909.jpeg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -179,6 +180,7 @@ const detailsContent = {
         { img: coursesImg, caption: "Till June 2025, 5 AI courses were conducted and more to come." },
         { img: uniImg, caption: "Modus AI Associates is rising with cooperations with outstanding Universities & International Schools in Malaysia." },
         { img: southOceanImg, caption: "Modus AI Associates and South Ocean Technology Sdn Bhd partnership signing — CEO Dato' Dr. Tan BN with CEO Kelvin Lee, 4 June 2026." },
+        { img: unitenImg, caption: "Modus AI Associates collaboration with UNITEN (Universiti Tenaga Nasional) — The Energy University." },
       ],
     },
     socials: {
@@ -386,6 +388,7 @@ const detailsContent = {
         { img: coursesImg, caption: "Sehingga Jun 2025, 5 kursus AI telah dijalankan dan lebih banyak akan datang." },
         { img: uniImg, caption: "Modus AI Associates semakin berkembang dengan kerjasama bersama Universiti dan Sekolah Antarabangsa terkemuka di Malaysia." },
         { img: southOceanImg, caption: "Majlis Penandatanganan Perkongsian antara Modus AI Associates dan South Ocean Technology Sdn Bhd — CEO Dato' Dr. Tan BN bersama CEO Kelvin Lee, 4 Jun 2026." },
+        { img: unitenImg, caption: "Kerjasama Modus AI Associates dengan UNITEN (Universiti Tenaga Nasional) — The Energy University." },
       ],
     },
     socials: {

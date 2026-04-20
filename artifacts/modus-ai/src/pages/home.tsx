@@ -13,9 +13,9 @@ import videoCN from "@assets/WhatsApp_Video_2026-04-21_at_2.38.36_AM_17767106032
 
 const VIDEO_BY_LANG: Record<Lang, string> = {
   en: videoEN,
-  bm: videoBM,
-  cn: videoCN,
-  id: videoBM,
+  bm: videoCN,
+  cn: videoBM,
+  id: videoCN,
   vn: videoEN,
   ar: videoEN,
 };

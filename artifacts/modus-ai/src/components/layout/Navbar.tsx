@@ -77,48 +77,29 @@ const NAV_LINKS: Record<Lang, { links: NavLink[]; cta: string }> = {
   },
 };
 
-export function Navbar() {
-  const [location, setLocation] = useLocation();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
-  const langRef = useRef<HTMLDivElement>(null);
-  const { lang, setLang } = useLang();
+type LangDropdownProps = {
+  mobile?: boolean;
+  lang: Lang;
+  setLang: (l: Lang) => void;
+  langOpen: boolean;
+  setLangOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (langRef.current && !langRef.current.contains(e.target as Node)) setLangOpen(false);
-    };
-    if (langOpen) document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [langOpen]);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
-    e.preventDefault();
-    setIsMobileMenuOpen(false);
-    if (location !== "/details") {
-      setLocation("/details");
-      setTimeout(() => {
-        const el = document.getElementById(hash);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    } else {
-      const el = document.getElementById(hash);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const { links: navLinks, cta: ctaLabel } = NAV_LINKS[lang];
+function LangDropdown({ mobile, lang, setLang, langOpen, setLangOpen }: LangDropdownProps) {
+  const ref = useRef<HTMLDivElement>(null);
   const currentLang = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
 
-  const LangDropdown = ({ mobile }: { mobile?: boolean }) => (
-    <div ref={mobile ? undefined : langRef} className="relative">
+  useEffect(() => {
+    if (!langOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setLangOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [langOpen, setLangOpen]);
+
+  return (
+    <div ref={ref} className="relative">
       <button
         onClick={() => setLangOpen((o) => !o)}
         className={cn(
@@ -142,7 +123,8 @@ export function Navbar() {
             {LANGUAGES.map((l) => (
               <button
                 key={l.code}
-                onClick={() => {
+                onMouseDown={(e) => {
+                  e.preventDefault();
                   setLang(l.code);
                   setLangOpen(false);
                 }}
@@ -166,6 +148,37 @@ export function Navbar() {
       </AnimatePresence>
     </div>
   );
+}
+
+export function Navbar() {
+  const [location, setLocation] = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const { lang, setLang } = useLang();
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    if (location !== "/details") {
+      setLocation("/details");
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const { links: navLinks, cta: ctaLabel } = NAV_LINKS[lang];
 
   return (
     <header
@@ -199,7 +212,7 @@ export function Navbar() {
             </a>
           ))}
 
-          <LangDropdown />
+          <LangDropdown lang={lang} setLang={setLang} langOpen={langOpen} setLangOpen={setLangOpen} />
 
           <a
             href="/details#get-started"
@@ -213,7 +226,7 @@ export function Navbar() {
 
         {/* Mobile: language dropdown + hamburger */}
         <div className="lg:hidden flex items-center gap-3">
-          <LangDropdown mobile />
+          <LangDropdown mobile lang={lang} setLang={setLang} langOpen={langOpen} setLangOpen={setLangOpen} />
           <button
             className="text-foreground p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

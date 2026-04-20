@@ -43,7 +43,7 @@ const content = {
     statsTitleHighlight: "Impact",
     statsSubtitle: "Backed by China's largest AI training network — 2,600 universities, 300,000+ certified professionals.",
     stats: [
-      { value: "5–10x", label: "Productivity Gain" },
+      { value: "3–10x", label: "Productivity Gain" },
       { value: "300K+", label: "Certified Graduates" },
       { value: "2,600", label: "Partner Universities" },
       { value: "100%", label: "Real-World Application" },
@@ -70,7 +70,7 @@ const content = {
     headlines: [
       "Transform Malaysia's AI Business Capabilities to Global Standards — Powered by China's World-Leading AI Ecosystem",
       "Elevate Malaysian Companies to World-Class AI Execution Through Industry-Certified Training and Technology Integration",
-      "Increase Workforce Productivity by 5–10X Through Applied AI Systems and Automation",
+      "Increase Workforce Productivity by 3–10X Through Applied AI Systems and Automation",
       "Bridge the AI Talent Gap with Real-World Training, Backed by China's No.1 AI Training Institution and MIIT Certification",
       "AI Adoption Is No Longer Optional — It Is the Core Driver of Future Business Survival and Growth",
     ],
@@ -97,7 +97,7 @@ const content = {
     statsTitleHighlight: "Terukur",
     statsSubtitle: "Disokong oleh rangkaian latihan AI terbesar China — 2,600 universiti, 300,000+ profesional bersijil.",
     stats: [
-      { value: "5–10x", label: "Peningkatan Produktiviti" },
+      { value: "3–10x", label: "Peningkatan Produktiviti" },
       { value: "300K+", label: "Graduan Bersijil" },
       { value: "2,600", label: "Universiti Rakan" },
       { value: "100%", label: "Aplikasi Dunia Nyata" },
@@ -124,7 +124,7 @@ const content = {
     headlines: [
       "Transformasi Keupayaan Perniagaan AI Malaysia ke Standard Global — Dikuasakan oleh Ekosistem AI Terkemuka Dunia dari China",
       "Tingkatkan Syarikat Malaysia ke Pelaksanaan AI Bertaraf Dunia Melalui Latihan Bersertifikasi dan Integrasi Teknologi",
-      "Tingkatkan Produktiviti Tenaga Kerja 5–10X Melalui Sistem AI Gunaan dan Automasi",
+      "Tingkatkan Produktiviti Tenaga Kerja 3–10X Melalui Sistem AI Gunaan dan Automasi",
       "Hapuskan Jurang Bakat AI dengan Latihan Dunia Nyata, Disokong oleh Institusi Latihan AI No.1 China dan Sijil MIIT",
       "Penggunaan AI Bukan Lagi Pilihan — Ia Adalah Pemacu Utama Kelangsungan dan Pertumbuhan Perniagaan Masa Depan",
     ],
@@ -151,7 +151,7 @@ const content = {
     statsTitleHighlight: "影响",
     statsSubtitle: "由中国最大的AI培训网络支持——2,600所大学，30万+认证专业人员。",
     stats: [
-      { value: "5–10x", label: "生产力提升" },
+      { value: "3–10x", label: "生产力提升" },
       { value: "30万+", label: "认证毕业生" },
       { value: "2,600", label: "合作大学" },
       { value: "100%", label: "真实场景应用" },
@@ -197,7 +197,7 @@ const content = {
     statsTitleHighlight: "Terukur",
     statsSubtitle: "Didukung oleh jaringan pelatihan AI terbesar Tiongkok — 2.600 universitas, 300.000+ profesional tersertifikasi.",
     stats: [
-      { value: "5–10x", label: "Peningkatan Produktivitas" },
+      { value: "3–10x", label: "Peningkatan Produktivitas" },
       { value: "300K+", label: "Lulusan Tersertifikasi" },
       { value: "2.600", label: "Universitas Mitra" },
       { value: "100%", label: "Penerapan Dunia Nyata" },
@@ -216,7 +216,7 @@ const content = {
     headlines: [
       "Transformasikan Kemampuan Bisnis AI Malaysia ke Standar Global — Didukung Ekosistem AI Terdepan Dunia milik Tiongkok",
       "Angkat Perusahaan Malaysia ke Eksekusi AI Kelas Dunia Melalui Pelatihan Tersertifikasi Industri dan Integrasi Teknologi",
-      "Tingkatkan Produktivitas Tenaga Kerja 5–10X Melalui Sistem AI Terapan dan Otomatisasi",
+      "Tingkatkan Produktivitas Tenaga Kerja 3–10X Melalui Sistem AI Terapan dan Otomatisasi",
       "Jembatani Kesenjangan Talenta AI dengan Pelatihan Dunia Nyata, Didukung oleh Lembaga Pelatihan AI No.1 Tiongkok dan Sertifikasi MIIT",
       "Adopsi AI Bukan Lagi Pilihan — Ini adalah Pendorong Utama Kelangsungan dan Pertumbuhan Bisnis Masa Depan",
     ],
@@ -243,7 +243,7 @@ const content = {
     statsTitleHighlight: "Có Thể Đo Lường",
     statsSubtitle: "Được hỗ trợ bởi mạng lưới đào tạo AI lớn nhất Trung Quốc — 2.600 trường đại học, 300.000+ chuyên gia được chứng nhận.",
     stats: [
-      { value: "5–10x", label: "Tăng Năng Suất" },
+      { value: "3–10x", label: "Tăng Năng Suất" },
       { value: "300K+", label: "Sinh Viên Tốt Nghiệp Có Chứng Chỉ" },
       { value: "2.600", label: "Trường Đại Học Đối Tác" },
       { value: "100%", label: "Ứng Dụng Thực Tế" },
@@ -289,7 +289,7 @@ const content = {
     statsTitleHighlight: "قابل للقياس",
     statsSubtitle: "مدعومة بأكبر شبكة تدريب AI في الصين — 2,600 جامعة، 300,000+ محترف معتمد.",
     stats: [
-      { value: "5–10x", label: "زيادة الإنتاجية" },
+      { value: "3–10x", label: "زيادة الإنتاجية" },
       { value: "300K+", label: "خريجون معتمدون" },
       { value: "2,600", label: "جامعة شريكة" },
       { value: "100%", label: "تطبيق العالم الحقيقي" },

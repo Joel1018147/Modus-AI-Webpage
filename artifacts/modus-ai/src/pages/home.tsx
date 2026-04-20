@@ -4,9 +4,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
   ArrowRight, BarChart3, Brain, Cpu, Globe,
-  Network, ShieldCheck, Zap, Award, Users, Play, ExternalLink, GraduationCap
+  Network, ShieldCheck, Zap, Award, Users, Play, GraduationCap
 } from "lucide-react";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang, type Lang } from "@/contexts/LanguageContext";
+import videoEN from "@assets/Modus_AI_Associates_Empowering_the_Future_with_AI_(1)_1776710555170.mp4";
+import videoBM from "@assets/WhatsApp_Video_2026-04-21_at_2.38.14_AM_1776710603263.mp4";
+import videoCN from "@assets/WhatsApp_Video_2026-04-21_at_2.38.36_AM_1776710603263.mp4";
+
+const VIDEO_BY_LANG: Record<Lang, string> = {
+  en: videoEN,
+  bm: videoBM,
+  cn: videoCN,
+  id: videoBM,
+  vn: videoEN,
+  ar: videoEN,
+};
 
 const content = {
   en: {
@@ -26,24 +38,7 @@ const content = {
     ],
     videoTitle: "AI Transformation",
     videoTitleHighlight: "in Action",
-    videoSubtitle: "See real results from real businesses — powered by China's world-leading AI ecosystem and MIIT-certified training.",
-    videos: [
-      {
-        id: "dQw4w9WgXcQ",
-        title: "AI Transformation in Malaysian E-Commerce",
-        desc: "Watch how MODUS AI helped a leading Malaysian retailer automate operations and achieve 8x productivity.",
-      },
-      {
-        id: "jNQXAC9IVRw",
-        title: "China's AI Ecosystem — Powering ASEAN Businesses",
-        desc: "An inside look at the world-class AI training infrastructure behind our certification programmes.",
-      },
-      {
-        id: "M7lc1UVf-VE",
-        title: "MIIT AIGC Certification: What It Means for Your Business",
-        desc: "Understand why MIIT-certified AI talent gives Malaysian companies a decisive competitive edge.",
-      },
-    ],
+    videoSubtitle: "Empowering the Future with AI",
     statsTitle: "Measurable",
     statsTitleHighlight: "Impact",
     statsSubtitle: "Backed by China's largest AI training network — 2,600 universities, 300,000+ certified professionals.",
@@ -97,24 +92,7 @@ const content = {
     ],
     videoTitle: "Transformasi AI",
     videoTitleHighlight: "dalam Tindakan",
-    videoSubtitle: "Lihat keputusan sebenar daripada perniagaan sebenar — dikuasakan oleh ekosistem AI terkemuka dunia China dan latihan bertauliah MIIT.",
-    videos: [
-      {
-        id: "dQw4w9WgXcQ",
-        title: "Transformasi AI dalam E-Dagang Malaysia",
-        desc: "Lihat bagaimana MODUS AI membantu peruncit terkemuka Malaysia mengautomasikan operasi dan mencapai produktiviti 8x.",
-      },
-      {
-        id: "jNQXAC9IVRw",
-        title: "Ekosistem AI China — Memperkasa Perniagaan ASEAN",
-        desc: "Pandangan dalaman tentang infrastruktur latihan AI bertaraf dunia di sebalik program sijil kami.",
-      },
-      {
-        id: "M7lc1UVf-VE",
-        title: "Sijil AIGC MIIT: Maknanya untuk Perniagaan Anda",
-        desc: "Fahami mengapa bakat AI bertauliah MIIT memberikan kelebihan daya saing yang kukuh kepada syarikat Malaysia.",
-      },
-    ],
+    videoSubtitle: "Memperkasakan Masa Depan dengan AI",
     statsTitle: "Impak",
     statsTitleHighlight: "Terukur",
     statsSubtitle: "Disokong oleh rangkaian latihan AI terbesar China — 2,600 universiti, 300,000+ profesional bersijil.",
@@ -168,12 +146,7 @@ const content = {
     ],
     videoTitle: "AI 转型",
     videoTitleHighlight: "实战中",
-    videoSubtitle: "见证真实企业的真实成果——由中国世界领先的AI生态系统和MIIT认证培训提供动力。",
-    videos: [
-      { id: "dQw4w9WgXcQ", title: "马来西亚电商中的AI转型", desc: "看MODUS AI如何帮助马来西亚领先零售商自动化运营，实现8倍生产力。" },
-      { id: "jNQXAC9IVRw", title: "中国AI生态系统——赋能东盟商业", desc: "深入了解我们认证项目背后的世界级AI培训基础设施。" },
-      { id: "M7lc1UVf-VE", title: "MIIT AIGC 认证：对您业务意味着什么", desc: "了解为什么MIIT认证的AI人才能为马来西亚公司带来决定性的竞争优势。" },
-    ],
+    videoSubtitle: "用 AI 赋能未来",
     statsTitle: "可衡量的",
     statsTitleHighlight: "影响",
     statsSubtitle: "由中国最大的AI培训网络支持——2,600所大学，30万+认证专业人员。",
@@ -219,12 +192,7 @@ const content = {
     ],
     videoTitle: "Transformasi AI",
     videoTitleHighlight: "dalam Aksi",
-    videoSubtitle: "Lihat hasil nyata dari bisnis nyata — didukung oleh ekosistem AI terdepan dunia milik Tiongkok dan pelatihan tersertifikasi MIIT.",
-    videos: [
-      { id: "dQw4w9WgXcQ", title: "Transformasi AI di E-Commerce Malaysia", desc: "Tonton bagaimana MODUS AI membantu peritel terkemuka Malaysia mengotomatiskan operasi dan mencapai produktivitas 8x." },
-      { id: "jNQXAC9IVRw", title: "Ekosistem AI Tiongkok — Memberdayakan Bisnis ASEAN", desc: "Pandangan mendalam tentang infrastruktur pelatihan AI kelas dunia di balik program sertifikasi kami." },
-      { id: "M7lc1UVf-VE", title: "Sertifikasi AIGC MIIT: Apa Artinya bagi Bisnis Anda", desc: "Pahami mengapa talenta AI tersertifikasi MIIT memberikan keunggulan kompetitif yang menentukan bagi perusahaan Malaysia." },
-    ],
+    videoSubtitle: "Memberdayakan Masa Depan dengan AI",
     statsTitle: "Dampak",
     statsTitleHighlight: "Terukur",
     statsSubtitle: "Didukung oleh jaringan pelatihan AI terbesar Tiongkok — 2.600 universitas, 300.000+ profesional tersertifikasi.",
@@ -270,12 +238,7 @@ const content = {
     ],
     videoTitle: "Chuyển Đổi AI",
     videoTitleHighlight: "Trong Hành Động",
-    videoSubtitle: "Xem kết quả thực sự từ doanh nghiệp thực — được hỗ trợ bởi hệ sinh thái AI hàng đầu thế giới của Trung Quốc và đào tạo được chứng nhận MIIT.",
-    videos: [
-      { id: "dQw4w9WgXcQ", title: "Chuyển Đổi AI trong Thương Mại Điện Tử Malaysia", desc: "Xem MODUS AI đã giúp nhà bán lẻ hàng đầu Malaysia tự động hóa hoạt động và đạt năng suất 8 lần như thế nào." },
-      { id: "jNQXAC9IVRw", title: "Hệ Sinh Thái AI Trung Quốc — Tiếp Sức cho Doanh Nghiệp ASEAN", desc: "Cái nhìn từ bên trong về cơ sở hạ tầng đào tạo AI đẳng cấp thế giới đằng sau các chương trình chứng nhận của chúng tôi." },
-      { id: "M7lc1UVf-VE", title: "Chứng Nhận AIGC MIIT: Ý Nghĩa với Doanh Nghiệp của Bạn", desc: "Hiểu tại sao nhân tài AI được chứng nhận MIIT mang lại lợi thế cạnh tranh quyết định cho các công ty Malaysia." },
-    ],
+    videoSubtitle: "Trao Quyền cho Tương Lai bằng AI",
     statsTitle: "Tác Động",
     statsTitleHighlight: "Có Thể Đo Lường",
     statsSubtitle: "Được hỗ trợ bởi mạng lưới đào tạo AI lớn nhất Trung Quốc — 2.600 trường đại học, 300.000+ chuyên gia được chứng nhận.",
@@ -321,12 +284,7 @@ const content = {
     ],
     videoTitle: "تحول الذكاء الاصطناعي",
     videoTitleHighlight: "في العمل",
-    videoSubtitle: "شاهد نتائج حقيقية من شركات حقيقية — مدعومة بمنظومة AI الرائدة عالمياً في الصين والتدريب المعتمد من MIIT.",
-    videos: [
-      { id: "dQw4w9WgXcQ", title: "تحول الذكاء الاصطناعي في التجارة الإلكترونية الماليزية", desc: "شاهد كيف ساعد MODUS AI تاجر تجزئة ماليزي رائد على أتمتة العمليات وتحقيق إنتاجية 8 أضعاف." },
-      { id: "jNQXAC9IVRw", title: "منظومة AI الصينية — تمكين أعمال آسيان", desc: "نظرة من الداخل على البنية التحتية للتدريب على AI من الطراز العالمي وراء برامج الاعتماد لدينا." },
-      { id: "M7lc1UVf-VE", title: "اعتماد AIGC من MIIT: ماذا يعني لعملك", desc: "افهم لماذا يمنح المواهب AI المعتمدة من MIIT الشركات الماليزية ميزة تنافسية حاسمة." },
-    ],
+    videoSubtitle: "تمكين المستقبل بالذكاء الاصطناعي",
     statsTitle: "تأثير",
     statsTitleHighlight: "قابل للقياس",
     statsSubtitle: "مدعومة بأكبر شبكة تدريب AI في الصين — 2,600 جامعة، 300,000+ محترف معتمد.",
@@ -382,7 +340,12 @@ export default function Home() {
   const t = content[lang];
 
   const [headlineIndex, setHeadlineIndex] = useState(0);
-  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoSrc = VIDEO_BY_LANG[lang];
+
+  useEffect(() => {
+    setIsVideoPlaying(false);
+  }, [lang]);
 
   useEffect(() => {
     setHeadlineIndex(0);
@@ -565,59 +528,48 @@ export default function Home() {
             <p className="text-muted-foreground max-w-2xl mx-auto">{t.videoSubtitle}</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.videos.map((video, i) => (
-              <motion.div
-                key={video.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="group rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,158,46,0.15)] bg-background flex flex-col"
-              >
-                <div className="relative aspect-video bg-black overflow-hidden">
-                  {playingVideo === i ? (
-                    <iframe
-                      src={`https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0`}
-                      title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="absolute inset-0 w-full h-full"
-                      data-testid={`video-embed-${i}`}
-                    />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20" />
-                      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px]" />
-                      <button
-                        onClick={() => setPlayingVideo(i)}
-                        data-testid={`video-play-${i}`}
-                        className="relative z-10 w-16 h-16 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/40 group-hover:shadow-[0_0_30px_rgba(212,158,46,0.6)]"
-                      >
-                        <Play className="w-6 h-6 text-primary ml-1" />
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="font-display font-bold text-lg text-white mb-2 group-hover:text-primary transition-colors duration-300">
-                    {video.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground flex-1">{video.desc}</p>
-                  <a
-                    href={`https://www.youtube.com/watch?v=${video.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    data-testid={`video-link-${i}`}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto group rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(212,158,46,0.2)] bg-background"
+          >
+            <div className="relative aspect-video bg-black overflow-hidden">
+              {isVideoPlaying ? (
+                <video
+                  key={videoSrc}
+                  src={videoSrc}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-contain bg-black"
+                  data-testid="video-player"
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <video
+                    key={`${videoSrc}-poster`}
+                    src={videoSrc}
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="absolute inset-0 w-full h-full object-cover opacity-50"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background/40 to-secondary/20" />
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px]" />
+                  <button
+                    onClick={() => setIsVideoPlaying(true)}
+                    data-testid="video-play"
+                    aria-label="Play video"
+                    className="relative z-10 w-20 h-20 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/40 group-hover:shadow-[0_0_40px_rgba(212,158,46,0.7)]"
                   >
-                    Watch on YouTube <ExternalLink className="w-3 h-3" />
-                  </a>
+                    <Play className="w-8 h-8 text-primary ml-1" />
+                  </button>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              )}
+            </div>
+          </motion.div>
         </div>
         <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
       </section>

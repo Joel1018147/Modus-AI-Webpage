@@ -1,29 +1,107 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang, LANGUAGES, type Lang } from "@/contexts/LanguageContext";
 import modusLogo from "@assets/image_(3)_1776329371189.png";
+
+type NavLink = { label: string; hash: string };
+
+const NAV_LINKS: Record<Lang, { links: NavLink[]; cta: string }> = {
+  en: {
+    links: [
+      { label: "About Us", hash: "about" },
+      { label: "Why Choose Us", hash: "why-choose-us" },
+      { label: "Our Services", hash: "services" },
+      { label: "Our Courses", hash: "courses" },
+      { label: "Our Activities", hash: "activities" },
+      { label: "Our Socials", hash: "socials" },
+    ],
+    cta: "Get Started",
+  },
+  bm: {
+    links: [
+      { label: "Tentang Kami", hash: "about" },
+      { label: "Mengapa Pilih Kami", hash: "why-choose-us" },
+      { label: "Perkhidmatan", hash: "services" },
+      { label: "Kursus Kami", hash: "courses" },
+      { label: "Aktiviti Kami", hash: "activities" },
+      { label: "Sosial Kami", hash: "socials" },
+    ],
+    cta: "Mulakan",
+  },
+  cn: {
+    links: [
+      { label: "关于我们", hash: "about" },
+      { label: "为何选择我们", hash: "why-choose-us" },
+      { label: "我们的服务", hash: "services" },
+      { label: "我们的课程", hash: "courses" },
+      { label: "我们的活动", hash: "activities" },
+      { label: "社交媒体", hash: "socials" },
+    ],
+    cta: "立即开始",
+  },
+  id: {
+    links: [
+      { label: "Tentang Kami", hash: "about" },
+      { label: "Mengapa Memilih Kami", hash: "why-choose-us" },
+      { label: "Layanan Kami", hash: "services" },
+      { label: "Kursus Kami", hash: "courses" },
+      { label: "Aktivitas Kami", hash: "activities" },
+      { label: "Media Sosial", hash: "socials" },
+    ],
+    cta: "Mulai Sekarang",
+  },
+  vn: {
+    links: [
+      { label: "Về Chúng Tôi", hash: "about" },
+      { label: "Tại Sao Chọn Chúng Tôi", hash: "why-choose-us" },
+      { label: "Dịch Vụ", hash: "services" },
+      { label: "Khóa Học", hash: "courses" },
+      { label: "Hoạt Động", hash: "activities" },
+      { label: "Mạng Xã Hội", hash: "socials" },
+    ],
+    cta: "Bắt Đầu",
+  },
+  ar: {
+    links: [
+      { label: "من نحن", hash: "about" },
+      { label: "لماذا تختارنا", hash: "why-choose-us" },
+      { label: "خدماتنا", hash: "services" },
+      { label: "دوراتنا", hash: "courses" },
+      { label: "أنشطتنا", hash: "activities" },
+      { label: "وسائل التواصل", hash: "socials" },
+    ],
+    cta: "ابدأ الآن",
+  },
+};
 
 export function Navbar() {
   const [location, setLocation] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
   const { lang, setLang } = useLang();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) setLangOpen(false);
+    };
+    if (langOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [langOpen]);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    
     if (location !== "/details") {
       setLocation("/details");
       setTimeout(() => {
@@ -36,25 +114,58 @@ export function Navbar() {
     }
   };
 
-  const navLinks = lang === "en"
-    ? [
-        { label: "About Us", hash: "about" },
-        { label: "Why Choose Us", hash: "why-choose-us" },
-        { label: "Our Services", hash: "services" },
-        { label: "Our Courses", hash: "courses" },
-        { label: "Our Activities", hash: "activities" },
-        { label: "Our Socials", hash: "socials" },
-      ]
-    : [
-        { label: "Tentang Kami", hash: "about" },
-        { label: "Mengapa Pilih Kami", hash: "why-choose-us" },
-        { label: "Perkhidmatan", hash: "services" },
-        { label: "Kursus Kami", hash: "courses" },
-        { label: "Aktiviti Kami", hash: "activities" },
-        { label: "Sosial Kami", hash: "socials" },
-      ];
+  const { links: navLinks, cta: ctaLabel } = NAV_LINKS[lang];
+  const currentLang = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
 
-  const ctaLabel = lang === "en" ? "Get Started" : "Mulakan";
+  const LangDropdown = ({ mobile }: { mobile?: boolean }) => (
+    <div ref={mobile ? undefined : langRef} className="relative">
+      <button
+        onClick={() => setLangOpen((o) => !o)}
+        className={cn(
+          "flex items-center gap-1.5 rounded-full border border-white/20 font-bold text-white/80 hover:border-primary hover:text-primary transition-all",
+          mobile ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-xs tracking-wider"
+        )}
+        data-testid={mobile ? "lang-toggle-mobile" : "lang-toggle"}
+      >
+        <span className="text-primary">{currentLang.label}</span>
+        <ChevronDown className={cn("w-3 h-3 transition-transform", langOpen && "rotate-180")} />
+      </button>
+      <AnimatePresence>
+        {langOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.96 }}
+            transition={{ duration: 0.15 }}
+            className="absolute right-0 mt-2 w-44 rounded-lg bg-card border border-primary/30 shadow-xl shadow-black/40 overflow-hidden z-50"
+          >
+            {LANGUAGES.map((l) => (
+              <button
+                key={l.code}
+                onClick={() => {
+                  setLang(l.code);
+                  setLangOpen(false);
+                }}
+                className={cn(
+                  "w-full flex items-center justify-between px-3 py-2 text-sm text-left transition-colors",
+                  l.code === lang
+                    ? "bg-primary/10 text-primary"
+                    : "text-foreground/80 hover:bg-primary/5 hover:text-primary"
+                )}
+                data-testid={`lang-option-${l.code}`}
+              >
+                <span className="flex items-center gap-2">
+                  <span className="font-bold w-7">{l.label}</span>
+                  <span className={cn("text-xs opacity-80", l.rtl && "font-arabic")}>{l.native}</span>
+                </span>
+                {l.code === lang && <Check className="w-3.5 h-3.5" />}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 
   return (
     <header
@@ -88,16 +199,7 @@ export function Navbar() {
             </a>
           ))}
 
-          {/* Language toggle */}
-          <button
-            onClick={() => setLang(lang === "en" ? "bm" : "en")}
-            className="flex items-center gap-1 px-3 py-1 rounded-full border border-white/20 text-xs font-bold tracking-widest text-white/70 hover:border-primary hover:text-primary transition-all duration-200"
-            data-testid="lang-toggle"
-          >
-            <span className={lang === "en" ? "text-primary" : "text-white/40"}>EN</span>
-            <span className="text-white/30 mx-0.5">|</span>
-            <span className={lang === "bm" ? "text-primary" : "text-white/40"}>BM</span>
-          </button>
+          <LangDropdown />
 
           <a
             href="/details#get-started"
@@ -109,17 +211,9 @@ export function Navbar() {
           </a>
         </nav>
 
-        {/* Mobile: language toggle + hamburger */}
+        {/* Mobile: language dropdown + hamburger */}
         <div className="lg:hidden flex items-center gap-3">
-          <button
-            onClick={() => setLang(lang === "en" ? "bm" : "en")}
-            className="flex items-center gap-1 px-2.5 py-1 rounded-full border border-white/20 text-xs font-bold text-white/70 hover:border-primary hover:text-primary transition-all"
-            data-testid="lang-toggle-mobile"
-          >
-            <span className={lang === "en" ? "text-primary" : "text-white/40"}>EN</span>
-            <span className="text-white/30 mx-0.5">|</span>
-            <span className={lang === "bm" ? "text-primary" : "text-white/40"}>BM</span>
-          </button>
+          <LangDropdown mobile />
           <button
             className="text-foreground p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

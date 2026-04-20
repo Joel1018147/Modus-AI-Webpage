@@ -553,7 +553,8 @@ export default function Details() {
               <p>
                 {t.about.p2Prefix}
                 <strong className="text-primary">{t.about.p2Bold}</strong>,{" "}
-                <a href="https://www.ITCast.cn" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors">www.ITCast.cn</a>
+                <a href="https://www.ITCast.cn" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors">www.ITCast.cn</a>,{" "}
+                <a href="https://www.uulian.com" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors">www.uulian.com</a>
                 {t.about.p2Suffix}
               </p>
               <p>

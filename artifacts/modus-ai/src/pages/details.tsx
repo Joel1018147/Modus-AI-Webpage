@@ -44,9 +44,9 @@ const detailsContent = {
       p5Bold: "Our mission:",
       p5: " Elevate every Malaysian company to compete on the world stage using applied, certified AI execution — powered by China's proven ecosystem.",
       badges: [
-        { label: "MIIT Certified", sub: "Ministry of Industry & IT, China" },
+        { label: "MIIT Certified", sub: "Ministry of Industry and Information Technology of the People's Republic of China" },
         { label: "China AI Ecosystem", sub: "No.1 Training Institution Partner" },
-        { label: "800,000+ Graduates", sub: "Across 2,600 partner universities" },
+        { label: "2,600 Partner Universities", sub: "300,000+ Graduates" },
       ],
     },
     why: {
@@ -58,7 +58,7 @@ const detailsContent = {
         { accent: "secondary", text: "Proven ecosystem: 2,600 universities, 300,000+ certified students across Asia" },
         { accent: "primary", text: "Real business application and automation systems — not academic theory" },
         { accent: "secondary", text: "Strong government alignment — TVET integration and national AI policy compliance" },
-        { accent: "primary", text: "5–10x productivity improvements proven across manufacturing, retail, and logistics" },
+        { accent: "primary", text: "3–10x productivity improvements proven across manufacturing, retail, and logistics" },
       ],
     },
     services: {
@@ -254,9 +254,9 @@ const detailsContent = {
       p5Bold: "Misi kami:",
       p5: " Meningkatkan taraf setiap syarikat Malaysia untuk bersaing di pentas dunia menggunakan pelaksanaan AI yang bertauliah dan praktikal — dikuasakan oleh ekosistem terbukti dari China.",
       badges: [
-        { label: "Bertauliah MIIT", sub: "Kementerian Industri & IT, China" },
+        { label: "Bertauliah MIIT", sub: "Kementerian Perindustrian dan Teknologi Maklumat Republik Rakyat China" },
         { label: "Ekosistem AI China", sub: "Rakan Institusi Latihan No.1" },
-        { label: "800,000+ Graduan", sub: "Merentasi 2,600 universiti rakan" },
+        { label: "2,600 Universiti Rakan", sub: "300,000+ Graduan" },
       ],
     },
     why: {
@@ -268,7 +268,7 @@ const detailsContent = {
         { accent: "secondary", text: "Ekosistem terbukti: 2,600 universiti, 300,000+ pelajar bersijil di seluruh Asia" },
         { accent: "primary", text: "Aplikasi perniagaan sebenar dan sistem automasi — bukan teori akademik" },
         { accent: "secondary", text: "Penjajaran kerajaan yang kukuh — integrasi TVET dan pematuhan dasar AI nasional" },
-        { accent: "primary", text: "Peningkatan produktiviti 5–10x terbukti dalam pembuatan, runcit, dan logistik" },
+        { accent: "primary", text: "Peningkatan produktiviti 3–10x terbukti dalam pembuatan, runcit, dan logistik" },
       ],
     },
     services: {

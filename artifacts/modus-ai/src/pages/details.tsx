@@ -16,6 +16,7 @@ import southOceanImg from "@assets/WhatsApp_Image_2026-04-20_at_7.10.47_PM_17767
 import unitenImg from "@assets/WhatsApp_Image_2026-04-20_at_7.13.18_PM_1776707157909.jpeg";
 import uulianTotalImg from "@assets/WhatsApp_Image_2026-04-20_at_7.15.54_PM_1776707269685.jpeg";
 import uulianTotal2Img from "@assets/WhatsApp_Image_2026-04-20_at_7.23.19_PM_1776707338608.jpeg";
+import ribbonGovernorImg from "@assets/image_(4)_1776830597088.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -32,6 +33,7 @@ const detailsContent = {
     about: {
       title: "About",
       titleHighlight: "Us",
+      ribbonCaption: "MODUS AI Associates ribbon-cutting ceremony witnessed by the 8th Penang Governor, Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak.",
       p1: "MODUS AI Associates is Malaysia's gateway to China's world-class AI ecosystem — bridging ASEAN's rapidly growing AI talent gap through certified, practical training and real-world implementation.",
       p2Prefix: "We are officially partnered with ",
       p2Bold: "China's No.1 AI Training Institution",
@@ -242,6 +244,7 @@ const detailsContent = {
     about: {
       title: "Tentang",
       titleHighlight: "Kami",
+      ribbonCaption: "Majlis perasmian MODUS AI Associates yang disaksikan oleh Yang Dipertua Negeri Pulau Pinang ke-8, Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak.",
       p1: "MODUS AI Associates ialah pintu gerbang Malaysia ke ekosistem AI bertaraf dunia dari China — merapatkan jurang bakat AI yang semakin melebar di ASEAN melalui latihan dan pelaksanaan praktikal yang bertauliah.",
       p2Prefix: "Kami secara rasmi bermitra dengan ",
       p2Bold: "Institusi Latihan AI No.1 China",
@@ -451,6 +454,7 @@ const detailsContent = {
     backToHome: "返回首页",
     about: {
       title: "关于", titleHighlight: "我们",
+      ribbonCaption: "MODUS AI Associates 剪彩仪式，由槟城州第八任州元首敦拿督斯里乌达玛阿末·富兹·阿都·拉萨（Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak）见证。",
       p1: "MODUS AI Associates 是马来西亚通往中国世界级人工智能生态系统的门户——通过认证的实战培训和真实落地实施，弥合东盟快速增长的人工智能人才缺口。",
       p2Prefix: "我们正式与 ", p2Bold: "中国第一AI培训机构", p2Suffix: " 建立合作——以全球领先的先进技术企业赋能马来西亚商业。",
       p3Prefix: "我们的项目获得 ", p3Bold: "中华人民共和国工业和信息化部（MIIT）", p3Suffix: " 认证——AI认证的黄金标准——确保您的团队符合全球基准，而非仅仅本地标准。",
@@ -550,6 +554,7 @@ const detailsContent = {
     backToHome: "Kembali ke Beranda",
     about: {
       title: "Tentang", titleHighlight: "Kami",
+      ribbonCaption: "Upacara pemotongan pita MODUS AI Associates yang disaksikan oleh Gubernur ke-8 Pulau Pinang, Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak.",
       p1: "MODUS AI Associates adalah pintu gerbang Malaysia menuju ekosistem AI kelas dunia milik Tiongkok — menjembatani kesenjangan talenta AI ASEAN yang berkembang pesat melalui pelatihan tersertifikasi yang praktis dan implementasi nyata.",
       p2Prefix: "Kami secara resmi bermitra dengan ", p2Bold: "Lembaga Pelatihan AI No.1 Tiongkok", p2Suffix: " — memberdayakan bisnis Malaysia dengan perusahaan teknologi paling maju di dunia.",
       p3Prefix: "Program kami disertifikasi oleh ", p3Bold: "Kementerian Industri dan Teknologi Informasi Republik Rakyat Tiongkok (MIIT)", p3Suffix: " — standar emas dalam sertifikasi AI — memastikan tenaga kerja Anda memenuhi tolok ukur global, bukan hanya lokal.",
@@ -649,6 +654,7 @@ const detailsContent = {
     backToHome: "Về Trang Chủ",
     about: {
       title: "Về", titleHighlight: "Chúng Tôi",
+      ribbonCaption: "Lễ cắt băng khánh thành MODUS AI Associates với sự chứng kiến của Thống đốc Penang thứ 8, Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak.",
       p1: "MODUS AI Associates là cánh cửa của Malaysia tới hệ sinh thái AI đẳng cấp thế giới của Trung Quốc — kết nối khoảng cách nhân tài AI đang tăng nhanh tại ASEAN thông qua đào tạo thực tiễn được chứng nhận và triển khai trong thực tế.",
       p2Prefix: "Chúng tôi chính thức hợp tác với ", p2Bold: "Học Viện Đào Tạo AI Số 1 Trung Quốc", p2Suffix: " — tiếp sức cho doanh nghiệp Malaysia bằng các công ty công nghệ tiên tiến hàng đầu thế giới.",
       p3Prefix: "Các chương trình của chúng tôi được chứng nhận bởi ", p3Bold: "Bộ Công Nghiệp và Công Nghệ Thông Tin Cộng Hòa Nhân Dân Trung Hoa (MIIT)", p3Suffix: " — tiêu chuẩn vàng trong chứng nhận AI — đảm bảo lực lượng lao động của bạn đạt chuẩn toàn cầu, không chỉ trong nước.",
@@ -748,6 +754,7 @@ const detailsContent = {
     backToHome: "العودة إلى الرئيسية",
     about: {
       title: "من", titleHighlight: "نحن",
+      ribbonCaption: "حفل قص الشريط لشركة MODUS AI Associates بحضور حاكم بينانغ الثامن، تون داتو سري أوتاما أحمد فوزي عبد الرزاق.",
       p1: "MODUS AI Associates هي بوابة ماليزيا إلى منظومة الذكاء الاصطناعي العالمية في الصين — وتعمل على سد فجوة المواهب المتنامية في مجال الذكاء الاصطناعي في آسيان من خلال التدريب العملي المعتمد والتنفيذ في العالم الحقيقي.",
       p2Prefix: "نحن شركاء رسميون مع ", p2Bold: "مؤسسة التدريب على الذكاء الاصطناعي رقم 1 في الصين", p2Suffix: " — لتمكين الشركات الماليزية بأكبر شركات التكنولوجيا المتقدمة في العالم.",
       p3Prefix: "برامجنا معتمدة من ", p3Bold: "وزارة الصناعة وتكنولوجيا المعلومات في جمهورية الصين الشعبية (MIIT)", p3Suffix: " — المعيار الذهبي في اعتماد الذكاء الاصطناعي — مما يضمن أن قوتك العاملة تلبي المعايير العالمية، وليس المحلية فقط.",
@@ -944,6 +951,24 @@ export default function Details() {
           viewport={{ once: true, margin: "-100px" }}
           className="scroll-mt-32"
         >
+          <motion.figure
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mb-12 rounded-3xl overflow-hidden border border-primary/30 bg-card shadow-[0_0_50px_rgba(212,158,46,0.15)] hover:shadow-[0_0_60px_rgba(212,158,46,0.25)] transition-shadow duration-500"
+          >
+            <img
+              src={ribbonGovernorImg}
+              alt={t.about.ribbonCaption}
+              className="w-full h-auto object-contain bg-black"
+              data-testid="img-ribbon-governor"
+            />
+            <figcaption className="px-6 md:px-10 py-5 text-center text-sm md:text-base text-muted-foreground border-t border-primary/20 bg-gradient-to-b from-primary/5 to-transparent">
+              {t.about.ribbonCaption}
+            </figcaption>
+          </motion.figure>
+
           <div className="flex items-center gap-4 mb-8">
             <div className="h-1 w-12 bg-primary" />
             <h2 className="text-4xl md:text-5xl font-display font-bold">

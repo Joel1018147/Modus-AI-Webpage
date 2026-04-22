@@ -416,7 +416,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setHeadlineIndex((prev) => (prev + 1) % t.headlines.length);
-    }, 4000);
+    }, 8000);
     return () => clearInterval(timer);
   }, [t.headlines.length]);
 

@@ -17,6 +17,7 @@ import unitenImg from "@assets/WhatsApp_Image_2026-04-20_at_7.13.18_PM_177670715
 import uulianTotalImg from "@assets/WhatsApp_Image_2026-04-20_at_7.15.54_PM_1776707269685.jpeg";
 import uulianTotal2Img from "@assets/WhatsApp_Image_2026-04-20_at_7.23.19_PM_1776707338608.jpeg";
 import ribbonGovernorImg from "@assets/image_(4)_nowatermark.png";
+import blnCharityImg from "@assets/charity_1776832653783.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -187,6 +188,7 @@ const detailsContent = {
         { img: unitenImg, caption: "Modus AI Associates collaboration with UNITEN (Universiti Tenaga Nasional) — The Energy University." },
         { img: uulianTotalImg, caption: "Xiamen UULIAN GM visiting MODUS Partner Total International Associates." },
         { img: uulianTotal2Img, caption: "Xiamen UULIAN GM visiting MODUS Partner Total International Associates." },
+        { img: blnCharityImg, caption: "Modus AI Associates participation in BLN 7th Charity Night." },
       ],
     },
     socials: {
@@ -398,6 +400,7 @@ const detailsContent = {
         { img: unitenImg, caption: "Kerjasama Modus AI Associates dengan UNITEN (Universiti Tenaga Nasional) — The Energy University." },
         { img: uulianTotalImg, caption: "GM Xiamen UULIAN melawat Rakan Kongsi MODUS, Total International Associates." },
         { img: uulianTotal2Img, caption: "GM Xiamen UULIAN melawat Rakan Kongsi MODUS, Total International Associates." },
+        { img: blnCharityImg, caption: "Penyertaan Modus AI Associates dalam BLN 7th Charity Night." },
       ],
     },
     socials: {
@@ -523,6 +526,7 @@ const detailsContent = {
         { img: unitenImg, caption: "Modus AI Associates 与 UNITEN（马来西亚国能大学）——能源大学——合作。" },
         { img: uulianTotalImg, caption: "厦门 UULIAN 总经理拜访 MODUS 合作伙伴 Total International Associates。" },
         { img: uulianTotal2Img, caption: "厦门 UULIAN 总经理拜访 MODUS 合作伙伴 Total International Associates。" },
+        { img: blnCharityImg, caption: "Modus AI Associates 参与 BLN 第七届慈善之夜。" },
       ],
     },
     socials: {
@@ -623,6 +627,7 @@ const detailsContent = {
         { img: unitenImg, caption: "Kolaborasi Modus AI Associates dengan UNITEN (Universiti Tenaga Nasional) — The Energy University." },
         { img: uulianTotalImg, caption: "GM Xiamen UULIAN mengunjungi Mitra MODUS, Total International Associates." },
         { img: uulianTotal2Img, caption: "GM Xiamen UULIAN mengunjungi Mitra MODUS, Total International Associates." },
+        { img: blnCharityImg, caption: "Partisipasi Modus AI Associates dalam BLN 7th Charity Night." },
       ],
     },
     socials: {
@@ -723,6 +728,7 @@ const detailsContent = {
         { img: unitenImg, caption: "Hợp tác Modus AI Associates với UNITEN (Universiti Tenaga Nasional) — The Energy University." },
         { img: uulianTotalImg, caption: "GM Xiamen UULIAN thăm Đối Tác MODUS, Total International Associates." },
         { img: uulianTotal2Img, caption: "GM Xiamen UULIAN thăm Đối Tác MODUS, Total International Associates." },
+        { img: blnCharityImg, caption: "Modus AI Associates tham gia BLN 7th Charity Night." },
       ],
     },
     socials: {
@@ -823,6 +829,7 @@ const detailsContent = {
         { img: unitenImg, caption: "تعاون Modus AI Associates مع UNITEN (الجامعة الوطنية للطاقة) — جامعة الطاقة." },
         { img: uulianTotalImg, caption: "زيارة المدير العام لـ Xiamen UULIAN لشريك MODUS، Total International Associates." },
         { img: uulianTotal2Img, caption: "زيارة المدير العام لـ Xiamen UULIAN لشريك MODUS، Total International Associates." },
+        { img: blnCharityImg, caption: "مشاركة Modus AI Associates في ليلة BLN الخيرية السابعة." },
       ],
     },
     socials: {
@@ -923,6 +930,7 @@ const detailsContent = {
         { img: unitenImg, caption: "ความร่วมมือ Modus AI Associates กับ UNITEN (Universiti Tenaga Nasional) — มหาวิทยาลัยพลังงาน" },
         { img: uulianTotalImg, caption: "GM ของ Xiamen UULIAN เยี่ยมชม Total International Associates พันธมิตรของ MODUS" },
         { img: uulianTotal2Img, caption: "GM ของ Xiamen UULIAN เยี่ยมชม Total International Associates พันธมิตรของ MODUS" },
+        { img: blnCharityImg, caption: "Modus AI Associates เข้าร่วมงาน BLN 7th Charity Night" },
       ],
     },
     socials: {

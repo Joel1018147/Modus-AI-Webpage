@@ -16,7 +16,7 @@ import southOceanImg from "@assets/WhatsApp_Image_2026-04-20_at_7.10.47_PM_17767
 import unitenImg from "@assets/WhatsApp_Image_2026-04-20_at_7.13.18_PM_1776707157909.jpeg";
 import uulianTotalImg from "@assets/WhatsApp_Image_2026-04-20_at_7.15.54_PM_1776707269685.jpeg";
 import uulianTotal2Img from "@assets/WhatsApp_Image_2026-04-20_at_7.23.19_PM_1776707338608.jpeg";
-import ribbonGovernorImg from "@assets/image_(4)_nowatermark.png";
+import ribbonGovernorImg from "@assets/image_(4)_1776830597088.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";

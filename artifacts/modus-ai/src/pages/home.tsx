@@ -24,6 +24,7 @@ const VIDEO_BY_LANG: Record<Lang, string> = {
 const content = {
   en: {
     badge: "MIIT CERTIFIED · CHINA AI ECOSYSTEM PARTNER · MALAYSIA",
+    badgeSubtitle: "MIIT — Ministry of Industry, Information and Technology of the People's Republic of China",
     cta: "Start Your AI Transformation",
     coreMsgPrefix: "AI Adoption Is No Longer Optional —",
     coreMsgSuffix: "It Is the Core Driver of Future Business Survival and Growth.",
@@ -78,6 +79,7 @@ const content = {
   },
   bm: {
     badge: "BERTAULIAH MIIT · RAKAN EKOSISTEM AI CHINA · MALAYSIA",
+    badgeSubtitle: "MIIT — Kementerian Industri, Maklumat dan Teknologi Republik Rakyat China",
     cta: "Mulakan Transformasi AI Anda",
     coreMsgPrefix: "Penggunaan AI Bukan Lagi Pilihan —",
     coreMsgSuffix: "Ia Adalah Pemacu Utama Kelangsungan dan Pertumbuhan Perniagaan Masa Depan.",
@@ -132,6 +134,7 @@ const content = {
   },
   cn: {
     badge: "MIIT 认证 · 中国 AI 生态合作伙伴 · 马来西亚",
+    badgeSubtitle: "MIIT —— 中华人民共和国工业和信息化部",
     cta: "开启您的 AI 转型",
     coreMsgPrefix: "AI 应用不再是可选项 ——",
     coreMsgSuffix: "它是未来商业生存与发展的核心驱动力。",
@@ -178,6 +181,7 @@ const content = {
   },
   id: {
     badge: "TERSERTIFIKASI MIIT · MITRA EKOSISTEM AI TIONGKOK · MALAYSIA",
+    badgeSubtitle: "MIIT — Kementerian Industri, Informasi dan Teknologi Republik Rakyat Tiongkok",
     cta: "Mulai Transformasi AI Anda",
     coreMsgPrefix: "Adopsi AI Bukan Lagi Pilihan —",
     coreMsgSuffix: "Ini adalah Pendorong Utama Kelangsungan dan Pertumbuhan Bisnis Masa Depan.",
@@ -224,6 +228,7 @@ const content = {
   },
   vn: {
     badge: "ĐƯỢC CHỨNG NHẬN MIIT · ĐỐI TÁC HỆ SINH THÁI AI TRUNG QUỐC · MALAYSIA",
+    badgeSubtitle: "MIIT — Bộ Công nghiệp, Thông tin và Công nghệ của Cộng hòa Nhân dân Trung Hoa",
     cta: "Bắt Đầu Chuyển Đổi AI của Bạn",
     coreMsgPrefix: "Áp Dụng AI Không Còn Là Tùy Chọn —",
     coreMsgSuffix: "Đó là Động Lực Cốt Lõi cho Sự Tồn Tại và Tăng Trưởng Doanh Nghiệp trong Tương Lai.",
@@ -270,6 +275,7 @@ const content = {
   },
   ar: {
     badge: "معتمد من MIIT · شريك منظومة AI الصينية · ماليزيا",
+    badgeSubtitle: "MIIT — وزارة الصناعة والمعلومات والتكنولوجيا في جمهورية الصين الشعبية",
     cta: "ابدأ تحول الذكاء الاصطناعي الخاص بك",
     coreMsgPrefix: "اعتماد الذكاء الاصطناعي لم يعد اختيارياً —",
     coreMsgSuffix: "إنه المحرك الأساسي لبقاء ونمو الأعمال في المستقبل.",
@@ -316,6 +322,7 @@ const content = {
   },
   th: {
     badge: "รับรองโดย MIIT · พันธมิตรระบบนิเวศ AI ของจีน · มาเลเซีย",
+    badgeSubtitle: "MIIT — กระทรวงอุตสาหกรรม สารสนเทศ และเทคโนโลยีแห่งสาธารณรัฐประชาชนจีน",
     cta: "เริ่มต้นการเปลี่ยนผ่านสู่ AI ของคุณ",
     coreMsgPrefix: "การนำ AI มาใช้ไม่ใช่ทางเลือกอีกต่อไป —",
     coreMsgSuffix: "แต่เป็นแรงขับเคลื่อนหลักของการอยู่รอดและการเติบโตทางธุรกิจในอนาคต",
@@ -453,6 +460,12 @@ export default function Home() {
               <Award className="w-4 h-4" />
               {t.badge}
             </motion.div>
+            <motion.p
+              variants={itemVariants}
+              className="text-xs md:text-sm text-primary/70 italic mb-6 max-w-2xl mx-auto"
+            >
+              {t.badgeSubtitle}
+            </motion.p>
 
             <div className="relative min-h-[8rem] md:min-h-[7rem] mb-6 flex items-center justify-center">
               <AnimatePresence mode="wait">

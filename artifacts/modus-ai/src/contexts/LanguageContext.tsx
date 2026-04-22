@@ -1,13 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-export type Lang = "en" | "bm" | "cn" | "id" | "vn" | "ar";
+export type Lang = "en" | "bm" | "cn" | "id" | "vn" | "ar" | "th";
 
 export const LANGUAGES: { code: Lang; label: string; native: string; rtl?: boolean }[] = [
   { code: "en", label: "EN", native: "English" },
-  { code: "bm", label: "BM", native: "Bahasa Melayu" },
+  { code: "bm", label: "BM", native: "Bahasa Malaysia" },
   { code: "cn", label: "CN", native: "中文" },
   { code: "id", label: "ID", native: "Indonesia" },
   { code: "vn", label: "VN", native: "Tiếng Việt" },
+  { code: "th", label: "TH", native: "ภาษาไทย" },
   { code: "ar", label: "AR", native: "العربية", rtl: true },
 ];
 

@@ -75,6 +75,17 @@ const NAV_LINKS: Record<Lang, { links: NavLink[]; cta: string }> = {
     ],
     cta: "ابدأ الآن",
   },
+  th: {
+    links: [
+      { label: "เกี่ยวกับเรา", hash: "about" },
+      { label: "ทำไมต้องเลือกเรา", hash: "why-choose-us" },
+      { label: "บริการของเรา", hash: "services" },
+      { label: "หลักสูตรของเรา", hash: "courses" },
+      { label: "กิจกรรมของเรา", hash: "activities" },
+      { label: "โซเชียลของเรา", hash: "socials" },
+    ],
+    cta: "เริ่มต้นใช้งาน",
+  },
 };
 
 type LangDropdownProps = {

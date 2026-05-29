@@ -5,7 +5,7 @@ import { Link, useLocation } from "wouter";
 import {
   ArrowLeft, CheckCircle2, ChevronRight,
   Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot, Camera, Loader2,
-  ChevronDown, Facebook, Linkedin, Twitter, Instagram
+  ChevronDown, Facebook, Linkedin, Twitter, Instagram, MessageCircle
 } from "lucide-react";
 import launchImg from "@assets/image_1775812766946.png";
 import ribbonImg from "@assets/WhatsApp_Image_2026-04-03_at_5.40.49_PM_1775209677927.jpeg";
@@ -1534,6 +1534,24 @@ export default function Details() {
                     );
                   })}
                 </div>
+
+                <a
+                  href="https://wa.me/601111469065"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    trackButtonClick({
+                      contentId: "whatsapp-button",
+                      contentName: "WhatsApp Contact",
+                      contentType: "lead",
+                    })
+                  }
+                  className="mt-8 inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[#25D366] text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(37,211,102,0.5)]"
+                  data-testid="whatsapp-contact"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Chat on WhatsApp
+                </a>
               </div>
 
               <div className="bg-background/50 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md">

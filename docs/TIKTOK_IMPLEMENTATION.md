@@ -16,8 +16,13 @@ _MODUS AI Associates website (`artifacts/modus-ai`) + API server (`artifacts/api
   - `subscribeEvents()` / `generateEventId()`
 - `src/components/dev/TikTokDebugPanel.tsx` — **new**. Phase 7 dev-only panel.
 - `src/App.tsx` — fires `trackPageView()` on every route change; mounts the debug panel.
-- `src/pages/home.tsx` — `ViewContent` on load; `ClickButton` on the hero CTA and the explore nav cards.
-- `src/pages/details.tsx` — `ViewContent` on load; clickable + tracked email/phone contacts; `Lead` on successful form submit.
+- `src/pages/home.tsx` — `ViewContent` (`homepage`) on load; `ClickButton` on the hero CTA (`start-ai-transformation`) and the explore nav cards (`explore-<id>`).
+- `src/pages/details.tsx` — `ViewContent` (`details`) on load; email link → `Contact`; phone/call links → `ClickButton` (`call-button`); WhatsApp button (`whatsapp-button`, links to `https://wa.me/601111469065`) → `ClickButton`; `Lead` (`contact-form` / "AI Consultation Request") on successful form submit.
+
+All `ViewContent`, `ClickButton`, and `Lead` events carry `content_id`, `content_name`,
+and `content_type`, which resolves the Events Manager "Content ID is missing" and
+"missing vertical funnel events" warnings (the funnel now spans ViewContent →
+ClickButton → Lead).
 
 ### Backend (`artifacts/api-server`)
 - `src/routes/tiktok.ts` — **new**. `POST /api/tiktok-events` → TikTok Events API (Phase 5).

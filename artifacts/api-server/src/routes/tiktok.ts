@@ -6,6 +6,12 @@ const router = Router();
 
 const TIKTOK_API_URL = "https://business-api.tiktok.com/open_api/v1.3/event/track/";
 const MAX_RETRIES = 3;
+const ATTEMPT_TIMEOUT_MS = 5000;
+
+// Transient HTTP statuses worth retrying (rate limit / request timeout / server errors).
+function isRetryableStatus(status: number): boolean {
+  return status === 429 || status === 408 || status >= 500;
+}
 
 function sha256(value: string): string {
   return createHash("sha256").update(value.trim().toLowerCase()).digest("hex");
@@ -25,6 +31,8 @@ async function sendWithRetry(
   let lastError: unknown = null;
 
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), ATTEMPT_TIMEOUT_MS);
     try {
       const res = await fetch(TIKTOK_API_URL, {
         method: "POST",
@@ -33,6 +41,7 @@ async function sendWithRetry(
           "Access-Token": accessToken,
         },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
       const json = (await res.json().catch(() => ({}))) as { code?: number; message?: string };
 
@@ -47,17 +56,21 @@ async function sendWithRetry(
         "TikTok Events API non-success response",
       );
 
-      // Client errors (bad payload / auth) won't be fixed by retrying.
-      if (res.status >= 400 && res.status < 500) {
+      // Permanent client errors (bad payload / auth) won't be fixed by retrying.
+      if (!isRetryableStatus(res.status)) {
         return { ok: false, response: json };
       }
     } catch (err) {
       lastError = err;
       log.warn({ attempt, err: String(err) }, "TikTok Events API request failed");
+    } finally {
+      clearTimeout(timeout);
     }
 
     if (attempt < MAX_RETRIES) {
-      await new Promise((r) => setTimeout(r, 250 * attempt));
+      // Exponential backoff with jitter.
+      const backoff = 250 * 2 ** (attempt - 1) + Math.floor(Math.random() * 100);
+      await new Promise((r) => setTimeout(r, backoff));
     }
   }
 

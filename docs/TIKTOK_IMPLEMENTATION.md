@@ -90,8 +90,11 @@ curl -s -X POST localhost:80/api/tiktok-events \
 2. Trigger a `Lead` (submit the form, or run the curl above with a real email).
 3. The server posts to `https://business-api.tiktok.com/open_api/v1.3/event/track/`.
    A success response has HTTP 200 with body `{"code":0,...}`; the route maps
-   that to `{"success":true}`. Failures are retried up to 3 times and logged via
-   `req.log.warn` (never thrown back to the user).
+   that to `{"success":true}`. Each attempt has a 5s timeout (`AbortController`).
+   Transient failures (HTTP 429 / 408 / 5xx and network errors) are retried up to
+   3 times with exponential backoff + jitter; permanent client errors (400/401/403/404)
+   fail fast. All failures are logged via `req.log.warn` and never thrown back to
+   the user — the contact form always completes.
 
 ## 5. TikTok Events Manager verification checklist
 

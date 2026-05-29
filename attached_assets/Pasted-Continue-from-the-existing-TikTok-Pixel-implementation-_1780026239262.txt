@@ -1,0 +1,164 @@
+Continue from the existing TikTok Pixel implementation already installed in this project.
+
+DO NOT reinstall the TikTok Pixel.
+DO NOT remove existing tracking.
+
+Current TikTok Pixel ID:
+D8CG7URC77U91RGD2EIG
+
+TikTok Events API Access Token:
+b3219ec4b5c7c9921e80474ad358188647f70c2d
+
+IMPORTANT:
+
+1. Move the TikTok Access Token into Replit Secrets.
+2. Create environment variables:
+
+TIKTOK_PIXEL_ID=D8CG7URC77U91RGD2EIG
+TIKTOK_ACCESS_TOKEN=b3219ec4b5c7c9921e80474ad358188647f70c2d
+
+3. Never expose the Access Token in frontend code.
+4. All Events API requests must be sent from the server only.
+
+==================================
+PHASE 1 - AUDIT CURRENT TRACKING
+==================================
+
+Audit the existing TikTok implementation.
+
+Verify:
+- Pixel loads once
+- No duplicate tracking
+- Page views firing correctly
+- Existing events functioning
+
+Generate report:
+docs/TIKTOK_TRACKING_AUDIT.md
+
+==================================
+PHASE 2 - BUTTON TRACKING
+==================================
+
+Track ClickButton events for:
+
+- Start Your AI Transformation
+- Contact Us
+- WhatsApp
+- Phone links
+- Email links
+- Consultation buttons
+- AI Training buttons
+- Corporate Training buttons
+
+Create reusable helper:
+
+trackButtonClick(buttonName)
+
+==================================
+PHASE 3 - VIEWCONTENT TRACKING
+==================================
+
+Track ViewContent events on:
+
+- Homepage
+- Services pages
+- AI Training pages
+- Corporate Training pages
+- Contact page
+- About page
+
+Create helper:
+
+trackViewContent(pageName)
+
+==================================
+PHASE 4 - LEAD TRACKING
+==================================
+
+When contact form is submitted:
+
+Fields:
+- Name
+- Company
+- Email
+- Message
+
+Fire BOTH:
+
+Browser:
+ttq.track('Lead')
+
+Server:
+TikTok Events API Lead event
+
+Use same event_id for deduplication.
+
+==================================
+PHASE 5 - EVENTS API
+==================================
+
+Create secure backend endpoint:
+
+POST /api/tiktok-events
+
+Server should send Lead events to:
+
+https://business-api.tiktok.com/open_api/v1.3/event/track/
+
+Required payload fields:
+
+event: Lead
+event_time
+event_id
+context.page.url
+user.ip
+user.user_agent
+email (SHA256 hash)
+
+Implement retry handling.
+
+Log failures.
+
+Never break user form submissions if TikTok API fails.
+
+==================================
+PHASE 6 - ADDITIONAL CONVERSIONS
+==================================
+
+Track:
+
+- WhatsApp click
+- Email click
+- Phone click
+- Consultation request
+- Corporate training inquiry
+- AI training inquiry
+
+==================================
+PHASE 7 - DEBUGGING
+==================================
+
+Create development analytics panel.
+
+Display:
+
+- Event name
+- Event ID
+- Timestamp
+- Success status
+- TikTok API response
+
+Visible only in development mode.
+
+==================================
+PHASE 8 - FINAL REPORT
+==================================
+
+After completion provide:
+
+1. All modified files
+2. Event architecture diagram
+3. Testing instructions
+4. TikTok Events API verification steps
+5. TikTok Events Manager verification checklist
+6. Production deployment instructions

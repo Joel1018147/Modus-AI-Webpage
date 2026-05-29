@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLang } from "@/contexts/LanguageContext";
+import { trackViewContent, trackLead, trackContact } from "@/lib/tiktok";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -1010,6 +1011,7 @@ export default function Details() {
       const data = await res.json();
       if (data.success) {
         setSubmitStatus("success");
+        void trackLead({ email: form.email, name: form.name, company: form.company });
         setForm({ name: "", company: "", email: "", message: "" });
         setTimeout(() => setSubmitStatus("idle"), 6000);
       } else {
@@ -1021,6 +1023,10 @@ export default function Details() {
       setErrorMessage(t.contact.form.errors.network);
     }
   };
+
+  useEffect(() => {
+    trackViewContent("Details Page");
+  }, []);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -1483,14 +1489,41 @@ export default function Details() {
                 <p className="text-lg text-muted-foreground mb-8">{t.contact.desc}</p>
 
                 <div className="space-y-5">
-                  {t.contact.contacts.map(({ icon: Icon, text }, i) => (
-                    <div key={i} className="flex items-center gap-4 text-white/80">
-                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 shrink-0">
-                        <Icon className="w-5 h-5 text-primary" />
+                  {t.contact.contacts.map(({ icon: Icon, text }, i) => {
+                    const isEmail = Icon === Mail;
+                    const isPhone = Icon === Phone;
+                    const href = isEmail
+                      ? `mailto:${text}`
+                      : isPhone
+                        ? `tel:${text.replace(/[^\d+]/g, "")}`
+                        : undefined;
+                    const inner = (
+                      <>
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 shrink-0">
+                          <Icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <span>{text}</span>
+                      </>
+                    );
+                    if (href) {
+                      return (
+                        <a
+                          key={i}
+                          href={href}
+                          onClick={() => trackContact(isEmail ? "Email" : "Phone")}
+                          className="flex items-center gap-4 text-white/80 hover:text-primary transition-colors"
+                          data-testid={`contact-${isEmail ? "email" : "phone"}-${i}`}
+                        >
+                          {inner}
+                        </a>
+                      );
+                    }
+                    return (
+                      <div key={i} className="flex items-center gap-4 text-white/80">
+                        {inner}
                       </div>
-                      <span>{text}</span>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 

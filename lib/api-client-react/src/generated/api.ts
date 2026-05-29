@@ -5,18 +5,25 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import type {
+  MutationFunction,
   QueryFunction,
   QueryKey,
+  UseMutationOptions,
+  UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
 } from "@tanstack/react-query";
 
-import type { HealthStatus } from "./api.schemas";
+import type {
+  HealthStatus,
+  TikTokEventRequest,
+  TikTokEventResponse,
+} from "./api.schemas";
 
 import { customFetch } from "../custom-fetch";
-import type { ErrorType } from "../custom-fetch";
+import type { ErrorType, BodyType } from "../custom-fetch";
 
 type AwaitedInput<T> = PromiseLike<T> | T;
 
@@ -99,3 +106,91 @@ export function useHealthCheck<
 
   return { ...query, queryKey: queryOptions.queryKey };
 }
+
+/**
+ * Server-side companion to the browser TikTok Pixel. Receives a Lead event from the frontend and forwards it to the TikTok Events API using the same event_id for deduplication. The access token never leaves the server.
+
+ * @summary Forward a conversion event to the TikTok Events API
+ */
+export const getTrackTikTokEventUrl = () => {
+  return `/api/tiktok-events`;
+};
+
+export const trackTikTokEvent = async (
+  tikTokEventRequest: TikTokEventRequest,
+  options?: RequestInit,
+): Promise<TikTokEventResponse> => {
+  return customFetch<TikTokEventResponse>(getTrackTikTokEventUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(tikTokEventRequest),
+  });
+};
+
+export const getTrackTikTokEventMutationOptions = <
+  TError = ErrorType<TikTokEventResponse>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof trackTikTokEvent>>,
+    TError,
+    { data: BodyType<TikTokEventRequest> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof trackTikTokEvent>>,
+  TError,
+  { data: BodyType<TikTokEventRequest> },
+  TContext
+> => {
+  const mutationKey = ["trackTikTokEvent"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof trackTikTokEvent>>,
+    { data: BodyType<TikTokEventRequest> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return trackTikTokEvent(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type TrackTikTokEventMutationResult = NonNullable<
+  Awaited<ReturnType<typeof trackTikTokEvent>>
+>;
+export type TrackTikTokEventMutationBody = BodyType<TikTokEventRequest>;
+export type TrackTikTokEventMutationError = ErrorType<TikTokEventResponse>;
+
+/**
+ * @summary Forward a conversion event to the TikTok Events API
+ */
+export const useTrackTikTokEvent = <
+  TError = ErrorType<TikTokEventResponse>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof trackTikTokEvent>>,
+    TError,
+    { data: BodyType<TikTokEventRequest> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof trackTikTokEvent>>,
+  TError,
+  { data: BodyType<TikTokEventRequest> },
+  TContext
+> => {
+  return useMutation(getTrackTikTokEventMutationOptions(options));
+};

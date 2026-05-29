@@ -14,3 +14,35 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * Server-side companion to the browser TikTok Pixel. Receives a Lead event from the frontend and forwards it to the TikTok Events API using the same event_id for deduplication. The access token never leaves the server.
+
+ * @summary Forward a conversion event to the TikTok Events API
+ */
+export const trackTikTokEventBodyEventDefault = `Lead`;
+
+export const TrackTikTokEventBody = zod.object({
+  event: zod
+    .string()
+    .default(trackTikTokEventBodyEventDefault)
+    .describe("TikTok standard event name"),
+  event_id: zod
+    .string()
+    .describe("Unique id shared with the browser pixel for deduplication"),
+  event_time: zod
+    .number()
+    .describe("Unix timestamp (seconds) when the event occurred"),
+  url: zod.string().optional().describe("Page URL where the event occurred"),
+  email: zod
+    .string()
+    .optional()
+    .describe("Plain-text email; hashed (SHA256) server-side before sending"),
+  name: zod.string().optional(),
+  company: zod.string().optional(),
+});
+
+export const TrackTikTokEventResponse = zod.object({
+  success: zod.boolean(),
+  error: zod.string().optional(),
+});

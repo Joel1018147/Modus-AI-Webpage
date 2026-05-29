@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: tracking
+    description: Server-side analytics tracking operations
 paths:
   /healthz:
     get:
@@ -24,6 +26,34 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /tiktok-events:
+    post:
+      operationId: trackTikTokEvent
+      tags: [tracking]
+      summary: Forward a conversion event to the TikTok Events API
+      description: >
+        Server-side companion to the browser TikTok Pixel. Receives a Lead event
+        from the frontend and forwards it to the TikTok Events API using the same
+        event_id for deduplication. The access token never leaves the server.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TikTokEventRequest"
+      responses:
+        "200":
+          description: Event processed (success flag indicates delivery to TikTok)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TikTokEventResponse"
+        "400":
+          description: Invalid request payload
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TikTokEventResponse"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +63,38 @@ components:
           type: string
       required:
         - status
-
+    TikTokEventRequest:
+      type: object
+      properties:
+        event:
+          type: string
+          description: TikTok standard event name
+          default: Lead
+        event_id:
+          type: string
+          description: Unique id shared with the browser pixel for deduplication
+        event_time:
+          type: integer
+          description: Unix timestamp (seconds) when the event occurred
+        url:
+          type: string
+          description: Page URL where the event occurred
+        email:
+          type: string
+          description: Plain-text email; hashed (SHA256) server-side before sending
+        name:
+          type: string
+        company:
+          type: string
+      required:
+        - event_id
+        - event_time
+    TikTokEventResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        error:
+          type: string
+      required:
+        - success

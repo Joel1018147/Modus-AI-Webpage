@@ -7,6 +7,7 @@ import {
   Network, ShieldCheck, Zap, Award, Users, Play, GraduationCap
 } from "lucide-react";
 import { useLang, type Lang } from "@/contexts/LanguageContext";
+import { trackViewContent, trackButtonClick } from "@/lib/tiktok";
 import videoEN from "@assets/Modus_AI_Associates_Empowering_the_Future_with_AI_(1)_1776710555170.mp4";
 import videoBM from "@assets/WhatsApp_Video_2026-04-21_at_2.38.14_AM_1776710603263.mp4";
 import videoCN from "@assets/WhatsApp_Video_2026-04-21_at_2.38.36_AM_1776710603263.mp4";
@@ -406,6 +407,10 @@ export default function Home() {
   const videoSrc = VIDEO_BY_LANG[lang];
 
   useEffect(() => {
+    trackViewContent("Homepage");
+  }, []);
+
+  useEffect(() => {
     setIsVideoPlaying(false);
   }, [lang]);
 
@@ -507,6 +512,7 @@ export default function Home() {
             <motion.div variants={itemVariants}>
               <Link
                 href="/details"
+                onClick={() => trackButtonClick("Start Your AI Transformation")}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold rounded-lg bg-gradient-to-r from-primary to-secondary text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(212,158,46,0.6)]"
                 data-testid="hero-cta-start"
               >
@@ -565,6 +571,7 @@ export default function Home() {
                 >
                   <Link
                     href={`/details#${item.id}`}
+                    onClick={() => trackButtonClick(`Explore: ${item.title}`)}
                     className={`group relative flex flex-col items-center justify-center p-6 h-full rounded-2xl bg-card/50 border border-white/10 backdrop-blur-sm overflow-hidden transition-all duration-500 ${colors.border} ${colors.shadow}`}
                     data-testid={`icon-nav-${item.id}`}
                   >

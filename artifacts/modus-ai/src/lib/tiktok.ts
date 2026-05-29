@@ -121,9 +121,26 @@ export function trackButtonClick(buttonName: string): void {
   fire("ClickButton", { content_name: buttonName });
 }
 
-/** Phase 3 — content / page view conversion. */
-export function trackViewContent(pageName: string): void {
-  fire("ViewContent", { content_name: pageName });
+export interface ViewContentData {
+  /** Stable identifier for the content/page, e.g. "homepage", "ai-training". */
+  contentId: string;
+  /** Human-readable name, e.g. "Homepage". */
+  contentName: string;
+  /** Content category. Defaults to "service" for this lead-gen site. */
+  contentType?: string;
+}
+
+/**
+ * Phase 3 — content / page view conversion.
+ * Always sends content_id, content_name and content_type so TikTok Events
+ * Manager does not report "Content ID is missing".
+ */
+export function trackViewContent(data: ViewContentData): void {
+  fire("ViewContent", {
+    content_id: data.contentId,
+    content_name: data.contentName,
+    content_type: data.contentType ?? "service",
+  });
 }
 
 /** Phase 6 — contact channel conversions (WhatsApp / phone / email). */

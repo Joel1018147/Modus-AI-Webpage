@@ -1025,7 +1025,7 @@ export default function Details() {
   };
 
   useEffect(() => {
-    trackViewContent("Details Page");
+    trackViewContent({ contentId: "details", contentName: "Details Page", contentType: "service" });
   }, []);
 
   useEffect(() => {

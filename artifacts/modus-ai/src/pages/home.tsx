@@ -407,7 +407,7 @@ export default function Home() {
   const videoSrc = VIDEO_BY_LANG[lang];
 
   useEffect(() => {
-    trackViewContent("Homepage");
+    trackViewContent({ contentId: "homepage", contentName: "Homepage", contentType: "service" });
   }, []);
 
   useEffect(() => {

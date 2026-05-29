@@ -512,7 +512,13 @@ export default function Home() {
             <motion.div variants={itemVariants}>
               <Link
                 href="/details"
-                onClick={() => trackButtonClick("Start Your AI Transformation")}
+                onClick={() =>
+                  trackButtonClick({
+                    contentId: "start-ai-transformation",
+                    contentName: "Start Your AI Transformation",
+                    contentType: "lead",
+                  })
+                }
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold rounded-lg bg-gradient-to-r from-primary to-secondary text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(212,158,46,0.6)]"
                 data-testid="hero-cta-start"
               >
@@ -571,7 +577,13 @@ export default function Home() {
                 >
                   <Link
                     href={`/details#${item.id}`}
-                    onClick={() => trackButtonClick(`Explore: ${item.title}`)}
+                    onClick={() =>
+                      trackButtonClick({
+                        contentId: `explore-${item.id}`,
+                        contentName: `Explore: ${item.title}`,
+                        contentType: "service",
+                      })
+                    }
                     className={`group relative flex flex-col items-center justify-center p-6 h-full rounded-2xl bg-card/50 border border-white/10 backdrop-blur-sm overflow-hidden transition-all duration-500 ${colors.border} ${colors.shadow}`}
                     data-testid={`icon-nav-${item.id}`}
                   >

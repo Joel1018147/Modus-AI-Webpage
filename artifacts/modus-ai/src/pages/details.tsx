@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLang } from "@/contexts/LanguageContext";
-import { trackViewContent, trackLead, trackContact } from "@/lib/tiktok";
+import { trackViewContent, trackLead, trackContact, trackButtonClick } from "@/lib/tiktok";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -1510,7 +1510,16 @@ export default function Details() {
                         <a
                           key={i}
                           href={href}
-                          onClick={() => trackContact(isEmail ? "Email" : "Phone")}
+                          onClick={() => {
+                            if (isPhone) {
+                              trackButtonClick({
+                                contentId: "call-button",
+                                contentName: `Call: ${text}`,
+                                contentType: "lead",
+                              });
+                            }
+                            trackContact(isEmail ? "Email" : "Phone");
+                          }}
                           className="flex items-center gap-4 text-white/80 hover:text-primary transition-colors"
                           data-testid={`contact-${isEmail ? "email" : "phone"}-${i}`}
                         >

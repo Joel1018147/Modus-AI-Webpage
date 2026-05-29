@@ -116,9 +116,22 @@ export function trackPageView(): void {
   });
 }
 
+export interface ButtonClickData {
+  /** Stable identifier, e.g. "start-ai-transformation", "whatsapp-button". */
+  contentId: string;
+  /** Human-readable name, e.g. "Start Your AI Transformation". */
+  contentName: string;
+  /** Content category. Defaults to "lead" for conversion buttons. */
+  contentType?: string;
+}
+
 /** Phase 2 — generic button click conversion. */
-export function trackButtonClick(buttonName: string): void {
-  fire("ClickButton", { content_name: buttonName });
+export function trackButtonClick(data: ButtonClickData): void {
+  fire("ClickButton", {
+    content_id: data.contentId,
+    content_name: data.contentName,
+    content_type: data.contentType ?? "lead",
+  });
 }
 
 export interface ViewContentData {
@@ -176,7 +189,7 @@ export async function trackLead(data: LeadData): Promise<void> {
       "Lead",
       {
         content_id: "contact-form",
-        content_name: "Website Contact Form",
+        content_name: "AI Consultation Request",
         content_type: "lead",
       },
       { event_id: eventId },

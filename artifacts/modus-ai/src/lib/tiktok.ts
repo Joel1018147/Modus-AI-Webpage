@@ -174,7 +174,11 @@ export async function trackLead(data: LeadData): Promise<void> {
     window.ttq?.identify({ email: data.email });
     window.ttq?.track(
       "Lead",
-      { content_name: "Contact Form" },
+      {
+        content_id: "contact-form",
+        content_name: "Website Contact Form",
+        content_type: "lead",
+      },
       { event_id: eventId },
     );
   } catch {

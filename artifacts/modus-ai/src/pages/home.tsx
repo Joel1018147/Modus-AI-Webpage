@@ -44,6 +44,7 @@ const content = {
       { id: "why-choose-us", title: "Why Choose Us", desc: "Certified and proven results" },
       { id: "services", title: "Our Services", desc: "End-to-end AI solutions" },
       { id: "courses", title: "Our Courses", desc: "12 AI certification programmes" },
+      { id: "systems", title: "Our Systems", desc: "16 integrated AI systems" },
       { id: "activities", title: "Our Activities", desc: "Events and milestones" },
       { id: "get-started", title: "Get Started", desc: "Begin your transformation" },
     ],
@@ -106,6 +107,7 @@ const content = {
       { id: "why-choose-us", title: "Mengapa Pilih Kami", desc: "Hasil bersertifikasi dan terbukti" },
       { id: "services", title: "Perkhidmatan Kami", desc: "Penyelesaian AI menyeluruh" },
       { id: "courses", title: "Kursus Kami", desc: "12 program sijil AI" },
+      { id: "systems", title: "Sistem Kami", desc: "16 sistem AI bersepadu" },
       { id: "activities", title: "Aktiviti Kami", desc: "Acara dan pencapaian" },
       { id: "get-started", title: "Mulakan", desc: "Mulakan transformasi anda" },
     ],
@@ -168,6 +170,7 @@ const content = {
       { id: "why-choose-us", title: "为何选择我们", desc: "认证与已验证的成果" },
       { id: "services", title: "我们的服务", desc: "端到端AI解决方案" },
       { id: "courses", title: "我们的课程", desc: "12个AI认证项目" },
+      { id: "systems", title: "我们的系统", desc: "16个集成 AI 系统" },
       { id: "activities", title: "我们的活动", desc: "活动与里程碑" },
       { id: "get-started", title: "立即开始", desc: "开启您的转型" },
     ],
@@ -222,6 +225,7 @@ const content = {
       { id: "why-choose-us", title: "Mengapa Memilih Kami", desc: "Hasil tersertifikasi dan terbukti" },
       { id: "services", title: "Layanan Kami", desc: "Solusi AI menyeluruh" },
       { id: "courses", title: "Kursus Kami", desc: "12 program sertifikasi AI" },
+      { id: "systems", title: "Sistem Kami", desc: "16 sistem AI terintegrasi" },
       { id: "activities", title: "Aktivitas Kami", desc: "Acara dan tonggak" },
       { id: "get-started", title: "Mulai", desc: "Mulai transformasi Anda" },
     ],
@@ -276,6 +280,7 @@ const content = {
       { id: "why-choose-us", title: "Tại Sao Chọn Chúng Tôi", desc: "Kết quả được chứng nhận và đã chứng minh" },
       { id: "services", title: "Dịch Vụ", desc: "Giải pháp AI từ đầu đến cuối" },
       { id: "courses", title: "Khóa Học", desc: "12 chương trình chứng nhận AI" },
+      { id: "systems", title: "Hệ Thống Của Chúng Tôi", desc: "16 hệ thống AI tích hợp" },
       { id: "activities", title: "Hoạt Động", desc: "Sự kiện và cột mốc" },
       { id: "get-started", title: "Bắt Đầu", desc: "Bắt đầu chuyển đổi của bạn" },
     ],
@@ -330,6 +335,7 @@ const content = {
       { id: "why-choose-us", title: "لماذا تختارنا", desc: "نتائج معتمدة ومثبتة" },
       { id: "services", title: "خدماتنا", desc: "حلول AI من البداية إلى النهاية" },
       { id: "courses", title: "دوراتنا", desc: "12 برنامج اعتماد AI" },
+      { id: "systems", title: "أنظمتنا", desc: "16 نظام ذكاء اصطناعي متكامل" },
       { id: "activities", title: "أنشطتنا", desc: "الفعاليات والمعالم" },
       { id: "get-started", title: "ابدأ", desc: "ابدأ تحولك" },
     ],
@@ -384,6 +390,7 @@ const content = {
       { id: "why-choose-us", title: "ทำไมต้องเลือกเรา", desc: "ผลลัพธ์ที่ผ่านการรับรองและพิสูจน์แล้ว" },
       { id: "services", title: "บริการของเรา", desc: "โซลูชัน AI แบบครบวงจร" },
       { id: "courses", title: "หลักสูตรของเรา", desc: "12 หลักสูตรประกาศนียบัตร AI" },
+      { id: "systems", title: "ระบบของเรา", desc: "16 ระบบ AI ที่เชื่อมต่อกัน" },
       { id: "activities", title: "กิจกรรมของเรา", desc: "อีเวนต์และความสำเร็จ" },
       { id: "get-started", title: "เริ่มต้น", desc: "เริ่มต้นการเปลี่ยนผ่านของคุณ" },
     ],
@@ -433,6 +440,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "why-choose-us": ShieldCheck,
   services: Cpu,
   courses: GraduationCap,
+  systems: Building2,
   activities: Network,
   "get-started": Zap,
 };
@@ -442,6 +450,7 @@ const colorMap: Record<string, { border: string; shadow: string; grad: string; i
   "why-choose-us":{ border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
   services:       { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(212,158,46,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
   courses:        { border: "hover:border-secondary", shadow: "hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]", grad: "from-secondary/20", iconColor: "text-secondary" },
+  systems:        { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(212,158,46,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
   activities:     { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(212,158,46,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
   "get-started":  { border: "hover:border-primary",   shadow: "hover:shadow-[0_0_25px_rgba(212,158,46,0.3)]",   grad: "from-primary/20",   iconColor: "text-primary" },
 };
@@ -664,7 +673,7 @@ export default function Home() {
       </section>
 
       {/* ── Icon Navigation ── */}
-      <section className="py-24 relative overflow-hidden">
+      <section id="explore" className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -682,6 +691,22 @@ export default function Home() {
             {t.navItems.map((item, index) => {
               const Icon = iconMap[item.id];
               const colors = colorMap[item.id];
+              const isSystems = item.id === "systems";
+              const cardClassName = `group relative flex flex-col items-center justify-center p-6 h-full rounded-2xl bg-card/50 border border-white/10 backdrop-blur-sm overflow-hidden transition-all duration-500 ${colors.border} ${colors.shadow}`;
+              const track = () =>
+                trackButtonClick({
+                  contentId: `explore-${item.id}`,
+                  contentName: `Explore: ${item.title}`,
+                  contentType: "service",
+                });
+              const cardInner = (
+                <>
+                  <div className={`absolute inset-0 bg-gradient-to-b ${colors.grad} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                  <Icon className={`w-10 h-10 mb-4 ${colors.iconColor} opacity-60 group-hover:opacity-100 transition-all duration-300 relative z-10 group-hover:scale-110`} />
+                  <h3 className="text-sm md:text-base font-display font-bold text-white mb-1 relative z-10 text-center">{item.title}</h3>
+                  <p className="text-xs text-muted-foreground text-center relative z-10 hidden md:block">{item.desc}</p>
+                </>
+              );
               return (
                 <motion.div
                   key={item.id}
@@ -690,23 +715,30 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                 >
-                  <Link
-                    href={`/details#${item.id}`}
-                    onClick={() =>
-                      trackButtonClick({
-                        contentId: `explore-${item.id}`,
-                        contentName: `Explore: ${item.title}`,
-                        contentType: "service",
-                      })
-                    }
-                    className={`group relative flex flex-col items-center justify-center p-6 h-full rounded-2xl bg-card/50 border border-white/10 backdrop-blur-sm overflow-hidden transition-all duration-500 ${colors.border} ${colors.shadow}`}
-                    data-testid={`icon-nav-${item.id}`}
-                  >
-                    <div className={`absolute inset-0 bg-gradient-to-b ${colors.grad} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                    <Icon className={`w-10 h-10 mb-4 ${colors.iconColor} opacity-60 group-hover:opacity-100 transition-all duration-300 relative z-10 group-hover:scale-110`} />
-                    <h3 className="text-sm md:text-base font-display font-bold text-white mb-1 relative z-10 text-center">{item.title}</h3>
-                    <p className="text-xs text-muted-foreground text-center relative z-10 hidden md:block">{item.desc}</p>
-                  </Link>
+                  {isSystems ? (
+                    <a
+                      href="#our-systems"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        track();
+                        document.getElementById("our-systems")?.scrollIntoView({ behavior: "smooth" });
+                        history.replaceState(null, "", "#our-systems");
+                      }}
+                      className={cardClassName}
+                      data-testid={`icon-nav-${item.id}`}
+                    >
+                      {cardInner}
+                    </a>
+                  ) : (
+                    <Link
+                      href={`/details#${item.id}`}
+                      onClick={track}
+                      className={cardClassName}
+                      data-testid={`icon-nav-${item.id}`}
+                    >
+                      {cardInner}
+                    </Link>
+                  )}
                 </motion.div>
               );
             })}

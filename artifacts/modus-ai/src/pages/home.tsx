@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
   ArrowRight, BarChart3, Brain, Cpu, Globe,
-  Network, ShieldCheck, Zap, Award, Users, Play, GraduationCap
+  Network, ShieldCheck, Zap, Award, Users, Play, GraduationCap,
+  Building2, Wrench, ArrowUpRight
 } from "lucide-react";
 import { useLang, type Lang } from "@/contexts/LanguageContext";
 import { trackViewContent, trackButtonClick } from "@/lib/tiktok";
@@ -27,6 +28,13 @@ const content = {
     badge: "MIIT CERTIFIED · CHINA AI ECOSYSTEM PARTNER · MALAYSIA",
     badgeSubtitle: "MIIT — Ministry of Industry, Information and Technology of the People's Republic of China",
     cta: "Start Your AI Transformation",
+    systemsTitle: "Our",
+    systemsTitleHighlight: "Systems",
+    systemsSubtitle: "Two complete AI ecosystems — M-EasyDo AI+ and M-EasyTools AI+ — broken into 16 integrated systems to run and grow your business. Click any system to open it.",
+    systemsEasyDoTagline: "Business operations, CRM, marketing & customer support",
+    systemsEasyToolsTagline: "AI content, social, mail, ads, SEO, commerce, sales & more",
+    systemsMainPlatform: "Main Platform",
+    systemsOpensInNewTab: "(opens in a new tab)",
     coreMsgPrefix: "AI Adoption Is No Longer Optional —",
     coreMsgSuffix: "It Is the Core Driver of Future Business Survival and Growth.",
     exploreTitle: "Explore",
@@ -82,6 +90,13 @@ const content = {
     badge: "BERTAULIAH MIIT · RAKAN EKOSISTEM AI CHINA · MALAYSIA",
     badgeSubtitle: "MIIT — Kementerian Industri, Maklumat dan Teknologi Republik Rakyat China",
     cta: "Mulakan Transformasi AI Anda",
+    systemsTitle: "Sistem",
+    systemsTitleHighlight: "Kami",
+    systemsSubtitle: "Dua ekosistem AI lengkap — M-EasyDo AI+ dan M-EasyTools AI+ — dipecahkan kepada 16 sistem bersepadu untuk menjalankan dan mengembangkan perniagaan anda. Klik mana-mana sistem untuk membukanya.",
+    systemsEasyDoTagline: "Operasi perniagaan, CRM, pemasaran & sokongan pelanggan",
+    systemsEasyToolsTagline: "Kandungan AI, sosial, mel, iklan, SEO, e-dagang, jualan & lagi",
+    systemsMainPlatform: "Platform Utama",
+    systemsOpensInNewTab: "(buka dalam tab baharu)",
     coreMsgPrefix: "Penggunaan AI Bukan Lagi Pilihan —",
     coreMsgSuffix: "Ia Adalah Pemacu Utama Kelangsungan dan Pertumbuhan Perniagaan Masa Depan.",
     exploreTitle: "Jelajahi",
@@ -137,6 +152,13 @@ const content = {
     badge: "MIIT 认证 · 中国 AI 生态合作伙伴 · 马来西亚",
     badgeSubtitle: "MIIT —— 中华人民共和国工业和信息化部",
     cta: "开启您的 AI 转型",
+    systemsTitle: "我们的",
+    systemsTitleHighlight: "系统",
+    systemsSubtitle: "两个完整的 AI 生态系统——M-EasyDo AI+ 与 M-EasyTools AI+——拆分为 16 个集成系统，助力您经营和发展业务。点击任意系统即可打开。",
+    systemsEasyDoTagline: "业务运营、CRM、营销与客户支持",
+    systemsEasyToolsTagline: "AI 内容、社交、邮件、广告、SEO、电商、销售等",
+    systemsMainPlatform: "主平台",
+    systemsOpensInNewTab: "（在新标签页中打开）",
     coreMsgPrefix: "AI 应用不再是可选项 ——",
     coreMsgSuffix: "它是未来商业生存与发展的核心驱动力。",
     exploreTitle: "探索",
@@ -184,6 +206,13 @@ const content = {
     badge: "TERSERTIFIKASI MIIT · MITRA EKOSISTEM AI TIONGKOK · MALAYSIA",
     badgeSubtitle: "MIIT — Kementerian Industri, Informasi dan Teknologi Republik Rakyat Tiongkok",
     cta: "Mulai Transformasi AI Anda",
+    systemsTitle: "Sistem",
+    systemsTitleHighlight: "Kami",
+    systemsSubtitle: "Dua ekosistem AI lengkap — M-EasyDo AI+ dan M-EasyTools AI+ — dibagi menjadi 16 sistem terintegrasi untuk menjalankan dan mengembangkan bisnis Anda. Klik sistem mana pun untuk membukanya.",
+    systemsEasyDoTagline: "Operasi bisnis, CRM, pemasaran & dukungan pelanggan",
+    systemsEasyToolsTagline: "Konten AI, sosial, email, iklan, SEO, e-commerce, penjualan & lainnya",
+    systemsMainPlatform: "Platform Utama",
+    systemsOpensInNewTab: "(buka di tab baru)",
     coreMsgPrefix: "Adopsi AI Bukan Lagi Pilihan —",
     coreMsgSuffix: "Ini adalah Pendorong Utama Kelangsungan dan Pertumbuhan Bisnis Masa Depan.",
     exploreTitle: "Jelajahi",
@@ -231,6 +260,13 @@ const content = {
     badge: "ĐƯỢC CHỨNG NHẬN MIIT · ĐỐI TÁC HỆ SINH THÁI AI TRUNG QUỐC · MALAYSIA",
     badgeSubtitle: "MIIT — Bộ Công nghiệp, Thông tin và Công nghệ của Cộng hòa Nhân dân Trung Hoa",
     cta: "Bắt Đầu Chuyển Đổi AI của Bạn",
+    systemsTitle: "Hệ Thống",
+    systemsTitleHighlight: "Của Chúng Tôi",
+    systemsSubtitle: "Hai hệ sinh thái AI hoàn chỉnh — M-EasyDo AI+ và M-EasyTools AI+ — được chia thành 16 hệ thống tích hợp để vận hành và phát triển doanh nghiệp của bạn. Nhấp vào bất kỳ hệ thống nào để mở.",
+    systemsEasyDoTagline: "Vận hành kinh doanh, CRM, tiếp thị & hỗ trợ khách hàng",
+    systemsEasyToolsTagline: "Nội dung AI, mạng xã hội, email, quảng cáo, SEO, thương mại, bán hàng & hơn nữa",
+    systemsMainPlatform: "Nền tảng chính",
+    systemsOpensInNewTab: "(mở trong tab mới)",
     coreMsgPrefix: "Áp Dụng AI Không Còn Là Tùy Chọn —",
     coreMsgSuffix: "Đó là Động Lực Cốt Lõi cho Sự Tồn Tại và Tăng Trưởng Doanh Nghiệp trong Tương Lai.",
     exploreTitle: "Khám Phá",
@@ -278,6 +314,13 @@ const content = {
     badge: "معتمد من MIIT · شريك منظومة AI الصينية · ماليزيا",
     badgeSubtitle: "MIIT — وزارة الصناعة والمعلومات والتكنولوجيا في جمهورية الصين الشعبية",
     cta: "ابدأ تحول الذكاء الاصطناعي الخاص بك",
+    systemsTitle: "أنظمتنا",
+    systemsTitleHighlight: "المتكاملة",
+    systemsSubtitle: "منظومتان متكاملتان للذكاء الاصطناعي — M-EasyDo AI+ و M-EasyTools AI+ — مقسمتان إلى 16 نظاماً متكاملاً لإدارة أعمالك وتنميتها. انقر على أي نظام لفتحه.",
+    systemsEasyDoTagline: "عمليات الأعمال وإدارة العملاء والتسويق ودعم العملاء",
+    systemsEasyToolsTagline: "محتوى الذكاء الاصطناعي والتواصل الاجتماعي والبريد والإعلانات وتحسين محركات البحث والتجارة والمبيعات والمزيد",
+    systemsMainPlatform: "المنصة الرئيسية",
+    systemsOpensInNewTab: "(يُفتح في علامة تبويب جديدة)",
     coreMsgPrefix: "اعتماد الذكاء الاصطناعي لم يعد اختيارياً —",
     coreMsgSuffix: "إنه المحرك الأساسي لبقاء ونمو الأعمال في المستقبل.",
     exploreTitle: "استكشف",
@@ -325,6 +368,13 @@ const content = {
     badge: "รับรองโดย MIIT · พันธมิตรระบบนิเวศ AI ของจีน · มาเลเซีย",
     badgeSubtitle: "MIIT — กระทรวงอุตสาหกรรม สารสนเทศ และเทคโนโลยีแห่งสาธารณรัฐประชาชนจีน",
     cta: "เริ่มต้นการเปลี่ยนผ่านสู่ AI ของคุณ",
+    systemsTitle: "ระบบ",
+    systemsTitleHighlight: "ของเรา",
+    systemsSubtitle: "ระบบนิเวศ AI ที่สมบูรณ์สองระบบ — M-EasyDo AI+ และ M-EasyTools AI+ — แบ่งออกเป็น 16 ระบบที่เชื่อมต่อกันเพื่อดำเนินและขยายธุรกิจของคุณ คลิกที่ระบบใดก็ได้เพื่อเปิด",
+    systemsEasyDoTagline: "การดำเนินธุรกิจ, CRM, การตลาด และการสนับสนุนลูกค้า",
+    systemsEasyToolsTagline: "เนื้อหา AI, โซเชียล, อีเมล, โฆษณา, SEO, อีคอมเมิร์ซ, การขาย และอื่นๆ",
+    systemsMainPlatform: "แพลตฟอร์มหลัก",
+    systemsOpensInNewTab: "(เปิดในแท็บใหม่)",
     coreMsgPrefix: "การนำ AI มาใช้ไม่ใช่ทางเลือกอีกต่อไป —",
     coreMsgSuffix: "แต่เป็นแรงขับเคลื่อนหลักของการอยู่รอดและการเติบโตทางธุรกิจในอนาคต",
     exploreTitle: "สำรวจ",
@@ -398,6 +448,62 @@ const colorMap: Record<string, { border: string; shadow: string; grad: string; i
 
 const statIcons = [BarChart3, Users, Network, Brain];
 
+type SystemLink = { id: string; name: string; url: string; isMain?: boolean };
+type SystemGroup = {
+  brand: string;
+  taglineKey: "systemsEasyDoTagline" | "systemsEasyToolsTagline";
+  icon: React.ComponentType<{ className?: string }>;
+  styles: { iconWrap: string; icon: string; badge: string; arrow: string; card: string };
+  systems: SystemLink[];
+};
+
+const systemGroups: SystemGroup[] = [
+  {
+    brand: "M-EasyDo AI+",
+    taglineKey: "systemsEasyDoTagline",
+    icon: Building2,
+    styles: {
+      iconWrap: "bg-primary/10 border-primary/30",
+      icon: "text-primary",
+      badge: "bg-primary/15 text-primary border-primary/30",
+      arrow: "group-hover:text-primary",
+      card: "hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,158,46,0.12)]",
+    },
+    systems: [
+      { id: "easydo-main", name: "M-EasyDo Business Operations AI+ System", isMain: true, url: "https://m-easydo-ai-production.up.railway.app" },
+      { id: "easydo-crm", name: "M-EasyDo AI+ Core CRM Dashboard", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=home" },
+      { id: "easydo-email", name: "M-EasyEmail Marketing AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=emarketing" },
+      { id: "easydo-automation", name: "M-Easy Marketing Automation AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=mautomation" },
+      { id: "easydo-multichannel", name: "M-EasyMultichannel Communication AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=omnichannel" },
+      { id: "easydo-support", name: "M-Easy Customer Support AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=csupport" },
+    ],
+  },
+  {
+    brand: "M-EasyTools AI+",
+    taglineKey: "systemsEasyToolsTagline",
+    icon: Wrench,
+    styles: {
+      iconWrap: "bg-secondary/10 border-secondary/30",
+      icon: "text-secondary",
+      badge: "bg-secondary/15 text-secondary border-secondary/30",
+      arrow: "group-hover:text-secondary",
+      card: "hover:border-secondary/40 hover:shadow-[0_0_30px_rgba(124,58,237,0.12)]",
+    },
+    systems: [
+      { id: "easytools-main", name: "M-EasyTools AI+", isMain: true, url: "https://m-easytools-ai-production.up.railway.app" },
+      { id: "easytools-content", name: "M-EasyContent AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=blog" },
+      { id: "easytools-social", name: "M-EasySocial AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=social" },
+      { id: "easytools-mail", name: "M-EasyMail AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=email" },
+      { id: "easytools-ads", name: "M-EasyAds AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=ads" },
+      { id: "easytools-seo", name: "M-EasySEO AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=seo" },
+      { id: "easytools-commerce", name: "M-EasyCommerce AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=ecom" },
+      { id: "easytools-sales", name: "M-EasySales AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=sales" },
+      { id: "easytools-chat", name: "M-EasyTools AI+ System (AI Chat)", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=chat" },
+      { id: "easytools-gao", name: "M-EasyGAO AI+ Suite", url: "https://m-easytools-ai-production.up.railway.app/gao" },
+    ],
+  },
+];
+
 export default function Home() {
   const { lang } = useLang();
   const t = content[lang];
@@ -408,6 +514,15 @@ export default function Home() {
 
   useEffect(() => {
     trackViewContent({ contentId: "homepage", contentName: "Homepage", contentType: "service" });
+  }, []);
+
+  useEffect(() => {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+    const timer = setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }, 200);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -736,6 +851,83 @@ export default function Home() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Our Systems ── */}
+      <section id="our-systems" className="py-24 relative overflow-hidden bg-gradient-to-b from-background to-card border-t border-white/5">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+              {t.systemsTitle} <span className="text-primary">{t.systemsTitleHighlight}</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t.systemsSubtitle}</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-start">
+            {systemGroups.map((group, gi) => {
+              const GroupIcon = group.icon;
+              return (
+                <motion.div
+                  key={group.brand}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: gi * 0.15 }}
+                  className={`rounded-2xl bg-card/50 border border-white/10 backdrop-blur-sm p-6 md:p-8 transition-all duration-500 ${group.styles.card}`}
+                >
+                  <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center border ${group.styles.iconWrap}`}>
+                      <GroupIcon className={`w-6 h-6 ${group.styles.icon}`} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-display font-bold text-white">{group.brand}</h3>
+                      <p className="text-sm text-muted-foreground">{t[group.taglineKey]}</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    {group.systems.map((sys) => (
+                      <a
+                        key={sys.id}
+                        href={sys.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() =>
+                          trackButtonClick({
+                            contentId: `system-${sys.id}`,
+                            contentName: sys.name,
+                            contentType: "service",
+                          })
+                        }
+                        className="group flex items-center justify-between gap-3 px-3 py-3 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-300"
+                        data-testid={`system-link-${sys.id}`}
+                      >
+                        <span className="flex items-center gap-2.5 flex-wrap min-w-0">
+                          <span className="text-sm md:text-base text-white/90 group-hover:text-white transition-colors">
+                            {sys.name}
+                          </span>
+                          {sys.isMain && (
+                            <span className={`shrink-0 text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full border ${group.styles.badge}`}>
+                              {t.systemsMainPlatform}
+                            </span>
+                          )}
+                          <span className="sr-only">{t.systemsOpensInNewTab}</span>
+                        </span>
+                        <ArrowUpRight className={`w-4 h-4 shrink-0 text-muted-foreground transition-all duration-300 ${group.styles.arrow} group-hover:translate-x-0.5 group-hover:-translate-y-0.5`} />
+                      </a>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -5,7 +5,7 @@ import { Link, useLocation } from "wouter";
 import {
   ArrowLeft, CheckCircle2, ChevronRight,
   Mail, MapPin, Phone, Send, Award, Globe2, BookOpen, Users, Briefcase, Bot, Camera, Loader2,
-  ChevronDown, Facebook, Linkedin, Twitter, Instagram, MessageCircle
+  ChevronDown, Facebook, Linkedin, Twitter, Instagram, MessageCircle, ArrowUpRight
 } from "lucide-react";
 import launchImg from "@assets/image_1775812766946.png";
 import ribbonImg from "@assets/WhatsApp_Image_2026-04-03_at_5.40.49_PM_1775209677927.jpeg";
@@ -23,6 +23,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLang } from "@/contexts/LanguageContext";
 import { trackViewContent, trackLead, trackContact, trackButtonClick } from "@/lib/tiktok";
+import { systemGroups, SYSTEM_DESCRIPTIONS, SYSTEMS_I18N } from "@/data/systems";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -974,6 +975,7 @@ export default function Details() {
   const [location] = useLocation();
   const { lang } = useLang();
   const t = detailsContent[lang];
+  const si = SYSTEMS_I18N[lang];
   const [expandedCourse, setExpandedCourse] = useState<string | null>(null);
   const [form, setForm] = useState<FormState>({ name: "", company: "", email: "", message: "" });
   const [errors, setErrors] = useState<Partial<FormState>>({});
@@ -1329,6 +1331,88 @@ export default function Details() {
                 </AnimatePresence>
               </div>
             ))}
+          </div>
+        </motion.section>
+
+        {/* ── Our Systems ── */}
+        <motion.section
+          id="systems"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="scroll-mt-32"
+        >
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-1 w-12 bg-primary" />
+            <h2 className="text-4xl md:text-5xl font-display font-bold">
+              {si.title} <span className="text-primary">{si.titleHighlight}</span>
+            </h2>
+          </div>
+          <p className="text-muted-foreground mb-10 text-lg max-w-3xl">{si.subtitle}</p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            {systemGroups.map((group, gi) => {
+              const GroupIcon = group.icon;
+              return (
+                <motion.div
+                  key={group.brand}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: gi * 0.15 }}
+                  className={`rounded-2xl bg-card/50 border border-white/10 backdrop-blur-sm p-6 md:p-8 transition-all duration-500 ${group.styles.card}`}
+                >
+                  <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center border ${group.styles.iconWrap}`}>
+                      <GroupIcon className={`w-6 h-6 ${group.styles.icon}`} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-display font-bold text-white">{group.brand}</h3>
+                      <p className="text-sm text-muted-foreground">{si[group.taglineKey]}</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    {group.systems.map((sys) => (
+                      <a
+                        key={sys.id}
+                        href={sys.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() =>
+                          trackButtonClick({
+                            contentId: `system-${sys.id}`,
+                            contentName: sys.name,
+                            contentType: "service",
+                          })
+                        }
+                        className="group flex items-start justify-between gap-3 px-3 py-3 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-300"
+                        data-testid={`system-link-${sys.id}`}
+                      >
+                        <span className="min-w-0">
+                          <span className="flex items-center gap-2.5 flex-wrap">
+                            <span className="text-sm md:text-base font-medium text-white/90 group-hover:text-white transition-colors">
+                              {sys.name}
+                            </span>
+                            {sys.isMain && (
+                              <span className={`shrink-0 text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full border ${group.styles.badge}`}>
+                                {si.mainPlatform}
+                              </span>
+                            )}
+                          </span>
+                          <span className="block mt-1 text-xs md:text-sm text-muted-foreground leading-relaxed">
+                            {SYSTEM_DESCRIPTIONS[lang][sys.id]}
+                          </span>
+                          <span className="sr-only">{si.opensInNewTab}</span>
+                        </span>
+                        <ArrowUpRight aria-hidden="true" className={`w-4 h-4 shrink-0 mt-1 text-muted-foreground transition-all duration-300 ${group.styles.arrow} group-hover:translate-x-0.5 group-hover:-translate-y-0.5`} />
+                      </a>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.section>
 

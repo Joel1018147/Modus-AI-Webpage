@@ -457,7 +457,7 @@ const colorMap: Record<string, { border: string; shadow: string; grad: string; i
 
 const statIcons = [BarChart3, Users, Network, Brain];
 
-type SystemLink = { id: string; name: string; url: string; isMain?: boolean };
+type SystemLink = { id: string; name: string; description: string; url: string; isMain?: boolean };
 type SystemGroup = {
   brand: string;
   taglineKey: "systemsEasyDoTagline" | "systemsEasyToolsTagline";
@@ -479,12 +479,12 @@ const systemGroups: SystemGroup[] = [
       card: "hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,158,46,0.12)]",
     },
     systems: [
-      { id: "easydo-main", name: "M-EasyDo Business Operations AI+ System", isMain: true, url: "https://m-easydo-ai-production.up.railway.app" },
-      { id: "easydo-crm", name: "M-EasyDo AI+ Core CRM Dashboard", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=home" },
-      { id: "easydo-email", name: "M-EasyEmail Marketing AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=emarketing" },
-      { id: "easydo-automation", name: "M-Easy Marketing Automation AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=mautomation" },
-      { id: "easydo-multichannel", name: "M-EasyMultichannel Communication AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=omnichannel" },
-      { id: "easydo-support", name: "M-Easy Customer Support AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=csupport" },
+      { id: "easydo-main", name: "M-EasyDo Business Operations AI+ System", description: "An all-in-one AI-powered business management platform that combines CRM, communication, marketing, and customer support into a single system — designed to help businesses manage their entire customer journey effortlessly.", isMain: true, url: "https://m-easydo-ai-production.up.railway.app" },
+      { id: "easydo-crm", name: "M-EasyDo AI+ Core CRM Dashboard", description: "Manage your leads, contacts, accounts, and sales pipeline in one place. Track opportunities, assign tasks, log activities, and never miss a follow-up — giving your team full visibility over every customer relationship.", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=home" },
+      { id: "easydo-email", name: "M-EasyEmail Marketing AI+ System", description: "Create, send, and track email campaigns to your subscriber lists. Manage contacts, monitor open rates and clicks, and run automated email sequences to nurture your leads.", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=emarketing" },
+      { id: "easydo-automation", name: "M-Easy Marketing Automation AI+ System", description: "Build automated workflows that trigger actions based on customer behaviour — send emails, update records, assign tasks, and move leads through your pipeline without lifting a finger.", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=mautomation" },
+      { id: "easydo-multichannel", name: "M-EasyMultichannel Communication AI+ System", description: "Receive and reply to customer messages from WhatsApp, Telegram, Facebook Messenger, Instagram, LINE, and SMS — all in one unified inbox. No more switching between apps.", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=omnichannel" },
+      { id: "easydo-support", name: "M-Easy Customer Support AI+ System", description: "Handle customer tickets, complaints, and enquiries in a structured helpdesk system. Track ticket status, assign to team members, reply via email, and measure customer satisfaction with CSAT scores.", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=csupport" },
     ],
   },
   {
@@ -499,16 +499,16 @@ const systemGroups: SystemGroup[] = [
       card: "hover:border-secondary/40 hover:shadow-[0_0_30px_rgba(124,58,237,0.12)]",
     },
     systems: [
-      { id: "easytools-main", name: "M-EasyTools AI+", isMain: true, url: "https://m-easytools-ai-production.up.railway.app" },
-      { id: "easytools-content", name: "M-EasyContent AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=blog" },
-      { id: "easytools-social", name: "M-EasySocial AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=social" },
-      { id: "easytools-mail", name: "M-EasyMail AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=email" },
-      { id: "easytools-ads", name: "M-EasyAds AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=ads" },
-      { id: "easytools-seo", name: "M-EasySEO AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=seo" },
-      { id: "easytools-commerce", name: "M-EasyCommerce AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=ecom" },
-      { id: "easytools-sales", name: "M-EasySales AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=sales" },
-      { id: "easytools-chat", name: "M-EasyTools AI+ System (AI Chat)", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=chat" },
-      { id: "easytools-gao", name: "M-EasyGAO AI+ Suite", url: "https://m-easytools-ai-production.up.railway.app/gao" },
+      { id: "easytools-main", name: "M-EasyTools AI+", description: "All-in-one AI marketing platform with 40+ tools, AI chat, bulk generation, document manager and full dashboard — built for Malaysian businesses.", isMain: true, url: "https://m-easytools-ai-production.up.railway.app" },
+      { id: "easytools-content", name: "M-EasyContent AI+ Tools", description: "Generate high-quality blog posts, articles, landing page copy and long-form content in seconds using AI — in English and Bahasa Malaysia.", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=blog" },
+      { id: "easytools-social", name: "M-EasySocial AI+ Tools", description: "Create scroll-stopping social media captions, hashtags, content calendars and viral post ideas for Facebook, Instagram, TikTok and LinkedIn.", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=social" },
+      { id: "easytools-mail", name: "M-EasyMail AI+ Tools", description: "Write high-converting email sequences, newsletters, subject lines and drip campaigns that get opened, read and clicked.", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=email" },
+      { id: "easytools-ads", name: "M-EasyAds AI+ Tools", description: "Generate persuasive ad copy for Google Ads, Facebook Ads, TikTok Ads and display banners that drive clicks and conversions.", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=ads" },
+      { id: "easytools-seo", name: "M-EasySEO AI+ Tools", description: "Optimize your content for search engines with AI-powered meta tags, keyword suggestions, SEO audits and on-page optimization tools.", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=seo" },
+      { id: "easytools-commerce", name: "M-EasyCommerce AI+ Tools", description: "Create compelling product descriptions, Shopify listings, eCommerce copy and upsell scripts that turn browsers into buyers.", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=ecom" },
+      { id: "easytools-sales", name: "M-EasySales AI+ Tools", description: "Write powerful sales scripts, cold outreach emails, proposal copy and follow-up sequences that close more deals faster.", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=tools&cat=sales" },
+      { id: "easytools-chat", name: "M-EasyTools AI+ System (AI Chat)", description: "Your always-on AI marketing assistant — ask anything, generate content on demand, brainstorm ideas and get instant marketing advice 24/7.", url: "https://m-easytools-ai-production.up.railway.app/app.html?goto=chat" },
+      { id: "easytools-gao", name: "M-EasyGAO AI+ Suite", description: "Track your brand's visibility inside ChatGPT, Claude, Gemini, Perplexity and DeepSeek — monitor AI citations, analyze prompts, extract entities and outrank competitors in AI search. The only GAO suite built for Malaysia and Southeast Asia.", url: "https://m-easytools-ai-production.up.railway.app/gao" },
     ],
   },
 ];
@@ -939,21 +939,26 @@ export default function Home() {
                             contentType: "service",
                           })
                         }
-                        className="group flex items-center justify-between gap-3 px-3 py-3 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-300"
+                        className="group flex items-start justify-between gap-3 px-3 py-3 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-300"
                         data-testid={`system-link-${sys.id}`}
                       >
-                        <span className="flex items-center gap-2.5 flex-wrap min-w-0">
-                          <span className="text-sm md:text-base text-white/90 group-hover:text-white transition-colors">
-                            {sys.name}
-                          </span>
-                          {sys.isMain && (
-                            <span className={`shrink-0 text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full border ${group.styles.badge}`}>
-                              {t.systemsMainPlatform}
+                        <span className="min-w-0">
+                          <span className="flex items-center gap-2.5 flex-wrap">
+                            <span className="text-sm md:text-base font-medium text-white/90 group-hover:text-white transition-colors">
+                              {sys.name}
                             </span>
-                          )}
+                            {sys.isMain && (
+                              <span className={`shrink-0 text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full border ${group.styles.badge}`}>
+                                {t.systemsMainPlatform}
+                              </span>
+                            )}
+                          </span>
+                          <span className="block mt-1 text-xs md:text-sm text-muted-foreground leading-relaxed">
+                            {sys.description}
+                          </span>
                           <span className="sr-only">{t.systemsOpensInNewTab}</span>
                         </span>
-                        <ArrowUpRight className={`w-4 h-4 shrink-0 text-muted-foreground transition-all duration-300 ${group.styles.arrow} group-hover:translate-x-0.5 group-hover:-translate-y-0.5`} />
+                        <ArrowUpRight className={`w-4 h-4 shrink-0 mt-1 text-muted-foreground transition-all duration-300 ${group.styles.arrow} group-hover:translate-x-0.5 group-hover:-translate-y-0.5`} />
                       </a>
                     ))}
                   </div>

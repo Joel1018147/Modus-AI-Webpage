@@ -2,7 +2,6 @@ import type { Lang } from "@/contexts/LanguageContext";
 import {
   CEREMONY_IMAGE_FILE,
   SIGNING_IMAGE_FILE,
-  PARTNERSHIP_IMAGE_FILE,
   LAUNCH_FEATURE_IMAGE_FILE,
 } from "@/lib/seo";
 
@@ -10,9 +9,6 @@ export const LAUNCH_PATH = "/official-launch-8th-penang-governor";
 
 export const CEREMONY_IMAGE_W = 1280;
 export const CEREMONY_IMAGE_H = 854;
-
-export const PARTNERSHIP_IMAGE_W = 1600;
-export const PARTNERSHIP_IMAGE_H = 767;
 
 export const LAUNCH_FEATURE_IMAGE_W = 1600;
 export const LAUNCH_FEATURE_IMAGE_H = 921;
@@ -24,7 +20,6 @@ export function asset(file: string): string {
 
 export const ceremonyImageSrc = () => asset(CEREMONY_IMAGE_FILE);
 export const signingImageSrc = () => asset(SIGNING_IMAGE_FILE);
-export const partnershipImageSrc = () => asset(PARTNERSHIP_IMAGE_FILE);
 export const launchFeatureImageSrc = () => asset(LAUNCH_FEATURE_IMAGE_FILE);
 
 export interface LaunchI18n {

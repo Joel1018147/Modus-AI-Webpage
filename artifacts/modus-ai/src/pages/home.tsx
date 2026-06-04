@@ -14,12 +14,9 @@ import {
   LAUNCH_I18N,
   PAGE_META,
   LAUNCH_PATH,
-  partnershipImageSrc,
   launchFeatureImageSrc,
   CEREMONY_IMAGE_W,
   CEREMONY_IMAGE_H,
-  PARTNERSHIP_IMAGE_W,
-  PARTNERSHIP_IMAGE_H,
   LAUNCH_FEATURE_IMAGE_W,
   LAUNCH_FEATURE_IMAGE_H,
 } from "@/data/launch";
@@ -434,11 +431,11 @@ export default function Home() {
       <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 pb-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src={partnershipImageSrc()}
+            src={launchFeatureImageSrc()}
             alt={li.signingAlt}
             title={li.imageTitle}
-            width={PARTNERSHIP_IMAGE_W}
-            height={PARTNERSHIP_IMAGE_H}
+            width={LAUNCH_FEATURE_IMAGE_W}
+            height={LAUNCH_FEATURE_IMAGE_H}
             loading="eager"
             fetchPriority="high"
             decoding="async"

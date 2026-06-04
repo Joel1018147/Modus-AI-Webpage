@@ -24,6 +24,7 @@ export const launchFeatureImageSrc = () => asset(LAUNCH_FEATURE_IMAGE_FILE);
 
 export interface LaunchI18n {
   heroHeadline: string;
+  heroHeadline2: string;
   heroSubheadline: string;
   heroTrust: [string, string, string];
   secondaryCta: string;
@@ -64,6 +65,8 @@ export interface LaunchI18n {
 export const LAUNCH_I18N: Record<Lang, LaunchI18n> = {
   en: {
     heroHeadline: "Official Launch Witnessed by the 8th Governor of Penang",
+    heroHeadline2:
+      "Elevate Malaysian Companies to World-Class AI Execution Through Industry-Certified Training and Technology Integration.",
     heroSubheadline:
       "MODUS AI Associates officially launched its international AI ecosystem initiative through a signing and ribbon-cutting ceremony witnessed by Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, strengthening Malaysia-China AI collaboration and strategic partnerships.",
     heroTrust: [
@@ -126,6 +129,8 @@ export const LAUNCH_I18N: Record<Lang, LaunchI18n> = {
   },
   bm: {
     heroHeadline: "Pelancaran Rasmi Disaksikan oleh Gabenor Pulau Pinang ke-8",
+    heroHeadline2:
+      "Mengangkat Syarikat Malaysia ke Pelaksanaan AI Bertaraf Dunia Melalui Latihan Bertauliah Industri dan Integrasi Teknologi.",
     heroSubheadline:
       "MODUS AI Associates secara rasmi melancarkan inisiatif ekosistem AI antarabangsanya melalui majlis menandatangani perjanjian dan gunting reben yang disaksikan oleh Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, mengukuhkan kerjasama AI Malaysia-China dan perkongsian strategik.",
     heroTrust: [
@@ -188,6 +193,8 @@ export const LAUNCH_I18N: Record<Lang, LaunchI18n> = {
   },
   cn: {
     heroHeadline: "由槟城第八任州元首见证的正式启动",
+    heroHeadline2:
+      "通过行业认证培训与技术整合，助力马来西亚企业实现世界级人工智能执行力。",
     heroSubheadline:
       "MODUS AI Associates 通过签约暨剪彩仪式正式启动其国际人工智能生态系统计划，仪式由 Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak 见证，进一步巩固马中人工智能合作与战略伙伴关系。",
     heroTrust: [
@@ -247,6 +254,8 @@ export const LAUNCH_I18N: Record<Lang, LaunchI18n> = {
   },
   id: {
     heroHeadline: "Peluncuran Resmi Disaksikan oleh Gubernur Penang ke-8",
+    heroHeadline2:
+      "Meningkatkan Perusahaan Malaysia ke Eksekusi AI Kelas Dunia Melalui Pelatihan Bersertifikat Industri dan Integrasi Teknologi.",
     heroSubheadline:
       "MODUS AI Associates secara resmi meluncurkan inisiatif ekosistem AI internasionalnya melalui upacara penandatanganan dan pengguntingan pita yang disaksikan oleh Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, memperkuat kolaborasi AI Malaysia-China dan kemitraan strategis.",
     heroTrust: [
@@ -310,6 +319,8 @@ export const LAUNCH_I18N: Record<Lang, LaunchI18n> = {
   vn: {
     heroHeadline:
       "Lễ Ra Mắt Chính Thức Được Chứng Kiến bởi Thống Đốc Penang Thứ 8",
+    heroHeadline2:
+      "Nâng tầm các doanh nghiệp Malaysia đạt năng lực triển khai AI đẳng cấp thế giới thông qua đào tạo được chứng nhận ngành và tích hợp công nghệ.",
     heroSubheadline:
       "MODUS AI Associates chính thức ra mắt sáng kiến hệ sinh thái AI quốc tế thông qua lễ ký kết và cắt băng khánh thành được chứng kiến bởi Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, củng cố hợp tác AI Malaysia-Trung Quốc và các quan hệ đối tác chiến lược.",
     heroTrust: [
@@ -372,6 +383,8 @@ export const LAUNCH_I18N: Record<Lang, LaunchI18n> = {
   },
   ar: {
     heroHeadline: "الإطلاق الرسمي بحضور حاكم بينانغ الثامن",
+    heroHeadline2:
+      "الارتقاء بالشركات الماليزية إلى تنفيذ الذكاء الاصطناعي بمستوى عالمي من خلال التدريب المعتمد صناعياً ودمج التكنولوجيا.",
     heroSubheadline:
       "أطلقت MODUS AI Associates رسميًا مبادرتها الدولية لمنظومة الذكاء الاصطناعي من خلال حفل توقيع وقص الشريط بحضور Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak، مما يعزز التعاون الماليزي الصيني في الذكاء الاصطناعي والشراكات الاستراتيجية.",
     heroTrust: [
@@ -434,6 +447,8 @@ export const LAUNCH_I18N: Record<Lang, LaunchI18n> = {
   th: {
     heroHeadline:
       "พิธีเปิดตัวอย่างเป็นทางการ โดยมีผู้ว่าการรัฐปีนังคนที่ 8 เป็นสักขีพยาน",
+    heroHeadline2:
+      "ยกระดับบริษัทมาเลเซียสู่การนำ AI ไปใช้ระดับโลกผ่านการฝึกอบรมที่ได้รับการรับรองจากอุตสาหกรรมและการผสานเทคโนโลยี",
     heroSubheadline:
       "MODUS AI Associates เปิดตัวโครงการระบบนิเวศ AI ระดับนานาชาติอย่างเป็นทางการ ผ่านพิธีลงนามและตัดริบบิ้น โดยมี Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak เป็นสักขีพยาน เสริมสร้างความร่วมมือด้าน AI ระหว่างมาเลเซีย-จีน และความเป็นพันธมิตรเชิงกลยุทธ์",
     heroTrust: [

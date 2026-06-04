@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
   ArrowRight, BarChart3, Brain, Cpu, Globe,
@@ -380,6 +380,16 @@ export default function Home() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const videoSrc = VIDEO_BY_LANG[lang];
 
+  const heroHeadlines = [li.heroHeadline, li.heroHeadline2];
+  const [headlineIdx, setHeadlineIdx] = useState(0);
+  useEffect(() => {
+    setHeadlineIdx(0);
+    const interval = setInterval(() => {
+      setHeadlineIdx((prev) => (prev === 0 ? 1 : 0));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [lang]);
+
   useSeo({
     title: meta.home.title,
     description: meta.home.description,
@@ -439,7 +449,7 @@ export default function Home() {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-cover object-left-top"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background" />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_40%,transparent_100%)]" />
@@ -467,9 +477,20 @@ export default function Home() {
 
             <motion.h1
               variants={itemVariants}
-              className="text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-tight text-white mb-6"
+              className="text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-tight text-white mb-6 min-h-[2.4em] flex items-center justify-center"
             >
-              {li.heroHeadline}
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={headlineIdx}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.5 }}
+                  className="block"
+                >
+                  {heroHeadlines[headlineIdx]}
+                </motion.span>
+              </AnimatePresence>
             </motion.h1>
 
             <motion.p

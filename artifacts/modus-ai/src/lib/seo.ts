@@ -6,9 +6,12 @@ export const CEREMONY_IMAGE_FILE =
   "modus-ai-associates-8th-penang-governor-ribbon-cutting.webp";
 export const SIGNING_IMAGE_FILE =
   "modus-ai-associates-partnership-signing-ceremony.webp";
+export const PARTNERSHIP_IMAGE_FILE =
+  "modus-ai-associates-international-domestic-partnerships.webp";
 
 export const CEREMONY_IMAGE_URL = `${SITE_URL}/${CEREMONY_IMAGE_FILE}`;
 export const SIGNING_IMAGE_URL = `${SITE_URL}/${SIGNING_IMAGE_FILE}`;
+export const PARTNERSHIP_IMAGE_URL = `${SITE_URL}/${PARTNERSHIP_IMAGE_FILE}`;
 
 export function absoluteUrl(path: string): string {
   if (!path) return SITE_URL;

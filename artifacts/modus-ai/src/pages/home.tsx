@@ -15,8 +15,11 @@ import {
   PAGE_META,
   LAUNCH_PATH,
   ceremonyImageSrc,
+  partnershipImageSrc,
   CEREMONY_IMAGE_W,
   CEREMONY_IMAGE_H,
+  PARTNERSHIP_IMAGE_W,
+  PARTNERSHIP_IMAGE_H,
 } from "@/data/launch";
 import videoEN from "@assets/Modus_AI_Associates_Empowering_the_Future_with_AI_(1)_1776710555170.mp4";
 import videoBM from "@assets/WhatsApp_Video_2026-04-21_at_2.38.14_AM_1776710603263.mp4";
@@ -429,11 +432,11 @@ export default function Home() {
       <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 pb-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src={ceremonyImageSrc()}
-            alt={li.imageAlt}
+            src={partnershipImageSrc()}
+            alt={li.signingAlt}
             title={li.imageTitle}
-            width={CEREMONY_IMAGE_W}
-            height={CEREMONY_IMAGE_H}
+            width={PARTNERSHIP_IMAGE_W}
+            height={PARTNERSHIP_IMAGE_H}
             loading="eager"
             fetchPriority="high"
             decoding="async"

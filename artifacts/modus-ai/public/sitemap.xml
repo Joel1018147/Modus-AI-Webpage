@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+  <url>
+    <loc>https://www.modusaiassociates.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.modusaiassociates.com/modus-ai-associates-8th-penang-governor-ribbon-cutting.webp</image:loc>
+      <image:title>MODUS AI Associates Official Launch Ceremony</image:title>
+      <image:caption>MODUS AI Associates ribbon-cutting ceremony witnessed by Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, 8th Governor of Penang</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.modusaiassociates.com/official-launch-8th-penang-governor</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.modusaiassociates.com/modus-ai-associates-8th-penang-governor-ribbon-cutting.webp</image:loc>
+      <image:title>MODUS AI Associates Official Launch Ceremony</image:title>
+      <image:caption>MODUS AI Associates ribbon-cutting ceremony witnessed by Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, 8th Governor of Penang</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.modusaiassociates.com/modus-ai-associates-partnership-signing-ceremony.webp</image:loc>
+      <image:title>MODUS AI Associates Partnership Signing Ceremony</image:title>
+      <image:caption>International and domestic partnership signing ceremony — MODUS AI Associates</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.modusaiassociates.com/details</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

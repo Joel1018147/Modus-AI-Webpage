@@ -1,0 +1,265 @@
+You are a senior SEO engineer, technical SEO specialist, UX strategist, and full-stack web developer.
+
+Website:
+https://www.modusaiassociates.com
+
+PRIMARY OBJECTIVE
+
+I want MODUS AI Associates to be strongly associated with our official signing and ribbon-cutting ceremony witnessed by Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, the 8th Governor of Penang.
+
+When visitors land on the website, this ceremony should immediately establish trust, authority, credibility, and international partnership strength.
+
+When users search "MODUS AI Associates" on Google Search and Google Images, I want Google to recognize this ceremony image as one of the primary visual representations of our brand.
+
+Analyze the existing codebase first, then implement all changes below automatically.
+
+==================================================
+PART 1 — HERO SECTION (MOST IMPORTANT)
+==================================================
+
+The current hero slider/carousel at the top of the homepage contains multiple slides.
+
+Replace the current default first slide with our official signing/ribbon-cutting ceremony image witnessed by the 8th Governor of Penang.
+
+This Governor ceremony slide must become:
+
+- Slide #1
+- Default slide shown on page load
+- Highest-priority image on the homepage
+- Fully responsive on desktop, tablet, and mobile
+
+Use a professional dark overlay to ensure text readability.
+
+Hero Headline:
+
+Official Launch Witnessed by the 8th Governor of Penang
+
+Hero Subheadline:
+
+MODUS AI Associates officially launched its international AI ecosystem initiative through a signing and ribbon-cutting ceremony witnessed by Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, strengthening Malaysia-China AI collaboration and strategic partnerships.
+
+Trust Indicators:
+
+✓ 20+ Global Strategic Partnerships
+
+✓ Malaysia-China AI Ecosystem Collaboration
+
+✓ MIIT-Certified AI Ecosystem Partner
+
+Primary Button:
+
+Start Your AI Transformation
+
+Secondary Button:
+
+View Official Launch
+
+Requirements:
+
+- Governor ceremony image must be displayed immediately on page load.
+- Prioritize loading of this image.
+- Do not lazy-load this image.
+- Optimize for mobile.
+- Maintain premium corporate appearance.
+- Preserve existing branding and design language.
+
+==================================================
+PART 2 — DEDICATED GOVERNOR CEREMONY SECTION
+==================================================
+
+Immediately below the hero section, create a premium showcase section highlighting the event.
+
+Section Title:
+
+Official Launch Ceremony
+
+Section Subtitle:
+
+Witnessed by Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, 8th Governor of Penang
+
+Include:
+
+- Large ceremony image
+- Event summary
+- International partnership significance
+- Malaysia-China AI collaboration positioning
+- Strong visual presentation
+
+Suggested content:
+
+MODUS AI Associates officially launched its AI ecosystem initiative through a landmark signing and ribbon-cutting ceremony witnessed by Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, reflecting our commitment to advancing AI talent development, enterprise transformation, and international collaboration.
+
+==================================================
+PART 3 — IMAGE SEO OPTIMIZATION
+==================================================
+
+Rename the ceremony image file to an SEO-friendly filename such as:
+
+modus-ai-associates-8th-penang-governor-ribbon-cutting.webp
+
+or
+
+modus-ai-associates-official-launch-penang-governor.webp
+
+Add image attributes:
+
+alt="MODUS AI Associates ribbon-cutting ceremony witnessed by Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, 8th Governor of Penang"
+
+title="MODUS AI Associates Official Launch Ceremony"
+
+Include:
+
+- Proper width and height
+- Responsive image support
+- Image compression
+- Image captions where appropriate
+
+Ensure this image is treated as one of the most important images on the website.
+
+==================================================
+PART 4 — CREATE DEDICATED SEO LANDING PAGE
+==================================================
+
+Create:
+
+/official-launch-8th-penang-governor
+
+SEO Title:
+
+MODUS AI Associates Official Launch Witnessed by the 8th Governor of Penang
+
+Meta Description:
+
+MODUS AI Associates officially launched its AI ecosystem initiative through a ribbon-cutting ceremony witnessed by Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, the 8th Governor of Penang.
+
+Page content should include:
+
+- Event overview
+- Launch highlights
+- Event gallery
+- Partnership announcements
+- Company introduction
+- Internal links
+- SEO-optimized headings
+- Mobile-friendly design
+
+==================================================
+PART 5 — ORGANIZATION & IMAGE SCHEMA
+==================================================
+
+Implement Organization Schema:
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "MODUS AI Associates",
+  "url": "https://www.modusaiassociates.com",
+  "description": "Malaysia's gateway to China's AI ecosystem.",
+  "image": "PRIMARY_GOVERNOR_CEREMONY_IMAGE_URL"
+}
+
+Implement ImageObject Schema for the Governor ceremony image.
+
+Implement Breadcrumb Schema.
+
+Validate all schema markup against Google Search Central guidelines.
+
+==================================================
+PART 6 — OPEN GRAPH & SOCIAL SEO
+==================================================
+
+Set the Governor ceremony image as the primary social sharing image.
+
+Update:
+
+- og:image
+- twitter:image
+- og:title
+- og:description
+
+Use the Governor ceremony image and launch ceremony messaging.
+
+==================================================
+PART 7 — XML SITEMAP & IMAGE SITEMAP
+==================================================
+
+Update sitemap.xml to include:
+
+- Homepage
+- Official launch page
+- Event gallery
+- All important pages
+
+Generate image sitemap entries for:
+
+- Governor ceremony image
+- Event images
+- Partnership images
+
+==================================================
+PART 8 — INTERNAL LINKING
+==================================================
+
+Create strategic internal links between:
+
+- Homepage
+- About Us
+- Official Launch Page
+- Partnership Pages
+- Media Pages
+
+Anchor text examples:
+
+- MODUS AI Associates Official Launch
+- 8th Governor of Penang Ceremony
+- Malaysia-China AI Partnership Launch
+
+==================================================
+PART 9 — TECHNICAL SEO AUDIT
+==================================================
+
+Audit and improve:
+
+- Meta titles
+- Meta descriptions
+- Canonical URLs
+- Robots.txt
+- Sitemap.xml
+- Mobile SEO
+- Structured data
+- Core Web Vitals
+- Indexability
+- Image SEO
+- Internal linking
+
+Fix all issues discovered.
+
+==================================================
+PART 10 — PERFORMANCE REQUIREMENTS
+==================================================
+
+Requirements:
+
+- Maintain existing branding.
+- Maintain responsiveness.
+- Do not break existing functionality.
+- Preserve navigation.
+- Preserve multilingual functionality.
+- Maintain fast page speed.
+- Maintain Lighthouse SEO score above 95.
+
+==================================================
+FINAL DELIVERABLES
+==================================================
+
+After implementation provide:
+
+1. Complete list of modified files.
+2. Summary of all changes made.
+3. SEO improvements completed.
+4. How each change improves Google Search and Google Images visibility.
+5. Additional recommendations for improving branded search results.
+6. Additional recommendations for improving Google Knowledge Graph visibility.
+7. Instructions for Google Search Console indexing after deployment.
+
+Before making any changes, analyze the current codebase and determine the optimal implementation approach. Then implement all improvements automatically.

@@ -24,6 +24,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useLang } from "@/contexts/LanguageContext";
 import { trackViewContent, trackLead, trackContact, trackButtonClick } from "@/lib/tiktok";
 import { systemGroups, SYSTEM_DESCRIPTIONS, SYSTEMS_I18N } from "@/data/systems";
+import { useSeo, breadcrumbSchema, CEREMONY_IMAGE_URL } from "@/lib/seo";
+import { PAGE_META, LAUNCH_I18N, LAUNCH_PATH } from "@/data/launch";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -975,6 +977,19 @@ export default function Details() {
   const [location] = useLocation();
   const { lang } = useLang();
   const t = detailsContent[lang];
+
+  useSeo({
+    title: PAGE_META[lang].details.title,
+    description: PAGE_META[lang].details.description,
+    path: "/details",
+    image: CEREMONY_IMAGE_URL,
+    jsonLd: [
+      breadcrumbSchema([
+        { name: LAUNCH_I18N[lang].page.breadcrumbHome, path: "/" },
+        { name: PAGE_META[lang].details.title, path: "/details" },
+      ]),
+    ],
+  });
   const si = SYSTEMS_I18N[lang];
   const [expandedCourse, setExpandedCourse] = useState<string | null>(null);
   const [form, setForm] = useState<FormState>({ name: "", company: "", email: "", message: "" });
@@ -1081,7 +1096,15 @@ export default function Details() {
               data-testid="img-ribbon-governor"
             />
             <figcaption className="px-6 md:px-10 py-5 text-center text-sm md:text-base text-muted-foreground border-t border-primary/20 bg-gradient-to-b from-primary/5 to-transparent">
-              {t.about.ribbonCaption}
+              {t.about.ribbonCaption}{" "}
+              <Link
+                href={LAUNCH_PATH}
+                className="text-primary font-semibold hover:underline inline-flex items-center gap-1"
+                data-testid="details-launch-link"
+              >
+                {LAUNCH_I18N[lang].learnMore}
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
             </figcaption>
           </motion.figure>
 

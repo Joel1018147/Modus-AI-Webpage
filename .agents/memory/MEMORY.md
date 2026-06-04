@@ -1,2 +1,3 @@
 - [TikTok tracking (modus-ai)](tiktok-tracking.md) — Pixel+Events API: shared event_id dedup, token server-only, omit content_type for lead-gen sites.
 - [Repo typecheck](repo-conventions.md) — root has NO `pnpm run typecheck` script (despite replit.md); typecheck per-package with `pnpm --filter <pkg> exec tsc -p tsconfig.json --noEmit`.
+- [modus-ai SEO](modus-ai-seo.md) — SPA: static index.html=root canonical+Org/WebSite JSON-LD; per-route useSeo hook=title/canonical/OG+page schema. Single-URL i18n, NO hreflang/SSR.

@@ -9,6 +9,8 @@ import TikTokDebugPanel from "@/components/dev/TikTokDebugPanel";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Details from "@/pages/details";
+import Launch from "@/pages/launch";
+import { LAUNCH_PATH } from "@/data/launch";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +27,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/details" component={Details} />
+      <Route path={LAUNCH_PATH} component={Launch} />
       <Route component={NotFound} />
     </Switch>
   );

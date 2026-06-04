@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "wouter";
 import {
   ArrowRight, BarChart3, Brain, Cpu, Globe,
   Network, ShieldCheck, Zap, Award, Users, Play, GraduationCap,
-  Building2
+  Building2, CheckCircle2
 } from "lucide-react";
 import { useLang, type Lang } from "@/contexts/LanguageContext";
 import { trackViewContent, trackButtonClick } from "@/lib/tiktok";
+import { useSeo, imageObjectSchema, CEREMONY_IMAGE_URL } from "@/lib/seo";
+import {
+  LAUNCH_I18N,
+  PAGE_META,
+  LAUNCH_PATH,
+  ceremonyImageSrc,
+  CEREMONY_IMAGE_W,
+  CEREMONY_IMAGE_H,
+} from "@/data/launch";
 import videoEN from "@assets/Modus_AI_Associates_Empowering_the_Future_with_AI_(1)_1776710555170.mp4";
 import videoBM from "@assets/WhatsApp_Video_2026-04-21_at_2.38.14_AM_1776710603263.mp4";
 import videoCN from "@assets/WhatsApp_Video_2026-04-21_at_2.38.36_AM_1776710603263.mp4";
@@ -72,13 +81,6 @@ const content = {
     footerTitleHighlight: "AI Revolution?",
     footerSubtitle: "Join the MODUS AI network — certified by MIIT, powered by China's No.1 AI training ecosystem.",
     footerCta: "Get in Touch",
-    headlines: [
-      "Transform Malaysia's AI Business Capabilities to Global Standards — Powered by China's World-Leading AI Ecosystem",
-      "Elevate Malaysian Companies to World-Class AI Execution Through Industry-Certified Training and Technology Integration",
-      "Increase Workforce Productivity by 3–10X Through Applied AI Systems and Automation",
-      "Bridge the AI Talent Gap with Real-World Training, Backed by China's No.1 AI Training Institution and MIIT Certification",
-      "AI Adoption Is No Longer Optional — It Is the Core Driver of Future Business Survival and Growth",
-    ],
   },
   bm: {
     badge: "BERTAULIAH MIIT · RAKAN EKOSISTEM AI CHINA · MALAYSIA",
@@ -128,13 +130,6 @@ const content = {
     footerTitleHighlight: "Revolusi AI Malaysia?",
     footerSubtitle: "Sertai rangkaian MODUS AI — disijilkan oleh MIIT, dikuasakan oleh ekosistem latihan AI No.1 China.",
     footerCta: "Hubungi Kami",
-    headlines: [
-      "Transformasi Keupayaan Perniagaan AI Malaysia ke Standard Global — Dikuasakan oleh Ekosistem AI Terkemuka Dunia dari China",
-      "Tingkatkan Syarikat Malaysia ke Pelaksanaan AI Bertaraf Dunia Melalui Latihan Bersertifikasi dan Integrasi Teknologi",
-      "Tingkatkan Produktiviti Tenaga Kerja 3–10X Melalui Sistem AI Gunaan dan Automasi",
-      "Hapuskan Jurang Bakat AI dengan Latihan Dunia Nyata, Disokong oleh Institusi Latihan AI No.1 China dan Sijil MIIT",
-      "Penggunaan AI Bukan Lagi Pilihan — Ia Adalah Pemacu Utama Kelangsungan dan Pertumbuhan Perniagaan Masa Depan",
-    ],
   },
   cn: {
     badge: "MIIT 认证 · 中国 AI 生态合作伙伴 · 马来西亚",
@@ -176,13 +171,6 @@ const content = {
     footerTitleHighlight: "AI 革命？",
     footerSubtitle: "加入 MODUS AI 网络——由 MIIT 认证，由中国第一AI培训生态系统提供动力。",
     footerCta: "立即联系",
-    headlines: [
-      "将马来西亚的AI商业能力转型至全球标准——由中国世界领先的AI生态系统提供动力",
-      "通过行业认证培训和技术整合，将马来西亚公司提升至世界级AI执行水平",
-      "通过应用AI系统和自动化将员工生产力提升5–10倍",
-      "用真实世界培训弥合AI人才差距，由中国第一AI培训机构和MIIT认证支持",
-      "AI应用不再是可选项——它是未来商业生存与发展的核心驱动力",
-    ],
   },
   id: {
     badge: "TERSERTIFIKASI MIIT · MITRA EKOSISTEM AI TIONGKOK · MALAYSIA",
@@ -224,13 +212,6 @@ const content = {
     footerTitleHighlight: "Revolusi AI Malaysia?",
     footerSubtitle: "Bergabunglah dengan jaringan MODUS AI — disertifikasi oleh MIIT, didukung oleh ekosistem pelatihan AI No.1 Tiongkok.",
     footerCta: "Hubungi Kami",
-    headlines: [
-      "Transformasikan Kemampuan Bisnis AI Malaysia ke Standar Global — Didukung Ekosistem AI Terdepan Dunia milik Tiongkok",
-      "Angkat Perusahaan Malaysia ke Eksekusi AI Kelas Dunia Melalui Pelatihan Tersertifikasi Industri dan Integrasi Teknologi",
-      "Tingkatkan Produktivitas Tenaga Kerja 3–10X Melalui Sistem AI Terapan dan Otomatisasi",
-      "Jembatani Kesenjangan Talenta AI dengan Pelatihan Dunia Nyata, Didukung oleh Lembaga Pelatihan AI No.1 Tiongkok dan Sertifikasi MIIT",
-      "Adopsi AI Bukan Lagi Pilihan — Ini adalah Pendorong Utama Kelangsungan dan Pertumbuhan Bisnis Masa Depan",
-    ],
   },
   vn: {
     badge: "ĐƯỢC CHỨNG NHẬN MIIT · ĐỐI TÁC HỆ SINH THÁI AI TRUNG QUỐC · MALAYSIA",
@@ -272,13 +253,6 @@ const content = {
     footerTitleHighlight: "Cuộc Cách Mạng AI Malaysia?",
     footerSubtitle: "Tham gia mạng lưới MODUS AI — được chứng nhận bởi MIIT, được hỗ trợ bởi hệ sinh thái đào tạo AI số 1 Trung Quốc.",
     footerCta: "Liên Hệ",
-    headlines: [
-      "Chuyển Đổi Năng Lực Kinh Doanh AI của Malaysia Lên Tiêu Chuẩn Toàn Cầu — Được Hỗ Trợ Bởi Hệ Sinh Thái AI Hàng Đầu Thế Giới của Trung Quốc",
-      "Nâng Tầm Các Công Ty Malaysia Lên Mức Thực Thi AI Đẳng Cấp Thế Giới Thông Qua Đào Tạo Được Ngành Chứng Nhận và Tích Hợp Công Nghệ",
-      "Tăng Năng Suất Lao Động 5–10 Lần Thông Qua Hệ Thống AI Ứng Dụng và Tự Động Hóa",
-      "Thu Hẹp Khoảng Cách Nhân Tài AI với Đào Tạo Thực Tế, Được Hỗ Trợ Bởi Học Viện Đào Tạo AI Số 1 Trung Quốc và Chứng Nhận MIIT",
-      "Áp Dụng AI Không Còn Là Tùy Chọn — Đó là Động Lực Cốt Lõi cho Sự Tồn Tại và Tăng Trưởng Doanh Nghiệp trong Tương Lai",
-    ],
   },
   ar: {
     badge: "معتمد من MIIT · شريك منظومة AI الصينية · ماليزيا",
@@ -320,13 +294,6 @@ const content = {
     footerTitleHighlight: "ثورة AI في ماليزيا؟",
     footerSubtitle: "انضم إلى شبكة MODUS AI — معتمدة من MIIT، مدعومة بأكبر منظومة تدريب AI رقم 1 في الصين.",
     footerCta: "تواصل معنا",
-    headlines: [
-      "حوّل قدرات أعمال AI في ماليزيا إلى المعايير العالمية — مدعومة بمنظومة AI الرائدة عالمياً في الصين",
-      "ارتقِ بالشركات الماليزية إلى تنفيذ AI من الطراز العالمي من خلال التدريب المعتمد من الصناعة وتكامل التكنولوجيا",
-      "زد إنتاجية القوى العاملة بمقدار 5–10 أضعاف من خلال أنظمة AI التطبيقية والأتمتة",
-      "اربط بين فجوة المواهب AI بالتدريب في العالم الحقيقي، مدعوماً بمؤسسة التدريب AI رقم 1 في الصين واعتماد MIIT",
-      "اعتماد AI لم يعد اختيارياً — إنه المحرك الأساسي لبقاء ونمو الأعمال في المستقبل",
-    ],
   },
   th: {
     badge: "รับรองโดย MIIT · พันธมิตรระบบนิเวศ AI ของจีน · มาเลเซีย",
@@ -376,13 +343,6 @@ const content = {
     footerTitleHighlight: "การปฏิวัติ AI ของมาเลเซียแล้วหรือยัง?",
     footerSubtitle: "เข้าร่วมเครือข่าย MODUS AI — รับรองโดย MIIT ขับเคลื่อนโดยระบบนิเวศการฝึกอบรม AI อันดับ 1 ของจีน",
     footerCta: "ติดต่อเรา",
-    headlines: [
-      "ยกระดับขีดความสามารถทางธุรกิจ AI ของมาเลเซียสู่มาตรฐานโลก — ขับเคลื่อนโดยระบบนิเวศ AI ชั้นนำของจีน",
-      "ยกระดับบริษัทมาเลเซียสู่การปฏิบัติ AI ระดับโลกผ่านการฝึกอบรมและการบูรณาการเทคโนโลยีที่ได้รับการรับรองจากอุตสาหกรรม",
-      "เพิ่มผลิตภาพแรงงาน 3–10 เท่าด้วยระบบ AI ประยุกต์และระบบอัตโนมัติ",
-      "เชื่อมช่องว่างบุคลากร AI ด้วยการฝึกอบรมในโลกจริง หนุนโดยสถาบันฝึกอบรม AI อันดับ 1 ของจีนและการรับรองจาก MIIT",
-      "การนำ AI มาใช้ไม่ใช่ทางเลือกอีกต่อไป — เป็นแรงขับเคลื่อนหลักของการอยู่รอดและการเติบโตทางธุรกิจในอนาคต",
-    ],
   },
 };
 
@@ -412,10 +372,27 @@ const statIcons = [BarChart3, Users, Network, Brain];
 export default function Home() {
   const { lang } = useLang();
   const t = content[lang];
+  const li = LAUNCH_I18N[lang];
+  const meta = PAGE_META[lang];
 
-  const [headlineIndex, setHeadlineIndex] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const videoSrc = VIDEO_BY_LANG[lang];
+
+  useSeo({
+    title: meta.home.title,
+    description: meta.home.description,
+    path: "/",
+    image: CEREMONY_IMAGE_URL,
+    imageAlt: li.imageAlt,
+    jsonLd: [
+      imageObjectSchema({
+        url: CEREMONY_IMAGE_URL,
+        caption: li.imageCaption,
+        width: CEREMONY_IMAGE_W,
+        height: CEREMONY_IMAGE_H,
+      }),
+    ],
+  });
 
   useEffect(() => {
     trackViewContent({ contentId: "homepage", contentName: "Homepage", contentType: "service" });
@@ -434,17 +411,6 @@ export default function Home() {
     setIsVideoPlaying(false);
   }, [lang]);
 
-  useEffect(() => {
-    setHeadlineIndex(0);
-  }, [lang]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setHeadlineIndex((prev) => (prev + 1) % t.headlines.length);
-    }, 8000);
-    return () => clearInterval(timer);
-  }, [t.headlines.length]);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -462,8 +428,19 @@ export default function Home() {
       {/* ── Hero ── */}
       <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 pb-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
+          <img
+            src={ceremonyImageSrc()}
+            alt={li.imageAlt}
+            title={li.imageTitle}
+            width={CEREMONY_IMAGE_W}
+            height={CEREMONY_IMAGE_H}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background" />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_40%,transparent_100%)]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
           <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -477,7 +454,7 @@ export default function Home() {
         </div>
 
         <div className="container relative z-10 mx-auto px-4 md:px-8 flex flex-col items-center text-center">
-          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-5xl">
+          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-4xl">
             <motion.div
               variants={itemVariants}
               className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium tracking-wide"
@@ -485,51 +462,40 @@ export default function Home() {
               <Award className="w-4 h-4" />
               {t.badge}
             </motion.div>
+
+            <motion.h1
+              variants={itemVariants}
+              className="text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-tight text-white mb-6"
+            >
+              {li.heroHeadline}
+            </motion.h1>
+
             <motion.p
               variants={itemVariants}
-              className="text-xs md:text-sm text-primary/70 italic mb-6 max-w-2xl mx-auto"
+              className="text-base md:text-lg text-white/85 max-w-3xl mx-auto mb-8 leading-relaxed"
             >
-              {t.badgeSubtitle}
+              {li.heroSubheadline}
             </motion.p>
 
-            <div className="relative min-h-[8rem] md:min-h-[7rem] mb-6 flex items-center justify-center">
-              <AnimatePresence mode="wait">
-                <motion.h1
-                  key={`${lang}-${headlineIndex}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -16 }}
-                  transition={{ duration: 0.55, ease: "easeOut" }}
-                  className="text-xl md:text-3xl lg:text-4xl font-display font-bold leading-snug text-white max-w-4xl"
-                >
-                  {t.headlines[headlineIndex].split("—").map((part, i, arr) =>
-                    i < arr.length - 1 ? (
-                      <span key={i}>
-                        {part}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">—</span>
-                      </span>
-                    ) : (
-                      <span key={i}>{part}</span>
-                    )
-                  )}
-                </motion.h1>
-              </AnimatePresence>
-            </div>
-
-            <motion.div variants={itemVariants} className="flex justify-center gap-2 mb-8">
-              {t.headlines.map((_, i) => (
-                <button
+            <motion.ul
+              variants={itemVariants}
+              className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mb-10"
+            >
+              {li.heroTrust.map((item, i) => (
+                <li
                   key={i}
-                  onClick={() => setHeadlineIndex(i)}
-                  data-testid={`headline-dot-${i}`}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === headlineIndex ? "bg-primary w-6" : "bg-white/30"
-                  }`}
-                />
+                  className="inline-flex items-center gap-2 text-sm md:text-base text-white/90"
+                >
+                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                  <span>{item}</span>
+                </li>
               ))}
-            </motion.div>
+            </motion.ul>
 
-            <motion.div variants={itemVariants}>
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
               <Link
                 href="/details"
                 onClick={() =>
@@ -545,8 +511,91 @@ export default function Home() {
                 {t.cta}
                 <ArrowRight className="w-5 h-5" />
               </Link>
+              <Link
+                href={LAUNCH_PATH}
+                onClick={() =>
+                  trackButtonClick({
+                    contentId: "view-official-launch",
+                    contentName: "View Official Launch",
+                    contentType: "service",
+                  })
+                }
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold rounded-lg border border-primary/40 bg-white/5 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:border-primary/70"
+                data-testid="hero-cta-launch"
+              >
+                {li.secondaryCta}
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── Official Launch Ceremony ── */}
+      <section
+        id="official-launch"
+        className="relative z-20 py-20 md:py-28 bg-gradient-to-b from-background via-card to-background border-y border-white/5"
+      >
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <motion.figure
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl m-0"
+            >
+              <img
+                src={ceremonyImageSrc()}
+                alt={li.imageAlt}
+                title={li.imageTitle}
+                width={CEREMONY_IMAGE_W}
+                height={CEREMONY_IMAGE_H}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-cover"
+              />
+              <figcaption className="px-4 py-3 text-xs md:text-sm text-muted-foreground bg-card/80 border-t border-white/10">
+                {li.imageCaption}
+              </figcaption>
+            </motion.figure>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <span className="h-1 w-10 bg-primary rounded-full" />
+                <span className="text-sm uppercase tracking-wider text-primary/80 font-semibold">
+                  {li.page.breadcrumbCurrent}
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-3">
+                {li.sectionTitle}
+              </h2>
+              <p className="text-primary/90 font-medium mb-6">{li.sectionSubtitle}</p>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                {li.sectionBody}
+              </p>
+              <Link
+                href={LAUNCH_PATH}
+                onClick={() =>
+                  trackButtonClick({
+                    contentId: "ceremony-read-more",
+                    contentName: "Official Launch — Read More",
+                    contentType: "service",
+                  })
+                }
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-bold rounded-lg border-2 border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300"
+                data-testid="ceremony-learn-more"
+              >
+                {li.learnMore}
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 

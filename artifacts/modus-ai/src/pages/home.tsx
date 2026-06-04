@@ -14,12 +14,14 @@ import {
   LAUNCH_I18N,
   PAGE_META,
   LAUNCH_PATH,
-  ceremonyImageSrc,
   partnershipImageSrc,
+  launchFeatureImageSrc,
   CEREMONY_IMAGE_W,
   CEREMONY_IMAGE_H,
   PARTNERSHIP_IMAGE_W,
   PARTNERSHIP_IMAGE_H,
+  LAUNCH_FEATURE_IMAGE_W,
+  LAUNCH_FEATURE_IMAGE_H,
 } from "@/data/launch";
 import videoEN from "@assets/Modus_AI_Associates_Empowering_the_Future_with_AI_(1)_1776710555170.mp4";
 import videoBM from "@assets/WhatsApp_Video_2026-04-21_at_2.38.14_AM_1776710603263.mp4";
@@ -549,11 +551,11 @@ export default function Home() {
               className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl m-0"
             >
               <img
-                src={ceremonyImageSrc()}
-                alt={li.imageAlt}
+                src={launchFeatureImageSrc()}
+                alt={li.signingAlt}
                 title={li.imageTitle}
-                width={CEREMONY_IMAGE_W}
-                height={CEREMONY_IMAGE_H}
+                width={LAUNCH_FEATURE_IMAGE_W}
+                height={LAUNCH_FEATURE_IMAGE_H}
                 loading="lazy"
                 decoding="async"
                 className="w-full h-auto object-cover"

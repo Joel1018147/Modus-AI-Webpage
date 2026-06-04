@@ -24,8 +24,11 @@ import {
   LAUNCH_PATH,
   ceremonyImageSrc,
   signingImageSrc,
+  launchFeatureImageSrc,
   CEREMONY_IMAGE_W,
   CEREMONY_IMAGE_H,
+  LAUNCH_FEATURE_IMAGE_W,
+  LAUNCH_FEATURE_IMAGE_H,
 } from "@/data/launch";
 
 const fadeUp = {
@@ -148,11 +151,11 @@ export default function Launch() {
             className="rounded-3xl overflow-hidden border border-primary/20 bg-card shadow-2xl m-0"
           >
             <img
-              src={ceremonyImageSrc()}
-              alt={li.imageAlt}
+              src={launchFeatureImageSrc()}
+              alt={li.signingAlt}
               title={li.imageTitle}
-              width={CEREMONY_IMAGE_W}
-              height={CEREMONY_IMAGE_H}
+              width={LAUNCH_FEATURE_IMAGE_W}
+              height={LAUNCH_FEATURE_IMAGE_H}
               loading="lazy"
               decoding="async"
               className="w-full h-auto object-cover"

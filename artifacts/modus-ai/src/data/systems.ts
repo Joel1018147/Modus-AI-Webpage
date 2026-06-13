@@ -4,6 +4,7 @@ import type React from "react";
 
   export type SystemId =
   | "easydo-main" | "easydo-crm" | "easydo-email" | "easydo-automation" | "easydo-multichannel" | "easydo-support"
+  | "easydo-agent" | "easydo-booking"
   | "easytools-main" | "easytools-content" | "easytools-social" | "easytools-mail" | "easytools-ads"
   | "easytools-seo" | "easytools-commerce" | "easytools-sales" | "easytools-chat" | "easytools-gao";
 export type SystemLink = { id: SystemId; name: string; url: string; isMain?: boolean };
@@ -29,11 +30,13 @@ export const systemGroups: SystemGroup[] = [
     },
     systems: [
       { id: "easydo-main", name: "M-EasyDo Business Operations AI+ System", isMain: true, url: "https://m-easydo-ai-production.up.railway.app" },
-      { id: "easydo-crm", name: "M-EasyDo AI+ Core CRM Dashboard", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=home" },
-      { id: "easydo-email", name: "M-EasyEmail Marketing AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=emarketing" },
-      { id: "easydo-automation", name: "M-Easy Marketing Automation AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=mautomation" },
-      { id: "easydo-multichannel", name: "M-EasyMultichannel Communication AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=omnichannel" },
-      { id: "easydo-support", name: "M-Easy Customer Support AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app?redirect=csupport" },
+      { id: "easydo-crm", name: "M-Easy Business Operations AI+ System (Core CRM)", url: "https://m-easydo-ai-production.up.railway.app/app" },
+      { id: "easydo-multichannel", name: "M-EasyMultichannel Communication AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app/omnichannel" },
+      { id: "easydo-automation", name: "M-Easy Marketing Automation AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app/marketing-automation" },
+      { id: "easydo-email", name: "M-Easy Email Marketing AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app/email-marketing" },
+      { id: "easydo-support", name: "M-Easy Customer Support AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app/customer-support" },
+      { id: "easydo-agent", name: "M-EasyAsha AI+ Sales Agent System", url: "https://m-easydo-ai-production.up.railway.app/app/ai-agent" },
+      { id: "easydo-booking", name: "M-Easy Booking AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app/booking" },
     ],
   },
   {
@@ -70,6 +73,8 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easydo-automation": "Build automated workflows that trigger actions based on customer behaviour — send emails, update records, assign tasks, and move leads through your pipeline without lifting a finger.",
     "easydo-multichannel": "Receive and reply to customer messages from WhatsApp, Telegram, Facebook Messenger, Instagram, LINE, and SMS — all in one unified inbox. No more switching between apps.",
     "easydo-support": "Handle customer tickets, complaints, and enquiries in a structured helpdesk system. Track ticket status, assign to team members, reply via email, and measure customer satisfaction with CSAT scores.",
+    "easydo-agent": "Meet Asha — your AI-powered sales agent that engages leads, answers questions, qualifies prospects, and moves deals forward around the clock. Automate your entire sales conversation flow without adding headcount.",
+    "easydo-booking": "Let customers book appointments, consultations, and services online — anytime, anywhere. Manage your calendar, set availability, send reminders, and reduce no-shows with a smart AI-assisted booking system.",
     "easytools-main": "All-in-one AI marketing platform with 40+ tools, AI chat, bulk generation, document manager and full dashboard — built for Malaysian businesses.",
     "easytools-content": "Generate high-quality blog posts, articles, landing page copy and long-form content in seconds using AI — in English and Bahasa Malaysia.",
     "easytools-social": "Create scroll-stopping social media captions, hashtags, content calendars and viral post ideas for Facebook, Instagram, TikTok and LinkedIn.",
@@ -88,6 +93,8 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easydo-automation": "Bina aliran kerja automatik yang mencetuskan tindakan berdasarkan tingkah laku pelanggan — hantar e-mel, kemas kini rekod, berikan tugasan dan gerakkan petunjuk melalui saluran jualan tanpa sebarang usaha.",
     "easydo-multichannel": "Terima dan balas mesej pelanggan daripada WhatsApp, Telegram, Facebook Messenger, Instagram, LINE dan SMS — semuanya dalam satu peti masuk bersatu. Tiada lagi bertukar-tukar antara aplikasi.",
     "easydo-support": "Uruskan tiket, aduan dan pertanyaan pelanggan dalam sistem meja bantuan yang tersusun. Jejaki status tiket, agihkan kepada ahli pasukan, balas melalui e-mel dan ukur kepuasan pelanggan dengan skor CSAT.",
+    "easydo-agent": "Kenali Asha — ejen jualan berkuasa AI yang melibatkan petunjuk, menjawab soalan, melayakkan prospek dan meneruskan urusan jualan sepanjang masa. Automatikkan seluruh aliran perbualan jualan anda tanpa perlu menambah kakitangan.",
+    "easydo-booking": "Benarkan pelanggan membuat temujanji, konsultasi dan perkhidmatan secara dalam talian — bila-bila masa, di mana sahaja. Uruskan kalendar anda, tetapkan ketersediaan, hantar peringatan dan kurangkan ketidakhadiran dengan sistem tempahan pintar berbantukan AI.",
     "easytools-main": "Platform pemasaran AI serba lengkap dengan 40+ alat, sembang AI, penjanaan pukal, pengurus dokumen dan papan pemuka penuh — dibina untuk perniagaan Malaysia.",
     "easytools-content": "Jana catatan blog, artikel, salinan halaman pendaratan dan kandungan bentuk panjang berkualiti tinggi dalam beberapa saat menggunakan AI — dalam bahasa Inggeris dan Bahasa Malaysia.",
     "easytools-social": "Cipta kapsyen media sosial yang menarik perhatian, hashtag, kalendar kandungan dan idea siaran viral untuk Facebook, Instagram, TikTok dan LinkedIn.",
@@ -106,6 +113,8 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easydo-automation": "构建基于客户行为触发操作的自动化工作流——发送邮件、更新记录、分配任务，并让潜在客户在销售管道中自动推进，无需动手。",
     "easydo-multichannel": "在一个统一收件箱中接收并回复来自 WhatsApp、Telegram、Facebook Messenger、Instagram、LINE 和 SMS 的客户消息——无需再在各个应用之间切换。",
     "easydo-support": "在结构化的服务台系统中处理客户工单、投诉和咨询。跟踪工单状态、分配给团队成员、通过电子邮件回复，并用 CSAT 评分衡量客户满意度。",
+    "easydo-agent": "认识 Asha——您的 AI 驱动销售代理，全天候主动接触潜在客户、回答问题、筛选商机并推进交易。无需增加人手，即可自动化完成整个销售对话流程。",
+    "easydo-booking": "让客户随时随地在线预约约会、咨询和服务。管理您的日历、设置可用时间、发送提醒，并通过智能 AI 辅助预约系统减少爽约情况。",
     "easytools-main": "一体化 AI 营销平台，拥有 40 多种工具、AI 聊天、批量生成、文档管理器和完整仪表板——专为马来西亚企业打造。",
     "easytools-content": "使用 AI 在几秒内生成高质量的博客文章、文章、落地页文案和长篇内容——支持英文和马来文。",
     "easytools-social": "为 Facebook、Instagram、TikTok 和 LinkedIn 创作吸睛的社交媒体文案、话题标签、内容日历和爆款帖子创意。",
@@ -124,6 +133,8 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easydo-automation": "Bangun alur kerja otomatis yang memicu tindakan berdasarkan perilaku pelanggan — kirim email, perbarui catatan, tetapkan tugas, dan gerakkan prospek melalui pipeline tanpa repot.",
     "easydo-multichannel": "Terima dan balas pesan pelanggan dari WhatsApp, Telegram, Facebook Messenger, Instagram, LINE, dan SMS — semuanya dalam satu kotak masuk terpadu. Tidak perlu lagi berpindah-pindah aplikasi.",
     "easydo-support": "Tangani tiket, keluhan, dan pertanyaan pelanggan dalam sistem helpdesk yang terstruktur. Lacak status tiket, tetapkan ke anggota tim, balas melalui email, dan ukur kepuasan pelanggan dengan skor CSAT.",
+    "easydo-agent": "Kenali Asha — agen penjualan bertenaga AI yang melibatkan prospek, menjawab pertanyaan, mengkualifikasi calon pelanggan, dan mendorong transaksi sepanjang waktu. Otomatiskan seluruh alur percakapan penjualan Anda tanpa perlu menambah staf.",
+    "easydo-booking": "Biarkan pelanggan memesan janji, konsultasi, dan layanan secara online — kapan saja, di mana saja. Kelola kalender Anda, atur ketersediaan, kirim pengingat, dan kurangi ketidakhadiran dengan sistem pemesanan cerdas berbantuan AI.",
     "easytools-main": "Platform pemasaran AI serba lengkap dengan 40+ alat, chat AI, pembuatan massal, pengelola dokumen, dan dasbor lengkap — dibuat untuk bisnis Malaysia.",
     "easytools-content": "Hasilkan postingan blog, artikel, salinan halaman arahan, dan konten bentuk panjang berkualitas tinggi dalam hitungan detik menggunakan AI — dalam bahasa Inggris dan Bahasa Malaysia.",
     "easytools-social": "Buat caption media sosial yang memikat, tagar, kalender konten, dan ide postingan viral untuk Facebook, Instagram, TikTok, dan LinkedIn.",
@@ -142,6 +153,8 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easydo-automation": "Xây dựng các quy trình tự động kích hoạt hành động dựa trên hành vi khách hàng — gửi email, cập nhật hồ sơ, giao nhiệm vụ và đưa khách hàng tiềm năng đi qua quy trình bán hàng mà không tốn công sức.",
     "easydo-multichannel": "Nhận và trả lời tin nhắn khách hàng từ WhatsApp, Telegram, Facebook Messenger, Instagram, LINE và SMS — tất cả trong một hộp thư hợp nhất. Không còn phải chuyển đổi giữa các ứng dụng.",
     "easydo-support": "Xử lý phiếu hỗ trợ, khiếu nại và yêu cầu của khách hàng trong một hệ thống bộ phận hỗ trợ có cấu trúc. Theo dõi trạng thái phiếu, giao cho thành viên trong nhóm, trả lời qua email và đo lường mức độ hài lòng của khách hàng bằng điểm CSAT.",
+    "easydo-agent": "Gặp gỡ Asha — trợ lý bán hàng được hỗ trợ bởi AI, chủ động tiếp cận khách hàng tiềm năng, trả lời câu hỏi, đánh giá triển vọng và thúc đẩy giao dịch suốt ngày đêm. Tự động hóa toàn bộ quy trình hội thoại bán hàng mà không cần tuyển thêm nhân sự.",
+    "easydo-booking": "Cho phép khách hàng đặt lịch hẹn, tư vấn và dịch vụ trực tuyến — mọi lúc, mọi nơi. Quản lý lịch của bạn, cài đặt thời gian trống, gửi nhắc nhở và giảm thiểu tình trạng vắng mặt với hệ thống đặt lịch thông minh được hỗ trợ bởi AI.",
     "easytools-main": "Nền tảng tiếp thị AI toàn diện với hơn 40 công cụ, trò chuyện AI, tạo nội dung hàng loạt, trình quản lý tài liệu và bảng điều khiển đầy đủ — được xây dựng cho các doanh nghiệp Malaysia.",
     "easytools-content": "Tạo bài đăng blog, bài viết, nội dung trang đích và nội dung dài chất lượng cao chỉ trong vài giây bằng AI — bằng tiếng Anh và tiếng Mã Lai.",
     "easytools-social": "Tạo chú thích mạng xã hội thu hút, hashtag, lịch nội dung và ý tưởng bài đăng lan truyền cho Facebook, Instagram, TikTok và LinkedIn.",
@@ -160,6 +173,8 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easydo-automation": "أنشئ سير عمل آلي يُطلق إجراءات بناءً على سلوك العملاء — أرسل رسائل بريد إلكتروني، وحدّث السجلات، ووزّع المهام، وانقل العملاء المحتملين عبر خط الأنابيب دون أي جهد.",
     "easydo-multichannel": "استقبل رسائل العملاء وردّ عليها من واتساب وتليجرام وفيسبوك ماسنجر وإنستغرام و LINE والرسائل النصية القصيرة — كل ذلك في صندوق وارد موحّد واحد. لا مزيد من التنقل بين التطبيقات.",
     "easydo-support": "تعامل مع تذاكر العملاء والشكاوى والاستفسارات في نظام مكتب مساعدة منظّم. تابِع حالة التذاكر، ووزّعها على أعضاء الفريق، وردّ عبر البريد الإلكتروني، وقِس رضا العملاء بدرجات CSAT.",
+    "easydo-agent": "تعرّف على آشا — وكيل مبيعاتك المدعوم بالذكاء الاصطناعي الذي يتفاعل مع العملاء المحتملين، ويجيب على أسئلتهم، ويؤهّل العملاء، ويُنجز الصفقات على مدار الساعة. أتمتة تدفق محادثات المبيعات بالكامل دون الحاجة إلى توظيف موظفين إضافيين.",
+    "easydo-booking": "دَع عملاءك يحجزون المواعيد والاستشارات والخدمات عبر الإنترنت — في أي وقت وأي مكان. أدِر تقويمك، وحدِّد أوقات توفّرك، وأرسل تذكيرات، وقلِّل حالات الغياب بنظام حجز ذكي مدعوم بالذكاء الاصطناعي.",
     "easytools-main": "منصة تسويق شاملة بالذكاء الاصطناعي تضم أكثر من 40 أداة، ودردشة بالذكاء الاصطناعي، وإنشاء محتوى بالجملة، ومدير مستندات، ولوحة تحكم كاملة — مصممة للشركات الماليزية.",
     "easytools-content": "أنشئ منشورات مدونة ومقالات ونصوص صفحات هبوط ومحتوى طويلاً عالي الجودة في ثوانٍ باستخدام الذكاء الاصطناعي — بالإنجليزية والماليزية.",
     "easytools-social": "أنشئ تعليقات لافتة لوسائل التواصل الاجتماعي، ووسوماً، وتقويمات محتوى، وأفكار منشورات رائجة لفيسبوك وإنستغرام وتيك توك ولينكدإن.",
@@ -178,6 +193,8 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easydo-automation": "สร้างเวิร์กโฟลว์อัตโนมัติที่กระตุ้นการดำเนินการตามพฤติกรรมของลูกค้า — ส่งอีเมล อัปเดตข้อมูล มอบหมายงาน และเลื่อนลูกค้าเป้าหมายผ่านไปป์ไลน์โดยไม่ต้องลงมือทำเอง",
     "easydo-multichannel": "รับและตอบข้อความลูกค้าจาก WhatsApp, Telegram, Facebook Messenger, Instagram, LINE และ SMS — ทั้งหมดในกล่องข้อความรวมเดียว ไม่ต้องสลับไปมาระหว่างแอปอีกต่อไป",
     "easydo-support": "จัดการตั๋ว ข้อร้องเรียน และคำถามของลูกค้าในระบบเฮลป์เดสก์ที่เป็นระเบียบ ติดตามสถานะตั๋ว มอบหมายให้สมาชิกในทีม ตอบกลับทางอีเมล และวัดความพึงพอใจของลูกค้าด้วยคะแนน CSAT",
+    "easydo-agent": "พบกับ Asha — ตัวแทนขายที่ขับเคลื่อนด้วย AI ซึ่งติดต่อลูกค้าเป้าหมาย ตอบคำถาม คัดกรองโอกาสทางธุรกิจ และผลักดันดีลตลอด 24 ชั่วโมง ทำให้กระบวนการสนทนาการขายทั้งหมดเป็นอัตโนมัติโดยไม่ต้องเพิ่มพนักงาน",
+    "easydo-booking": "ให้ลูกค้าจองนัดหมาย การปรึกษา และบริการออนไลน์ได้ — ทุกที่ทุกเวลา จัดการปฏิทิน กำหนดเวลาว่าง ส่งการเตือนความจำ และลดการไม่มาตามนัดด้วยระบบการจองอัจฉริยะที่ใช้ AI",
     "easytools-main": "แพลตฟอร์มการตลาด AI ครบวงจรพร้อมเครื่องมือกว่า 40 รายการ แชท AI การสร้างเนื้อหาจำนวนมาก ตัวจัดการเอกสาร และแดชบอร์ดที่สมบูรณ์ — สร้างขึ้นสำหรับธุรกิจในมาเลเซีย",
     "easytools-content": "สร้างบล็อกโพสต์ บทความ ข้อความหน้า Landing Page และเนื้อหาแบบยาวคุณภาพสูงในไม่กี่วินาทีโดยใช้ AI — ทั้งภาษาอังกฤษและภาษามาเลย์",
     "easytools-social": "สร้างแคปชันโซเชียลมีเดียที่สะดุดตา แฮชแท็ก ปฏิทินเนื้อหา และไอเดียโพสต์ไวรัลสำหรับ Facebook, Instagram, TikTok และ LinkedIn",
@@ -205,7 +222,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     en: {
       title: "Our",
       titleHighlight: "Systems",
-      subtitle: "Two complete AI ecosystems — M-EasyDo AI+ and M-EasyTools AI+ — broken into 16 integrated systems to run and grow your business. Click any system to open it.",
+      subtitle: "Two complete AI ecosystems — M-EasyDo AI+ and M-EasyTools AI+ — broken into 18 integrated systems to run and grow your business. Click any system to open it.",
       easyDoTagline: "Business operations, CRM, marketing & customer support",
       easyToolsTagline: "AI content, social, mail, ads, SEO, commerce, sales & more",
       mainPlatform: "Main Platform",
@@ -214,7 +231,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     bm: {
       title: "Sistem",
       titleHighlight: "Kami",
-      subtitle: "Dua ekosistem AI lengkap — M-EasyDo AI+ dan M-EasyTools AI+ — dipecahkan kepada 16 sistem bersepadu untuk menjalankan dan mengembangkan perniagaan anda. Klik mana-mana sistem untuk membukanya.",
+      subtitle: "Dua ekosistem AI lengkap — M-EasyDo AI+ dan M-EasyTools AI+ — dipecahkan kepada 18 sistem bersepadu untuk menjalankan dan mengembangkan perniagaan anda. Klik mana-mana sistem untuk membukanya.",
       easyDoTagline: "Operasi perniagaan, CRM, pemasaran & sokongan pelanggan",
       easyToolsTagline: "Kandungan AI, sosial, mel, iklan, SEO, e-dagang, jualan & lagi",
       mainPlatform: "Platform Utama",
@@ -223,7 +240,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     cn: {
       title: "我们的",
       titleHighlight: "系统",
-      subtitle: "两个完整的 AI 生态系统——M-EasyDo AI+ 与 M-EasyTools AI+——拆分为 16 个集成系统，助力您经营和发展业务。点击任意系统即可打开。",
+      subtitle: "两个完整的 AI 生态系统——M-EasyDo AI+ 与 M-EasyTools AI+——拆分为 18 个集成系统，助力您经营和发展业务。点击任意系统即可打开。",
       easyDoTagline: "业务运营、CRM、营销与客户支持",
       easyToolsTagline: "AI 内容、社交、邮件、广告、SEO、电商、销售等",
       mainPlatform: "主平台",
@@ -232,7 +249,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     id: {
       title: "Sistem",
       titleHighlight: "Kami",
-      subtitle: "Dua ekosistem AI lengkap — M-EasyDo AI+ dan M-EasyTools AI+ — dibagi menjadi 16 sistem terintegrasi untuk menjalankan dan mengembangkan bisnis Anda. Klik sistem mana pun untuk membukanya.",
+      subtitle: "Dua ekosistem AI lengkap — M-EasyDo AI+ dan M-EasyTools AI+ — dibagi menjadi 18 sistem terintegrasi untuk menjalankan dan mengembangkan bisnis Anda. Klik sistem mana pun untuk membukanya.",
       easyDoTagline: "Operasi bisnis, CRM, pemasaran & dukungan pelanggan",
       easyToolsTagline: "Konten AI, sosial, email, iklan, SEO, e-commerce, penjualan & lainnya",
       mainPlatform: "Platform Utama",
@@ -241,7 +258,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     vn: {
       title: "Hệ Thống",
       titleHighlight: "Của Chúng Tôi",
-      subtitle: "Hai hệ sinh thái AI hoàn chỉnh — M-EasyDo AI+ và M-EasyTools AI+ — được chia thành 16 hệ thống tích hợp để vận hành và phát triển doanh nghiệp của bạn. Nhấp vào bất kỳ hệ thống nào để mở.",
+      subtitle: "Hai hệ sinh thái AI hoàn chỉnh — M-EasyDo AI+ và M-EasyTools AI+ — được chia thành 18 hệ thống tích hợp để vận hành và phát triển doanh nghiệp của bạn. Nhấp vào bất kỳ hệ thống nào để mở.",
       easyDoTagline: "Vận hành kinh doanh, CRM, tiếp thị & hỗ trợ khách hàng",
       easyToolsTagline: "Nội dung AI, mạng xã hội, email, quảng cáo, SEO, thương mại, bán hàng & hơn nữa",
       mainPlatform: "Nền tảng chính",
@@ -250,7 +267,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     ar: {
       title: "أنظمتنا",
       titleHighlight: "المتكاملة",
-      subtitle: "منظومتان متكاملتان للذكاء الاصطناعي — M-EasyDo AI+ و M-EasyTools AI+ — مقسمتان إلى 16 نظاماً متكاملاً لإدارة أعمالك وتنميتها. انقر على أي نظام لفتحه.",
+      subtitle: "منظومتان متكاملتان للذكاء الاصطناعي — M-EasyDo AI+ و M-EasyTools AI+ — مقسمتان إلى 18 نظاماً متكاملاً لإدارة أعمالك وتنميتها. انقر على أي نظام لفتحه.",
       easyDoTagline: "عمليات الأعمال وإدارة العملاء والتسويق ودعم العملاء",
       easyToolsTagline: "محتوى الذكاء الاصطناعي والتواصل الاجتماعي والبريد والإعلانات وتحسين محركات البحث والتجارة والمبيعات والمزيد",
       mainPlatform: "المنصة الرئيسية",
@@ -259,7 +276,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     th: {
       title: "ระบบ",
       titleHighlight: "ของเรา",
-      subtitle: "ระบบนิเวศ AI ที่สมบูรณ์สองระบบ — M-EasyDo AI+ และ M-EasyTools AI+ — แบ่งออกเป็น 16 ระบบที่เชื่อมต่อกันเพื่อดำเนินและขยายธุรกิจของคุณ คลิกที่ระบบใดก็ได้เพื่อเปิด",
+      subtitle: "ระบบนิเวศ AI ที่สมบูรณ์สองระบบ — M-EasyDo AI+ และ M-EasyTools AI+ — แบ่งออกเป็น 18 ระบบที่เชื่อมต่อกันเพื่อดำเนินและขยายธุรกิจของคุณ คลิกที่ระบบใดก็ได้เพื่อเปิด",
       easyDoTagline: "การดำเนินธุรกิจ, CRM, การตลาด และการสนับสนุนลูกค้า",
       easyToolsTagline: "เนื้อหา AI, โซเชียล, อีเมล, โฆษณา, SEO, อีคอมเมิร์ซ, การขาย และอื่นๆ",
       mainPlatform: "แพลตฟอร์มหลัก",

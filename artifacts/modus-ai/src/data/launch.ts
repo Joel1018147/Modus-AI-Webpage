@@ -527,7 +527,7 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     details: {
       title: "Services, Courses & Systems — MODUS AI Associates",
       description:
-        "Explore MODUS AI Associates' AI services, 12 MIIT-certified courses and 16 integrated AI systems bridging Malaysia and China's AI ecosystem.",
+        "Explore MODUS AI Associates' AI services, 12 MIIT-certified courses and 35 integrated AI systems bridging Malaysia and China's AI ecosystem.",
     },
   },
   bm: {
@@ -539,7 +539,7 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     details: {
       title: "Perkhidmatan, Kursus & Sistem — MODUS AI Associates",
       description:
-        "Terokai perkhidmatan AI, 12 kursus bertauliah MIIT dan 16 sistem AI bersepadu MODUS AI Associates yang menghubungkan ekosistem AI Malaysia dan China.",
+        "Terokai perkhidmatan AI, 12 kursus bertauliah MIIT dan 35 sistem AI bersepadu MODUS AI Associates yang menghubungkan ekosistem AI Malaysia dan China.",
     },
   },
   cn: {
@@ -551,7 +551,7 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     details: {
       title: "服务、课程与系统 — MODUS AI Associates",
       description:
-        "探索 MODUS AI Associates 的人工智能服务、12 项 MIIT 认证课程及 16 个集成人工智能系统，连接马中人工智能生态系统。",
+        "探索 MODUS AI Associates 的人工智能服务、12 项 MIIT 认证课程及 35 个集成人工智能系统，连接马中人工智能生态系统。",
     },
   },
   id: {
@@ -563,7 +563,7 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     details: {
       title: "Layanan, Kursus & Sistem — MODUS AI Associates",
       description:
-        "Jelajahi layanan AI, 12 kursus bersertifikat MIIT, dan 16 sistem AI terintegrasi MODUS AI Associates yang menghubungkan ekosistem AI Malaysia dan China.",
+        "Jelajahi layanan AI, 12 kursus bersertifikat MIIT, dan 35 sistem AI terintegrasi MODUS AI Associates yang menghubungkan ekosistem AI Malaysia dan China.",
     },
   },
   vn: {
@@ -575,7 +575,7 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     details: {
       title: "Dịch Vụ, Khóa Học & Hệ Thống — MODUS AI Associates",
       description:
-        "Khám phá dịch vụ AI, 12 khóa học được MIIT chứng nhận và 16 hệ thống AI tích hợp của MODUS AI Associates kết nối hệ sinh thái AI Malaysia và Trung Quốc.",
+        "Khám phá dịch vụ AI, 12 khóa học được MIIT chứng nhận và 35 hệ thống AI tích hợp của MODUS AI Associates kết nối hệ sinh thái AI Malaysia và Trung Quốc.",
     },
   },
   ar: {
@@ -587,7 +587,7 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     details: {
       title: "الخدمات والدورات والأنظمة — MODUS AI Associates",
       description:
-        "استكشف خدمات الذكاء الاصطناعي و12 دورة معتمدة من MIIT و16 نظامًا متكاملًا للذكاء الاصطناعي من MODUS AI Associates التي تربط منظومتي ماليزيا والصين.",
+        "استكشف خدمات الذكاء الاصطناعي و12 دورة معتمدة من MIIT و35 نظامًا متكاملًا للذكاء الاصطناعي من MODUS AI Associates التي تربط منظومتي ماليزيا والصين.",
     },
   },
   th: {
@@ -599,7 +599,7 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     details: {
       title: "บริการ หลักสูตร และระบบ — MODUS AI Associates",
       description:
-        "สำรวจบริการ AI หลักสูตรที่ได้รับการรับรองจาก MIIT 12 หลักสูตร และระบบ AI แบบครบวงจร 16 ระบบของ MODUS AI Associates ที่เชื่อมระบบนิเวศ AI มาเลเซียและจีน",
+        "สำรวจบริการ AI หลักสูตรที่ได้รับการรับรองจาก MIIT 12 หลักสูตร และระบบ AI แบบครบวงจร 35 ระบบของ MODUS AI Associates ที่เชื่อมระบบนิเวศ AI มาเลเซียและจีน",
     },
   },
 };

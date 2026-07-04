@@ -34,7 +34,7 @@ export const systemGroups: SystemGroup[] = [
     },
     systems: [
       { id: "easydo-main", name: "M-EasyDo Business Operations AI+ System", isMain: true, url: "https://m-easydo-ai-production.up.railway.app" },
-      { id: "easydo-crm", name: "M-Easy Business Operations AI+ System (Core CRM)", url: "https://m-easydo-ai-production.up.railway.app/app" },
+      { id: "easydo-crm", name: "M-EasyCRM AI+", url: "https://m-easydo-ai-production.up.railway.app/app" },
       { id: "easydo-multichannel", name: "M-EasyMultichannel Communication AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app/omnichannel" },
       { id: "easydo-automation", name: "M-Easy Marketing Automation AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app/marketing-automation" },
       { id: "easydo-email", name: "M-Easy Email Marketing AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app/email-marketing" },

@@ -1370,9 +1370,13 @@ export default function Details() {
           </div>
           <p className="text-muted-foreground mb-10 text-lg max-w-3xl">{si.subtitle}</p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             {systemGroups.map((group, gi) => {
               const GroupIcon = group.icon;
+              // Wide groups (the large M-EasyCommerce ecosystem) span the full
+              // row and lay their systems out in two columns, so the grid never
+              // leaves an orphaned empty cell.
+              const isWide = group.systems.length > 12;
               return (
                 <motion.div
                   key={group.brand}
@@ -1380,7 +1384,7 @@ export default function Details() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: gi * 0.15 }}
-                  className={`rounded-2xl bg-card/50 border border-white/10 backdrop-blur-sm p-6 md:p-8 transition-all duration-500 ${group.styles.card}`}
+                  className={`rounded-2xl bg-card/50 border border-white/10 backdrop-blur-sm p-6 md:p-8 transition-all duration-500 ${group.styles.card} ${isWide ? "lg:col-span-2" : ""}`}
                 >
                   <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center border ${group.styles.iconWrap}`}>
@@ -1392,7 +1396,7 @@ export default function Details() {
                     </div>
                   </div>
 
-                  <div className="space-y-1.5">
+                  <div className={isWide ? "grid sm:grid-cols-2 gap-x-6 gap-y-1" : "space-y-1.5"}>
                     {group.systems.map((sys) => (
                       <a
                         key={sys.id}

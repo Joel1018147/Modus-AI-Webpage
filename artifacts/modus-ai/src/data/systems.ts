@@ -33,7 +33,7 @@ export const systemGroups: SystemGroup[] = [
       card: "hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,158,46,0.12)]",
     },
     systems: [
-      { id: "easydo-main", name: "M-EasyDo Business Operations AI+ System", isMain: true, url: "https://m-easydo-ai-production.up.railway.app" },
+      { id: "easydo-main", name: "M-EasyDo AI+ Super App", isMain: true, url: "https://m-easydo-ai-production.up.railway.app" },
       { id: "easydo-crm", name: "M-EasyCRM AI+", url: "https://m-easydo-ai-production.up.railway.app/app" },
       { id: "easydo-multichannel", name: "M-EasyMultichannel Communication AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app/omnichannel" },
       { id: "easydo-automation", name: "M-Easy Marketing Automation AI+ System", url: "https://m-easydo-ai-production.up.railway.app/app/marketing-automation" },
@@ -55,7 +55,7 @@ export const systemGroups: SystemGroup[] = [
       card: "hover:border-secondary/40 hover:shadow-[0_0_30px_rgba(124,58,237,0.12)]",
     },
     systems: [
-      { id: "easytools-main", name: "M-EasyTools AI+", isMain: true, url: "https://m-easytools-ai-production.up.railway.app" },
+      { id: "easytools-main", name: "M-EasyTools AI+ Super App", isMain: true, url: "https://m-easytools-ai-production.up.railway.app" },
       { id: "easytools-content", name: "M-EasyContent AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/content" },
       { id: "easytools-social", name: "M-EasySocial AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/social" },
       { id: "easytools-mail", name: "M-EasyMail AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/mail" },
@@ -80,7 +80,7 @@ export const systemGroups: SystemGroup[] = [
       card: "hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]",
     },
     systems: [
-      { id: "commerce-main", name: "M-Easy Commerce AI+ Main Platform", isMain: true, url: "https://m-easycommerceai-production.up.railway.app/dashboard" },
+      { id: "commerce-main", name: "M-EasyCommerce AI+ Super App", isMain: true, url: "https://m-easycommerceai-production.up.railway.app/dashboard" },
       { id: "commerce-inventory", name: "M-Easy Inventory AI+ System", url: "https://m-easycommerceai-production.up.railway.app/inventory" },
       { id: "commerce-orders", name: "M-Easy Orders AI+ System", url: "https://m-easycommerceai-production.up.railway.app/orders" },
       { id: "commerce-products", name: "M-Easy Products AI+ System", url: "https://m-easycommerceai-production.up.railway.app/products" },

@@ -1418,11 +1418,6 @@ export default function Details() {
                             <span className="text-sm md:text-base font-medium text-white/90 group-hover:text-white transition-colors">
                               {sys.name}
                             </span>
-                            {sys.isMain && (
-                              <span className={`shrink-0 text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full border ${group.styles.badge}`}>
-                                {si.mainPlatform}
-                              </span>
-                            )}
                           </span>
                           <span className="block mt-1 text-xs md:text-sm text-muted-foreground leading-relaxed">
                             {SYSTEM_DESCRIPTIONS[lang][sys.id]}

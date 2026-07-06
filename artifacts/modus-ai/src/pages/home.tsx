@@ -43,6 +43,7 @@ const content = {
     coreMsgSuffix: "It Is the Core Driver of Future Business Survival and Growth.",
     exploreTitle: "Explore",
     exploreSubtitle: "Navigate to any section to learn more",
+    trilingualLabel: "Trilingual interface",
     navItems: [
       { id: "about", title: "About Us", desc: "Our mission and global standards" },
       { id: "why-choose-us", title: "Why Choose Us", desc: "Certified and proven results" },
@@ -92,6 +93,7 @@ const content = {
     coreMsgSuffix: "Ia Adalah Pemacu Utama Kelangsungan dan Pertumbuhan Perniagaan Masa Depan.",
     exploreTitle: "Jelajahi",
     exploreSubtitle: "Pergi ke mana-mana bahagian untuk mengetahui lebih lanjut",
+    trilingualLabel: "Antara muka tiga bahasa",
     navItems: [
       { id: "about", title: "Tentang Kami", desc: "Misi dan standard global kami" },
       { id: "why-choose-us", title: "Mengapa Pilih Kami", desc: "Hasil bersertifikasi dan terbukti" },
@@ -141,6 +143,7 @@ const content = {
     coreMsgSuffix: "它是未来商业生存与发展的核心驱动力。",
     exploreTitle: "探索",
     exploreSubtitle: "前往任意板块以了解更多",
+    trilingualLabel: "三语界面",
     navItems: [
       { id: "about", title: "关于我们", desc: "我们的使命与全球标准" },
       { id: "why-choose-us", title: "为何选择我们", desc: "认证与已验证的成果" },
@@ -182,6 +185,7 @@ const content = {
     coreMsgSuffix: "Ini adalah Pendorong Utama Kelangsungan dan Pertumbuhan Bisnis Masa Depan.",
     exploreTitle: "Jelajahi",
     exploreSubtitle: "Navigasi ke bagian mana pun untuk mempelajari lebih lanjut",
+    trilingualLabel: "Antarmuka tiga bahasa",
     navItems: [
       { id: "about", title: "Tentang Kami", desc: "Misi dan standar global kami" },
       { id: "why-choose-us", title: "Mengapa Memilih Kami", desc: "Hasil tersertifikasi dan terbukti" },
@@ -223,6 +227,7 @@ const content = {
     coreMsgSuffix: "Đó là Động Lực Cốt Lõi cho Sự Tồn Tại và Tăng Trưởng Doanh Nghiệp trong Tương Lai.",
     exploreTitle: "Khám Phá",
     exploreSubtitle: "Điều hướng đến bất kỳ phần nào để tìm hiểu thêm",
+    trilingualLabel: "Giao diện ba ngôn ngữ",
     navItems: [
       { id: "about", title: "Về Chúng Tôi", desc: "Sứ mệnh và tiêu chuẩn toàn cầu của chúng tôi" },
       { id: "why-choose-us", title: "Tại Sao Chọn Chúng Tôi", desc: "Kết quả được chứng nhận và đã chứng minh" },
@@ -264,6 +269,7 @@ const content = {
     coreMsgSuffix: "إنه المحرك الأساسي لبقاء ونمو الأعمال في المستقبل.",
     exploreTitle: "استكشف",
     exploreSubtitle: "انتقل إلى أي قسم لمعرفة المزيد",
+    trilingualLabel: "واجهة ثلاثية اللغات",
     navItems: [
       { id: "about", title: "من نحن", desc: "مهمتنا والمعايير العالمية" },
       { id: "why-choose-us", title: "لماذا تختارنا", desc: "نتائج معتمدة ومثبتة" },
@@ -305,6 +311,7 @@ const content = {
     coreMsgSuffix: "แต่เป็นแรงขับเคลื่อนหลักของการอยู่รอดและการเติบโตทางธุรกิจในอนาคต",
     exploreTitle: "สำรวจ",
     exploreSubtitle: "ไปยังส่วนใดก็ได้เพื่อเรียนรู้เพิ่มเติม",
+    trilingualLabel: "อินเทอร์เฟซสามภาษา",
     navItems: [
       { id: "about", title: "เกี่ยวกับเรา", desc: "พันธกิจและมาตรฐานระดับโลกของเรา" },
       { id: "why-choose-us", title: "ทำไมต้องเลือกเรา", desc: "ผลลัพธ์ที่ผ่านการรับรองและพิสูจน์แล้ว" },
@@ -637,6 +644,23 @@ export default function Home() {
               {t.coreMsgSuffix}
             </span>
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mt-6 flex justify-center"
+          >
+            <span
+              data-testid="trilingual-badge"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-card/60 px-4 py-2 text-sm text-muted-foreground backdrop-blur-sm"
+            >
+              <Globe className="w-4 h-4 text-primary shrink-0" />
+              <span className="font-semibold text-white/90">{t.trilingualLabel}</span>
+              <span className="text-white/30">—</span>
+              <span dir="ltr">English · Bahasa Malaysia · 中文</span>
+            </span>
+          </motion.div>
         </div>
       </section>
 

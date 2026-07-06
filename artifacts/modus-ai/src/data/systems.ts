@@ -22,7 +22,7 @@ export type SystemGroup = {
 
 export const systemGroups: SystemGroup[] = [
   {
-    brand: "M-EasyDo AI+",
+    brand: "M-EasyDo AI+ Super App",
     taglineKey: "easyDoTagline",
     icon: Building2,
     styles: {
@@ -44,7 +44,7 @@ export const systemGroups: SystemGroup[] = [
     ],
   },
   {
-    brand: "M-EasyTools AI+",
+    brand: "M-EasyTools AI+ Super App",
     taglineKey: "easyToolsTagline",
     icon: Wrench,
     styles: {
@@ -69,7 +69,7 @@ export const systemGroups: SystemGroup[] = [
     ],
   },
   {
-    brand: "M-EasyCommerce AI+",
+    brand: "M-EasyCommerce AI+ Super App",
     taglineKey: "easyCommerceTagline",
     icon: ShoppingBag,
     styles: {

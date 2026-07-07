@@ -122,7 +122,7 @@ export default function Launch() {
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="max-w-4xl"
+            className="max-w-4xl mx-auto text-center"
           >
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium tracking-wide">
               <Award className="w-4 h-4" />
@@ -134,7 +134,7 @@ export default function Launch() {
             <p className="text-primary/90 text-lg md:text-xl font-medium mb-5">
               {p.subtitle}
             </p>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto">
               {p.intro}
             </p>
 

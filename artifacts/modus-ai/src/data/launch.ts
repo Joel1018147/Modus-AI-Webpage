@@ -22,6 +22,14 @@ export const ceremonyImageSrc = () => asset(CEREMONY_IMAGE_FILE);
 export const signingImageSrc = () => asset(SIGNING_IMAGE_FILE);
 export const launchFeatureImageSrc = () => asset(LAUNCH_FEATURE_IMAGE_FILE);
 
+/** Signing-ceremony hero videos. Chinese for the `cn` locale, English otherwise. */
+export const LAUNCH_VIDEO_EN_FILE = "modus-ai-signing-ceremony-en.mp4";
+export const LAUNCH_VIDEO_CN_FILE = "modus-ai-signing-ceremony-cn.mp4";
+
+/** Resolve the signing-ceremony video for a locale: Chinese for `cn`, English for the rest. */
+export const launchVideoSrc = (lang: Lang) =>
+  asset(lang === "cn" ? LAUNCH_VIDEO_CN_FILE : LAUNCH_VIDEO_EN_FILE);
+
 export interface LaunchI18n {
   heroHeadline: string;
   heroHeadline2: string;

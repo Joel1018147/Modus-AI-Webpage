@@ -47,3 +47,8 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Raw video source files (large; not served by the app).
+# The videos the site actually uses live in artifacts/modus-ai/public/.
+/Videos/
+/scripts/*.mp4

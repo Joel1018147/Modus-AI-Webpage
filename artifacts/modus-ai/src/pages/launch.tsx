@@ -25,6 +25,7 @@ import {
   ceremonyImageSrc,
   signingImageSrc,
   launchFeatureImageSrc,
+  launchVideoSrc,
   CEREMONY_IMAGE_W,
   CEREMONY_IMAGE_H,
   LAUNCH_FEATURE_IMAGE_W,
@@ -136,6 +137,28 @@ export default function Launch() {
             <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
               {p.intro}
             </p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mt-10 rounded-3xl overflow-hidden border border-primary/20 bg-black shadow-2xl"
+            >
+              <video
+                key={lang}
+                src={launchVideoSrc(lang)}
+                poster={launchFeatureImageSrc()}
+                controls
+                playsInline
+                preload="metadata"
+                aria-label={li.imageTitle}
+                className="w-full h-auto aspect-video bg-black"
+                data-testid="launch-hero-video"
+              >
+                {li.imageAlt}
+              </video>
+            </motion.div>
           </motion.div>
         </div>
       </section>

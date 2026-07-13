@@ -7,6 +7,7 @@ import type React from "react";
   | "easydo-agent" | "easydo-booking"
   | "easytools-main" | "easytools-content" | "easytools-social" | "easytools-mail" | "easytools-ads"
   | "easytools-seo" | "easytools-commerce" | "easytools-sales" | "easytools-chat" | "easytools-gao" | "easytools-pr"
+  | "easytools-audiobook"
   | "commerce-main" | "commerce-inventory" | "commerce-orders" | "commerce-products" | "commerce-customers"
   | "commerce-inbox" | "commerce-analytics" | "commerce-marketing" | "commerce-webstore" | "commerce-wms"
   | "commerce-channelsync" | "commerce-payments" | "commerce-carriers" | "commerce-pos" | "commerce-mobile"
@@ -66,6 +67,7 @@ export const systemGroups: SystemGroup[] = [
       { id: "easytools-chat", name: "M-EasyTools AI+ System (AI Chat)", url: "https://m-easytools-ai-production.up.railway.app/aichat" },
       { id: "easytools-gao", name: "M-EasyGAO AI+ Suite", url: "https://m-easytools-ai-production.up.railway.app/gao" },
       { id: "easytools-pr", name: "M-EasyPR AI+", url: "https://m-easytools-ai-production.up.railway.app/pr" },
+      { id: "easytools-audiobook", name: "M-EasyAudiobook AI+ Suite", url: "https://m-easytools-ai-production.up.railway.app/audiobook" },
     ],
   },
   {
@@ -121,6 +123,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easytools-chat": "Your always-on AI marketing assistant — ask anything, generate content on demand, brainstorm ideas and get instant marketing advice 24/7.",
     "easytools-gao": "Track your brand's visibility inside ChatGPT, Claude, Gemini, Perplexity and DeepSeek — monitor AI citations, analyze prompts, extract entities and outrank competitors in AI search. The only GAO suite built for Malaysia and Southeast Asia.",
     "easytools-pr": "Write professional, SEO-optimized press releases, distribute them to matched Malaysian and Southeast Asian media outlets and journalists, and track publications and reach — all from one AI-powered wire service.",
+    "easytools-audiobook": "Take a book from manuscript to narrated audiobook and into the market — narration scripts with stage directions, chapter-by-chapter production plans, English/Bahasa Malaysia/Chinese adaptations, China-market social content and a complete launch marketing kit.",
     "commerce-main": "The central command hub of your AI-native e-commerce operation — manage staff, settings, integrations and platform health in one place, with a trilingual, PWA-ready interface.",
     "commerce-inventory": "Multi-warehouse inventory management with AI demand forecasting, barcode scanning, reorder-point alerts and real-time stock tracking across every location.",
     "commerce-orders": "Every order from Shopee, Lazada, TikTok, your webstore and POS in one inbox — with AI abandoned-cart recovery, returns and automated fulfilment.",
@@ -158,6 +161,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easytools-chat": "Pembantu pemasaran AI anda yang sentiasa aktif — tanya apa sahaja, jana kandungan atas permintaan, sumbang saran idea dan dapatkan nasihat pemasaran segera 24/7.",
     "easytools-gao": "Jejaki keterlihatan jenama anda dalam ChatGPT, Claude, Gemini, Perplexity dan DeepSeek — pantau petikan AI, analisis gesaan (prompt), ekstrak entiti dan atasi pesaing dalam carian AI. Satu-satunya suite GAO yang dibina untuk Malaysia dan Asia Tenggara.",
     "easytools-pr": "Tulis siaran akhbar profesional yang dioptimumkan SEO, edarkan kepada media dan wartawan terpilih di Malaysia dan Asia Tenggara, serta jejaki penerbitan dan jangkauan — semuanya daripada satu perkhidmatan wire berkuasa AI.",
+    "easytools-audiobook": "Bawa sebuah buku daripada manuskrip kepada audiobook bernarasi dan terus ke pasaran — skrip narasi dengan arahan persembahan, pelan produksi bab demi bab, adaptasi Bahasa Inggeris/Bahasa Malaysia/Cina, kandungan sosial pasaran China dan kit pemasaran pelancaran yang lengkap.",
     "commerce-main": "Hab kawalan pusat operasi e-dagang AI anda — urus kakitangan, tetapan, integrasi dan kesihatan platform di satu tempat, dengan antara muka tiga bahasa dan sedia PWA.",
     "commerce-inventory": "Pengurusan inventori pelbagai gudang dengan ramalan permintaan AI, pengimbasan kod bar, amaran titik pesan semula dan penjejakan stok masa nyata di setiap lokasi.",
     "commerce-orders": "Setiap pesanan daripada Shopee, Lazada, TikTok, kedai web dan POS dalam satu peti masuk — dengan pemulihan troli terbengkalai AI, pemulangan dan pemenuhan automatik.",
@@ -195,6 +199,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easytools-chat": "您随时在线的 AI 营销助手——有问必答、按需生成内容、激发创意，全天候 24/7 提供即时营销建议。",
     "easytools-gao": "追踪您的品牌在 ChatGPT、Claude、Gemini、Perplexity 和 DeepSeek 中的可见度——监控 AI 引用、分析提示词、提取实体，并在 AI 搜索中超越竞争对手。唯一专为马来西亚和东南亚打造的 GAO 套件。",
     "easytools-pr": "撰写专业且经 SEO 优化的新闻稿，分发给匹配的马来西亚及东南亚媒体和记者，并追踪发布情况与触达——全部由一个 AI 驱动的通讯社完成。",
+    "easytools-audiobook": "让一本书从手稿走向有声书，再走进市场——带表演提示的旁白脚本、逐章制作计划、英文/马来文/中文内容适配、面向中国市场的社交内容，以及完整的上市营销工具包。",
     "commerce-main": "AI 原生电商运营的中央指挥中心——在一处管理员工、设置、集成与平台运行状况，配备三语、支持 PWA 的界面。",
     "commerce-inventory": "多仓库库存管理，配备 AI 需求预测、条码扫描、补货点提醒和跨所有地点的实时库存追踪。",
     "commerce-orders": "来自 Shopee、Lazada、TikTok、网店和 POS 的每一笔订单集中于一个收件箱——配备 AI 弃购挽回、退货和自动履约。",
@@ -232,6 +237,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easytools-chat": "Asisten pemasaran AI Anda yang selalu aktif — tanyakan apa saja, hasilkan konten sesuai permintaan, curahkan ide, dan dapatkan saran pemasaran instan 24/7.",
     "easytools-gao": "Lacak visibilitas merek Anda di dalam ChatGPT, Claude, Gemini, Perplexity, dan DeepSeek — pantau kutipan AI, analisis prompt, ekstrak entitas, dan ungguli pesaing dalam pencarian AI. Satu-satunya suite GAO yang dibuat untuk Malaysia dan Asia Tenggara.",
     "easytools-pr": "Tulis siaran pers profesional yang dioptimalkan SEO, distribusikan ke media dan jurnalis terpilih di Malaysia dan Asia Tenggara, serta lacak publikasi dan jangkauan — semuanya dari satu layanan wire bertenaga AI.",
+    "easytools-audiobook": "Bawa sebuah buku dari manuskrip menjadi audiobook bernarasi dan masuk ke pasar — skrip narasi dengan arahan pembacaan, rencana produksi bab demi bab, adaptasi bahasa Inggris/Melayu/Mandarin, konten sosial untuk pasar Tiongkok, dan kit pemasaran peluncuran yang lengkap.",
     "commerce-main": "Pusat komando operasi e-commerce AI Anda — kelola staf, pengaturan, integrasi, dan kesehatan platform di satu tempat, dengan antarmuka trilingual siap PWA.",
     "commerce-inventory": "Manajemen inventaris multi-gudang dengan perkiraan permintaan AI, pemindaian barcode, peringatan titik pemesanan ulang, dan pelacakan stok real-time di setiap lokasi.",
     "commerce-orders": "Setiap pesanan dari Shopee, Lazada, TikTok, webstore, dan POS dalam satu kotak masuk — dengan pemulihan keranjang terbengkalai AI, retur, dan pemenuhan otomatis.",
@@ -269,6 +275,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easytools-chat": "Trợ lý tiếp thị AI luôn hoạt động của bạn — hỏi bất cứ điều gì, tạo nội dung theo yêu cầu, lên ý tưởng và nhận lời khuyên tiếp thị tức thì 24/7.",
     "easytools-gao": "Theo dõi mức độ hiển thị thương hiệu của bạn trong ChatGPT, Claude, Gemini, Perplexity và DeepSeek — giám sát trích dẫn AI, phân tích lời nhắc, trích xuất thực thể và vượt qua đối thủ trong tìm kiếm AI. Bộ công cụ GAO duy nhất được xây dựng cho Malaysia và Đông Nam Á.",
     "easytools-pr": "Viết thông cáo báo chí chuyên nghiệp, tối ưu SEO, phân phối đến các cơ quan truyền thông và nhà báo phù hợp tại Malaysia và Đông Nam Á, đồng thời theo dõi lượt đăng và phạm vi tiếp cận — tất cả từ một dịch vụ thông tấn hỗ trợ bởi AI.",
+    "easytools-audiobook": "Đưa một cuốn sách từ bản thảo thành sách nói có người đọc và ra thị trường — kịch bản thuyết minh kèm chỉ dẫn diễn đọc, kế hoạch sản xuất theo từng chương, bản chuyển ngữ Anh/Mã Lai/Trung, nội dung mạng xã hội cho thị trường Trung Quốc và bộ công cụ tiếp thị ra mắt hoàn chỉnh.",
     "commerce-main": "Trung tâm điều hành cốt lõi cho hoạt động thương mại điện tử thuần AI của bạn — quản lý nhân viên, cài đặt, tích hợp và tình trạng nền tảng ở một nơi, với giao diện ba ngôn ngữ sẵn sàng PWA.",
     "commerce-inventory": "Quản lý kho hàng đa kho với dự báo nhu cầu AI, quét mã vạch, cảnh báo điểm đặt hàng lại và theo dõi tồn kho theo thời gian thực tại mọi địa điểm.",
     "commerce-orders": "Mọi đơn hàng từ Shopee, Lazada, TikTok, cửa hàng trực tuyến và POS trong một hộp thư — với khôi phục giỏ hàng bị bỏ quên bằng AI, xử lý trả hàng và hoàn tất đơn tự động.",
@@ -306,6 +313,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easytools-chat": "مساعدك التسويقي بالذكاء الاصطناعي المتاح دائماً — اسأل أي شيء، وأنشئ محتوى عند الطلب، واطرح الأفكار، واحصل على نصائح تسويقية فورية على مدار الساعة طوال أيام الأسبوع.",
     "easytools-gao": "تتبّع ظهور علامتك التجارية داخل ChatGPT و Claude و Gemini و Perplexity و DeepSeek — راقب اقتباسات الذكاء الاصطناعي، وحلّل المُوجِّهات (prompts)، واستخرج الكيانات، وتفوّق على المنافسين في بحث الذكاء الاصطناعي. مجموعة GAO الوحيدة المصممة لماليزيا وجنوب شرق آسيا.",
     "easytools-pr": "اكتب بيانات صحفية احترافية محسّنة لمحركات البحث، ووزّعها على وسائل الإعلام والصحفيين المناسبين في ماليزيا وجنوب شرق آسيا، وتتبّع النشر والوصول — كل ذلك من خدمة وكالة أنباء مدعومة بالذكاء الاصطناعي.",
+    "easytools-audiobook": "انقل كتابك من المخطوطة إلى كتاب صوتي مسموع ثم إلى السوق — نصوص سردية مع توجيهات الأداء، وخطط إنتاج فصلاً بفصل، وتكييف للمحتوى بالإنجليزية والملايوية والصينية، ومحتوى اجتماعي موجّه للسوق الصينية، وحقيبة تسويقية متكاملة للإطلاق.",
     "commerce-main": "مركز القيادة الرئيسي لعملياتك في التجارة الإلكترونية القائمة على الذكاء الاصطناعي — أدِر الموظفين والإعدادات والتكاملات وحالة المنصة في مكان واحد، بواجهة ثلاثية اللغة وجاهزة كتطبيق ويب تقدمي (PWA).",
     "commerce-inventory": "إدارة مخزون متعددة المستودعات مع التنبؤ بالطلب بالذكاء الاصطناعي، ومسح الباركود، وتنبيهات نقطة إعادة الطلب، وتتبّع المخزون في الوقت الفعلي عبر كل موقع.",
     "commerce-orders": "كل طلب من Shopee و Lazada و TikTok والمتجر الإلكتروني ونقطة البيع في صندوق وارد واحد — مع استرداد السلة المتروكة بالذكاء الاصطناعي، والمرتجعات، والتنفيذ الآلي.",
@@ -343,6 +351,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     "easytools-chat": "ผู้ช่วยการตลาด AI ที่พร้อมใช้งานตลอดเวลาของคุณ — ถามอะไรก็ได้ สร้างเนื้อหาตามต้องการ ระดมความคิด และรับคำแนะนำการตลาดทันที 24/7",
     "easytools-gao": "ติดตามการมองเห็นแบรนด์ของคุณภายใน ChatGPT, Claude, Gemini, Perplexity และ DeepSeek — ตรวจสอบการอ้างอิงของ AI วิเคราะห์พรอมต์ ดึงเอนทิตี และเอาชนะคู่แข่งในการค้นหาด้วย AI ชุดเครื่องมือ GAO เพียงหนึ่งเดียวที่สร้างขึ้นสำหรับมาเลเซียและเอเชียตะวันออกเฉียงใต้",
     "easytools-pr": "เขียนข่าวประชาสัมพันธ์ระดับมืออาชีพที่ปรับแต่ง SEO แล้ว กระจายไปยังสื่อและนักข่าวที่ตรงกลุ่มในมาเลเซียและเอเชียตะวันออกเฉียงใต้ พร้อมติดตามการเผยแพร่และการเข้าถึง — ทั้งหมดจากบริการสำนักข่าวที่ขับเคลื่อนด้วย AI",
+    "easytools-audiobook": "พาหนังสือหนึ่งเล่มจากต้นฉบับสู่หนังสือเสียงที่มีผู้บรรยาย และออกสู่ตลาด — สคริปต์การบรรยายพร้อมคำกำกับการอ่าน แผนการผลิตทีละบท การปรับเนื้อหาเป็นภาษาอังกฤษ/มาเลย์/จีน คอนเทนต์โซเชียลสำหรับตลาดจีน และชุดการตลาดเปิดตัวที่ครบถ้วน",
     "commerce-main": "ศูนย์บัญชาการหลักของการดำเนินงานอีคอมเมิร์ซที่ขับเคลื่อนด้วย AI ของคุณ — จัดการพนักงาน การตั้งค่า การเชื่อมต่อ และสถานะแพลตฟอร์มในที่เดียว ด้วยอินเทอร์เฟซสามภาษาที่พร้อมใช้งานเป็น PWA",
     "commerce-inventory": "การจัดการสินค้าคงคลังแบบหลายคลังพร้อมการพยากรณ์ความต้องการด้วย AI การสแกนบาร์โค้ด การแจ้งเตือนจุดสั่งซื้อซ้ำ และการติดตามสต็อกแบบเรียลไทม์ในทุกสถานที่",
     "commerce-orders": "ทุกคำสั่งซื้อจาก Shopee, Lazada, TikTok, เว็บสโตร์ และ POS ในกล่องข้อความเดียว — พร้อมการกู้คืนตะกร้าที่ถูกทิ้งด้วย AI การคืนสินค้า และการจัดการคำสั่งซื้ออัตโนมัติ",
@@ -377,7 +386,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     en: {
       title: "Our",
       titleHighlight: "Systems",
-      subtitle: "Three complete AI ecosystems — M-EasyDo AI+, M-EasyTools AI+ and M-EasyCommerce AI+ — broken into 35 integrated systems to run and grow your business. Click any system to open it.",
+      subtitle: "Three complete AI ecosystems — M-EasyDo AI+, M-EasyTools AI+ and M-EasyCommerce AI+ — broken into 36 integrated systems to run and grow your business. Click any system to open it.",
       easyDoTagline: "Business operations, CRM, marketing & customer support",
       easyToolsTagline: "AI content, social, mail, ads, SEO, commerce, sales, PR & more",
       easyCommerceTagline: "Full AI e-commerce ops — inventory, orders, webstore, POS, channels, payments & shipping",
@@ -387,7 +396,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     bm: {
       title: "Sistem",
       titleHighlight: "Kami",
-      subtitle: "Tiga ekosistem AI lengkap — M-EasyDo AI+, M-EasyTools AI+ dan M-EasyCommerce AI+ — dipecahkan kepada 35 sistem bersepadu untuk menjalankan dan mengembangkan perniagaan anda. Klik mana-mana sistem untuk membukanya.",
+      subtitle: "Tiga ekosistem AI lengkap — M-EasyDo AI+, M-EasyTools AI+ dan M-EasyCommerce AI+ — dipecahkan kepada 36 sistem bersepadu untuk menjalankan dan mengembangkan perniagaan anda. Klik mana-mana sistem untuk membukanya.",
       easyDoTagline: "Operasi perniagaan, CRM, pemasaran & sokongan pelanggan",
       easyToolsTagline: "Kandungan AI, sosial, mel, iklan, SEO, e-dagang, jualan, PR & lagi",
       easyCommerceTagline: "Operasi e-dagang AI penuh — inventori, pesanan, kedai web, POS, saluran, pembayaran & penghantaran",
@@ -397,7 +406,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     cn: {
       title: "我们的",
       titleHighlight: "系统",
-      subtitle: "三个完整的 AI 生态系统——M-EasyDo AI+、M-EasyTools AI+ 与 M-EasyCommerce AI+——拆分为 35 个集成系统，助力您经营和发展业务。点击任意系统即可打开。",
+      subtitle: "三个完整的 AI 生态系统——M-EasyDo AI+、M-EasyTools AI+ 与 M-EasyCommerce AI+——拆分为 36 个集成系统，助力您经营和发展业务。点击任意系统即可打开。",
       easyDoTagline: "业务运营、CRM、营销与客户支持",
       easyToolsTagline: "AI 内容、社交、邮件、广告、SEO、电商、销售、公关等",
       easyCommerceTagline: "全套 AI 电商运营——库存、订单、网店、POS、渠道、支付与物流",
@@ -407,7 +416,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     id: {
       title: "Sistem",
       titleHighlight: "Kami",
-      subtitle: "Tiga ekosistem AI lengkap — M-EasyDo AI+, M-EasyTools AI+ dan M-EasyCommerce AI+ — dibagi menjadi 35 sistem terintegrasi untuk menjalankan dan mengembangkan bisnis Anda. Klik sistem mana pun untuk membukanya.",
+      subtitle: "Tiga ekosistem AI lengkap — M-EasyDo AI+, M-EasyTools AI+ dan M-EasyCommerce AI+ — dibagi menjadi 36 sistem terintegrasi untuk menjalankan dan mengembangkan bisnis Anda. Klik sistem mana pun untuk membukanya.",
       easyDoTagline: "Operasi bisnis, CRM, pemasaran & dukungan pelanggan",
       easyToolsTagline: "Konten AI, sosial, email, iklan, SEO, e-commerce, penjualan, PR & lainnya",
       easyCommerceTagline: "Operasi e-commerce AI lengkap — inventaris, pesanan, webstore, POS, saluran, pembayaran & pengiriman",
@@ -417,7 +426,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     vn: {
       title: "Hệ Thống",
       titleHighlight: "Của Chúng Tôi",
-      subtitle: "Ba hệ sinh thái AI hoàn chỉnh — M-EasyDo AI+, M-EasyTools AI+ và M-EasyCommerce AI+ — được chia thành 35 hệ thống tích hợp để vận hành và phát triển doanh nghiệp của bạn. Nhấp vào bất kỳ hệ thống nào để mở.",
+      subtitle: "Ba hệ sinh thái AI hoàn chỉnh — M-EasyDo AI+, M-EasyTools AI+ và M-EasyCommerce AI+ — được chia thành 36 hệ thống tích hợp để vận hành và phát triển doanh nghiệp của bạn. Nhấp vào bất kỳ hệ thống nào để mở.",
       easyDoTagline: "Vận hành kinh doanh, CRM, tiếp thị & hỗ trợ khách hàng",
       easyToolsTagline: "Nội dung AI, mạng xã hội, email, quảng cáo, SEO, thương mại, bán hàng, PR & hơn nữa",
       easyCommerceTagline: "Vận hành thương mại điện tử AI toàn diện — kho hàng, đơn hàng, cửa hàng trực tuyến, POS, kênh bán, thanh toán & vận chuyển",
@@ -427,7 +436,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     ar: {
       title: "أنظمتنا",
       titleHighlight: "المتكاملة",
-      subtitle: "ثلاث منظومات متكاملة للذكاء الاصطناعي — M-EasyDo AI+ و M-EasyTools AI+ و M-EasyCommerce AI+ — مقسمة إلى 35 نظاماً متكاملاً لإدارة أعمالك وتنميتها. انقر على أي نظام لفتحه.",
+      subtitle: "ثلاث منظومات متكاملة للذكاء الاصطناعي — M-EasyDo AI+ و M-EasyTools AI+ و M-EasyCommerce AI+ — مقسمة إلى 36 نظاماً متكاملاً لإدارة أعمالك وتنميتها. انقر على أي نظام لفتحه.",
       easyDoTagline: "عمليات الأعمال وإدارة العملاء والتسويق ودعم العملاء",
       easyToolsTagline: "محتوى الذكاء الاصطناعي والتواصل الاجتماعي والبريد والإعلانات وتحسين محركات البحث والتجارة والمبيعات والعلاقات العامة والمزيد",
       easyCommerceTagline: "عمليات تجارة إلكترونية كاملة بالذكاء الاصطناعي — المخزون والطلبات والمتجر الإلكتروني ونقاط البيع والقنوات والمدفوعات والشحن",
@@ -437,7 +446,7 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     th: {
       title: "ระบบ",
       titleHighlight: "ของเรา",
-      subtitle: "ระบบนิเวศ AI ที่สมบูรณ์สามระบบ — M-EasyDo AI+, M-EasyTools AI+ และ M-EasyCommerce AI+ — แบ่งออกเป็น 35 ระบบที่เชื่อมต่อกันเพื่อดำเนินและขยายธุรกิจของคุณ คลิกที่ระบบใดก็ได้เพื่อเปิด",
+      subtitle: "ระบบนิเวศ AI ที่สมบูรณ์สามระบบ — M-EasyDo AI+, M-EasyTools AI+ และ M-EasyCommerce AI+ — แบ่งออกเป็น 36 ระบบที่เชื่อมต่อกันเพื่อดำเนินและขยายธุรกิจของคุณ คลิกที่ระบบใดก็ได้เพื่อเปิด",
       easyDoTagline: "การดำเนินธุรกิจ, CRM, การตลาด และการสนับสนุนลูกค้า",
       easyToolsTagline: "เนื้อหา AI, โซเชียล, อีเมล, โฆษณา, SEO, อีคอมเมิร์ซ, การขาย, PR และอื่นๆ",
       easyCommerceTagline: "การดำเนินงานอีคอมเมิร์ซด้วย AI ครบวงจร — สินค้าคงคลัง คำสั่งซื้อ เว็บสโตร์ POS ช่องทาง การชำระเงิน และการจัดส่ง",

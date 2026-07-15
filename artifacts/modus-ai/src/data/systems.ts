@@ -113,7 +113,7 @@ export const systemGroups: SystemGroup[] = [
       card: "hover:border-teal-500/40 hover:shadow-[0_0_30px_rgba(20,184,166,0.12)]",
     },
     systems: [
-      { id: "halal-main", name: "M-EasyHalal AI+ Super App", isMain: true, url: "https://m-easyhalal-ai-production.up.railway.app" },
+      { id: "halal-main", name: "M-EasyHalal AI+ Super App", isMain: true, url: "https://m-easyhalal-ai-production.up.railway.app/modules/main" },
       { id: "halal-auth", name: "M-EasyHalal Auth AI+", url: "https://m-easyhalal-ai-production.up.railway.app/modules/auth" },
       { id: "halal-discover", name: "M-EasyHalal Discover AI+", url: "https://m-easyhalal-ai-production.up.railway.app/modules/discover" },
       { id: "halal-faith", name: "M-EasyHalal Faith AI+", url: "https://m-easyhalal-ai-production.up.railway.app/modules/faith" },
@@ -145,7 +145,7 @@ export const systemGroups: SystemGroup[] = [
       card: "hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.12)]",
     },
     systems: [
-      { id: "school-main", name: "M-EasySchool AI+ Super App", isMain: true, url: "https://m-easyschool-ai-production.up.railway.app" },
+      { id: "school-main", name: "M-EasySchool AI+ Super App", isMain: true, url: "https://m-easyschool-ai-production.up.railway.app/modules/main" },
       { id: "school-students", name: "M-EasySchool Student Registry", url: "https://m-easyschool-ai-production.up.railway.app/modules/students" },
       { id: "school-classes", name: "M-EasySchool Classes & Subjects", url: "https://m-easyschool-ai-production.up.railway.app/modules/classes" },
       { id: "school-attendance", name: "M-EasySchool Attendance", url: "https://m-easyschool-ai-production.up.railway.app/modules/attendance" },

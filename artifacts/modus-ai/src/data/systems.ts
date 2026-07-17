@@ -113,7 +113,7 @@ export const systemGroups: SystemGroup[] = [
       card: "hover:border-teal-500/40 hover:shadow-[0_0_30px_rgba(20,184,166,0.12)]",
     },
     systems: [
-      { id: "halal-main", name: "M-EasyHalal AI+ Super App", isMain: true, url: "https://m-easyhalal-ai-production.up.railway.app/modules/main" },
+      { id: "halal-main", name: "M-EasyHalal AI+ Super App", isMain: true, url: "https://m-easyhalal-ai-production.up.railway.app/#ecosystem" },
       { id: "halal-auth", name: "M-EasyHalal Auth AI+", url: "https://m-easyhalal-ai-production.up.railway.app/modules/auth" },
       { id: "halal-discover", name: "M-EasyHalal Discover AI+", url: "https://m-easyhalal-ai-production.up.railway.app/modules/discover" },
       { id: "halal-faith", name: "M-EasyHalal Faith AI+", url: "https://m-easyhalal-ai-production.up.railway.app/modules/faith" },

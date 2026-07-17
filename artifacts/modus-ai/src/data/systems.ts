@@ -35,7 +35,7 @@ export const systemGroups: SystemGroup[] = [
       card: "hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,158,46,0.12)]",
     },
     systems: [
-      { id: "easydo-main", name: "M-EasyDo AI+ Super App", isMain: true, url: "https://m-easydo-ai-production.up.railway.app/modules/main" },
+      { id: "easydo-main", name: "M-EasyDo AI+ Super App", isMain: true, url: "https://m-easydo-ai-production.up.railway.app/#ecosystem" },
       { id: "easydo-crm", name: "M-EasyCRM AI+", url: "https://m-easydo-ai-production.up.railway.app/modules/crm" },
       { id: "easydo-multichannel", name: "M-EasyMultichannel Communication AI+ System", url: "https://m-easydo-ai-production.up.railway.app/modules/omnichannel" },
       { id: "easydo-automation", name: "M-Easy Marketing Automation AI+ System", url: "https://m-easydo-ai-production.up.railway.app/modules/marketing-automation" },
@@ -57,7 +57,7 @@ export const systemGroups: SystemGroup[] = [
       card: "hover:border-secondary/40 hover:shadow-[0_0_30px_rgba(124,58,237,0.12)]",
     },
     systems: [
-      { id: "easytools-main", name: "M-EasyTools AI+ Super App", isMain: true, url: "https://m-easytools-ai-production.up.railway.app/modules/main" },
+      { id: "easytools-main", name: "M-EasyTools AI+ Super App", isMain: true, url: "https://m-easytools-ai-production.up.railway.app/#ecosystem" },
       { id: "easytools-content", name: "M-EasyContent AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/modules/content" },
       { id: "easytools-social", name: "M-EasySocial AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/modules/social" },
       { id: "easytools-mail", name: "M-EasyMail AI+ Tools", url: "https://m-easytools-ai-production.up.railway.app/modules/mail" },
@@ -83,7 +83,7 @@ export const systemGroups: SystemGroup[] = [
       card: "hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]",
     },
     systems: [
-      { id: "commerce-main", name: "M-EasyCommerce AI+ Super App", isMain: true, url: "https://m-easycommerceai-production.up.railway.app/modules/main-platform" },
+      { id: "commerce-main", name: "M-EasyCommerce AI+ Super App", isMain: true, url: "https://m-easycommerceai-production.up.railway.app/#ecosystem" },
       { id: "commerce-inventory", name: "M-Easy Inventory AI+ System", url: "https://m-easycommerceai-production.up.railway.app/modules/inventory" },
       { id: "commerce-orders", name: "M-Easy Orders AI+ System", url: "https://m-easycommerceai-production.up.railway.app/modules/orders" },
       { id: "commerce-products", name: "M-Easy Products AI+ System", url: "https://m-easycommerceai-production.up.railway.app/modules/products" },
@@ -145,7 +145,7 @@ export const systemGroups: SystemGroup[] = [
       card: "hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.12)]",
     },
     systems: [
-      { id: "school-main", name: "M-EasySchool AI+ Super App", isMain: true, url: "https://m-easyschool-ai-production.up.railway.app/modules/main" },
+      { id: "school-main", name: "M-EasySchool AI+ Super App", isMain: true, url: "https://m-easyschool-ai-production.up.railway.app/#ecosystem" },
       { id: "school-students", name: "M-EasySchool Student Registry", url: "https://m-easyschool-ai-production.up.railway.app/modules/students" },
       { id: "school-classes", name: "M-EasySchool Classes & Subjects", url: "https://m-easyschool-ai-production.up.railway.app/modules/classes" },
       { id: "school-attendance", name: "M-EasySchool Attendance", url: "https://m-easyschool-ai-production.up.railway.app/modules/attendance" },

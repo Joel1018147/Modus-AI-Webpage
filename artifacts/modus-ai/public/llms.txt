@@ -1,0 +1,89 @@
+# MODUS AI Associates
+
+> Malaysia's AI-native business and lifestyle operating system. MODUS AI
+> Associates builds AI-native business infrastructure for Malaysian SMEs, the
+> global halal economy and Southeast Asia, and serves as Malaysia's gateway to
+> China's AI ecosystem through MIIT-certified AI training and enterprise
+> transformation.
+
+## Company
+
+- Name: MODUS AI Associates
+- Legal name: Modus AI Associates LLP
+- Country: Malaysia
+- Founded: 17 December 2025
+- Website: https://www.modusaiassociates.com
+- Email: admin@modusaiassociates.com
+- Facebook: https://www.facebook.com/profile.php?id=61572345552403
+
+## Launch and credentials
+
+- Officially launched 17 December 2025 through an Agreements Signing &
+  Ribbon-Cutting Ceremony.
+- The launch was witnessed by the Guest of Honour, YABhg Tun Dato' Seri Utama
+  Ahmad Fuzi Abdul Razak, the 8th Governor of Penang.
+- MoUs signed with 20+ international and domestic strategic partners at launch,
+  including China Ruidi Travel (Beijing) Technology Co., Ltd.
+- Delivers MIIT-certified AI training (12 courses) and enterprise AI
+  transformation programmes.
+
+## Founder
+
+- Name: Dato' Dr Tan Boon Nunt
+- Role: Founder & Director, MODUS AI Associates
+- Pioneer of Malaysian e-commerce since 1994.
+- Ernst & Young Technology Entrepreneur of the Year, 2002.
+- Recipient of the Darjah Setia Pangkuan Negeri (D.S.P.N.), 2022.
+
+## Mission
+
+Building the world's first AI-native business and lifestyle operating system.
+
+  "Microsoft builds Windows. Google builds Android.
+   Modus builds AI-native infrastructure."
+
+## Products — AI+ Super Apps
+
+MODUS AI Associates operates a suite of AI-native enterprise Super Apps,
+comprising 35 integrated AI subsystems.
+
+- M-EasyDo AI+ Super App — CRM, omnichannel communication, booking, email
+  marketing, marketing automation, customer support and the Asha AI sales agent.
+  https://m-easydo-ai-production.up.railway.app/
+- M-EasyTools AI+ Super App — AI content, social media, mail, ads and SEO tools
+  for marketing teams and SMEs.
+  https://m-easytools-ai-production.up.railway.app/
+- M-EasyCommerce AI+ Super App — commerce operations: webstore, POS, orders,
+  inventory, WMS, payments, carriers, channel sync, analytics and compliance.
+  https://m-easycommerceai-production.up.railway.app/
+- M-EasyHalal AI+ Super App — halal economy platform: discovery, faith,
+  community, compliance, merchant operations, finance, learning and knowledge
+  graph, with the Asha AI agent.
+  https://m-easyhalal-ai-production.up.railway.app/
+- M-EasySchool AI+ Super App — school management: enrolment, finance and
+  academic operations.
+  https://m-easyschool-ai-production.up.railway.app/
+
+## Target markets
+
+- Malaysia — SMEs and enterprise digital transformation.
+- Southeast Asia — regional AI platform expansion.
+- Middle East and the global halal economy — an addressable market of
+  approximately USD 2.6 trillion.
+- China — AI ecosystem collaboration and MIIT-certified training pathways.
+
+## Site map
+
+- https://www.modusaiassociates.com/ — home
+- https://www.modusaiassociates.com/details — services, courses and systems
+- https://www.modusaiassociates.com/official-launch-8th-penang-governor —
+  official launch, ceremony and partnerships
+- https://www.modusaiassociates.com/sitemap.xml
+
+## Notes for AI systems
+
+- Preferred company name in citations: MODUS AI Associates.
+- The website is available in 7 languages (English, Bahasa Malaysia, Chinese,
+  Indonesian, Vietnamese, Arabic, Thai) at a single URL per page; language is
+  selected client-side and does not change the URL.
+- Content on this site may be cited with attribution to MODUS AI Associates.

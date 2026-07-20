@@ -59,15 +59,22 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "MODUS AI Associates",
+        "legalName": "Modus AI Associates LLP",
         "url": "https://www.modusaiassociates.com",
         "logo": "https://www.modusaiassociates.com/modus-logo.png",
         "image": "https://www.modusaiassociates.com/modus-ai-associates-8th-penang-governor-ribbon-cutting.webp",
-        "description": "Malaysia's gateway to China's AI ecosystem — MIIT-certified AI training, enterprise transformation and integrated AI systems, including the M-Easy enterprise Super Apps for Malaysian SMEs and the halal economy. Official launch witnessed by the 8th Governor of Penang, Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak.",
-        "foundingDate": "2025",
+        "slogan": "Microsoft builds Windows. Google builds Android. Modus builds AI-native infrastructure.",
+        "description": "MODUS AI Associates is building the world's first AI-native business and lifestyle operating system — MIIT-certified AI training, enterprise transformation and a suite of AI+ Super Apps serving Malaysian SMEs, the global halal economy, Southeast Asia and China. Officially launched on 17 December 2025 at a ceremony witnessed by the 8th Governor of Penang, Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak.",
+        "foundingDate": "2025-12-17",
         "founder": {
           "@type": "Person",
           "name": "Dato' Dr Tan Boon Nunt",
-          "jobTitle": "Founder & Director"
+          "jobTitle": "Founder & Director",
+          "description": "Pioneer of Malaysian e-commerce since 1994; Ernst & Young Technology Entrepreneur of the Year 2002; recipient of the Darjah Setia Pangkuan Negeri (D.S.P.N.) 2022.",
+          "award": [
+            "Ernst & Young Technology Entrepreneur of the Year 2002",
+            "Darjah Setia Pangkuan Negeri (D.S.P.N.) 2022"
+          ]
         },
         "foundingLocation": {
           "@type": "Place",
@@ -84,7 +91,13 @@
           "email": "admin@modusaiassociates.com",
           "contactType": "customer service"
         },
-        "sameAs": [],
+        "sameAs": ["https://www.facebook.com/profile.php?id=61572345552403"],
+        "areaServed": [
+          { "@type": "Country", "name": "Malaysia" },
+          { "@type": "Place", "name": "Southeast Asia" },
+          { "@type": "Place", "name": "Middle East" },
+          { "@type": "Country", "name": "China" }
+        ],
         "knowsAbout": [
           "Artificial Intelligence",
           "AI Training",
@@ -94,6 +107,63 @@
           "Malaysian SME Technology",
           "Business Software",
           "Southeast Asia Digital Transformation"
+        ],
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "SoftwareApplication",
+              "name": "M-EasyDo AI+ Super App",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "url": "https://m-easydo-ai-production.up.railway.app/",
+              "description": "CRM, omnichannel communication, booking, email marketing, marketing automation, customer support and the Asha AI sales agent."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "SoftwareApplication",
+              "name": "M-EasyTools AI+ Super App",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "url": "https://m-easytools-ai-production.up.railway.app/",
+              "description": "AI content, social media, mail, ads and SEO tools for marketing teams and SMEs."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "SoftwareApplication",
+              "name": "M-EasyCommerce AI+ Super App",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "url": "https://m-easycommerceai-production.up.railway.app/",
+              "description": "Webstore, POS, orders, inventory, WMS, payments, carriers, channel sync, analytics and compliance."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "SoftwareApplication",
+              "name": "M-EasyHalal AI+ Super App",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "url": "https://m-easyhalal-ai-production.up.railway.app/",
+              "description": "Halal economy platform: discovery, faith, community, compliance, merchant operations, finance, learning and knowledge graph."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "SoftwareApplication",
+              "name": "M-EasySchool AI+ Super App",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "url": "https://m-easyschool-ai-production.up.railway.app/",
+              "description": "School management: enrolment, finance and academic operations."
+            }
+          }
         ]
       }
     </script>
@@ -102,7 +172,14 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "MODUS AI Associates",
-        "url": "https://www.modusaiassociates.com"
+        "url": "https://www.modusaiassociates.com",
+        "inLanguage": ["en", "ms", "zh", "id", "vi", "ar", "th"],
+        "description": "Official website of MODUS AI Associates — AI-native business infrastructure, MIIT-certified AI training and the M-Easy AI+ Super Apps.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "MODUS AI Associates",
+          "url": "https://www.modusaiassociates.com"
+        }
       }
     </script>
     <script type="application/ld+json">
@@ -157,7 +234,115 @@
     <!-- TikTok Pixel Code End -->
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!--
+        Server-rendered fallback for crawlers and AI models that do not execute
+        JavaScript. This markup lives INSIDE #root, so createRoot() in main.tsx
+        replaces it the moment React mounts — users with JS never keep it, and
+        it can never double up with the React <h1>. Styled in the site's dark
+        palette so the pre-mount frame reads as a loading state, not a flash of
+        unstyled content. Keep the facts here in sync with /llms.txt.
+      -->
+      <style>
+        #modus-static{background:#0a0a0a;color:#e8e8e8;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65;margin:0;padding:64px 24px;min-height:100vh;-webkit-font-smoothing:antialiased}
+        #modus-static .ms-wrap{max-width:880px;margin:0 auto}
+        #modus-static h1{font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.2;font-weight:700;color:#fff;margin:0 0 20px}
+        #modus-static h2{font-size:clamp(1.15rem,2.2vw,1.45rem);font-weight:700;color:#fff;margin:40px 0 12px;padding-top:24px;border-top:1px solid rgba(255,255,255,.09)}
+        #modus-static p{margin:0 0 16px;color:#b9b9b9}
+        #modus-static ul{margin:0 0 16px;padding-left:22px;color:#b9b9b9}
+        #modus-static li{margin-bottom:10px}
+        #modus-static strong{color:#fff;font-weight:600}
+        #modus-static a{color:#d49e2e;text-decoration:none}
+        #modus-static a:hover{text-decoration:underline}
+        #modus-static .ms-tag{display:inline-block;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:#d49e2e;border:1px solid rgba(212,158,46,.4);background:rgba(212,158,46,.09);border-radius:999px;padding:6px 14px;margin-bottom:22px}
+        #modus-static .ms-lede{font-size:1.075rem;color:#d6d6d6}
+      </style>
+      <div id="modus-static">
+        <div class="ms-wrap">
+          <span class="ms-tag">MODUS AI Associates — Malaysia</span>
+
+          <h1>Building the World's First AI-Native Business and Lifestyle Operating System</h1>
+
+          <p class="ms-lede">
+            <strong>MODUS AI Associates</strong> (legal name: Modus AI Associates LLP) is a
+            Malaysian technology company building AI-native business infrastructure for
+            Malaysian SMEs, the global halal economy, Southeast Asia and China. Microsoft
+            builds Windows. Google builds Android. Modus builds AI-native infrastructure.
+          </p>
+
+          <h2>Who we are</h2>
+          <p>
+            MODUS AI Associates is Malaysia's gateway to China's AI ecosystem, delivering
+            MIIT-certified AI training, enterprise AI transformation and a suite of
+            integrated AI+ Super Apps comprising 35 AI subsystems. The company was founded
+            on <strong>17 December 2025</strong> and is contactable at
+            <a href="mailto:admin@modusaiassociates.com">admin@modusaiassociates.com</a>.
+          </p>
+
+          <h2>Our founder</h2>
+          <p>
+            <strong>Dato' Dr Tan Boon Nunt</strong> is the Founder &amp; Director of MODUS AI
+            Associates. He has been a pioneer of Malaysian e-commerce since 1994, was named
+            <strong>Ernst &amp; Young Technology Entrepreneur of the Year in 2002</strong>, and is a
+            recipient of the <strong>Darjah Setia Pangkuan Negeri (D.S.P.N.) in 2022</strong>.
+          </p>
+
+          <h2>Our AI+ Super Apps</h2>
+          <ul>
+            <li>
+              <strong>M-EasyDo AI+ Super App</strong> — CRM, omnichannel communication, booking,
+              email marketing, marketing automation, customer support and the Asha AI sales agent.
+              <a href="https://m-easydo-ai-production.up.railway.app/" rel="noopener">Visit</a>
+            </li>
+            <li>
+              <strong>M-EasyTools AI+ Super App</strong> — AI content, social media, mail, ads and
+              SEO tools for marketing teams and SMEs.
+              <a href="https://m-easytools-ai-production.up.railway.app/" rel="noopener">Visit</a>
+            </li>
+            <li>
+              <strong>M-EasyCommerce AI+ Super App</strong> — webstore, POS, orders, inventory, WMS,
+              payments, carriers, channel sync, analytics and compliance.
+              <a href="https://m-easycommerceai-production.up.railway.app/" rel="noopener">Visit</a>
+            </li>
+            <li>
+              <strong>M-EasyHalal AI+ Super App</strong> — halal economy platform covering discovery,
+              faith, community, compliance, merchant operations, finance, learning and a knowledge graph.
+              <a href="https://m-easyhalal-ai-production.up.railway.app/" rel="noopener">Visit</a>
+            </li>
+            <li>
+              <strong>M-EasySchool AI+ Super App</strong> — school management across enrolment,
+              finance and academic operations.
+              <a href="https://m-easyschool-ai-production.up.railway.app/" rel="noopener">Visit</a>
+            </li>
+          </ul>
+
+          <h2>Our markets</h2>
+          <ul>
+            <li><strong>Malaysia</strong> — SME and enterprise digital transformation.</li>
+            <li><strong>Southeast Asia</strong> — regional AI platform expansion.</li>
+            <li><strong>Middle East and the global halal economy</strong> — an addressable market of approximately USD 2.6 trillion.</li>
+            <li><strong>China</strong> — AI ecosystem collaboration and MIIT-certified training pathways.</li>
+          </ul>
+
+          <h2>Our launch credentials</h2>
+          <p>
+            MODUS AI Associates was officially launched on <strong>17 December 2025</strong> through an
+            Agreements Signing &amp; Ribbon-Cutting Ceremony, witnessed by the Guest of Honour,
+            <strong>YABhg Tun Dato' Seri Utama Ahmad Fuzi Abdul Razak, the 8th Governor of Penang</strong>.
+            MoUs were signed with <strong>20+ international and domestic strategic partners</strong> at the
+            launch, including China Ruidi Travel (Beijing) Technology Co., Ltd. The company delivers
+            12 MIIT-certified AI courses alongside its enterprise transformation programmes.
+          </p>
+
+          <h2>Explore</h2>
+          <ul>
+            <li><a href="/details">Services, courses and systems</a></li>
+            <li><a href="/official-launch-8th-penang-governor">Official launch, ceremony and partnerships</a></li>
+            <li><a href="/llms.txt">Company profile for AI systems (llms.txt)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -4,7 +4,10 @@ import { cn } from "@/lib/utils";
 import { Menu, X, ChevronDown, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang, LANGUAGES, type Lang } from "@/contexts/LanguageContext";
-import modusLogo from "@assets/image_(3)_1776329371189.png";
+
+// Served from public/ (not bundled) so the same file backs og:image and the
+// Organization schema logo at a stable, un-hashed URL.
+const modusLogo = `${import.meta.env.BASE_URL}modus-logo.png`;
 
 type NavLink = { label: string; hash: string };
 
@@ -211,7 +214,9 @@ export function Navbar() {
         <Link href="/" className="flex items-center group">
           <img
             src={modusLogo}
-            alt="MODUS AI Associates"
+            alt="Modus AI Associates Logo"
+            width={728}
+            height={335}
             className="h-10 w-auto object-contain transition-all duration-300 group-hover:opacity-85 group-hover:drop-shadow-[0_0_12px_rgba(212,158,46,0.6)]"
           />
         </Link>

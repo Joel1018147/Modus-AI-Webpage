@@ -9,6 +9,8 @@ export const SIGNING_IMAGE_FILE =
 export const LAUNCH_FEATURE_IMAGE_FILE =
   "modus-ai-associates-launch-partnerships-ceremony.webp";
 
+export const LOGO_URL = `${SITE_URL}/modus-logo.png`;
+
 export const CEREMONY_IMAGE_URL = `${SITE_URL}/${CEREMONY_IMAGE_FILE}`;
 export const SIGNING_IMAGE_URL = `${SITE_URL}/${SIGNING_IMAGE_FILE}`;
 export const LAUNCH_FEATURE_IMAGE_URL = `${SITE_URL}/${LAUNCH_FEATURE_IMAGE_FILE}`;
@@ -110,9 +112,44 @@ export function organizationSchema(): Record<string, unknown> {
     "@type": "Organization",
     name: "MODUS AI Associates",
     url: SITE_URL,
-    description: "Malaysia's gateway to China's AI ecosystem.",
-    logo: `${SITE_URL}/favicon.svg`,
+    description:
+      "Malaysia's gateway to China's AI ecosystem — MIIT-certified AI training, enterprise transformation and integrated AI systems, including the M-Easy enterprise Super Apps for Malaysian SMEs and the halal economy.",
+    logo: LOGO_URL,
     image: CEREMONY_IMAGE_URL,
+    foundingDate: "2025",
+    founder: {
+      "@type": "Person",
+      name: "Dato' Dr Tan Boon Nunt",
+      jobTitle: "Founder & Director",
+    },
+    foundingLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "MY",
+        addressRegion: "Penang",
+      },
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "MY",
+      addressRegion: "Kuala Lumpur",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "admin@modusaiassociates.com",
+      contactType: "customer service",
+    },
+    knowsAbout: [
+      "Artificial Intelligence",
+      "AI Training",
+      "Enterprise Transformation",
+      "Malaysia-China AI Collaboration",
+      "Halal Economy",
+      "Malaysian SME Technology",
+      "Business Software",
+      "Southeast Asia Digital Transformation",
+    ],
     sameAs: [] as string[],
   };
 }

@@ -1073,6 +1073,12 @@ export default function Details() {
 
       <main className="container mx-auto px-4 md:px-8 pt-32 max-w-5xl flex flex-col gap-32">
 
+        {/* Page-level H1: every other heading on this page is an h2 section
+            heading, so without this the document had no h1 at all. */}
+        <h1 className="sr-only">
+          {PAGE_META[lang].details.h1 ?? PAGE_META[lang].details.title}
+        </h1>
+
         {/* ── About Us ── */}
         <motion.section
           id="about"

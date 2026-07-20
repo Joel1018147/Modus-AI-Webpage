@@ -523,6 +523,8 @@ export const LAUNCH_I18N: Record<Lang, LaunchI18n> = {
 export interface PageMeta {
   title: string;
   description: string;
+  /** Visible on-page <h1>. Distinct from `title`, which is the <title> tag. */
+  h1?: string;
 }
 
 export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
@@ -534,8 +536,9 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     },
     details: {
       title: "Services, Courses & Systems — MODUS AI Associates",
+      h1: "AI Services, MIIT-Certified Courses & Enterprise AI Systems",
       description:
-        "Explore MODUS AI Associates' AI services, 12 MIIT-certified courses and 35 integrated AI systems bridging Malaysia and China's AI ecosystem.",
+        "Explore MODUS AI Associates' AI services, 12 MIIT-certified courses and 35 integrated AI systems — including the M-Easy enterprise Super Apps — bridging Malaysia and China's AI ecosystem.",
     },
   },
   bm: {
@@ -546,8 +549,9 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     },
     details: {
       title: "Perkhidmatan, Kursus & Sistem — MODUS AI Associates",
+      h1: "Perkhidmatan AI, Kursus Bertauliah MIIT & Sistem AI Perusahaan",
       description:
-        "Terokai perkhidmatan AI, 12 kursus bertauliah MIIT dan 35 sistem AI bersepadu MODUS AI Associates yang menghubungkan ekosistem AI Malaysia dan China.",
+        "Terokai perkhidmatan AI, 12 kursus bertauliah MIIT dan 35 sistem AI bersepadu MODUS AI Associates — termasuk Super Apps perusahaan M-Easy — yang menghubungkan ekosistem AI Malaysia dan China.",
     },
   },
   cn: {
@@ -558,8 +562,9 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     },
     details: {
       title: "服务、课程与系统 — MODUS AI Associates",
+      h1: "人工智能服务、MIIT 认证课程与企业级人工智能系统",
       description:
-        "探索 MODUS AI Associates 的人工智能服务、12 项 MIIT 认证课程及 35 个集成人工智能系统，连接马中人工智能生态系统。",
+        "探索 MODUS AI Associates 的人工智能服务、12 项 MIIT 认证课程及 35 个集成人工智能系统（含 M-Easy 企业级超级应用），连接马中人工智能生态系统。",
     },
   },
   id: {
@@ -570,8 +575,9 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     },
     details: {
       title: "Layanan, Kursus & Sistem — MODUS AI Associates",
+      h1: "Layanan AI, Kursus Bersertifikat MIIT & Sistem AI Perusahaan",
       description:
-        "Jelajahi layanan AI, 12 kursus bersertifikat MIIT, dan 35 sistem AI terintegrasi MODUS AI Associates yang menghubungkan ekosistem AI Malaysia dan China.",
+        "Jelajahi layanan AI, 12 kursus bersertifikat MIIT, dan 35 sistem AI terintegrasi MODUS AI Associates — termasuk Super Apps perusahaan M-Easy — yang menghubungkan ekosistem AI Malaysia dan China.",
     },
   },
   vn: {
@@ -582,8 +588,9 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     },
     details: {
       title: "Dịch Vụ, Khóa Học & Hệ Thống — MODUS AI Associates",
+      h1: "Dịch Vụ AI, Khóa Học Được MIIT Chứng Nhận & Hệ Thống AI Doanh Nghiệp",
       description:
-        "Khám phá dịch vụ AI, 12 khóa học được MIIT chứng nhận và 35 hệ thống AI tích hợp của MODUS AI Associates kết nối hệ sinh thái AI Malaysia và Trung Quốc.",
+        "Khám phá dịch vụ AI, 12 khóa học được MIIT chứng nhận và 35 hệ thống AI tích hợp của MODUS AI Associates — bao gồm các Super App doanh nghiệp M-Easy — kết nối hệ sinh thái AI Malaysia và Trung Quốc.",
     },
   },
   ar: {
@@ -594,8 +601,9 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     },
     details: {
       title: "الخدمات والدورات والأنظمة — MODUS AI Associates",
+      h1: "خدمات الذكاء الاصطناعي والدورات المعتمدة من MIIT وأنظمة الذكاء الاصطناعي للمؤسسات",
       description:
-        "استكشف خدمات الذكاء الاصطناعي و12 دورة معتمدة من MIIT و35 نظامًا متكاملًا للذكاء الاصطناعي من MODUS AI Associates التي تربط منظومتي ماليزيا والصين.",
+        "استكشف خدمات الذكاء الاصطناعي و12 دورة معتمدة من MIIT و35 نظامًا متكاملًا للذكاء الاصطناعي من MODUS AI Associates — بما في ذلك تطبيقات M-Easy الفائقة للمؤسسات — التي تربط منظومتي ماليزيا والصين.",
     },
   },
   th: {
@@ -606,8 +614,9 @@ export const PAGE_META: Record<Lang, { home: PageMeta; details: PageMeta }> = {
     },
     details: {
       title: "บริการ หลักสูตร และระบบ — MODUS AI Associates",
+      h1: "บริการ AI หลักสูตรที่ได้รับการรับรองจาก MIIT และระบบ AI สำหรับองค์กร",
       description:
-        "สำรวจบริการ AI หลักสูตรที่ได้รับการรับรองจาก MIIT 12 หลักสูตร และระบบ AI แบบครบวงจร 35 ระบบของ MODUS AI Associates ที่เชื่อมระบบนิเวศ AI มาเลเซียและจีน",
+        "สำรวจบริการ AI หลักสูตรที่ได้รับการรับรองจาก MIIT 12 หลักสูตร และระบบ AI แบบครบวงจร 35 ระบบของ MODUS AI Associates รวมถึง M-Easy Super Apps สำหรับองค์กร ที่เชื่อมระบบนิเวศ AI มาเลเซียและจีน",
     },
   },
 };

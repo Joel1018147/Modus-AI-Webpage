@@ -182,6 +182,13 @@ export function imageObjectSchema(opts: {
     url: opts.url,
     caption: opts.caption,
     creditText: "MODUS AI Associates",
+    creator: {
+      "@type": "Organization",
+      name: "MODUS AI Associates",
+    },
+    license: "https://www.modusaiassociates.com/",
+    copyrightNotice: "© 2025 MODUS AI Associates LLP. All rights reserved.",
+    acquireLicensePage: "https://www.modusaiassociates.com/",
     ...(opts.width ? { width: opts.width } : {}),
     ...(opts.height ? { height: opts.height } : {}),
   };

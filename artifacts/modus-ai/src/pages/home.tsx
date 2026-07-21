@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "wouter";
 import {
   ArrowRight, BarChart3, Brain, Cpu, Globe,
@@ -387,15 +387,10 @@ export default function Home() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const videoSrc = VIDEO_BY_LANG[lang];
 
-  const heroHeadlines = [li.heroHeadline, li.heroHeadline2];
-  const [headlineIdx, setHeadlineIdx] = useState(0);
-  useEffect(() => {
-    setHeadlineIdx(0);
-    const interval = setInterval(() => {
-      setHeadlineIdx((prev) => (prev === 0 ? 1 : 0));
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [lang]);
+  // Single stable <h1> (the value proposition) — a rotating primary heading is
+  // a weak signal for search and AI crawlers, which index the first/consistent
+  // h1. The launch/governor credential still lives in the badge + subheadline.
+  const heroHeadline = li.heroHeadline2;
 
   useSeo({
     title: meta.home.title,
@@ -484,20 +479,9 @@ export default function Home() {
 
             <motion.h1
               variants={itemVariants}
-              className="text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-tight text-white mb-6 min-h-[2.4em] flex items-center justify-center"
+              className="text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-tight text-white mb-6 flex items-center justify-center"
             >
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={headlineIdx}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.5 }}
-                  className="block"
-                >
-                  {heroHeadlines[headlineIdx]}
-                </motion.span>
-              </AnimatePresence>
+              {heroHeadline}
             </motion.h1>
 
             <motion.p

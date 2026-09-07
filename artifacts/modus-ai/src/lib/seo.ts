@@ -187,7 +187,7 @@ export function imageObjectSchema(opts: {
       name: "MODUS AI Associates",
     },
     license: "https://www.modusaiassociates.com/",
-    copyrightNotice: "© 2025 MODUS AI Associates LLP. All rights reserved.",
+    copyrightNotice: "© 2025–2026 Modus AI Associates (SSM 202403281139). All rights reserved.",
     acquireLicensePage: "https://www.modusaiassociates.com/",
     ...(opts.width ? { width: opts.width } : {}),
     ...(opts.height ? { height: opts.height } : {}),

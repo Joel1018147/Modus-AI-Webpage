@@ -11,6 +11,7 @@ import Home from "@/pages/home";
 import Details from "@/pages/details";
 import Launch from "@/pages/launch";
 import { LAUNCH_PATH } from "@/data/launch";
+import { Footer } from "@/components/layout/Footer";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,10 @@ function App() {
         <LanguageProvider>
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
             <Router />
+            {/* One footer for every route. It carries the legal identity of the
+                company, so it must not be per-page: a page that forgot it would
+                be a page where the entity is unnamed. */}
+            <Footer />
           </WouterRouter>
           <Toaster />
           <TikTokDebugPanel />

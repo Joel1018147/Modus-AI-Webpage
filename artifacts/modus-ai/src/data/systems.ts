@@ -16,9 +16,19 @@ import type React from "react";
   | "esg-main"
   | "pos-main" | "pos-till" | "pos-analyst" | "pos-catalogue" | "pos-stock" | "pos-loyalty" | "pos-compliance" | "pos-workforce" | "pos-sync";
 export type SystemLink = { id: SystemId; name: string; url: string; isMain?: boolean };
+/* "featured" groups get a full card in the "Our Systems" grid. "other" groups are
+   still listed — as a compact link to their main platform — but below the grid, so
+   they do not compete with the ecosystems we actively sell. */
+export type SystemTier = "featured" | "other";
 export type SystemGroup = {
   brand: string;
+  /* Shorter label used where the full "… Super App" brand is too heavy (the
+     "Other Systems" strip). Falls back to `brand` when absent. */
+  shortBrand?: string;
+  tier: SystemTier;
   taglineKey: "easyDoTagline" | "easyToolsTagline" | "easyCommerceTagline" | "easyHalalTagline" | "easySchoolTagline" | "easyPosTagline" | "esgTagline";
+  /* Optional line under the group tagline explaining how the group is sold. */
+  packagingNoteKey?: "easyDoPackaging";
   icon: React.ComponentType<{ className?: string }>;
   styles: { iconWrap: string; icon: string; badge: string; arrow: string; card: string };
   systems: SystemLink[];
@@ -27,7 +37,10 @@ export type SystemGroup = {
 export const systemGroups: SystemGroup[] = [
   {
     brand: "M-EasyDo AI+ Super App",
+    shortBrand: "M-EasyDo AI+",
+    tier: "featured",
     taglineKey: "easyDoTagline",
+    packagingNoteKey: "easyDoPackaging",
     icon: Building2,
     styles: {
       iconWrap: "bg-primary/10 border-primary/30",
@@ -51,6 +64,8 @@ export const systemGroups: SystemGroup[] = [
   },
   {
     brand: "M-EasyTools AI+ Super App",
+    shortBrand: "M-EasyTools AI+",
+    tier: "featured",
     taglineKey: "easyToolsTagline",
     icon: Wrench,
     styles: {
@@ -77,6 +92,8 @@ export const systemGroups: SystemGroup[] = [
   },
   {
     brand: "M-EasyCommerce AI+ Super App",
+    shortBrand: "M-EasyCommerce AI+",
+    tier: "other",
     taglineKey: "easyCommerceTagline",
     icon: ShoppingBag,
     styles: {
@@ -107,6 +124,8 @@ export const systemGroups: SystemGroup[] = [
   },
   {
     brand: "M-EasyHalal AI+ Super App",
+    shortBrand: "M-EasyHalal AI+",
+    tier: "other",
     taglineKey: "easyHalalTagline",
     icon: Moon,
     styles: {
@@ -139,6 +158,8 @@ export const systemGroups: SystemGroup[] = [
   },
   {
     brand: "M-EasySchool AI+ Super App",
+    shortBrand: "M-EasySchool AI+",
+    tier: "other",
     taglineKey: "easySchoolTagline",
     icon: GraduationCap,
     styles: {
@@ -172,6 +193,8 @@ export const systemGroups: SystemGroup[] = [
   },
   {
     brand: "M-EasyPOS AI+ Super App",
+    shortBrand: "M-EasyPOS AI+",
+    tier: "featured",
     taglineKey: "easyPosTagline",
     icon: Store,
     styles: {
@@ -195,6 +218,8 @@ export const systemGroups: SystemGroup[] = [
   },
   {
     brand: "ESG AI+ Super App",
+    shortBrand: "ESG Super App",
+    tier: "featured",
     taglineKey: "esgTagline",
     icon: Leaf,
     styles: {
@@ -822,10 +847,53 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
   },
 };
 
+  /* Short, informational tags shown beside a system's name. Used for systems that
+     cannot be bought standalone — they say what a system depends on, or what it is
+     bundled into. Sparse on purpose: an untagged system carries no note. */
+  export const SYSTEM_NOTES: Record<Lang, Partial<Record<SystemId, string>>> = {
+    en: {
+      "easydo-crm": "Included in every package",
+      "easydo-multichannel": "Required for Asha",
+      "easydo-agent": "Requires Omnichannel",
+    },
+    bm: {
+      "easydo-crm": "Termasuk dalam setiap pakej",
+      "easydo-multichannel": "Diperlukan untuk Asha",
+      "easydo-agent": "Memerlukan Omnisaluran",
+    },
+    cn: {
+      "easydo-crm": "每个套餐均包含",
+      "easydo-multichannel": "Asha 的必要条件",
+      "easydo-agent": "需搭配全渠道系统",
+    },
+    id: {
+      "easydo-crm": "Termasuk dalam setiap paket",
+      "easydo-multichannel": "Diperlukan untuk Asha",
+      "easydo-agent": "Memerlukan Omnichannel",
+    },
+    vn: {
+      "easydo-crm": "Có trong mọi gói",
+      "easydo-multichannel": "Bắt buộc cho Asha",
+      "easydo-agent": "Cần hộp thư đa kênh",
+    },
+    ar: {
+      "easydo-crm": "مُضمَّن في كل حزمة",
+      "easydo-multichannel": "مطلوب لتشغيل Asha",
+      "easydo-agent": "يتطلب الصندوق الموحّد للقنوات",
+    },
+    th: {
+      "easydo-crm": "รวมอยู่ในทุกแพ็กเกจ",
+      "easydo-multichannel": "จำเป็นสำหรับ Asha",
+      "easydo-agent": "ต้องใช้ร่วมกับกล่องข้อความรวมทุกช่องทาง",
+    },
+  };
+
   export type SystemsI18n = {
     title: string;
     titleHighlight: string;
     subtitle: string;
+    otherSystemsTitle: string;
+    easyDoPackaging: string;
     easyDoTagline: string;
     easyToolsTagline: string;
     easyCommerceTagline: string;
@@ -841,7 +909,9 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     en: {
       title: "Our",
       titleHighlight: "Systems",
-      subtitle: "Seven complete AI ecosystems — M-EasyDo AI+, M-EasyTools AI+, M-EasyCommerce AI+, M-EasyHalal AI+, M-EasySchool AI+, M-EasyPOS AI+ and the ESG Super App — broken into 85 integrated systems to run and grow your business. Click any system to open it.",
+      subtitle: "Four core AI ecosystems — M-EasyDo AI+, M-EasyTools AI+, M-EasyPOS AI+ and the ESG Super App — broken into integrated systems to run and grow your business, plus specialized platforms for e-commerce, halal retail and school operations. Click any system to open it.",
+      otherSystemsTitle: "Other Systems",
+      easyDoPackaging: "Sold as connected packages — not module by module.",
       easyDoTagline: "CRM, omnichannel inbox, marketing automation, support, Asha AI sales agent, booking, M-Ai & document intelligence",
       easyToolsTagline: "AI content, social, mail, ads, SEO, commerce, sales, PR, audiobooks & more",
       easyCommerceTagline: "Full AI e-commerce ops — inventory, orders, webstore, POS, channels, payments & shipping",
@@ -855,7 +925,9 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     bm: {
       title: "Sistem",
       titleHighlight: "Kami",
-      subtitle: "Tujuh ekosistem AI lengkap — M-EasyDo AI+, M-EasyTools AI+, M-EasyCommerce AI+, M-EasyHalal AI+, M-EasySchool AI+, M-EasyPOS AI+ dan ESG Super App — dipecahkan kepada 85 sistem bersepadu untuk menjalankan dan mengembangkan perniagaan anda. Klik mana-mana sistem untuk membukanya.",
+      subtitle: "Empat ekosistem AI teras — M-EasyDo AI+, M-EasyTools AI+, M-EasyPOS AI+ dan ESG Super App — dipecahkan kepada sistem bersepadu untuk menjalankan dan mengembangkan perniagaan anda, serta platform khusus untuk e-dagang, peruncitan halal dan operasi sekolah. Klik mana-mana sistem untuk membukanya.",
+      otherSystemsTitle: "Sistem Lain",
+      easyDoPackaging: "Dijual sebagai pakej bersepadu — bukan modul demi modul.",
       easyDoTagline: "CRM, peti masuk omnisaluran, automasi pemasaran, sokongan, ejen jualan AI Asha, tempahan, M-Ai & kecerdasan dokumen",
       easyToolsTagline: "Kandungan AI, sosial, mel, iklan, SEO, e-dagang, jualan, PR, audiobook & lagi",
       easyCommerceTagline: "Operasi e-dagang AI penuh — inventori, pesanan, kedai web, POS, saluran, pembayaran & penghantaran",
@@ -869,7 +941,9 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     cn: {
       title: "我们的",
       titleHighlight: "系统",
-      subtitle: "七个完整的 AI 生态系统——M-EasyDo AI+、M-EasyTools AI+、M-EasyCommerce AI+、M-EasyHalal AI+、M-EasySchool AI+、M-EasyPOS AI+ 与 ESG Super App——拆分为 85 个集成系统，助力您经营和发展业务。点击任意系统即可打开。",
+      subtitle: "四大核心 AI 生态系统——M-EasyDo AI+、M-EasyTools AI+、M-EasyPOS AI+ 与 ESG Super App——拆分为多个集成系统，助力您经营和发展业务；此外还有面向电商、清真零售与校务运营的专项平台。点击任意系统即可打开。",
+      otherSystemsTitle: "其他系统",
+      easyDoPackaging: "以整合套餐形式销售，而非逐个模块购买。",
       easyDoTagline: "CRM、全渠道收件箱、营销自动化、客户支持、Asha AI 销售代理、预约、M-Ai 与文档智能",
       easyToolsTagline: "AI 内容、社交、邮件、广告、SEO、电商、销售、公关、有声书等",
       easyCommerceTagline: "全套 AI 电商运营——库存、订单、网店、POS、渠道、支付与物流",
@@ -883,7 +957,9 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     id: {
       title: "Sistem",
       titleHighlight: "Kami",
-      subtitle: "Tujuh ekosistem AI lengkap — M-EasyDo AI+, M-EasyTools AI+, M-EasyCommerce AI+, M-EasyHalal AI+, M-EasySchool AI+, M-EasyPOS AI+ dan ESG Super App — dibagi menjadi 85 sistem terintegrasi untuk menjalankan dan mengembangkan bisnis Anda. Klik sistem mana pun untuk membukanya.",
+      subtitle: "Empat ekosistem AI inti — M-EasyDo AI+, M-EasyTools AI+, M-EasyPOS AI+ dan ESG Super App — dibagi menjadi sistem terintegrasi untuk menjalankan dan mengembangkan bisnis Anda, ditambah platform khusus untuk e-commerce, ritel halal, dan operasional sekolah. Klik sistem mana pun untuk membukanya.",
+      otherSystemsTitle: "Sistem Lainnya",
+      easyDoPackaging: "Dijual sebagai paket terpadu — bukan per modul.",
       easyDoTagline: "CRM, kotak masuk omnichannel, otomasi pemasaran, dukungan, agen penjualan AI Asha, pemesanan, M-Ai & inteligensi dokumen",
       easyToolsTagline: "Konten AI, sosial, email, iklan, SEO, e-commerce, penjualan, PR, audiobook & lainnya",
       easyCommerceTagline: "Operasi e-commerce AI lengkap — inventaris, pesanan, webstore, POS, saluran, pembayaran & pengiriman",
@@ -897,7 +973,9 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     vn: {
       title: "Hệ Thống",
       titleHighlight: "Của Chúng Tôi",
-      subtitle: "Bảy hệ sinh thái AI hoàn chỉnh — M-EasyDo AI+, M-EasyTools AI+, M-EasyCommerce AI+, M-EasyHalal AI+, M-EasySchool AI+, M-EasyPOS AI+ và ESG Super App — được chia thành 85 hệ thống tích hợp để vận hành và phát triển doanh nghiệp của bạn. Nhấp vào bất kỳ hệ thống nào để mở.",
+      subtitle: "Bốn hệ sinh thái AI cốt lõi — M-EasyDo AI+, M-EasyTools AI+, M-EasyPOS AI+ và ESG Super App — được chia thành các hệ thống tích hợp để vận hành và phát triển doanh nghiệp của bạn, cùng các nền tảng chuyên biệt cho thương mại điện tử, bán lẻ halal và vận hành trường học. Nhấp vào bất kỳ hệ thống nào để mở.",
+      otherSystemsTitle: "Hệ thống khác",
+      easyDoPackaging: "Được bán theo gói tích hợp — không bán lẻ từng phân hệ.",
       easyDoTagline: "CRM, hộp thư đa kênh, tự động hóa tiếp thị, hỗ trợ, trợ lý bán hàng AI Asha, đặt lịch, M-Ai & trí tuệ tài liệu",
       easyToolsTagline: "Nội dung AI, mạng xã hội, email, quảng cáo, SEO, thương mại, bán hàng, PR, sách nói & hơn nữa",
       easyCommerceTagline: "Vận hành thương mại điện tử AI toàn diện — kho hàng, đơn hàng, cửa hàng trực tuyến, POS, kênh bán, thanh toán & vận chuyển",
@@ -911,7 +989,9 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     ar: {
       title: "أنظمتنا",
       titleHighlight: "المتكاملة",
-      subtitle: "سبع منظومات متكاملة للذكاء الاصطناعي — M-EasyDo AI+ و M-EasyTools AI+ و M-EasyCommerce AI+ و M-EasyHalal AI+ و M-EasySchool AI+ و M-EasyPOS AI+ وESG Super App — مقسمة إلى 85 نظاماً متكاملاً لإدارة أعمالك وتنميتها. انقر على أي نظام لفتحه.",
+      subtitle: "أربع منظومات أساسية للذكاء الاصطناعي — M-EasyDo AI+ و M-EasyTools AI+ و M-EasyPOS AI+ وESG Super App — مقسمة إلى أنظمة متكاملة لإدارة أعمالك وتنميتها، إضافة إلى منصات متخصصة للتجارة الإلكترونية وتجزئة الحلال وإدارة المدارس. انقر على أي نظام لفتحه.",
+      otherSystemsTitle: "أنظمة أخرى",
+      easyDoPackaging: "تُباع كحزم متكاملة، لا وحدة بوحدة.",
       easyDoTagline: "إدارة العلاقات وصندوق موحّد لكل القنوات وأتمتة التسويق والدعم ووكيل المبيعات Asha والحجوزات وM-Ai وذكاء المستندات",
       easyToolsTagline: "محتوى الذكاء الاصطناعي والتواصل الاجتماعي والبريد والإعلانات وتحسين محركات البحث والتجارة والمبيعات والعلاقات العامة والكتب الصوتية والمزيد",
       easyCommerceTagline: "عمليات تجارة إلكترونية كاملة بالذكاء الاصطناعي — المخزون والطلبات والمتجر الإلكتروني ونقاط البيع والقنوات والمدفوعات والشحن",
@@ -925,7 +1005,9 @@ export const SYSTEM_DESCRIPTIONS: Record<Lang, Record<SystemId, string>> = {
     th: {
       title: "ระบบ",
       titleHighlight: "ของเรา",
-      subtitle: "ระบบนิเวศ AI ที่สมบูรณ์เจ็ดระบบ — M-EasyDo AI+, M-EasyTools AI+, M-EasyCommerce AI+, M-EasyHalal AI+, M-EasySchool AI+, M-EasyPOS AI+ และ ESG Super App — แบ่งออกเป็น 85 ระบบที่เชื่อมต่อกันเพื่อดำเนินและขยายธุรกิจของคุณ คลิกที่ระบบใดก็ได้เพื่อเปิด",
+      subtitle: "ระบบนิเวศ AI หลักสี่ระบบ — M-EasyDo AI+, M-EasyTools AI+, M-EasyPOS AI+ และ ESG Super App — แบ่งออกเป็นระบบที่เชื่อมต่อกันเพื่อดำเนินและขยายธุรกิจของคุณ พร้อมแพลตฟอร์มเฉพาะทางสำหรับอีคอมเมิร์ซ ค้าปลีกฮาลาล และงานบริหารโรงเรียน คลิกที่ระบบใดก็ได้เพื่อเปิด",
+      otherSystemsTitle: "ระบบอื่น ๆ",
+      easyDoPackaging: "จำหน่ายเป็นแพ็กเกจที่เชื่อมต่อกัน ไม่ได้แยกขายทีละโมดูล",
       easyDoTagline: "CRM, กล่องข้อความรวมทุกช่องทาง, ระบบการตลาดอัตโนมัติ, การสนับสนุน, ตัวแทนขาย AI Asha, การจอง, M-Ai และการอ่านเอกสารด้วย AI",
       easyToolsTagline: "เนื้อหา AI, โซเชียล, อีเมล, โฆษณา, SEO, อีคอมเมิร์ซ, การขาย, PR, หนังสือเสียง และอื่นๆ",
       easyCommerceTagline: "การดำเนินงานอีคอมเมิร์ซด้วย AI ครบวงจร — สินค้าคงคลัง คำสั่งซื้อ เว็บสโตร์ POS ช่องทาง การชำระเงิน และการจัดส่ง",

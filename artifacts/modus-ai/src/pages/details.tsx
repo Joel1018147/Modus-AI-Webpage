@@ -23,7 +23,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLang } from "@/contexts/LanguageContext";
 import { trackViewContent, trackLead, trackContact, trackButtonClick } from "@/lib/tiktok";
-import { systemGroups, SYSTEM_DESCRIPTIONS, SYSTEMS_I18N } from "@/data/systems";
+import { systemGroups, SYSTEM_DESCRIPTIONS, SYSTEM_NOTES, SYSTEMS_I18N } from "@/data/systems";
 import { useSeo, breadcrumbSchema, CEREMONY_IMAGE_URL } from "@/lib/seo";
 import { PAGE_META, LAUNCH_I18N, LAUNCH_PATH } from "@/data/launch";
 
@@ -32,15 +32,21 @@ const sectionVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
+/* The ecosystems we actively sell get a full card in the "Our Systems" grid; the
+   rest are listed as compact links below it. */
+const FEATURED_GROUPS = systemGroups.filter((g) => g.tier === "featured");
+const OTHER_GROUPS = systemGroups.filter((g) => g.tier === "other");
+
 /* Which ecosystem cards span the full width of the "Our Systems" grid. A group
    with more than 12 systems always does — its own list needs two columns. The
    remaining narrow groups pair off two to a row, so when there is an odd number
    of them the last one is promoted as well and the grid never ends on an
-   orphaned half-width card. */
+   orphaned half-width card. Indexed over FEATURED_GROUPS, which is what the grid
+   actually renders. */
 const WIDE_GROUP_INDEXES: ReadonlySet<number> = (() => {
   const wide = new Set<number>();
   const narrow: number[] = [];
-  systemGroups.forEach((g, i) => (g.systems.length > 12 ? wide.add(i) : narrow.push(i)));
+  FEATURED_GROUPS.forEach((g, i) => (g.systems.length > 12 ? wide.add(i) : narrow.push(i)));
   if (narrow.length % 2 === 1) wide.add(narrow[narrow.length - 1]);
   return wide;
 })();
@@ -1209,7 +1215,10 @@ export default function Details() {
             <div className="h-1 w-12 bg-secondary" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* The cards enter from `x: 20`, so until they animate in they sit past
+              the right edge and let a phone drag the page sideways. Clip the axis
+              they slide on — `clip` (not `hidden`) creates no scroll container. */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 overflow-x-clip">
             {t.why.points.map((point, i) => {
               const icons = [Award, Globe2, Users, BookOpen, Briefcase, Bot];
               const Icon = icons[i];
@@ -1390,7 +1399,7 @@ export default function Details() {
           <p className="text-muted-foreground mb-10 text-lg max-w-3xl">{si.subtitle}</p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-            {systemGroups.map((group, gi) => {
+            {FEATURED_GROUPS.map((group, gi) => {
               const GroupIcon = group.icon;
               const isWide = WIDE_GROUP_INDEXES.has(gi);
               return (
@@ -1407,13 +1416,23 @@ export default function Details() {
                       <GroupIcon className={`w-6 h-6 ${group.styles.icon}`} />
                     </div>
                     <div>
-                      <h3 className="text-xl font-display font-bold text-white">{group.brand}</h3>
+                      {/* Brand and system names are Latin and often end in "+",
+                          which bidi treats as neutral and would reorder to the
+                          wrong end of the line in RTL. <bdi> isolates them. */}
+                      <h3 className="text-xl font-display font-bold text-white"><bdi>{group.brand}</bdi></h3>
                       <p className="text-sm text-muted-foreground">{si[group.taglineKey]}</p>
+                      {group.packagingNoteKey && (
+                        <p className={`mt-1.5 text-xs md:text-sm font-medium ${group.styles.icon}`}>
+                          {si[group.packagingNoteKey]}
+                        </p>
+                      )}
                     </div>
                   </div>
 
                   <div className={isWide ? "grid sm:grid-cols-2 gap-x-6 gap-y-1" : "space-y-1.5"}>
-                    {group.systems.map((sys) => (
+                    {group.systems.map((sys) => {
+                      const note = SYSTEM_NOTES[lang][sys.id];
+                      return (
                       <a
                         key={sys.id}
                         href={sys.url}
@@ -1432,8 +1451,13 @@ export default function Details() {
                         <span className="min-w-0">
                           <span className="flex items-center gap-2.5 flex-wrap">
                             <span className="text-sm md:text-base font-medium text-white/90 group-hover:text-white transition-colors">
-                              {sys.name}
+                              <bdi>{sys.name}</bdi>
                             </span>
+                            {note && (
+                              <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] leading-snug font-medium ${group.styles.badge}`}>
+                                {note}
+                              </span>
+                            )}
                           </span>
                           <span className="block mt-1 text-xs md:text-sm text-muted-foreground leading-relaxed">
                             {SYSTEM_DESCRIPTIONS[lang][sys.id]}
@@ -1442,12 +1466,47 @@ export default function Details() {
                         </span>
                         <ArrowUpRight aria-hidden="true" className={`w-4 h-4 shrink-0 mt-1 text-muted-foreground transition-all duration-300 ${group.styles.arrow} group-hover:translate-x-0.5 group-hover:-translate-y-0.5`} />
                       </a>
-                    ))}
+                      );
+                    })}
                   </div>
                 </motion.div>
               );
             })}
           </div>
+
+          {OTHER_GROUPS.length > 0 && (
+            <div className="mt-10 pt-8 border-t border-white/10">
+              <h3 className="text-base font-display font-semibold text-white/55 mb-4">{si.otherSystemsTitle}</h3>
+              <div className="flex flex-wrap gap-3">
+                {OTHER_GROUPS.map((group) => {
+                  const main = group.systems.find((s) => s.isMain) ?? group.systems[0];
+                  return (
+                    <a
+                      key={group.brand}
+                      href={main.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        trackButtonClick({
+                          contentId: `system-${main.id}`,
+                          contentName: main.name,
+                          contentType: "service",
+                        })
+                      }
+                      className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white/65 hover:text-white hover:border-white/25 hover:bg-white/[0.07] transition-all duration-300"
+                      data-testid={`other-system-link-${main.id}`}
+                    >
+                      {/* These labels end in "+", which bidi treats as neutral and
+                          would move to the wrong end of an RTL line. */}
+                      <bdi>{group.shortBrand ?? group.brand}</bdi>
+                      <ArrowUpRight aria-hidden="true" className="w-3.5 h-3.5 shrink-0 text-muted-foreground group-hover:text-white/70 transition-colors" />
+                      <span className="sr-only">{si.opensInNewTab}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </motion.section>
 
         {/* ── Our Activities ── */}
